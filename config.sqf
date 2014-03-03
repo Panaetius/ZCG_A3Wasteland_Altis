@@ -64,13 +64,13 @@ config_refuel_amounts = compileFinal str
 ];
 
 // Is player saving enabled?
-config_player_saving_enabled = compileFinal "0";
+config_player_saving_enabled = compileFinal "1";
 
 // Can players get extra in-game cash at spawn by donating?
 config_player_donations_enabled = compileFinal "0";
 
 // How much do players spawn with?
-config_initial_spawn_money = compileFinal "100";
+config_initial_spawn_money = compileFinal "500";
 
 // Territory system definitions. See territory/README.md for more details.
 //

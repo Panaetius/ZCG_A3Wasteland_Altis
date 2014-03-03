@@ -44,7 +44,7 @@ A3W_boatSpawning = 1;        // If serverSpawning = 1, also spawn boats at marke
 A3W_heliSpawning = 1;        // If serverSpawning = 1, also spawn helicopters in some towns and airfields (0 = no, 1 = yes)
 A3W_planeSpawning = 1;       // If serverSpawning = 1, also spawn planes at some airfields (0 = no, 1 = yes)
 A3W_baseBuilding = 1;        // If serverSpawning = 1, also spawn basebuilding parts in towns (0 = no, 1 = yes)
-A3W_baseSaving = 0;          // Save base objects between restarts (0 = no, 1 = yes) - requires iniDB mod 
+A3W_baseSaving = 1;          // Save base objects between restarts (0 = no, 1 = yes) - requires iniDB mod 
 PDB_ServerID = "any";        // iniDB saves prefix (change this in case you run multiple servers from the same folder)
 
 // load external config

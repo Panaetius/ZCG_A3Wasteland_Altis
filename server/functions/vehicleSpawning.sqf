@@ -3,7 +3,7 @@
 //	@file Author: [GoT] JoSchaap, AgentRev
 //  new one, no longer requires Spawn_ markers but uses the town's radius in config.sqf to pick the ammount of vehicles
 
-#define A3W_TOWN_SPAWNING_METERS_PER_VEHICLE 20 // This defines a fraction of the town's radius for which to spawn a vehicle (ex.: 20 meters per vehicle in town with 100m radius = 5 vehicles in town)
+#define A3W_TOWN_SPAWNING_METERS_PER_VEHICLE 10 // This defines a fraction of the town's radius for which to spawn a vehicle (ex.: 20 meters per vehicle in town with 100m radius = 5 vehicles in town)
 
 if (!isServer) exitWith {};
 
