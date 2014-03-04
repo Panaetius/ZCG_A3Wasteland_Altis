@@ -211,7 +211,7 @@ _leader = driver (_vehicles select 0);
 _group selectLeader _leader;
 _leader setRank "LIEUTENANT";
 
-_group setCombatMode "GREEN"; // units will defend themselves
+_group setCombatMode "WHITE"; // units will defend themselves
 _group setBehaviour "SAFE"; // units feel safe until they spot an enemy or get into contact
 _group setFormation "STAG COLUMN";
 _group setSpeedMode "LIMITED";
@@ -220,7 +220,7 @@ _group setSpeedMode "LIMITED";
     _waypoint = _group addWaypoint [_x, 0];
     _waypoint setWaypointType "MOVE";
     _waypoint setWaypointCompletionRadius 50;
-    _waypoint setWaypointCombatMode "GREEN"; 
+    _waypoint setWaypointCombatMode "WHITE"; 
     _waypoint setWaypointBehaviour "SAFE"; // safe is the best behaviour to make AI follow roads, as soon as they spot an enemy or go into combat they WILL leave the road for cover though!
     _waypoint setWaypointFormation "STAG COLUMN";
     _waypoint setWaypointSpeed "LIMITED";

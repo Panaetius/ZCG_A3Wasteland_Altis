@@ -15,6 +15,7 @@ if ((call config_player_donations_enabled) == 1) then {
 [_UID, _UID, "Health", "NUMBER"] call sendToServer;
 [_UID, _UID, "Position", "ARRAY"] call sendToServer;
 [_UID, _UID, "Direction", "NUMBER"] call sendToServer;
+[_UID, _UID, "Money", "NUMBER"] call sendToServer;
 
 // Survival + wasteland inventory
 {

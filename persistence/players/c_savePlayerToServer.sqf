@@ -5,6 +5,7 @@ if(playerSetupComplete) then
 	[_uid, _uid, "Health", damage player] call fn_SaveToServer;
 	[_uid, _uid, "Side", str(side player)] call fn_SaveToServer;
 	[_uid, _uid, "Account Name", name player] call fn_SaveToServer;
+	[_uid, _uid, "Money", player getVariable ["cmoney", 0]] call fn_SaveToServer;
 
 	{
 		_keyName = _x select 0;

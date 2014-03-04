@@ -15,77 +15,80 @@ _pos = _this select 1;
 _leader = _group createunit ["C_man_polo_1_F", [(_pos select 0) + 30, _pos select 1, 0], [], 0.5, "Form"];
 _leader addMagazine "Strela";
 _leader addWeapon "Strela";
-_leader addMagazine "30Rnd_545x39_AK";
-_leader addMagazine "30Rnd_545x39_AK";
-_leader addMagazine "30Rnd_545x39_AK";
-_leader addWeapon "AKS_74_U";
+_leader addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_leader addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_leader addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_leader addWeapon "LMG_Mk200_MRCO_F";
 
 //Support
 _man2 = _group createunit ["C_man_polo_2_F", [(_pos select 0) - 30, _pos select 1, 0], [], 0.5, "Form"];
-_man2 addMagazine "75Rnd_545x39_RPK";
-_man2 addMagazine "75Rnd_545x39_RPK";
-_man2 addWeapon "RPK_74";
+_man2 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
+_man2 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
+_man2 addWeapon "arifle_MXC_ACO_pointer_F";
 
 //Rifle_man
 _man3 = _group createunit ["C_man_polo_3_F", [_pos select 0, (_pos select 1) + 30, 0], [], 0.5, "Form"];
-_man3 addMagazine "30Rnd_762x39_AK47";
-_man3 addMagazine "30Rnd_762x39_AK47";
-_man3 addMagazine "30Rnd_762x39_AK47";
-_man3 addWeapon "AK_47_M";
+_man3 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man3 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man3 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man3 addWeapon "arifle_Katiba_ARCO_pointer_F";
 
 //Rifle_man
 _man4 = _group createunit ["C_man_polo_4_F", [_pos select 0, (_pos select 1) + 40, 0], [], 0.5, "Form"];
-_man4 addMagazine "30Rnd_762x39_AK47";
-_man4 addMagazine "30Rnd_762x39_AK47";
-_man4 addMagazine "30Rnd_762x39_AK47";
-_man4 addWeapon "AK_47_M";
+_man4 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man4 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man4 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man4 addWeapon "arifle_Katiba_ARCO_pointer_F";
 
 //Sniper
 _man5 = _group createunit ["C_man_polo_5_F", [_pos select 0, (_pos select 1) - 30, 0], [], 0.5, "Form"];
-_man5 addMagazine "10Rnd_762x54_SVD";
-_man5 addMagazine "10Rnd_762x54_SVD";
-_man5 addMagazine "10Rnd_762x54_SVD";
-_man5 addWeapon "SVD";
+_man5 addMagazine "20Rnd_762x51_Mag";
+_man5 addMagazine "20Rnd_762x51_Mag";
+_man5 addMagazine "20Rnd_762x51_Mag";
+_man5 addWeapon "srifle_EBR_SOS_F";
 
 //Grenadier
 _man6 = _group createunit ["C_man_polo_4_F", [_pos select 0, (_pos select 1) - 40, 0], [], 0.5, "Form"];
-_man6 addMagazine "30Rnd_545x39_AK";
-_man6 addMagazine "30Rnd_545x39_AK";
-_man6 addMagazine "30Rnd_545x39_AK";
+_man6 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man6 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man6 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
 _man6 addMagazine "1Rnd_HE_GP25";
 _man6 addMagazine "1Rnd_HE_GP25";
 _man6 addMagazine "1Rnd_HE_GP25";
-_man6 addWeapon "AK_74_GL";
+_man6 addWeapon "arifle_Katiba_GL_ARCO_pointer_F";
 
 //Support
 _man7 = _group createunit ["C_man_polo_4_F", [(_pos select 0) - 40, _pos select 1, 0], [], 0.5, "Form"];
-_man7 addMagazine "75Rnd_545x39_RPK";
-_man7 addMagazine "75Rnd_545x39_RPK";
-_man7 addWeapon "RPK_74";
+_man7 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
+_man7 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
+_man7 addWeapon "arifle_MXC_ACO_pointer_F";
 
 //Grenadier
 _man8 = _group createunit ["C_man_polo_4_F", [_pos select 0, (_pos select 1) + 50, 0], [], 0.5, "Form"];
-_man8 addMagazine "30Rnd_545x39_AK";
-_man8 addMagazine "30Rnd_545x39_AK";
-_man8 addMagazine "30Rnd_545x39_AK";
+_man8 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man8 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man8 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
 _man8 addMagazine "1Rnd_HE_GP25";
 _man8 addMagazine "1Rnd_HE_GP25";
 _man8 addMagazine "1Rnd_HE_GP25";
-_man8 addWeapon "AK_74_GL";
+_man8 addWeapon "arifle_Katiba_GL_ARCO_pointer_F";
 
 //Sniper
 _man9 = _group createunit ["C_man_polo_4_F", [_pos select 0, (_pos select 1) - 50, 0], [], 0.5, "Form"];
-_man9 addMagazine "10Rnd_762x54_SVD";
-_man9 addMagazine "10Rnd_762x54_SVD";
-_man9 addMagazine "10Rnd_762x54_SVD";
-_man9 addWeapon "SVD";
+_man9 addMagazine "20Rnd_762x51_Mag";
+_man9 addMagazine "20Rnd_762x51_Mag";
+_man9 addMagazine "20Rnd_762x51_Mag";
+_man9 addWeapon "srifle_EBR_SOS_F";
 
 //Rifle_man
 _man10 = _group createunit ["C_man_polo_4_F", [_pos select 0, (_pos select 1) + 30, 0], [], 0.5, "Form"];
-_man10 addMagazine "30Rnd_762x39_AK47";
-_man10 addMagazine "30Rnd_762x39_AK47";
-_man10 addMagazine "30Rnd_762x39_AK47";
-_man10 addWeapon "AK_47_M";
+_man10 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man10 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man10 addMagazine "30Rnd_65x39_caseless_green_mag_Tracer";
+_man10 addWeapon "arifle_Katiba_ARCO_pointer_F";
 
 _leader = leader _group;
+
+_group setCombatMode "WHITE";
+
 [_group, _pos] call defendArea;

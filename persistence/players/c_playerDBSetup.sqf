@@ -123,6 +123,7 @@ applyPlayerDBValues =
 	if(_varName == 'PrimaryWeapon') then{player addWeapon _varValue; primaryLoaded = 1;};
 	if(_varName == 'HandgunWeapon') then{player addWeapon _varValue; handgunLoaded = 1;};
 	if(_varName == 'SecondaryWeapon') then {player addWeapon _varValue; secondaryLoaded = 1;};
+	if(_varName == 'Money') then {player setVariable ["cmoney", _varValue, true];};
 
 	if(_varName == 'AssignedItems') then {
 		{

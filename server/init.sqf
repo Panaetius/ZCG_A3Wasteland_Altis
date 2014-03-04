@@ -36,7 +36,7 @@ diag_log "WASTELAND SERVER - Server Compile Finished";
 A3W_buildingLoot = 1;        // Spawn and respawn Loot inside buildings in citys (0 = no, 1 = yes)
 A3W_startHour = 6;           // In-game hour at mission start (0 to 23)
 A3W_moonLight = 1;           // Moon light during night (0 = no, 1 = yes)
-A3W_missionsDifficulty = 0;  // Missions difficulty (0 = normal, 1 = hard)
+A3W_missionsDifficulty = 1;  // Missions difficulty (0 = normal, 1 = hard)
 A3W_serverMissions = 1;      // Server main & side missions (0 = no, 1 = yes)
 A3W_serverSpawning = 1;      // Vehicle, object, and loot spawning (0 = no, 1 = yes)
 A3W_boxSpawning = 1;         // If serverSpawning = 1, also spawn ammo boxes in some towns (0 = no, 1 = yes)
@@ -161,6 +161,8 @@ if (["A3W_serverMissions", 0] call getPublicVar > 0) then
     [] execVM "server\missions\mainMissionController.sqf";
 	sleep 5;
 	[] execVM "server\missions\moneyMissionController.sqf";
+	[] execVM "server\missions\hiddenMissionController.sqf";
+    sleep 5;
 };
 
 // Start clean-up loop

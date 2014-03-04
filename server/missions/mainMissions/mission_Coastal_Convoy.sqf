@@ -272,7 +272,7 @@ _leader = driver (_vehicles select 0);
 _groupcc selectLeader _leader;
 _leader setRank "LIEUTENANT";
 
-_groupcc setCombatMode "GREEN"; // units will defend themselves
+_groupcc setCombatMode "WHITE"; // units will defend themselves
 _groupcc setBehaviour "SAFE"; // units feel safe until they spot an enemy or get into contact
 _groupcc setFormation "STAG COLUMN";
 _groupcc setSpeedMode "LIMITED";
@@ -282,7 +282,7 @@ _groupcc setSpeedMode "LIMITED";
     _waypoint = _groupcc addWaypoint [_x, 0];
     _waypoint setWaypointType "MOVE";
     _waypoint setWaypointCompletionRadius 50;
-    _waypoint setWaypointCombatMode "GREEN"; 
+    _waypoint setWaypointCombatMode "WHITE"; 
     _waypoint setWaypointBehaviour "SAFE"; 
     _waypoint setWaypointFormation "STAG COLUMN";
     _waypoint setWaypointSpeed "LIMITED";

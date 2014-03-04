@@ -16,10 +16,10 @@ _leader = _group createUnit ["C_man_polo_1_F", [(_pos select 0) + 10, _pos selec
 removeAllAssignedItems _leader;
 _leader addUniform "U_B_CombatUniform_mcam";
 _leader addVest "V_PlateCarrier1_rgr";
-_leader addMagazine "30Rnd_556x45_Stanag";
-_leader addWeapon "arifle_TRG21_F";
-_leader addMagazine "30Rnd_556x45_Stanag";
-_leader addMagazine "30Rnd_556x45_Stanag";
+_leader addMagazine "150Rnd_762x51_Box_Tracer";
+_leader addWeapon "LMG_Zafir_pointer_F";
+_leader addMagazine "150Rnd_762x51_Box_Tracer";
+_leader addMagazine "150Rnd_762x51_Box_Tracer";
 _leader addMagazine "RPG32_HE_F";
 _leader addWeapon "launch_RPG32_F";
 _leader addMagazine "RPG32_HE_F";
@@ -29,32 +29,34 @@ _man2 = _group createUnit ["C_man_polo_2_F", [(_pos select 0) - 30, _pos select 
 removeAllAssignedItems _man2;
 _man2 addUniform "U_B_CombatUniform_mcam_vest";
 _man2 addVest "V_PlateCarrier1_rgr";
-_man2 addMagazine "30Rnd_556x45_Stanag";
-_man2 addWeapon "arifle_TRG20_F";
-_man2 addMagazine "30Rnd_556x45_Stanag";
-_man2 addMagazine "30Rnd_556x45_Stanag";
+_man2 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
+_man2 addWeapon "arifle_MX_ACO_pointer_F";
+_man2 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
+_man2 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
 
 // Rifleman
 _man3 = _group createUnit ["C_man_polo_3_F", [_pos select 0, (_pos select 1) + 30, 0], [], 1, "Form"];
 removeAllAssignedItems _man3;
 _man3 addUniform "U_B_CombatUniform_mcam_vest";
 _man3 addVest "V_PlateCarrier1_rgr";
-_man3 addMagazine "30Rnd_556x45_Stanag";
-_man3 addWeapon "arifle_TRG20_F";
-_man3 addMagazine "30Rnd_556x45_Stanag";
-_man3 addMagazine "30Rnd_556x45_Stanag";
+_man3 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
+_man3 addWeapon "arifle_MX_ACO_pointer_F";
+_man3 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
+_man3 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
 
 // Rifleman
 _man4 = _group createUnit ["C_man_polo_4_F", [_pos select 0, (_pos select 1) - 30, 0], [], 1, "Form"];
 removeAllAssignedItems _man4;
 _man4 addUniform "U_B_CombatUniform_mcam_vest";
 _man4 addVest "V_PlateCarrier1_rgr";
-_man4 addMagazine "30Rnd_556x45_Stanag";
-_man4 addWeapon "arifle_TRG20_F";
-_man4 addMagazine "30Rnd_556x45_Stanag";
-_man4 addMagazine "30Rnd_556x45_Stanag";
+_man4 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
+_man4 addWeapon "arifle_MX_ACO_pointer_F";
+_man4 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
+_man4 addMagazine "30Rnd_65x39_caseless_mag_Tracer";
 
 _leader = leader _group;
+
+_group setCombatMode "WHITE";
 
 {
 	_x spawn refillPrimaryAmmo;
