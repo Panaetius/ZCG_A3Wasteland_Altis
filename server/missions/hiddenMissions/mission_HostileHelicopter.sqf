@@ -112,12 +112,6 @@ while {_travelcount < _travels} do {
 	};
 } forEach _waypoints;
 
-//_marker = createMarker [_missionMarkerName, position leader _groupsm];
-//_marker setMarkerType "mil_destroy";
-//_marker setMarkerSize [1.25, 1.25];
-//_marker setMarkerColor "ColorRed";
-//_marker setMarkerText "Hostile Helicopter";
-
 _picture = getText (configFile >> "CfgVehicles" >> _helipick >> "picture");
 _vehicleName = getText (configFile >> "cfgVehicles" >> _helipick >> "displayName");
 
@@ -140,8 +134,6 @@ waitUntil
     private ["_unitsAlive"];
     
     sleep 10; 
-    
-    _marker setMarkerPos (position leader _groupsm);
     
     if ((floor time) - _startTime >= hiddenMissionTimeout) then { _failed = true };
     if (currentWaypoint _groupsm >= _numWaypoints) then { _failed = true }; // Convoy got successfully to the target location
@@ -169,7 +161,7 @@ if(_failed) then
 		}forEach _vehicles;
 	};
 	// give the rewards
-    _ammobox = "Box_NATO_Wps_F" createVehicle getMarkerPos _marker;
+    _ammobox = "Box_NATO_Wps_F" createVehicle (position leader _groupsm);
     [_ammobox,"mission_USSpecial"] call fn_refillbox;
 	_ammobox allowDamage false;
 	

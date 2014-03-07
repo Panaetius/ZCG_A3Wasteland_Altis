@@ -13,8 +13,6 @@ diag_log "WASTELAND SERVER - Started Main Mission State";
 
 _MainMissions =
 [		// increase the number (weight) to increase the missions chance to be selected
-	["mission_ArmedDiversquad", 1],
-	["mission_Coastal_Convoy", 1], 
 	["mission_Convoy", 1],
 	["mission_HostileHeliFormation", 0.5],  
 	["mission_APC", 1],

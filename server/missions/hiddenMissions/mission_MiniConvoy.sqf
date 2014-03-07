@@ -218,12 +218,6 @@ _groupsm setSpeedMode "LIMITED";
     _waypoint setWaypointSpeed "LIMITED";
 } forEach _waypoints;
 
-//_marker = createMarker [_missionMarkerName, position leader _groupsm];
-//_marker setMarkerType "mil_destroy";
-//_marker setMarkerSize [1.25, 1.25];
-//_marker setMarkerColor "ColorRed";
-//_marker setMarkerText "Truck Convoy";
-
 _picture = getText (configFile >> "CfgVehicles" >> _veh2 >> "picture");
 _vehicleName = getText (configFile >> "cfgVehicles" >> _veh2 >> "displayName");
 _hint = parseText format ["<t align='center' color='%4' shadow='2' size='1.75'>Side Objective</t><br/><t align='center' color='%4'>------------------------------</t><br/><t align='center' color='%5' size='1.25'>%1</t><br/><t align='center'><img size='5' image='%2'/></t><br/><t align='center' color='%5'>A <t color='%4'>%3</t> transporting weapon cargo is on route! Stop the convoy and capture the goods!</t>", _missionType, _picture, _vehicleName, hiddenMissionColor, subTextColor];
@@ -240,7 +234,6 @@ waitUntil
     
     sleep 10; 
     
-    _marker setMarkerPos (position leader _groupsm);
     
     if ((floor time) - _startTime >= hiddenMissionTimeout) then { _failed = true };
     if (currentWaypoint _groupsm >= _numWaypoints) then { _failed = true }; // Convoy got successfully to the target location
@@ -269,7 +262,7 @@ if(_failed) then
 		}forEach _vehicles;
 	};
 	// give the rewards
-	_ammobox = "Box_NATO_Wps_F" createVehicle getMarkerPos _marker;
+	_ammobox = "Box_NATO_Wps_F" createVehicle (position leader _groupsm);
     [_ammobox,"mission_USSpecial2"] call fn_refillbox;
 	_ammobox allowDamage false;
 	
