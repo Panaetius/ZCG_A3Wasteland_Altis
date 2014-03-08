@@ -24,6 +24,7 @@ player createDiaryRecord ["changelog",
 <br/> [Added] - Player money saving
 <br/> [Added] - Roaming AI
 <br/> [Added] - More Cities
+<br/> [Added] - Military Base mission
 "
 ]];
 

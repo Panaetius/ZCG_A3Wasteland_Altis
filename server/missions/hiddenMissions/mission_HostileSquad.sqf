@@ -81,8 +81,6 @@ if(_failed) then
 	{if (vehicle _x != _x) then { deleteVehicle vehicle _x; }; deleteVehicle _x;}forEach units _CivGrpM;
 	{deleteVehicle _x;}forEach units _CivGrpM;
 	deleteGroup _CivGrpM; 
-    _hint = parseText format ["<t align='center' color='%4' shadow='2' size='1.75'>Objective Failed</t><br/><t align='center' color='%4'>------------------------------</t><br/><t align='center' color='%5' size='1.25'>%1</t><br/><t align='center'><img size='5' image='%2'/></t><br/><t align='center' color='%5'>The patrol ended, the enemy has survived and escaped with the ammo crates.</t>", _missionType, _picture, _vehicleName, failMissionColor, subTextColor];
-    [_hint] call hintBroadcast;
     diag_log format["WASTELAND SERVER - Hidden Mission Failed: %1",_missionType];
 } else {
 	// Mission completed
@@ -99,8 +97,6 @@ if(_failed) then
 	_ammobox allowDamage false;
 	
 	deleteGroup _CivGrpM;
-    _hint = parseText format ["<t align='center' color='%4' shadow='2' size='1.75'>Objective Complete</t><br/><t align='center' color='%4'>------------------------------</t><br/><t align='center' color='%5' size='1.25'>%1</t><br/><t align='center'><img size='5' image='%2'/></t><br/><t align='center' color='%5'>The patrol has been defeated. Loot the crates!</t>", _missionType, _picture, _vehicleName, successMissionColor, subTextColor];
-    [_hint] call hintBroadcast;
     diag_log format["WASTELAND SERVER - Hidden Mission Success: %1",_missionType];
 };
 
