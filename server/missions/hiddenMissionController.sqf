@@ -15,10 +15,10 @@ _hiddenMissions =
 [			// increase the number behind the mission (weight) to increase the chance of the mission to be selected
 	["mission_HostileHelicopter",0.5], 
 	["mission_MiniConvoy", 1], 
-	//["mission_SunkenSupplys", 0.1],
 	["mission_AirWreck", 1.5],
 	["mission_WepCache", 1.5],
-	["mission_Truck", 1]
+	["mission_Truck", 1],
+	["mission_HostileSquad", 1]
 ]; 
 
 // _notPlayedhiddenMissions = +_hiddenMissions;
@@ -30,6 +30,28 @@ _hiddenMissionsOdds = [];
 	// Attempt to compile every mission for early bug detection
 	compile preprocessFileLineNumbers format ["server\missions\hiddenMissions\%1.sqf", _x select 0];
 } forEach _hiddenMissions;
+
+//initialize missions
+_nextMission = [_hiddenMissions, _hiddenMissionsOdds] call fn_selectRandomWeighted;
+_missionType = _nextMission select 0;
+
+_missionRunning1 = execVM format ["server\missions\hiddenMissions\%1.sqf", _missionType];
+
+diag_log format["WASTELAND SERVER - Execute New Side Mission: %1",_missionType];
+
+_nextMission = [_hiddenMissions, _hiddenMissionsOdds] call fn_selectRandomWeighted;
+_missionType = _nextMission select 0;
+
+_missionRunning2 = execVM format ["server\missions\hiddenMissions\%1.sqf", _missionType];
+
+diag_log format["WASTELAND SERVER - Execute New Side Mission: %1",_missionType];
+
+_nextMission = [_hiddenMissions, _hiddenMissionsOdds] call fn_selectRandomWeighted;
+_missionType = _nextMission select 0;
+
+_missionRunning3 = execVM format ["server\missions\hiddenMissions\%1.sqf", _missionType];
+
+diag_log format["WASTELAND SERVER - Execute New Side Mission: %1",_missionType];
 
 while {true} do
 {

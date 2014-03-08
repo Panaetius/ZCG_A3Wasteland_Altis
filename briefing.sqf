@@ -10,7 +10,7 @@ player createDiarySubject ["credits", "Credits"];
 
 player createDiaryRecord ["changelog",
 [
-"0.9f",
+"0.9f_custom",
 "
 <br/> [Added] - Money missions
 <br/> [Added] - Sell Crate Items option at stores when moving crate
@@ -20,6 +20,10 @@ player createDiaryRecord ["changelog",
 <br/> [Fixed] - Player icons position inside buildings
 <br/> [Fixed] - MRAPs and quadbikes not spawning
 <br/> [Fixed] - Broken money rewards for territories
+<br/> [Added] - Hidden missions
+<br/> [Added] - Player money saving
+<br/> [Added] - Roaming AI
+<br/> [Added] - More Cities
 "
 ]];
 

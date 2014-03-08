@@ -95,7 +95,7 @@ class Mission
 	randomSeed=14957468;
 	class Intel
 	{
-		briefingName="A3Wasteland Altis v0.9f";
+		briefingName="A3Wasteland Altis v0.9f_custom";
 		overviewText="Wasteland survival sandbox by Team Wasteland - visit A3Wasteland.com for more details";
 		resistanceWest=0;
 		startWeather=0.10000001;
@@ -2389,7 +2389,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=167;
+		items=179;
 		class Item0
 		{
 			position[]={3612.1487,12.11851,13020.892};
@@ -3674,6 +3674,90 @@ class Mission
 			name="MobM_8";
 			type="Empty";
 			colorName="ColorBlack";
+		};
+		class Item167
+		{
+			position[]={3996.25,17.6997,17257.8};
+			name="Town_21";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item168
+		{
+			position[]={4166.6,53.2313,11747.3};
+			name="Town_22";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item169
+		{
+			position[]={7177.54,120.601,16451};
+			name="Town_23";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item170
+		{
+			position[]={10987.5,26.8412,13423.4};
+			name="Town_24";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item171
+		{
+			position[]={12360.9,23.3714,15680.5};
+			name="Town_25";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item172
+		{
+			position[]={8643.72,182.371,18258.8};
+			name="Town_26";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item173
+		{
+			position[]={18823.6,30.2987,16597.9};
+			name="Town_27";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item174
+		{
+			position[]={21370.6,19.8642,16352.6};
+			name="Town_28";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item175
+		{
+			position[]={19397.9,38.7749,13251.2};
+			name="Town_29";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item176
+		{
+			position[]={20522.3,34.1912,8871.27};
+			name="Town_30";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item177
+		{
+			position[]={27017.4,20.4753,23225.6};
+			name="Town_31";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item178
+		{
+			position[]={23199,13.9637,19961.1};
+			name="Town_32";
+			type="Empty";
+			colorName="ColorRed";
 		};
 	};
 };

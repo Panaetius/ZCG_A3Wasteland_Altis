@@ -29,7 +29,19 @@ cityList = compileFinal str
 	["Town_17", 150, "Oreokastro"],
 	["Town_18", 100, "Dump"],
 	["Town_19", 125, "Negades"],
-	["Town_20", 100, "Frini"]
+	["Town_20", 100, "Frini"],
+	["Town_21", 150, "Agios Konstantinos"],
+	["Town_22", 150, "Neri"],
+	["Town_23", 100, "Kore"],
+	["Town_24", 150, "Poliako"],
+	["Town_25", 100, "Lakka"],
+	["Town_26", 100, "Syrta"],
+	["Town_27", 150, "Rodopoli"],
+	["Town_28", 100, "Kalochori"],
+	["Town_29", 100, "Dorida"],
+	["Town_30", 100, "Panagia"],
+	["Town_31", 100, "Molos"],
+	["Town_32", 100, "Ioannina"]
 ];
 
 militarylist = compileFinal str

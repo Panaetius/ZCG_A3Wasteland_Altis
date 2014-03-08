@@ -24,7 +24,7 @@ while {true} do
     
 	if(!worldMissionRunning) then
     {
-        sleep 120;
+        sleep 60;
         _mission = _MMarray select (random (count _MMarray - 1));
         execVM format ["server\missions\otherMissions\%1.sqf",_mission];
 		worldMissionRunning = true;

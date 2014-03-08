@@ -89,6 +89,7 @@ if (["A3W_baseSaving", 0] call getPublicVar > 0 || {["config_player_saving_enabl
 	};
 };
 
+
 if (!isNil "A3W_startHour" || !isNil "A3W_moonLight") then
 {
 	private ["_monthDay", "_startHour"];

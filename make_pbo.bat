@@ -8,7 +8,7 @@
 
 :: Set your ArmA3 profile name etc. below
 
-IF "%username%" == "Administrator" (
+IF "%username%" == "Zenon" (
 	SET "LOCAL_ARMA_PROFILE=PanaetiusServer"
 	:: My local standalone server dir
 	SET "PBO_DESTINATION_DIR=C:\DEV\A3Wasteland\"
@@ -27,6 +27,7 @@ ECHO Packaging into PBO...
 mkdir "%TEMP%\%LOCAL_MISSION_NAME%"
 xcopy /q /s /y "%SOURCE_DIR%\*" "%TEMP%\%LOCAL_MISSION_NAME%"
 echo Mission assembled to %TEMP%\%LOCAL_MISSION_NAME%
-"%PBO_TOOL%" "%TEMP%\%LOCAL_MISSION_NAME%" %PBO_DESTINATION_DIR%
+"%PBO_TOOL%" "%TEMP%\%LOCAL_MISSION_NAME%" "%PBO_DESTINATION_DIR%"
+echo "%PBO_TOOL%" "%TEMP%\%LOCAL_MISSION_NAME%" "%PBO_DESTINATION_DIR%"
 echo Created PBO %PBO_DESTINATION_DIR%%LOCAL_MISSION_NAME%.pbo
 rmdir "%TEMP%\%LOCAL_MISSION_NAME%" /s /q

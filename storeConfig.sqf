@@ -202,12 +202,12 @@ ammoArray = compileFinal str
 //Text name, classname, buy cost, item class
 accessoriesArray = compileFinal str
 [
-	["Suppressor 9mm", "muzzle_snds_L", 50, "item"],
-	["Suppressor .45 ACP", "muzzle_snds_acp", 75, "item"],
-	["Suppressor 5.56mm", "muzzle_snds_M", 100, "item"],
-	["Suppressor 6.5mm", "muzzle_snds_H", 100, "item"],
-	["Suppressor 6.5mm LMG", "muzzle_snds_H_MG", 125, "item"],
-	["Suppressor 7.62mm", "muzzle_snds_B", 125, "item"],
+	["Suppressor 9mm", "muzzle_snds_L", 200, "item"],
+	["Suppressor .45 ACP", "muzzle_snds_acp", 200, "item"],
+	["Suppressor 5.56mm", "muzzle_snds_M", 400, "item"],
+	["Suppressor 6.5mm", "muzzle_snds_H", 400, "item"],
+	["Suppressor 6.5mm LMG", "muzzle_snds_H_MG", 500, "item"],
+	["Suppressor 7.62mm", "muzzle_snds_B", 500, "item"],
 	["Flashlight", "acc_flashlight", 25, "item"],
 	["IR Laser Pointer", "acc_pointer_IR", 25, "item"],
 	["Yorris Zubr Sight", "optic_Yorris", 50, "item"],
@@ -222,7 +222,7 @@ accessoriesArray = compileFinal str
 	["RCO", "optic_Hamr", 150, "item"],
 	["DMS", "optic_DMS", 175, "item"],
 	["LRPS", "optic_LRPS", 175, "item"],
-	["SOS", "optic_SOS", 200, "item"],
+	["SOS", "optic_SOS", 300, "item"],
 	["NVS", "optic_NVS", 400, "item"],
 	["TWS", "optic_tws", 600, "item"],
 	["TWS MG", "optic_tws_mg", 650, "item"],

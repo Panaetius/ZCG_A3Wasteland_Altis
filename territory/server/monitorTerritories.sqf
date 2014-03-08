@@ -89,10 +89,10 @@ _newPlayersWithTerritoryActivity = [];
 _onCaptureStarted = {
     private['_territoryDescriptiveName', '_ownerSideStr', '_msg', '_sideObject', '_descriptiveSideName'];
 
-    _territoryDescriptiveName = _this select 0;
+	_territoryDescriptiveName = _this select 0;
     _ownerSideStr = _this select 1;
 
-    if (_side != "") then {
+    if (_ownerSideStr != "") then {
         _sideObject = [_ownerSideStr] call _sideObjectForSideStr;
         _descriptiveSideName = [_ownerSideStr] call _nameForSideStr;
         _msg = format["Your territory at %1 is being captured by %2!", _territoryDescriptiveName, _descriptiveSideName];
