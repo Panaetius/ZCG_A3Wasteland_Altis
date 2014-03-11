@@ -68,16 +68,16 @@ if !(isServer && isDedicated) then
 	R3F_LOG_action_charger_selection_valide = false;
 	R3F_LOG_action_contenu_vehicule_valide = false;
 	
-	R3F_LOG_action_remorquer_deplace_valide = false;
-	R3F_LOG_action_remorquer_selection_valide = false;
+	R3F_LOG_action_tow_move_valid = false;
+	R3F_LOG_action_tow_selection_valid = false;
 	
 	R3F_LOG_action_heliporter_valide = false;
 	R3F_LOG_action_heliport_larguer_valide = false;
 	
 	R3F_LOG_action_deplacer_objet_valide = false;
-	R3F_LOG_action_remorquer_deplace_valide = false;
-	R3F_LOG_action_selectionner_objet_remorque_valide = false;
-	R3F_LOG_action_detacher_valide = false;
+	R3F_LOG_action_tow_move_valid = false;
+	R3F_LOG_action_selected_object_tow_valid = false;
+	R3F_LOG_action_detach_valid = false;
 	R3F_LOG_action_charger_deplace_valide = false;
 	R3F_LOG_action_selectionner_objet_charge_valide = false;
 	

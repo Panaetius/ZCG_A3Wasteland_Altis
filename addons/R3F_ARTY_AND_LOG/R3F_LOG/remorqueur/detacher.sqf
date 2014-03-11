@@ -72,7 +72,7 @@ else
 		
 		player switchMove "";
 		
-		if ({_objet isKindOf _x} count R3F_LOG_CFG_objets_deplacables > 0) then
+		if ({_objet isKindOf _x} count R3F_LOG_CFG_objects_movables > 0) then
 		{
 			// Si personne n'a re-remorquer l'objet pendant le sleep 6
 			if (isNull (_remorqueur getVariable "R3F_LOG_remorque") &&

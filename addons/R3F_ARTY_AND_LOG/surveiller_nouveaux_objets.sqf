@@ -19,7 +19,7 @@ private ["_liste_objets_depl_heli_remorq_transp", "_liste_vehicules_connus", "_l
 
 #ifdef R3F_LOG_enable
 // Union des tableaux de types d'objets servant dans un isKindOf
-_liste_objets_depl_heli_remorq_transp = R3F_LOG_CFG_objets_deplacables + R3F_LOG_CFG_objets_heliportables + R3F_LOG_CFG_objets_remorquables + R3F_LOG_classes_objets_transportables;
+_liste_objets_depl_heli_remorq_transp = R3F_LOG_CFG_objects_movables + R3F_LOG_CFG_objets_heliportables + R3F_LOG_CFG_object_towables + R3F_LOG_classes_objets_transportables;
 #endif
 
 // Contiendra la liste des véhicules (et objets) déjà initialisés

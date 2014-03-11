@@ -14,17 +14,33 @@ R3F_LOG_CFG_remorqueurs =
 	"Truck_02_base_F",
 	"Wheeled_APC_F",
 	"Tank_F",
-//	"APC_Tracked_01_base_F", // For future weight system
-//	"APC_Tracked_02_base_F",
-//	"MBT_01_base_F",
-//	"MBT_02_base_F",
+	"C_Hatchback_01_F",
+	"C_Hatchback_01_sport_F",
+	"C_SUV_01_F",
+	"C_Offroad_01_F",
+	"I_G_Offroad_01_F",
+	"C_Van_01_box_F",
+	"C_Van_01_transport_F",
+	"I_G_Van_01_transport_F",
+	"O_Truck_02_covered_F",
+	"I_Truck_02_covered_F",
+	"O_Truck_02_transport_F",
+	"I_Truck_02_transport_F",
+	"I_G_Offroad_01_armed_F",
+	"I_Truck_02_Fuel_F",
+	"O_Truck_02_Fuel_F",
+	"I_Truck_02_medical_F",
+	"O_Truck_02_medical_F",
+	"B_MRAP_01_F",
+	"O_MRAP_02_F",
+	"I_MRAP_03_F",
 	"Boat_Armed_01_base_F"
 ];
 
 /**
  * List of class names of towables objects.
  */
-R3F_LOG_CFG_objets_remorquables =
+R3F_LOG_CFG_object_towables =
 [
 	"Hatchback_01_base_F",
 	"SUV_01_base_F",
@@ -37,7 +53,32 @@ R3F_LOG_CFG_objets_remorquables =
 	"Boat_Civil_01_base_F",
 	"Boat_Armed_01_base_F",
 	"Helicopter_Base_F",
-	"Plane_Base_F"
+	"Plane_Base_F",
+	"C_Hatchback_01_F",
+	"C_Hatchback_01_sport_F",
+	"C_SUV_01_F",
+	"C_Offroad_01_F",
+	"I_G_Offroad_01_F",
+	"C_Van_01_box_F",
+	"C_Van_01_transport_F",
+	"I_G_Van_01_transport_F",
+	"I_G_Quadbike_01_F",
+	"O_Truck_02_covered_F",
+	"I_Truck_02_covered_F",
+	"O_Truck_02_transport_F",
+	"I_Truck_02_transport_F",
+	"I_G_Offroad_01_armed_F",
+	"I_Truck_02_Fuel_F",
+	"O_Truck_02_Fuel_F",
+	"I_Truck_02_medical_F",
+	"O_Truck_02_medical_F",
+	"B_MRAP_01_F",
+	"O_MRAP_02_F",
+	"I_MRAP_03_F",
+	"B_Heli_Light_01_F",
+	"O_Heli_Light_02_unarmed_F",
+	"I_Heli_Transport_02_F",
+	"B_Heli_Transport_01_F"
 ];
 
 /****** LIFT WITH VEHICLE  ******/
@@ -64,7 +105,28 @@ R3F_LOG_CFG_objets_heliportables =
 	"MRAP_03_base_F",
 	"SDV_01_base_F",
 	"Boat_Civil_01_base_F",
-	"Boat_Armed_01_base_F"
+	"Boat_Armed_01_base_F",
+	"C_Hatchback_01_F",
+	"C_Hatchback_01_sport_F",
+	"C_SUV_01_F",
+	"C_Offroad_01_F",
+	"I_G_Offroad_01_F",
+	"C_Van_01_box_F",
+	"C_Van_01_transport_F",
+	"I_G_Van_01_transport_F",
+	"I_G_Quadbike_01_F",
+	"O_Truck_02_covered_F",
+	"I_Truck_02_covered_F",
+	"O_Truck_02_transport_F",
+	"I_Truck_02_transport_F",
+	"I_G_Offroad_01_armed_F",
+	"I_Truck_02_Fuel_F",
+	"O_Truck_02_Fuel_F",
+	"I_Truck_02_medical_F",
+	"O_Truck_02_medical_F",
+	"B_MRAP_01_F",
+	"O_MRAP_02_F",
+	"I_MRAP_03_F"
 ];
 
 
@@ -170,7 +232,7 @@ R3F_LOG_CFG_objets_transportables =
 
 /****** MOVABLE-BY-PLAYER OBJECTS / OBJETS DEPLACABLES PAR LE JOUEUR ******/
 
-R3F_LOG_CFG_objets_deplacables =
+R3F_LOG_CFG_objects_movables =
 [
 	"StaticWeapon",
 	"ReammoBox_F",
@@ -226,29 +288,44 @@ R3F_LOG_CFG_objets_deplacables =
 
 R3F_LOG_CFG_objets_lockablevehicles =
 [
+	"Boat_Armed_01_base_F",
+	"B_Heli_Light_01_F",
+	"B_Heli_Transport_01_F",
+	"B_MRAP_01_F",
 	"C_Hatchback_01_F",
 	"C_Hatchback_01_sport_F",
-	"C_SUV_01_F",
 	"C_Offroad_01_F",
-	"I_G_Offroad_01_F",
+	"C_SUV_01_F",
 	"C_Van_01_box_F",
 	"C_Van_01_transport_F",
-	"I_G_Van_01_transport_F",
-	"I_G_Quadbike_01_F",
-	"O_Truck_02_covered_F",
-	"I_Truck_02_covered_F",
-	"O_Truck_02_transport_F",
-	"I_Truck_02_transport_F",
+	"Hatchback_01_base_F",
+	"Helicopter_Base_F",
 	"I_G_Offroad_01_armed_F",
-	"I_Truck_02_Fuel_F",
-	"O_Truck_02_Fuel_F",
-	"I_Truck_02_medical_F",
-	"O_Truck_02_medical_F",
-	"B_MRAP_01_F",
-	"O_MRAP_02_F",
-	"I_MRAP_03_F",
-	"B_Heli_Light_01_F",
-	"O_Heli_Light_02_unarmed_F",
+	"I_G_Offroad_01_F",
+	"I_G_Quadbike_01_F",
+	"I_G_Van_01_transport_F",
 	"I_Heli_Transport_02_F",
-	"B_Heli_Transport_01_F"
+	"I_MRAP_03_F",
+	"I_Truck_02_covered_F",
+	"I_Truck_02_Fuel_F",
+	"I_Truck_02_medical_F",
+	"I_Truck_02_transport_F",
+	"MRAP_01_base_F",
+	"MRAP_02_base_F",
+	"MRAP_03_base_F",
+	"Offroad_01_base_F",
+	"O_Heli_Light_02_unarmed_F",
+	"O_MRAP_02_F",
+	"O_Truck_02_covered_F",
+	"O_Truck_02_Fuel_F",
+	"O_Truck_02_medical_F",
+	"O_Truck_02_transport_F",
+	"Plane_Base_F",
+	"SDV_01_base_F",
+	"SUV_01_base_F",
+	"Tank_F",
+	"Truck_01_base_F",
+	"Truck_02_base_F",
+	"Van_01_base_F",
+	"Wheeled_APC_F"
 ];

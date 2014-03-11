@@ -29,7 +29,7 @@ while {true} do
 			Object_canLock = !(_objet_pointe getVariable ['objectLocked', false]);
 			
 			// Si l'objet est un objet déplaçable
-			if ({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objets_deplacables > 0) then
+			if ({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_movables > 0) then
 			{
 				// Condition action deplacer_objet
 				R3F_LOG_action_deplacer_objet_valide = (vehicle player == player && (count crew _objet_pointe == 0) && (isNull R3F_LOG_joueur_deplace_objet) &&
@@ -38,26 +38,26 @@ while {true} do
 			};
 			
 			// Si l'objet est un objet remorquable
-			if ({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objets_remorquables > 0) then
+			if ({_objet_pointe isKindOf _x} count R3F_LOG_CFG_object_towables > 0) then
 			{
 				// Et qu'il est déplaçable
-				if ({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objets_deplacables > 0) then
+				if ({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_movables > 0) then
 				{
 					// Condition action remorquer_deplace
-					R3F_LOG_action_remorquer_deplace_valide = (vehicle player == player && (alive R3F_LOG_joueur_deplace_objet) &&
+					R3F_LOG_action_tow_move_valid = (vehicle player == player && (alive R3F_LOG_joueur_deplace_objet) &&
 						(count crew _objet_pointe == 0) && (R3F_LOG_joueur_deplace_objet == _objet_pointe) &&
 						({_x != _objet_pointe && alive _x && isNull (_x getVariable "R3F_LOG_remorque") && ((velocity _x) call BIS_fnc_magnitude < 6) && (getPos _x select 2 < 2) && !(_x getVariable "R3F_LOG_disabled")} count (nearestObjects [_objet_pointe, R3F_LOG_CFG_remorqueurs, 18])) > 0 &&
 						!(_objet_pointe getVariable "R3F_LOG_disabled"));
 				};
 				
 				// Condition action selectionner_objet_remorque
-				R3F_LOG_action_selectionner_objet_remorque_valide = (vehicle player == player && (alive _objet_pointe) && (count crew _objet_pointe == 0) &&
+				R3F_LOG_action_selected_object_tow_valid = (vehicle player == player && (alive _objet_pointe) && (count crew _objet_pointe == 0) &&
 					isNull R3F_LOG_joueur_deplace_objet && isNull (_objet_pointe getVariable "R3F_LOG_est_transporte_par") &&
 					(isNull (_objet_pointe getVariable "R3F_LOG_est_deplace_par") || (!alive (_objet_pointe getVariable "R3F_LOG_est_deplace_par"))) &&
 					!(_objet_pointe getVariable "R3F_LOG_disabled"));
 				
 				// Condition action detacher
-				R3F_LOG_action_detacher_valide = (vehicle player == player && (isNull R3F_LOG_joueur_deplace_objet) &&
+				R3F_LOG_action_detach_valid = (vehicle player == player && (isNull R3F_LOG_joueur_deplace_objet) &&
 					!isNull (_objet_pointe getVariable "R3F_LOG_est_transporte_par") && !(_objet_pointe getVariable "R3F_LOG_disabled"));
 			};
 			
@@ -65,7 +65,7 @@ while {true} do
 			if ({_objet_pointe isKindOf _x} count R3F_LOG_classes_objets_transportables > 0) then
 			{
 				// Et qu'il est déplaçable
-				if ({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objets_deplacables > 0) then
+				if ({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_movables > 0) then
 				{
 					// Condition action charger_deplace
 					R3F_LOG_action_charger_deplace_valide = (vehicle player == player && (count crew _objet_pointe == 0) && (R3F_LOG_joueur_deplace_objet == _objet_pointe) &&
@@ -85,17 +85,17 @@ while {true} do
 			if ({_objet_pointe isKindOf _x} count R3F_LOG_CFG_remorqueurs > 0) then
 			{
 				// Condition action remorquer_deplace
-				R3F_LOG_action_remorquer_deplace_valide = (vehicle player == player && (alive _objet_pointe) && (!isNull R3F_LOG_joueur_deplace_objet) &&
+				R3F_LOG_action_tow_move_valid = (vehicle player == player && (alive _objet_pointe) && (!isNull R3F_LOG_joueur_deplace_objet) &&
 					(alive R3F_LOG_joueur_deplace_objet) && !(R3F_LOG_joueur_deplace_objet getVariable "R3F_LOG_disabled") &&
-					({R3F_LOG_joueur_deplace_objet isKindOf _x} count R3F_LOG_CFG_objets_remorquables > 0) &&
+					({R3F_LOG_joueur_deplace_objet isKindOf _x} count R3F_LOG_CFG_object_towables > 0) &&
 					isNull (_objet_pointe getVariable "R3F_LOG_remorque") && ((velocity _objet_pointe) call BIS_fnc_magnitude < 6) &&
 					(getPos _objet_pointe select 2 < 2) && !(_objet_pointe getVariable "R3F_LOG_disabled"));
 				
 				// Condition action remorquer_selection
-				R3F_LOG_action_remorquer_selection_valide = (vehicle player == player && (alive _objet_pointe) && (isNull R3F_LOG_joueur_deplace_objet) &&
+				R3F_LOG_action_tow_selection_valid = (vehicle player == player && (alive _objet_pointe) && (isNull R3F_LOG_joueur_deplace_objet) &&
 					(!isNull R3F_LOG_objet_selectionne) && (R3F_LOG_objet_selectionne != _objet_pointe) &&
 					!(R3F_LOG_objet_selectionne getVariable "R3F_LOG_disabled") &&
-					({R3F_LOG_objet_selectionne isKindOf _x} count R3F_LOG_CFG_objets_remorquables > 0) &&
+					({R3F_LOG_objet_selectionne isKindOf _x} count R3F_LOG_CFG_object_towables > 0) &&
 					isNull (_objet_pointe getVariable "R3F_LOG_remorque") && ((velocity _objet_pointe) call BIS_fnc_magnitude < 6) &&
 					(getPos _objet_pointe select 2 < 2) && !(_objet_pointe getVariable "R3F_LOG_disabled"));
 			};
@@ -133,9 +133,9 @@ while {true} do
 		R3F_LOG_action_charger_deplace_valide = false;
 		R3F_LOG_action_charger_selection_valide = false;
 		R3F_LOG_action_contenu_vehicule_valide = false;
-		R3F_LOG_action_remorquer_deplace_valide = false;
-		R3F_LOG_action_remorquer_selection_valide = false;
-		R3F_LOG_action_selectionner_objet_remorque_valide = false; 
+		R3F_LOG_action_tow_move_valid = false;
+		R3F_LOG_action_tow_selection_valid = false;
+		R3F_LOG_action_selected_object_tow_valid = false; 
 		
 		// Condition action heliporter
 		R3F_LOG_action_heliporter_valide = (driver R3F_LOG_objet_addAction == player &&

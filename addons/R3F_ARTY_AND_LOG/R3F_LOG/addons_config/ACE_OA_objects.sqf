@@ -30,7 +30,7 @@ if (isClass (configFile >> "CfgVehicles" >> "ACE_Required_Logic")) then
 	 * List of class names of towables objects.
 	 * Liste des noms de classes des objets remorquables.
 	 */
-	R3F_LOG_CFG_objets_remorquables = R3F_LOG_CFG_objets_remorquables +
+	R3F_LOG_CFG_object_towables = R3F_LOG_CFG_object_towables +
 	[
 		"ACE_EASA_Vehicle"
 	];
@@ -162,7 +162,7 @@ if (isClass (configFile >> "CfgVehicles" >> "ACE_Required_Logic")) then
 	 * List of class names of objects moveables by player.
 	 * Liste des noms de classes des objets transportables par le joueur.
 	 */
-	R3F_LOG_CFG_objets_deplacables = R3F_LOG_CFG_objets_deplacables +
+	R3F_LOG_CFG_objects_movables = R3F_LOG_CFG_objects_movables +
 	[
 		"ACE_Stretcher",
 		"ACE_Lifeboat",
