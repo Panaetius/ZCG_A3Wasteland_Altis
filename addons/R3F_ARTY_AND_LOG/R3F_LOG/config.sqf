@@ -103,7 +103,21 @@ R3F_LOG_CFG_transporteurs =
 R3F_LOG_CFG_objets_transportables = 
 [
 	["StaticWeapon", 5],
+	["Box_NATO_Wps_F", 5],
+	["Box_NATO_WpsLaunch_F", 5],
+	["Box_NATO_WpsSpecial_F", 5],
 	["B_supplyCrate_F", 5],
+	["Box_NATO_Support_F", 5],
+	["Box_IND_Wps_F", 5],
+	["Box_IND_WpsLaunch_F", 5],
+	["Box_IND_WpsSpecial_F", 5],
+	["I_supplyCrate_F", 5],
+	["Box_IND_Support_F", 5],
+	["Box_EAST_Wps_F", 5],
+	["Box_EAST_WpsLaunch_F", 5],
+	["Box_EAST_WpsSpecial_F", 5],
+	["O_supplyCrate_F", 5],
+	["Box_EAST_Support_F", 5],
 	["ReammoBox_F", 3],
 	["Quadbike_01_base_F", 10],
 	["Rubber_duck_base_F", 10],
@@ -208,4 +222,33 @@ R3F_LOG_CFG_objets_deplacables =
 	"Land_Stone_8m_F",
 	"Land_ToiletBox_F",
 	"Land_WaterBarrel_F"
+];
+
+R3F_LOG_CFG_objets_lockablevehicles =
+[
+	"C_Hatchback_01_F",
+	"C_Hatchback_01_sport_F",
+	"C_SUV_01_F",
+	"C_Offroad_01_F",
+	"I_G_Offroad_01_F",
+	"C_Van_01_box_F",
+	"C_Van_01_transport_F",
+	"I_G_Van_01_transport_F",
+	"I_G_Quadbike_01_F",
+	"O_Truck_02_covered_F",
+	"I_Truck_02_covered_F",
+	"O_Truck_02_transport_F",
+	"I_Truck_02_transport_F",
+	"I_G_Offroad_01_armed_F",
+	"I_Truck_02_Fuel_F",
+	"O_Truck_02_Fuel_F",
+	"I_Truck_02_medical_F",
+	"O_Truck_02_medical_F",
+	"B_MRAP_01_F",
+	"O_MRAP_02_F",
+	"I_MRAP_03_F",
+	"B_Heli_Light_01_F",
+	"O_Heli_Light_02_unarmed_F",
+	"I_Heli_Transport_02_F",
+	"B_Heli_Transport_01_F"
 ];

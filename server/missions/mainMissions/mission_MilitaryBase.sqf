@@ -46,26 +46,26 @@ _hint = parseText format ["<t align='center' color='%3' shadow='2' size='1.75'>M
 _CivGrpM1 = createGroup civilian;
 [_CivGrpM1,(getMarkerPos _randomPos)] spawn createMidGroup;
 [_CivGrpM1,(getMarkerPos _randomPos)] call BIS_fnc_taskDefend;
-_CivGrpM setCombatMode "YELLOW";
-_CivGrpM setBehaviour "AWARE";
-_CivGrpM setFormation "STAG COLUMN";
-_CivGrpM setSpeedMode "NORMAL";
+_CivGrpM1 setCombatMode "YELLOW";
+_CivGrpM1 setBehaviour "AWARE";
+_CivGrpM1 setFormation "STAG COLUMN";
+_CivGrpM1 setSpeedMode "NORMAL";
 
 _CivGrpM2 = createGroup civilian;
 [_CivGrpM2,(getMarkerPos _randomPos2)] spawn createMidGroup;
 [_CivGrpM2,(getMarkerPos _randomPos2)] call BIS_fnc_taskDefend;
-_CivGrpM setCombatMode "YELLOW";
-_CivGrpM setBehaviour "AWARE";
-_CivGrpM setFormation "STAG COLUMN";
-_CivGrpM setSpeedMode "NORMAL";
+_CivGrpM2 setCombatMode "YELLOW";
+_CivGrpM2 setBehaviour "AWARE";
+_CivGrpM2 setFormation "STAG COLUMN";
+_CivGrpM2 setSpeedMode "NORMAL";
 
 _CivGrpM3 = createGroup civilian;
 [_CivGrpM3,(getMarkerPos _randomPos3)] spawn createMidGroup;
 [_CivGrpM3,(getMarkerPos _randomPos3)] call BIS_fnc_taskDefend;
-_CivGrpM setCombatMode "YELLOW";
-_CivGrpM setBehaviour "AWARE";
-_CivGrpM setFormation "STAG COLUMN";
-_CivGrpM setSpeedMode "NORMAL";
+_CivGrpM3 setCombatMode "YELLOW";
+_CivGrpM3 setBehaviour "AWARE";
+_CivGrpM3 setFormation "STAG COLUMN";
+_CivGrpM3 setSpeedMode "NORMAL";
 
 _box = createVehicle ["Box_East_Wps_F",[((getMarkerPos _randomPos) select 0), ((getMarkerPos _randomPos) select 1),0],[], 0, "NONE"];
 [_box,"mission_USLaunchers"] call fn_refillbox;

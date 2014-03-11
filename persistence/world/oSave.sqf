@@ -6,7 +6,7 @@
 if (!isServer) exitWith {};
 
 // Copy objectList array
-_saveableObjects = +objectList;
+_saveableObjects = +objectList + +civilianVehicles + +lightMilitaryVehicles + +mediumMilitaryVehicles + +staticHeliList;
 
 // Add general store objects
 {
@@ -31,7 +31,7 @@ while {true} do
 			_classname = typeOf _object;
 			
 			// addition to check if the classname matches the building parts
-			if (!(_object isKindOf "ReammoBox_F") && {{_classname == _x} count _saveableObjects > 0}) then
+			if ({_classname == _x} count _saveableObjects > 0) then
 			{
 				_pos = getPosASL _object;
 				_dir = [vectorDir _object] + [vectorUp _object];
@@ -51,8 +51,9 @@ while {true} do
 				};
 
 				// Save weapons & ammo
-				// _weapons = getWeaponCargo _object;
-				// _magazines = getMagazineCargo _object;
+				_weapons = getWeaponCargo _object;
+				_magazines = getMagazineCargo _object;
+				_items = getItemCargo _object;
 				
 				_objSaveName = format["obj%1", _PersistentDB_ObjCount];
 
@@ -60,8 +61,9 @@ while {true} do
 				["Objects" call PDB_databaseNameCompiler, _objSaveName, "pos", _pos] call iniDB_write;
 				["Objects" call PDB_databaseNameCompiler, _objSaveName, "dir", _dir] call iniDB_write;
 				["Objects" call PDB_databaseNameCompiler, _objSaveName, "supplyleft", _supplyleft] call iniDB_write;
-				// ["Objects" call PDB_databaseNameCompiler, _objSaveName, "weapons", _weapons] call iniDB_write;
-				// ["Objects" call PDB_databaseNameCompiler, _objSaveName, "magazines", _magazines] call iniDB_write;
+				["Objects" call PDB_databaseNameCompiler, _objSaveName, "weapons", _weapons] call iniDB_write;
+				["Objects" call PDB_databaseNameCompiler, _objSaveName, "magazines", _magazines] call iniDB_write;
+				["Objects" call PDB_databaseNameCompiler, _objSaveName, "items", _items] call iniDB_write;
 
 				_PersistentDB_ObjCount = _PersistentDB_ObjCount + 1;
 			};

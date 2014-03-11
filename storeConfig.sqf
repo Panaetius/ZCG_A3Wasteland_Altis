@@ -110,7 +110,14 @@ staticGunsArray = compileFinal str
 	["Mk6 Mortar (NATO)", "B_Mortar_01_F", 15000],
 	["Mk6 Mortar (CSAT)", "O_Mortar_01_F", 15000],
 	["Mk6 Mortar (AAF)", "I_Mortar_01_F", 15000],
-	["Mk6 Mortar (FIA)", "B_G_Mortar_01_F", 15000]
+	["Mk6 Mortar (FIA)", "B_G_Mortar_01_F", 15000],
+	["12.7mm AA Canon Mag (500 Rnd)", "500Rnd_127x99_mag", 500],
+	["12.7mm RCWS HMG (200 Rnd)", "200Rnd_127x99_mag", 200],
+	["20mm Grenade Mag", "200Rnd_20mm_G_belt", 500],
+	["20mm HE Grenade Mag", "40Rnd_20mm_G_belt", 100],
+	["HE Mortar Shells", "8Rnd_82mm_Mo_shells", 500],
+	["HE Mortar Shells (Guided)", "8Rnd_82mm_Mo_guided", 800],
+	["HE Mortar Shells (Laser Guided)", "8Rnd_82mm_Mo_LG", 1000]
 ]; 
 
 throwputArray = compileFinal str
@@ -754,9 +761,9 @@ storeOwnerConfig = compileFinal str
 	["GunStore3", 6, 135, []],
 	["GunStore4", 1, 65, []],
 	
-	["VehStore1", 1, 75, []],
-	["VehStore2", 6, 45, ["Boats", "Submarines"]],
-	["VehStore3", 4, 250, ["Boats", "Submarines"]],
+	["VehStore1", 1, 249, ["Boats", "Submarines"]],
+	["VehStore2", 1, 278, ["Boats", "Submarines"]],
+	["VehStore3", 1, 305, ["Boats", "Submarines"]],
 	["VehStore4", 5, 155, ["Boats", "Submarines"]]
 ];
 	

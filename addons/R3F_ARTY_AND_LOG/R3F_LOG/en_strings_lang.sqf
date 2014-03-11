@@ -19,6 +19,7 @@ STR_R3F_LOG_courir_trop_vite = "Moving too fast! (Press C to slow down)";
 STR_LOCK_OBJECT = "Lock this object";
 STR_UNLOCK_OBJECT = "Unlock this object";
 STR_RELEASE_HORIZONTAL = "Release the object horizontally";
+STR_SAVE_OBJECT = "Save Vehicle";
 
 STR_R3F_LOG_action_selectionner_objet_charge = "Load in...";
 STR_R3F_LOG_action_selectionner_objet_charge_fait = "Now select the vehicle in which to load the object ""%1""...";

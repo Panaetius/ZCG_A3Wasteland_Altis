@@ -114,7 +114,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=68;
+		items=71;
 		class Item0
 		{
 			side="WEST";
@@ -2168,6 +2168,66 @@ class Mission
 				};
 			};
 		};
+		class Item68
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={14220.2,35.1512,18935.9};
+					azimut=249;
+					id=121;
+					side="LOGIC";
+					vehicle="C_man_polo_2_F_euro";
+					leader=1;
+					skill=0.60000002;
+					text="VehStore1";
+					init="[this, 'VehStore', 1] execVM 'server\functions\setupStoreNPC.sqf'";
+				};
+			};
+		};
+		class Item69
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={20266,125.51097,8854.5};
+					azimut=278;
+					id=121;
+					side="LOGIC";
+					vehicle="C_man_polo_2_F_euro";
+					leader=1;
+					skill=0.60000002;
+					text="VehStore2";
+					init="[this, 'VehStore', 2] execVM 'server\functions\setupStoreNPC.sqf'";
+				};
+			};
+		};
+		class Item70
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={4975.84,32.6146,11059.3};
+					azimut=310;
+					id=121;
+					side="LOGIC";
+					vehicle="C_man_polo_2_F_euro";
+					leader=1;
+					skill=0.60000002;
+					text="VehStore3";
+					init="[this, 'VehStore', 3] execVM 'server\functions\setupStoreNPC.sqf'";
+				};
+			};
+		};
 	};
 	class Vehicles
 	{
@@ -3001,21 +3061,21 @@ class Mission
 		};
 		class Item87
 		{
-			position[]={26701.904,20.800213,24587.266};
+			position[]={14221.6,34.789,18891.7};
 			name="VehStore1_Spawn_Land";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item88
 		{
-			position[]={26749.461,21.928879,24573.195};
+			position[]={14221.6,34.789,18891.7};
 			name="VehStore1_Spawn_Heli";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item89
 		{
-			position[]={26771.889,23.167931,24555.26};
+			position[]={14221.6,34.789,18891.7};
 			name="VehStore1_Spawn_Air";
 			type="Empty";
 			colorName="ColorBlack";
@@ -3023,28 +3083,28 @@ class Mission
 		};
 		class Item90
 		{
-			position[]={26481.359,-0.00056290452,24687.391};
+			position[]={14221.6,34.789,18891.7};
 			name="VehStore1_Spawn_Sea";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item91
 		{
-			position[]={22954.973,4.9896584,18865.762};
+			position[]={20253.7,41.5548,8830.35};
 			name="VehStore2_Spawn_Land";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item92
 		{
-			position[]={22994.232,3.5937061,18835.289};
+			position[]={20253.7,41.5548,8830.35};
 			name="VehStore2_Spawn_Heli";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item93
 		{
-			position[]={23144.402,3.1900001,18959.971};
+			position[]={20253.7,41.5548,8830.35};
 			name="VehStore2_Spawn_Air";
 			type="Empty";
 			colorName="ColorBlack";
@@ -3052,21 +3112,21 @@ class Mission
 		};
 		class Item94
 		{
-			position[]={20769.959,28.515676,7248.7969};
+			position[]={4976.62,29.992,11070.4};
 			name="VehStore3_Spawn_Land";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item95
 		{
-			position[]={20790.822,29.153112,7224.6704};
+			position[]={4976.62,29.992,11070.4};
 			name="VehStore3_Spawn_Heli";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item96
 		{
-			position[]={21068.07,26.751055,7065.7949};
+			position[]={4976.62,29.992,11070.4};
 			name="VehStore3_Spawn_Air";
 			type="Empty";
 			colorName="ColorBlack";

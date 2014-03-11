@@ -8,6 +8,8 @@ if (!_check) exitWith {};
 _objectscount = ["Objects" call PDB_databaseNameCompiler, "Count", "Count", "NUMBER"] call iniDB_read;
 if (isNil "_objectscount") exitWith {};
 
+_vehicles = +civilianVehicles + +lightMilitaryVehicles + +mediumMilitaryVehicles + +staticHeliList;
+
 for "_i" from 0 to (_objectscount - 1) do
 {
 	_objSaveName = format["obj%1", _i];
@@ -15,13 +17,22 @@ for "_i" from 0 to (_objectscount - 1) do
 	_pos = ["Objects" call PDB_databaseNameCompiler, _objSaveName, "pos", "ARRAY"] call iniDB_read;
 	_dir = ["Objects" call PDB_databaseNameCompiler, _objSaveName, "dir", "ARRAY"] call iniDB_read;
 	_supplyleft = ["Objects" call PDB_databaseNameCompiler, _objSaveName, "supplyleft", "NUMBER"] call iniDB_read;
-	// _weapons = ["Objects" call PDB_databaseNameCompiler, _objSaveName, "weapons", "ARRAY"] call iniDB_read;
-	// _magazines = ["Objects" call PDB_databaseNameCompiler, _objSaveName, "magazines", "ARRAY"] call iniDB_read;
+	_weapons = ["Objects" call PDB_databaseNameCompiler, _objSaveName, "weapons", "ARRAY"] call iniDB_read;
+	_magazines = ["Objects" call PDB_databaseNameCompiler, _objSaveName, "magazines", "ARRAY"] call iniDB_read;
+	_items = ["Objects" call PDB_databaseNameCompiler, _objSaveName, "items", "ARRAY"] call iniDB_read;
 	
 	if (!isNil "_objSaveName" && !isNil "_class" && !isNil "_pos" && !isNil "_dir" && !isNil "_supplyleft") then 
 	{
-
-		_obj = createVehicle [_class,_pos, [], 0, "CAN COLLIDE"];
+		_type = "NONE";
+		_placement = 10;
+		
+		if({_class == _x} count _vehicles == 0) then
+		{
+			_type = "CAN COLLIDE";
+			_placement = 0;
+		};
+		
+		_obj = createVehicle [_class,_pos, [], _placement, _type];
 		_obj setPosASL _pos;
 		_obj setVectorDirAndUp _dir;
 
@@ -34,38 +45,32 @@ for "_i" from 0 to (_objectscount - 1) do
 		{
 			_obj setVariable["water",_supplyleft,true];
 		};
-		
-		// fix for rissen/sunken objects
-		// seems not to be needed here, so disabled again
-// 		_adjustPOS=-1;
-// 		switch(_class) do {
-// 			case "Land_Scaffolding_F":
-// 			{
-// 				_adjustPOS=-3; 
-// 			};
-// 			case "Land_Canal_WallSmall_10m_F":
-// 			{
-// 				_adjustPOS=3;
-// 			};
-// 			case "Land_Canal_Wall_Stairs_F":
-// 			{
-// 				_adjustPOS=3;
-// 			};
-//		};
-//		_obj setpos [getpos _obj select 0,getpos _obj select 1, (getposATL _obj select 2)+_adjustPOS];
 
 		clearWeaponCargoGlobal _obj;
 		clearMagazineCargoGlobal _obj;
+		clearItemCargoGlobal _obj;
 
 		// disabled because i dont want to load contents just base parts
-		// for [{_ii = 0}, {_ii < (count (_weapons select 0))}, {_ii = _ii + 1}] do {
-			// _obj addWeaponCargoGlobal [(_weapons select 0) select _ii, (_weapons select 1) select _ii];
-		// };
+		for [{_ii = 0}, {_ii < (count (_weapons select 0))}, {_ii = _ii + 1}] do {
+			_obj addWeaponCargoGlobal [(_weapons select 0) select _ii, (_weapons select 1) select _ii];
+			
+			diag_log format["GoT Wasteland - loaded %1 from iniDB", (_weapons select 0) select _ii];
+			
+		};
 
-		// for [{_ii = 0}, {_ii < (count (_magazines select 0))}, {_ii = _ii + 1}] do {
-		// _obj addMagazineCargoGlobal [(_magazines select 0) select _ii, (_magazines select 1) select _ii];
-		// };
-		// _obj setVariable ["objectLocked", true, true]; //force lock
+		for [{_ii = 0}, {_ii < (count (_magazines select 0))}, {_ii = _ii + 1}] do {
+			_obj addMagazineCargoGlobal [(_magazines select 0) select _ii, (_magazines select 1) select _ii];
+			
+			diag_log format["GoT Wasteland - loaded %1 from iniDB", (_magazines select 0) select _ii];
+		};
+		
+		for [{_ii = 0}, {_ii < (count (_items select 0))}, {_ii = _ii + 1}] do {
+			_obj addItemCargoGlobal [(_items select 0) select _ii, (_items select 1) select _ii];
+			
+			diag_log format["GoT Wasteland - loaded %1 from iniDB", (_items select 0) select _ii];
+		};
+		
+		_obj setVariable ["objectLocked", true, true]; //force lock
 	};
 };
 

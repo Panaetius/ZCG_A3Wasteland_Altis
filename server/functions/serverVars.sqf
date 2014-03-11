@@ -52,20 +52,20 @@ lightMilitaryVehicles =
 	"I_Quadbike_01_F",
 	"C_Quadbike_01_F",
 	"I_G_Quadbike_01_F",
-//	"O_Truck_02_covered_F",
-//	"I_Truck_02_covered_F",
-//	"O_Truck_02_transport_F",
-//	"I_Truck_02_transport_F",
+	"O_Truck_02_covered_F",
+	"I_Truck_02_covered_F",
+	"O_Truck_02_transport_F",
+	"I_Truck_02_transport_F",
 	"I_G_Offroad_01_armed_F"
 ];
 
 //Medium Military Vehicle List - Random Spawns
 mediumMilitaryVehicles = 
 [
-//	"I_Truck_02_Fuel_F",
-//	"O_Truck_02_Fuel_F",
-//	"I_Truck_02_medical_F",
-//	"O_Truck_02_medical_F",
+	"I_Truck_02_Fuel_F",
+	"O_Truck_02_Fuel_F",
+	"I_Truck_02_medical_F",
+	"O_Truck_02_medical_F",
 	"B_MRAP_01_F",
 	"O_MRAP_02_F",
 	"I_MRAP_03_F"
@@ -95,8 +95,21 @@ waterVehicles =
 //Object List - Random Spawns.
 objectList =
 [
+	"Box_NATO_Wps_F",
+	"Box_NATO_WpsLaunch_F",
+	"Box_NATO_WpsSpecial_F",
 	"B_supplyCrate_F",
-	"B_supplyCrate_F",
+	"Box_NATO_Support_F",
+	"Box_IND_Wps_F",
+	"Box_IND_WpsLaunch_F",
+	"Box_IND_WpsSpecial_F",
+	"I_supplyCrate_F",
+	"Box_IND_Support_F", 
+	"Box_EAST_Wps_F",
+	"Box_EAST_WpsLaunch_F",
+	"Box_EAST_WpsSpecial_F",
+	"O_supplyCrate_F",
+	"Box_EAST_Support_F",
 	"CamoNet_INDP_open_F",
 	"CamoNet_INDP_open_F",
 	"Land_BagBunker_Large_F",
@@ -153,7 +166,9 @@ staticWeaponsList =
 staticHeliList = 
 [
 	"B_Heli_Light_01_F",
-	"O_Heli_Light_02_unarmed_F"
+	"O_Heli_Light_02_unarmed_F",
+	"I_Heli_Transport_02_F",
+	"B_Heli_Transport_01_F"
 ];
 
 //Random Weapon List - Change this to what you want to spawn in cars.
