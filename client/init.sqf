@@ -19,6 +19,7 @@ pvar_PlayerTeamKiller = objNull;
 doCancelAction = false;
 currentMissionsMarkers = [];
 currentRadarMarkers = [];
+setViewDistance 1500; 
 
 //Initialization Variables
 playerCompiledScripts = false;
@@ -95,6 +96,8 @@ _playerWasMoved = player getVariable ["playerWasMoved", 0];
 if(!isNil "client_initEH") then {player removeEventHandler ["Respawn", client_initEH];};
 player addEventHandler ["Respawn", { _this spawn onRespawn }];
 player addEventHandler ["Killed", { _this spawn onKilled }];
+player addEventHandler ["Put", {[false] execVM "persistence\players\c_savePlayerToServer.sqf"}];
+player addEventHandler ["Take", {[false] execVM "persistence\players\c_savePlayerToServer.sqf"}];
 
 //Setup player menu scroll action.
 [] execVM "client\clientEvents\onMouseWheel.sqf";

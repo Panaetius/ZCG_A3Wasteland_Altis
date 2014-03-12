@@ -89,6 +89,8 @@ if (_player getVariable "cmoney" > 0) then
 	};
 } forEach call mf_inventory_all;
 
+[true] execVM "persistence\players\c_savePlayerToServer.sqf";
+
 if (isServer) then
 {
 	[_player] spawn server_PlayerDied; 

@@ -17,6 +17,10 @@ X_JIP = false;
 if (isServer) then { X_Server = true };
 if (!isDedicated) then { X_Client = true };
 if (isNull player) then { X_JIP = true };
+if (isServer) then {
+	axe_server_log = compile preprocessFileLineNumbers "tools\logtorpt.sqf";
+	"axeDiagLog" addPublicVariableEventHandler {_id = (_this select 1) spawn axe_server_log};
+};
 
 [DEBUG] call compile preprocessFileLineNumbers "globalCompile.sqf";
 

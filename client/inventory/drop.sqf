@@ -36,4 +36,5 @@ _obj = _type createVehicle getPosATL player;
 _obj setVariable ["mf_item_id", _id, true];
 _obj = _obj setPosATL (getPosATL player);
 [_id, 1] call mf_inventory_remove;
+[false] execVM "persistence\players\c_savePlayerToServer.sqf";
 MUTEX_UNLOCK;

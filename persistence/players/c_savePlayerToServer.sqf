@@ -1,4 +1,13 @@
-private["_uid"];
+private["_uid", "_showMessage"];
+
+_showMessage = true;
+
+_showMessage = _this select 0;
+
+if(isNil "_showMessage") then {
+	_showMessage = _this select 3;
+};
+
 if(playerSetupComplete) then
 {	
 	_uid = getPlayerUID player;
@@ -51,7 +60,9 @@ if(playerSetupComplete) then
 
 	[_uid, _uid, "MagazinesWithAmmoCount", magsWithAmmoCounts] call fn_SaveToServer;
 	//[_uid, _uid, "Weapons", Weapons player] call fn_SaveToServer;
-	player globalChat "Player saved!";
+	if (isNil "_showMessage" || _showMessage) then {
+		player globalChat "Player saved!";
+	};
 };
 
 // Possible new methods

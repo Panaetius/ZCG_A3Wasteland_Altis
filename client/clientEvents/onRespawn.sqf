@@ -10,6 +10,9 @@ playerSetupComplete = false;
 _player = _this select 0;
 _corpse = _this select 1;
 
+axeDiagLog = format ["%1 killed himself", profileName];
+publicVariable "axeDiagLog";
+
 //diag_log (unitBackpack _corpse);
 //clearMagazineCargoGlobal (unitBackpack _corpse);
 //removeBackpack _corpse;

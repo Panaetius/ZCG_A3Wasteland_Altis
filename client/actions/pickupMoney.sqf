@@ -14,13 +14,19 @@ mutexScriptInProgress = true;
 
 private ["_pickDistance", "_moneyObjects", "_moneyObj", "_money"];
 
-_pickDistance = 5;
+_pickDistance = 3;
 
 _moneyObjects = nearestObjects [player, ["Land_Money_F"], _pickDistance];
 
 if (count _moneyObjects > 0) then
 {
 	_moneyObj = _moneyObjects select 0;
+};
+
+if(({(side _x) != sideLogic} count (nearestObjects [player, ["CAManBase"], 7])) > 1) exitWith {
+	titleText ["Can't pick up money. Make sure there are no other players within 7 meters and try again", "PLAIN DOWN", 0.5];
+	
+	mutexScriptInProgress = false;
 };
 
 if (isNil "_moneyObj" || {player distance _moneyObj > _pickDistance}) exitWith
@@ -44,6 +50,8 @@ player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + _money, true]
 if (_money > 0) then
 {
 	titleText [format ["You have picked up $%1", _money], "PLAIN DOWN", 0.5];
+	axeDiagLog = format ["%1 picked up %2 money", profileName, _money];
+	publicVariable "axeDiagLog";
 }
 else
 {

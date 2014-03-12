@@ -3,7 +3,7 @@
 //	@file Author: [GoT] JoSchaap, AgentRev
 //  new one, no longer requires Spawn_ markers but uses the town's radius in config.sqf to pick the ammount of vehicles
 
-#define A3W_TOWN_SPAWNING_METERS_PER_VEHICLE 10 // This defines a fraction of the town's radius for which to spawn a vehicle (ex.: 20 meters per vehicle in town with 100m radius = 5 vehicles in town)
+#define A3W_TOWN_SPAWNING_METERS_PER_VEHICLE 13 // This defines a fraction of the town's radius for which to spawn a vehicle (ex.: 20 meters per vehicle in town with 100m radius = 5 vehicles in town)
 
 if (!isServer) exitWith {};
 
@@ -30,8 +30,8 @@ _createRandomVehicle =
 
 	switch (true) do
 	{
-		case (_num < 15): { _vehicleType = mediumMilitaryVehicles call BIS_fnc_selectRandom };
-		case (_num < 50): { _vehicleType = lightMilitaryVehicles call BIS_fnc_selectRandom };
+		case (_num < 20): { _vehicleType = mediumMilitaryVehicles call BIS_fnc_selectRandom };
+		case (_num < 60): { _vehicleType = lightMilitaryVehicles call BIS_fnc_selectRandom };
 		default           { _vehicleType = civilianVehicles call BIS_fnc_selectRandom };
 	};
 	

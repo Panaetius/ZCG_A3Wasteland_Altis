@@ -36,3 +36,6 @@ if (_abs) then {
 } else {
 	_item set [QTY, _current + _qty];
 };
+
+axeDiagLog = format ["%1 took %2 %3", profileName, _qty, _id];
+publicVariable "axeDiagLog";

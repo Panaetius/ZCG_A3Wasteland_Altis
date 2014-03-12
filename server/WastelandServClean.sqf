@@ -10,7 +10,7 @@ private ["_delQtyB", "_delQtyO", "_runInt", "_deathTime"];
 // configure cleanup below this line
 
 _runInt = 5*60;		// Interval to run the cleanup 
-_deathTime = 15*60;	// Time a body has to have been dead before cleaning it up
+_deathTime = 10*60;	// Time a body has to have been dead before cleaning it up
 
 // you should not change code below this line :)
 

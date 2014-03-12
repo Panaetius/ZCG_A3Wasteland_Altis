@@ -21,5 +21,5 @@ aActionsIDs = aActionsIDs + [player addAction[("<img image='\a3\Ui_f\data\GUI\Cf
 //aActionsIDs = aActionsIDs + [player addAction["<img image='client\icons\store.paa'/> Open general store", "[] spawn loadGeneralStore;", [], 1, false, false, "", '(vehicle player == player) && player distance (nearestobjects [player, ["C_man_polo_6_F"],  3] select 0) < 2']];
 
 if ((call config_player_saving_enabled) == 1) then {
-	aActionsIDs = aActionsIDs + [player addAction["<img image='client\icons\save.paa'/> <t color='#0080ff'>Save Player</t>", "persistence\players\c_savePlayerToServer.sqf", [], 1, false, false, "", 'stance player == "PRONE"']];
+	aActionsIDs = aActionsIDs + [player addAction["<img image='client\icons\save.paa'/> <t color='#0080ff'>Save Player</t>", "persistence\players\c_savePlayerToServer.sqf", true, 1, false, false, "", 'stance player == "PRONE"']];
 };
