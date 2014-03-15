@@ -26,8 +26,10 @@ player createDiaryRecord ["changelog",
 <br/> [Added] - More Cities
 <br/> [Added] - Military Base mission
 <br/> [Added] - Extra vehicles
-<br/> [Added] - Ammo/Supply crate saving (experimental)
+<br/> [Added] - Ammo/Supply crate saving
 <br/> [Added] - Vehicle saving (experimental)
+<br/> [Added] - Anti-Dupe code
+<br/> [Added] - More Main Missions
 "
 ]];
 

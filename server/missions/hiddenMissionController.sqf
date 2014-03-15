@@ -15,8 +15,8 @@ _hiddenMissions =
 [			// increase the number behind the mission (weight) to increase the chance of the mission to be selected
 	["mission_HostileHelicopter",0.5], 
 	["mission_MiniConvoy", 1], 
-	["mission_AirWreck", 1.5],
-	["mission_WepCache", 1.5],
+	//["mission_AirWreck", 1.5],
+	//["mission_WepCache", 1.5],
 	["mission_Truck", 1],
 	["mission_HostileSquad", 1]
 ]; 
@@ -39,19 +39,19 @@ _missionRunning1 = execVM format ["server\missions\hiddenMissions\%1.sqf", _miss
 
 diag_log format["WASTELAND SERVER - Execute New Side Mission: %1",_missionType];
 
-_nextMission = [_hiddenMissions, _hiddenMissionsOdds] call fn_selectRandomWeighted;
+/*_nextMission = [_hiddenMissions, _hiddenMissionsOdds] call fn_selectRandomWeighted;
 _missionType = _nextMission select 0;
 
 _missionRunning2 = execVM format ["server\missions\hiddenMissions\%1.sqf", _missionType];
 
-diag_log format["WASTELAND SERVER - Execute New Side Mission: %1",_missionType];
+diag_log format["WASTELAND SERVER - Execute New Side Mission2: %1",_missionType];
 
 _nextMission = [_hiddenMissions, _hiddenMissionsOdds] call fn_selectRandomWeighted;
 _missionType = _nextMission select 0;
 
 _missionRunning3 = execVM format ["server\missions\hiddenMissions\%1.sqf", _missionType];
 
-diag_log format["WASTELAND SERVER - Execute New Side Mission: %1",_missionType];
+diag_log format["WASTELAND SERVER - Execute New Side Mission3: %1",_missionType];*/
 
 while {true} do
 {
@@ -65,7 +65,7 @@ while {true} do
 		diag_log format["WASTELAND SERVER - Execute New Side Mission: %1",_missionType];
 	};
 	
-	if(scriptDone _missionRunning2) then 
+	/*if(scriptDone _missionRunning2) then 
 	{
 		_nextMission = [_hiddenMissions, _hiddenMissionsOdds] call fn_selectRandomWeighted;
 		_missionType = _nextMission select 0;
@@ -85,7 +85,7 @@ while {true} do
 		
 		diag_log format["WASTELAND SERVER - Execute New Side Mission: %1",_missionType];
 
-	};
+	};*/
 	
 	sleep 5;
 };

@@ -40,7 +40,7 @@ diag_log format["WASTELAND SERVER - Main Mission Resumed: %1",_missionType];
 _veh = ["JoSchaap01","JoSchaap02","JoSchaap03"] call BIS_fnc_selectRandom;
 
 _vehicleName = "outpost";
-_hint = parseText format ["<t align='center' color='%3' shadow='2' size='1.75'>Main Objective</t><br/><t align='center' color='%3'>------------------------------</t><br/><t align='center' color='%4' size='1.25'>%1</t><br/><t align='center' color='%4'>An <t color='%3'>enemy Military Base</t> with special weapons has been spotted near the marker, go capture it.</t>", _missionType, _vehicleName, mainMissionColor, subTextColor];
+_hint = parseText format ["<t align='center' color='%3' shadow='2' size='1.75'>Main Objective</t><br/><t align='center' color='%3'>------------------------------</t><br/><t align='center' color='%4' size='1.25'>%1</t><br/><t align='center' color='%4'>An <t color='%3'>enemy Military Base</t> with special weapons and 7000$ has been spotted near the marker, go capture it.</t>", _missionType, _vehicleName, mainMissionColor, subTextColor];
 [_hint] call hintBroadcast;
 
 _CivGrpM1 = createGroup civilian;
@@ -109,7 +109,7 @@ if(_result == 1) then
     diag_log format["WASTELAND SERVER - Main Mission Failed: %1",_missionType];
 } else {
 	//Mission Complete.
-	for "_x" from 1 to 3 do
+	for "_x" from 1 to 7 do
 	{
 		_cash = "Land_Money_F" createVehicle markerPos _randomPos;
 		_cash setPos ([markerPos _randomPos, [[2 + random 2,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd);

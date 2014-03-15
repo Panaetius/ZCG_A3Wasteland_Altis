@@ -4,9 +4,12 @@ _showMessage = true;
 
 _showMessage = _this select 0;
 
-if(isNil "_showMessage") then {
+
+if(isNil "_showMessage" || typeName _showMessage != "BOOL") then {
 	_showMessage = _this select 3;
 };
+
+diag_log text format ["SavePlayer: %1 %2", _this, _showMessage];
 
 if(playerSetupComplete) then
 {	

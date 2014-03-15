@@ -93,6 +93,7 @@ if (_player getVariable "cmoney" > 0) then
 
 if (isServer) then
 {
+	diag_log text format ["%1 was killed by %2", _player, _killer];
 	[_player] spawn server_PlayerDied; 
 }
 else

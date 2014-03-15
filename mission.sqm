@@ -96,7 +96,7 @@ class Mission
 	class Intel
 	{
 		briefingName="A3Wasteland Altis v0.9f_custom";
-		overviewText="Wasteland survival sandbox by Team Wasteland - visit A3Wasteland.com for more details";
+		overviewText="Wasteland survival sandbox by ZCGGames";
 		resistanceWest=0;
 		startWeather=0.10000001;
 		startWind=0.30000001;

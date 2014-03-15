@@ -15,7 +15,7 @@ private ["_minimumFog", "_maximumFog", "_minimumOvercast", "_maximumOvercast", "
 private ["_minimumFogDecay", "_maximumFogDecay", "_minimumFogBase", "_maximumFogBase"];
 
 if (isNil "_this") then { _this = []; };
-if (count _this > 0) then { _initialFog = _this select 0; } else { _initialFog = -1; };
+if (count _this > 0) then { _initialFog = _this select 0; } else { _initialFog = 0; };
 if (count _this > 1) then { _initialOvercast = _this select 1; } else { _initialOvercast = -1; };
 if (count _this > 2) then { _initialRain = _this select 2; } else { _initialRain = -1; };
 if (count _this > 3) then { _initialWind = _this select 3; } else { _initialWind = [-1, -1]; };
@@ -46,7 +46,7 @@ _minimumFog = 0;
 
 // Fog intensity never exceeds this value. Must be between 0 and 1 and greater than or equal to _minimumFog
 // (0 = no fog, 1 = pea soup). (Suggested value: 0.8).
-_maximumFog = 0.15;
+_maximumFog = 0;
 
 // New ArmA3 facilities added by Bewilderbeest
 _minimumFogDecay = 0.001;
@@ -294,7 +294,7 @@ if (isServer) then {
         };
     };
 	
-	0 setFog [(((_initialFog / _maximumFog) call drn_fnc_fogOdds) * _maximumFog) max (rain / 4), 0.001, 1000];
+	//0 setFog [(((_initialFog / _maximumFog) call drn_fnc_fogOdds) * _maximumFog) max (rain / 4), 0.001, 1000];
 	
     if (_initialOvercast == -1) then {
         _initialOvercast = (_minimumOvercast + random (_maximumOvercast - _minimumOvercast));
@@ -408,7 +408,7 @@ if (isServer) then {
             if (_minimumFog != _maximumFog && _minimumOvercast != _maximumOvercast) then {
                 
                 // Select type of weather to change
-                if ((random 100) < 50) then {
+                if ((random 100) < 100) then {
                     _weatherType = "OVERCAST";
                 }
                 else {
@@ -417,7 +417,7 @@ if (isServer) then {
             };
             
             // DEBUG
-            //_weatherType = "OVERCAST";
+            _weatherType = "OVERCAST";
             
             if (_weatherType == "FOG") then {
                 

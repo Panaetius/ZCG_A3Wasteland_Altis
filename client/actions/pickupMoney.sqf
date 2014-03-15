@@ -14,7 +14,7 @@ mutexScriptInProgress = true;
 
 private ["_pickDistance", "_moneyObjects", "_moneyObj", "_money"];
 
-_pickDistance = 3;
+_pickDistance = 2;
 
 _moneyObjects = nearestObjects [player, ["Land_Money_F"], _pickDistance];
 
@@ -23,8 +23,8 @@ if (count _moneyObjects > 0) then
 	_moneyObj = _moneyObjects select 0;
 };
 
-if(({(side _x) != sideLogic} count (nearestObjects [player, ["CAManBase"], 7])) > 1) exitWith {
-	titleText ["Can't pick up money. Make sure there are no other players within 7 meters and try again", "PLAIN DOWN", 0.5];
+if(({(side _x) != sideLogic && alive _x} count (nearestObjects [player, ["CAManBase"], 5])) > 1) exitWith {
+	titleText ["Can't pick up money. Make sure there are no other players within 5 meters and try again", "PLAIN DOWN", 0.5];
 	
 	mutexScriptInProgress = false;
 };

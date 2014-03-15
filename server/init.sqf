@@ -33,7 +33,7 @@ diag_log "WASTELAND SERVER - Server Compile Finished";
 "requestCompensateNegativeScore" addPublicVariableEventHandler { (_this select 1) call removeNegativeScore };
 
 // Default config
-A3W_buildingLoot = 1;        // Spawn and respawn Loot inside buildings in citys (0 = no, 1 = yes)
+A3W_buildingLoot = 0;        // Spawn and respawn Loot inside buildings in citys (0 = no, 1 = yes)
 A3W_startHour = 6;           // In-game hour at mission start (0 to 23)
 A3W_moonLight = 1;           // Moon light during night (0 = no, 1 = yes)
 A3W_missionsDifficulty = 1;  // Missions difficulty (0 = normal, 1 = hard)

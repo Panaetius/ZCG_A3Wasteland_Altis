@@ -76,7 +76,7 @@ _blownTire = false;
 
 _proxyExtra = _proxyExtra - _deserted;
 
-_sleepTime = 5;
+_sleepTime = 30;
 
 {
 	if (_x < _sleepTime) then {
@@ -140,7 +140,7 @@ while {_run} do
 	   {getPosASL _unit distance _position > 10 || _unit getVariable ["itemTakenFromVehicle", false]} &&
 	   {{alive _unit} count crew _unit == 0} &&
 	   {isNull (_unit getVariable ["R3F_LOG_est_transporte_par", objNull])} && 
-	   {isNull (_unit getVariable ["R3F_LOG_est_deplace_par", objNull])}) then 
+	   {isNull (_unit getVariable ["R3F_LOG_est_deplace_par", objNull])} && {not(_unit getVariable ['objectLocked', false])}) then 
 	{
 		if (_desertedTimeout == 0) then {
 			_desertedTimeout = diag_tickTime + _deserted;

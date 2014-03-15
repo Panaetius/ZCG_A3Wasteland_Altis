@@ -45,7 +45,7 @@ _createRandomVehicle =
 	
 	[_pos, _vehicleType] call vehicleCreation;
 	
-	//diag_log format ["Vehicle spawn #%1 done", _counter];
+	diag_log format ["Vehicle spawn #%1 done", _counter];
 };
 
 {

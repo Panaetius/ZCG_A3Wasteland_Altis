@@ -25,7 +25,7 @@
 private ["_id", "_obj"];
 
 
-if(({(side _x) != sideLogic} count (nearestObjects [player, ["CAManBase"], 5])) > 1) exitWith {
+if(({(side _x) != sideLogic && alive _x} count (nearestObjects [player, ["CAManBase"], 5])) > 1) exitWith {
 		titleText ["Can't pick up item. Make sure there are no other players within 5 meters and try again", "PLAIN DOWN", 0.5];
 	};
 
@@ -35,6 +35,6 @@ if (not(isNull _obj)) then {
 	MUTEX_LOCK_OR_FAIL;
 	deleteVehicle _obj;
 	[_id,1] call mf_inventory_add;
-	execVM "persistence\players\c_savePlayerToServer.sqf";
+	[false] execVM "persistence\players\c_savePlayerToServer.sqf";
 	MUTEX_UNLOCK;
 };
