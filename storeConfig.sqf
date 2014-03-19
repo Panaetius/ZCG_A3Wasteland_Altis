@@ -81,6 +81,31 @@ launcherArray = compileFinal str
 
 allGunStoreFirearms = compileFinal str (call pistolArray + call smgArray + call rifleArray + call lmgArray + call shotgunArray + call launcherArray);
 
+staticAmmoArray = compileFinal str
+[
+	["12.7mm AA Canon Mag (500 Rnd)", "500Rnd_127x99_mag", 500],
+	["12.7mm RCWS HMG (200 Rnd)", "200Rnd_127x99_mag", 200],
+	["20mm Grenade Mag", "200Rnd_20mm_G_belt", 500],
+	["20mm HE Grenade Mag", "40Rnd_20mm_G_belt", 100],
+	["HE Mortar Shells", "8Rnd_82mm_Mo_shells", 500],
+	["HE Mortar Shells (Guided)", "8Rnd_82mm_Mo_guided", 800],
+	["HE Mortar Shells (Laser Guided)", "8Rnd_82mm_Mo_LG", 1000],
+	["7.62mm Minigun Belt", "5000Rnd_762x51_Yellow_Belt", 800],
+	["120mm APFSDS", "30Rnd_120mm_APFSDS_shells", 800],
+	["120mm APFSDS-T", "30Rnd_120mm_APFSDS_shells_Tracer_Red", 800],
+	["120mm HE", "30Rnd_120mm_HE_shells", 800],
+	["Skyfire", "38Rnd_80mm_rockets", 800],
+	["40Rnd_40mm_APFSDS_shells", "40Rnd_40mm_APFSDS_shells", 800],
+	["60Rnd_40mm_GPR_shells", "60Rnd_40mm_GPR_shells", 800],
+	["30mm APFSDS", "60Rnd_30mm_APFSDS_shells", 800],
+	["30mm Multi-purpose", "140Rnd_30mm_MP_shells", 800],
+	["30mm APDS shells", "250Rnd_30mm_APDS_shells", 800],
+	["25mm Shells", "1000Rnd_25mm_shells", 800],
+	["20mm HE Shells", "1000Rnd_20mm_shells", 800],
+	["40mm HE Grenade Mag (64 Rnd.)", "64Rnd_40mm_G_belt", 800],
+	["40mm HE Grenade Mag (200 Rnd.)", "200Rnd_40mm_G_belt", 2500]
+];
+
 staticGunsArray = compileFinal str
 [
     ["Mk30 HMG .50 Low (NATO)", "B_HMG_01_F", 5000],
@@ -110,14 +135,7 @@ staticGunsArray = compileFinal str
 	["Mk6 Mortar (NATO)", "B_Mortar_01_F", 15000],
 	["Mk6 Mortar (CSAT)", "O_Mortar_01_F", 15000],
 	["Mk6 Mortar (AAF)", "I_Mortar_01_F", 15000],
-	["Mk6 Mortar (FIA)", "B_G_Mortar_01_F", 15000],
-	["12.7mm AA Canon Mag (500 Rnd)", "500Rnd_127x99_mag", 500],
-	["12.7mm RCWS HMG (200 Rnd)", "200Rnd_127x99_mag", 200],
-	["20mm Grenade Mag", "200Rnd_20mm_G_belt", 500],
-	["20mm HE Grenade Mag", "40Rnd_20mm_G_belt", 100],
-	["HE Mortar Shells", "8Rnd_82mm_Mo_shells", 500],
-	["HE Mortar Shells (Guided)", "8Rnd_82mm_Mo_guided", 800],
-	["HE Mortar Shells (Laser Guided)", "8Rnd_82mm_Mo_LG", 1000]
+	["Mk6 Mortar (FIA)", "B_G_Mortar_01_F", 15000]
 ]; 
 
 throwputArray = compileFinal str

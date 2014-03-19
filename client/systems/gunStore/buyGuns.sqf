@@ -145,6 +145,39 @@ storePurchaseHandle = _this spawn
 					}
 				} forEach (call throwputArray);
 			};
+			
+			if (isNil "_price") then
+			{
+				{
+					if (_itemText == _x select 0 && _itemData == _x select 1) exitWith
+					{
+						_class = _x select 1;
+						_price = _x select 2;
+						
+						// Ensure the player has enough money
+						if (_price > _playerMoney) exitWith
+						{
+							[_itemText] call _showInsufficientFundsError;
+						};
+						
+						if ([player, _class] call fn_fitsInventory) then
+						{
+							if (isClass (configFile >> "CfgMagazines" >> _class)) then
+							{
+								player addMagazine _class;
+							}
+							else
+							{
+								player addItem _class;
+							};
+						}
+						else
+						{
+							[_itemText] call _showInsufficientSpaceError;
+						};
+					}
+				} forEach (call staticAmmoArray);
+			};
 
 			if (isNil "_price") then
 			{

@@ -300,5 +300,17 @@ class gunshopd {
 			w = 0.088 * safezoneW;
 			h = 0.040 * safezoneH;
 		};
+		
+		class StoreButton9: w_RscButton
+		{
+			idc = -1;
+			onButtonClick = "[9] execVM 'client\systems\gunStore\populateGunStore.sqf'";
+			text = "Static Gun Ammo";
+
+			x = 0.20 * safezoneW + safezoneX;
+			y = 0.625 * safezoneH + safezoneY;//675
+			w = 0.088 * safezoneW;
+			h = 0.040 * safezoneH;
+		};
 	};
 };

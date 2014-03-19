@@ -30,6 +30,7 @@ player createDiaryRecord ["changelog",
 <br/> [Added] - Vehicle saving (experimental)
 <br/> [Added] - Anti-Dupe code
 <br/> [Added] - More Main Missions
+<br/> [Adds] - Heli Fastroping
 "
 ]];
 

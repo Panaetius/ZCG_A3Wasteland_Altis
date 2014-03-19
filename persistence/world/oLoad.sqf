@@ -20,13 +20,14 @@ for "_i" from 0 to (_objectscount - 1) do
 	_weapons = ["Objects" call PDB_databaseNameCompiler, _objSaveName, "weapons", "ARRAY"] call iniDB_read;
 	_magazines = ["Objects" call PDB_databaseNameCompiler, _objSaveName, "magazines", "ARRAY"] call iniDB_read;
 	_items = ["Objects" call PDB_databaseNameCompiler, _objSaveName, "items", "ARRAY"] call iniDB_read;
+	_isVehicle = ["Objects" call PDB_databaseNameCompiler, _objSaveName, "isVehicle", "NUMBER"] call iniDB_read;
 	
 	if (!isNil "_objSaveName" && !isNil "_class" && !isNil "_pos" && !isNil "_dir" && !isNil "_supplyleft") then 
 	{
 		_type = "NONE";
 		_placement = 10;
 		
-		if({_class == _x} count _vehicles == 0) then
+		if(!isNil "_isVehicle" && _isVehicle == 0) then
 		{
 			_type = "CAN COLLIDE";
 			_placement = 0;

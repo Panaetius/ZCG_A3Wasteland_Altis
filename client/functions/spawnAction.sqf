@@ -18,7 +18,7 @@ spawnActionHandle = _params spawn
 	_buttonText = _this select 0;
 	_switch = _this select 1;
 
-	player allowDamage true;
+	player allowDamage false;
 
 	// If there are server donations, bump up the amount players spawn with
 	_baseMoney = call config_initial_spawn_money;
@@ -109,6 +109,8 @@ spawnActionHandle = _params spawn
 			};
 		};
 	};
+	
+	player allowDamage true;
 };
 
 disableSerialization;

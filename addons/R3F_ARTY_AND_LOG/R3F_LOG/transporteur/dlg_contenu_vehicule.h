@@ -167,6 +167,17 @@ class R3F_LOG_dlg_contenu_vehicule
 			arrowEmpty = "client\ui\ui_arrow_top_ca.paa";
 			border = "client\ui\ui_border_scroll_ca.paa";
 		};
+		
+		class ListScrollBar
+		{
+			color[] = {1, 1, 1, 0.6};
+			colorActive[] = {1, 1, 1, 1};
+			colorDisabled[] = {1, 1, 1, 0.3};
+			thumb = "client\ui\ui_scrollbar_thumb_ca.paa";
+			arrowFull = "client\ui\ui_arrow_top_active_ca.paa";
+			arrowEmpty = "client\ui\ui_arrow_top_ca.paa";
+			border = "client\ui\ui_border_scroll_ca.paa";
+		};
 	};
 	// FIN Définition des classes de base
 	

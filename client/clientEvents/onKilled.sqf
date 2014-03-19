@@ -22,6 +22,9 @@ if((_player != _killer) && (vehicle _player != vehicle _killer) && (playerSide =
 	pvar_PlayerTeamKiller = objNull;
 	if(_killer isKindOf "CAManBase") then {
 		pvar_PlayerTeamKiller = _killer;
+		
+		axeDiagLog = format ["%1 teamkilled %2", _killer, _player];
+		publicVariable "axeDiagLog";
 	} else {
 		_veh = (_killer);
 		_trts = configFile >> "CfgVehicles" >> typeof _veh >> "turrets";

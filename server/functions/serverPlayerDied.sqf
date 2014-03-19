@@ -15,12 +15,19 @@ if (!isNull _backpack) then
 	_backpack setVariable ["processedDeath", diag_tickTime];
 };
 
-{
-	if (owner _x == owner _corpse && {!isNil {_x getVariable "mf_item_id"}}) then
+if(!isNil "_corpse") then {
+	_nearEntites = _corpse nearEntities ["All", 20];
+
+	if(!isNil "_nearEntites" && {count _nearEntites > 0}) then
 	{
-		_x setVariable ["processedDeath", diag_tickTime];
+		{
+			if (owner _x == owner _corpse && {!isNil {_x getVariable "mf_item_id"}}) then
+			{
+				_x setVariable ["processedDeath", diag_tickTime];
+			};
+		} forEach (_nearEntites);
 	};
-} forEach (_corpse nearEntities ["All", 20]);
+};
 
 // Remove any persistent info about the player on death
 if ((call config_player_saving_enabled) == 1) then {

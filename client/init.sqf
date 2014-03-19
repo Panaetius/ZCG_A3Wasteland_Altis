@@ -137,6 +137,11 @@ if (_playerWasMoved == 0) then {
 	player switchMove "AmovPpneMstpSnonWnonDnon";
 };
 
+if (secondaryWeapon player == "" && primaryWeapon player == "") then 
+{
+	_player addWeapon "hgun_ACPC2_F";
+};
+
 [] spawn FZF_IC_INIT;
 
 {

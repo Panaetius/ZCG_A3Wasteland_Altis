@@ -70,6 +70,10 @@ switch(_switch) do
 	{
 		_itemsArray = call staticGunsArray;
 	};
+	case 9:
+	{
+		_itemsArray = call staticAmmoArray;
+	};
 	default
 	{
 		_itemsArray = [];

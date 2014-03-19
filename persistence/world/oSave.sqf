@@ -64,6 +64,13 @@ while {true} do
 				["Objects" call PDB_databaseNameCompiler, _objSaveName, "weapons", _weapons] call iniDB_write;
 				["Objects" call PDB_databaseNameCompiler, _objSaveName, "magazines", _magazines] call iniDB_write;
 				["Objects" call PDB_databaseNameCompiler, _objSaveName, "items", _items] call iniDB_write;
+				
+				if (_object isKindOf "Land" || _object isKindOf "Air" || _object isKindOf "Ship" ) then
+				{
+					["Objects" call PDB_databaseNameCompiler, _objSaveName, "isVehicle", 1] call iniDB_write;
+				} else {
+					["Objects" call PDB_databaseNameCompiler, _objSaveName, "isVehicle", 0] call iniDB_write;
+				};
 
 				_PersistentDB_ObjCount = _PersistentDB_ObjCount + 1;
 			};
