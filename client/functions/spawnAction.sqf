@@ -110,6 +110,10 @@ spawnActionHandle = _params spawn
 		};
 	};
 	
+	if (secondaryWeapon player == "") then {
+		player addWeapon "hgun_ACPC2_F";
+	};
+	
 	player allowDamage true;
 };
 

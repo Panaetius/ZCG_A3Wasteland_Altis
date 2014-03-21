@@ -580,6 +580,9 @@ landArray = compileFinal str
 	["Zamak Repair (AAF)", "I_Truck_02_box_F", 15000, "vehicle", 3000],
 	["Zamak Ammo (CSAT)", "O_Truck_02_Ammo_F", 20000, "vehicle", 4000],
 	["Zamak Ammo (AAF)", "I_Truck_02_ammo_F", 20000, "vehicle", 4000],
+	["Tempest Fuel", "O_Truck_03_fuel_F", 5000, "vehicle", 4000],
+	["Tempest Ammo", "O_Truck_03_ammo_F", 20000, "vehicle", 4000],
+	["Tempest Medical", "O_Truck_03_medical_F", 10000, "vehicle", 4000],
 
 	["UGV Stomper (NATO)", "B_UGV_01_F", 2500, "vehicle", 500],
 	["UGV Stomper (AAF)", "I_UGV_01_F", 2500, "vehicle", 500],

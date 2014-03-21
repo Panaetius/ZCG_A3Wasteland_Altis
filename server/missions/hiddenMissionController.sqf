@@ -14,9 +14,7 @@ diag_log "WASTELAND SERVER - Started Side Mission State";
 _hiddenMissions =
 [			// increase the number behind the mission (weight) to increase the chance of the mission to be selected
 	["mission_HostileHelicopter",0.5], 
-	["mission_MiniConvoy", 1], 
-	//["mission_AirWreck", 1.5],
-	//["mission_WepCache", 1.5],
+	["mission_MiniConvoy", 1],
 	["mission_Truck", 1],
 	["mission_HostileSquad", 1]
 ]; 

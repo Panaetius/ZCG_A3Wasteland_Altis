@@ -22,10 +22,7 @@ _MainMissions =
 	["mission_CivHeli", 1],
 	["mission_Outpost", 1],
 	["mission_MilitaryBase", 1.5],
-	["mission_Heli", 1],
-	//["mission_LightTank", 1],
-	//["mission_RadarTruck", 1],
-	["mission_SupplyDrop", 1]
+	["mission_Heli", 1]
 ];
 
 // _notPlayedMainMissions = +_MainMissions;

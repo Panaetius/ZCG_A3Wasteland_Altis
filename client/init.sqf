@@ -133,13 +133,13 @@ if (isNil "FZF_IC_INIT") then
 // If we've got a position from the player save system, don't go through playerSpawn
 if (_playerWasMoved == 0) then {
 	true spawn playerSpawn;
+	_player addWeapon "hgun_ACPC2_F";
 } else {
 	player switchMove "AmovPpneMstpSnonWnonDnon";
 };
 
-if (secondaryWeapon player == "" && primaryWeapon player == "") then 
-{
-	_player addWeapon "hgun_ACPC2_F";
+if (secondaryWeapon player == "") then {
+	player addWeapon "hgun_ACPC2_F";
 };
 
 [] spawn FZF_IC_INIT;

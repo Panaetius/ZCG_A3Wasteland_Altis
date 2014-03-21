@@ -11,7 +11,7 @@ private ["_markerPos", "_markerDir", "_pos", "_planeType", "_plane"];
 _markerPos = _this select 0;
 _markerDir = _this select 1;
 
-_planeType = "I_Plane_Fighter_03_CAS_F";
+_planeType = ["I_Plane_Fighter_03_CAS_F","B_Plane_CAS_01_F","O_Plane_CAS_02_F", "I_Plane_Fighter_03_AA_F"] call BIS_fnc_selectRandom;
 
 _pos = _markerPos;
 

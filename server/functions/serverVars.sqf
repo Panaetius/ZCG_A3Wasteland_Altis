@@ -66,6 +66,9 @@ mediumMilitaryVehicles =
 	"O_Truck_02_Fuel_F",
 	"I_Truck_02_medical_F",
 	"O_Truck_02_medical_F",
+	"O_Truck_03_fuel_F",
+	"O_Truck_03_ammo_F",
+	"O_Truck_03_medical_F",
 	"B_MRAP_01_F",
 	"O_MRAP_02_F",
 	"I_MRAP_03_F"
