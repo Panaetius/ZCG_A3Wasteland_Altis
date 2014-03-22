@@ -92,8 +92,6 @@ if (_player getVariable "cmoney" > 0) then
 	};
 } forEach call mf_inventory_all;
 
-[true] execVM "persistence\players\c_savePlayerToServer.sqf";
-
 if (isServer) then
 {
 	diag_log text format ["%1 was killed by %2", _player, _killer];

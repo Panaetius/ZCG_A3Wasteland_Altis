@@ -18,6 +18,7 @@ _loadFromDB =
 	_uid = _array select 1;
 	_varName = _array select 2;
 	_varType = _array select 3;
+	
 	if ([_uid] call accountExists) then {
 		_loadArray = [_uid, _uid, _varName, _varType];
 		accountToClient = [_uid,_varName,_loadArray call iniDB_read];

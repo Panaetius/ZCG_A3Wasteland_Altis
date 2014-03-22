@@ -10,16 +10,8 @@ player createDiarySubject ["credits", "Credits"];
 
 player createDiaryRecord ["changelog",
 [
-"0.9f_custom",
+"0.9g",
 "
-<br/> [Added] - Money missions
-<br/> [Added] - Sell Crate Items option at stores when moving crate
-<br/> [Changed] - Reorganized loots for crates and trucks
-<br/> [Fixed] - Broken Warchest menu
-<br/> [Fixed] - Spawn beacons not working for Independent groups
-<br/> [Fixed] - Player icons position inside buildings
-<br/> [Fixed] - MRAPs and quadbikes not spawning
-<br/> [Fixed] - Broken money rewards for territories
 <br/> [Added] - Hidden missions
 <br/> [Added] - Player money saving
 <br/> [Added] - Roaming AI

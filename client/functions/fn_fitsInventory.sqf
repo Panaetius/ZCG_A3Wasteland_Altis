@@ -4,11 +4,14 @@
 //	@file Created: 05/05/2013 00:22
 //	@file Args: _player, _item
 
-private ["_player", "_item", "_return", "_allowedContainers"];
+private ["_player", "_item","_allowedContainers", "_return", "_allowVest", "_allowUniform", "_allowBackpack"];
 
 _player = _this select 0;
 _item = _this select 1;
 _return = false;
+_allowVest = false;
+_allowUniform = false;
+_allowBackpack = false;
 
 if (count _this > 2) then
 {
@@ -24,16 +27,30 @@ if (typeName _allowedContainers != "ARRAY") then
 	_allowedContainers = [_allowedContainers];
 };
 
+diag_log text format ["%1, %2, %3, %4", _player, _item, _return, _allowedContainers];
+
+
 {
-	if (typeName _x == "STRING") then
+	switch (toLower _x) do
 	{
-		switch (toLower _x) do
-		{
-			case "uniform":  { _return = _return || {_player canAddItemToUniform _item} };
-			case "vest":     { _return = _return || {_player canAddItemToVest _item} };
-			case "backpack": { _return = _return || {_player canAddItemToBackpack _item} };
-		};
+		case "uniform":  { _allowUniform = _player canAddItemToUniform _item };
+		case "vest":     { _allowVest = _player canAddItemToVest _item };
+		case "backpack": { _allowBackpack = _player canAddItemToBackpack _item };
 	};
 } forEach _allowedContainers;
+
+if (!isNil "_allowUniform") then {
+	_return = _allowUniform;
+};
+
+if (!isNil "_allowVest") then
+{
+	_return = _return || _allowVest;
+};
+
+if (!isNil "_allowBackpack") then
+{
+	return = _return || _allowBackpack;
+};
 
 _return

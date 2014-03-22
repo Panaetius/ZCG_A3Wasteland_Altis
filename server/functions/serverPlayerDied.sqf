@@ -15,7 +15,8 @@ if (!isNull _backpack) then
 	_backpack setVariable ["processedDeath", diag_tickTime];
 };
 
-if(!isNil "_corpse") then {
+if(!isNil "_corpse" && !isNull _corpse) then {
+	diag_log text format ["Corpse: %1", _corpse];
 	_nearEntites = _corpse nearEntities ["All", 20];
 
 	if(!isNil "_nearEntites" && {count _nearEntites > 0}) then

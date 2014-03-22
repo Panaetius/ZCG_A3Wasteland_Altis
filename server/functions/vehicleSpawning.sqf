@@ -44,8 +44,6 @@ _createRandomVehicle =
 	_pos = [_pos, _minrad, _maxrad, _mindist, 0, 60*(pi/180), 0, _vehicleType] call findSafePos;
 	
 	[_pos, _vehicleType] call vehicleCreation;
-	
-	diag_log format ["Vehicle spawn #%1 done", _counter];
 };
 
 {
