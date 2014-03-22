@@ -27,9 +27,6 @@ if (typeName _allowedContainers != "ARRAY") then
 	_allowedContainers = [_allowedContainers];
 };
 
-diag_log text format ["%1, %2, %3, %4", _player, _item, _return, _allowedContainers];
-
-
 {
 	switch (toLower _x) do
 	{
@@ -50,7 +47,7 @@ if (!isNil "_allowVest") then
 
 if (!isNil "_allowBackpack") then
 {
-	return = _return || _allowBackpack;
+	_return = _return || _allowBackpack;
 };
 
 _return

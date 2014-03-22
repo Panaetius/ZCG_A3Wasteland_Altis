@@ -78,7 +78,7 @@ if ((call config_player_saving_enabled) == 1) then {
 		player setVariable["cmoney",_baseMoney,true];
 	};
 
-	waitUntil {scriptDone _loadHandle && {positionLoaded == 1}};
+	waitUntil {scriptDone _loadHandle};
 } else {
 	diag_log format["Client has no player save functionality"];
 };
@@ -91,6 +91,8 @@ if (count (call config_territory_markers) > 0) then {
 
 // Find out if the player has been moved by the persistence system
 _playerWasMoved = player getVariable ["playerWasMoved", 0];
+
+diag_log _playerWasMoved;
 
 //Setup player events.
 if(!isNil "client_initEH") then {player removeEventHandler ["Respawn", client_initEH];};
@@ -132,6 +134,7 @@ if (isNil "FZF_IC_INIT") then
 
 // If we've got a position from the player save system, don't go through playerSpawn
 if (_playerWasMoved == 0) then {
+	diag_log "spawn";
 	true spawn playerSpawn;
 	player addWeapon "hgun_ACPC2_F";
 } else {

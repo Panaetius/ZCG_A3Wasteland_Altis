@@ -1,4 +1,4 @@
-private["_uid", "_showMessage"];
+private["_uid", "_showMessage", "_playerData"];
 
 _showMessage = true;
 
@@ -14,44 +14,6 @@ diag_log text format ["SavePlayer: %1 %2", _this, _showMessage];
 if(playerSetupComplete) then
 {	
 	_uid = getPlayerUID player;
-	[_uid, _uid, "Health", damage player] call fn_SaveToServer;
-	[_uid, _uid, "Side", str(side player)] call fn_SaveToServer;
-	[_uid, _uid, "Account Name", name player] call fn_SaveToServer;
-	[_uid, _uid, "Money", player getVariable ["cmoney", 0]] call fn_SaveToServer;
-
-	{
-		_keyName = _x select 0;
-		_value = _x select 1;
-		[_uid, _uid, _keyName, _value] call fn_SaveToServer;
-	} forEach call mf_inventory_all;
-
-	[_uid, _uid, "Vest", vest player] call fn_SaveToServer;
-	[_uid, _uid, "Uniform", uniform player] call fn_SaveToServer;	
-	[_uid, _uid, "Backpack", backpack player] call fn_SaveToServer;
-	[_uid, _uid, "Goggles", goggles player] call fn_SaveToServer;
-	[_uid, _uid, "HeadGear", headGear player] call fn_SaveToServer;
-
-	//[_uid, _uid, "UniformItems", uniformItems player] call fn_SaveToServer;
-	//[_uid, _uid, "VestItems", vestItems player] call fn_SaveToServer;
-	//[_uid, _uid, "BackpackItems", backpackItems player] call fn_SaveToServer;
-	
-	[_uid, _uid, "Position", getPosATL vehicle player] call fn_SaveToServer;
-	[_uid, _uid, "Direction", direction vehicle player] call fn_SaveToServer;
-
-	[_uid, _uid, "PrimaryWeapon", primaryWeapon player] call fn_SaveToServer;
-	[_uid, _uid, "PrimaryWeaponItems", primaryWeaponItems player] call fn_SaveToServer;
-	//[_uid, _uid, "PrimaryWeaponMagazine", primaryWeaponMagazine player] call fn_SaveToServer;
-
-	[_uid, _uid, "SecondaryWeapon", SecondaryWeapon player] call fn_SaveToServer;
-	[_uid, _uid, "SecondaryWeaponItems", secondaryWeaponItems player] call fn_SaveToServer;
-	//[_uid, _uid, "SecondaryWeaponMagazine", secondaryWeaponMagazine player] call fn_SaveToServer;
-
-	[_uid, _uid, "HandgunWeapon", handgunWeapon player] call fn_SaveToServer;
-	[_uid, _uid, "HandgunItems", handgunItems player] call fn_SaveToServer;
-	//[_uid, _uid, "HandgunMagazine", handgunMagazine player] call fn_SaveToServer;
-
-	[_uid, _uid, "Items", items player] call fn_SaveToServer;
-	[_uid, _uid, "AssignedItems", assignedItems player] call fn_SaveToServer;
 	
 	magsWithAmmoCounts = [];
 	{
@@ -60,9 +22,40 @@ if(playerSetupComplete) then
 		_elem = [_class, _count];
 		magsWithAmmoCounts set [count magsWithAmmoCounts, _elem];
 	} forEach (magazinesAmmoFull player);
-
-	[_uid, _uid, "MagazinesWithAmmoCount", magsWithAmmoCounts] call fn_SaveToServer;
-	//[_uid, _uid, "Weapons", Weapons player] call fn_SaveToServer;
+	
+	inventoryItems = [];
+	{
+		_keyName = _x select 0;
+		_value = _x select 1;
+		inventoryItems set [count inventoryItems, [_x select 0, _x select 1]];
+	} forEach call mf_inventory_all;
+	
+	_playerData = [
+		damage player, 
+		str(side player), 
+		name player, 
+		player getVariable ["cmoney", 0], 
+		vest player, 
+		uniform player, 
+		backpack player, 
+		goggles player, 
+		headGear player, 
+		getPosATL vehicle player,
+		direction vehicle player,
+		primaryWeapon player,
+		primaryWeaponItems player,
+		SecondaryWeapon player,
+		secondaryWeaponItems player,
+		handgunWeapon player,
+		handgunItems player,
+		items player,
+		assignedItems player,
+		magsWithAmmoCounts,
+		inventoryItems
+	];
+	
+	[_uid, _uid, "PlayerData", _playerData] call fn_SaveToServer;
+	
 	if (isNil "_showMessage" || _showMessage) then {
 		player globalChat "Player saved!";
 	};

@@ -22,6 +22,8 @@ _corpse removeAction playerMenuId;
 } forEach aActionsIDs;
 // The actions from mf_player_actions are removed in onKilled.
 
+(getPlayerUID _corpse) call sqlite_deletePlayer;
+
 player call playerSetup;
 waitUntil {playerSetupComplete};
 

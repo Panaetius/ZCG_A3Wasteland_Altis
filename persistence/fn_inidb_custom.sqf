@@ -22,6 +22,7 @@ PDB_databaseNameCompiler = {
 
 iniDB_version = {
 	private["_data"];
+	_player = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'SELECT Count(*) FROM Player']";
 	_data = "iniDB" callExtension "version";
 	_data
 };
@@ -184,3 +185,131 @@ iniDB_write = {
 	_data
 };
 
+sqlite_savePlayer = {
+	_array = _this;
+	_uid = _array select 1;
+	_varValue = _array select 3;
+	
+	//delete stuff
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'Delete FROM Player WHERE Id=''%1''']", _uid];
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'Delete FROM Item WHERE PlayerId=''%1''']", _uid];
+	// save values
+	_query = format ["INSERT INTO Player (Id,Health,Side,AccountName, Money, Vest, Uniform, Backpack, Goggles, HeadGear,Position, Direction, PrimaryWeapon, SecondaryWeapon, HandgunWeapon) VALUES (''%1'', %2, ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', ''%9'', ''%10'', ''%11'', %12, ''%13'', ''%14'', ''%15'')", 
+		_uid, 
+		_varValue select 0, 
+		_varValue select 1, 
+		_varValue select 2,
+		_varValue select 3,
+		_varValue select 4,
+		_varValue select 5,
+		_varValue select 6,
+		_varValue select 7,
+		_varValue select 8,
+		_varValue select 9,
+		_varValue select 10,
+		_varValue select 11,
+		_varValue select 13,
+		_varValue select 15
+		];
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	
+	{
+		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'PrimaryWeaponItem', ''%2'')", _uid, _x];
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	}forEach (_varValue select 12);
+	
+	{
+		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'SecondaryWeaponItem', ''%2'')", _uid, _x];
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	}forEach (_varValue select 14);
+	
+	{
+		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'HandgunWeaponItem', ''%2'')", _uid, _x];
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	}forEach (_varValue select 16);
+	
+	{
+		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'Items', ''%2'')", _uid, _x];
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	}forEach (_varValue select 17);
+	
+	{
+		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'AssignedItem', ''%2'')", _uid, _x];
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	}forEach (_varValue select 18);
+	
+	{
+		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'magWithAmmo', ''%2'')", _uid, _x];
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	}forEach (_varValue select 19);
+	
+	{
+		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'inventoryItem', ''%2'')", _uid, _x];
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	}forEach (_varValue select 20);
+};
+
+sqlite_readPlayer = {
+	private ["_data", "_player", "_query", "_primaryWeaponItems", "_secondaryWeaponItems", "_handgunWeaponItems", "_items", "_assignedItems", "_magsWithAmmo", "_inventoryItems"];
+	_array = _this;
+	_uid = _array select 1;
+	
+	_query = format ["SELECT * FROM Player WHERE Id=''%1'' LIMIT 1", _uid];
+	_player = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	
+	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='PrimaryWeaponItem'", _uid];
+	_primaryWeaponItems = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	
+	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='SecondaryWeaponItem'", _uid];
+	_secondaryWeaponItems = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	
+	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='HandgunWeaponItem'", _uid];
+	_handgunWeaponItems = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	
+	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='Item'", _uid];
+	_items = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	
+	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='AssignedItem'", _uid];
+	_assignedItems = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	
+	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='magWithAmmo'", _uid];
+	_magsWithAmmo = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	
+	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='inventoryItem'", _uid];
+	_inventoryItems = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	
+	_data = ((call compile _player) select 0) select 0;
+	
+	_data set [count _data, (call compile _primaryWeaponItems) select 0];
+	_data set [count _data, (call compile _secondaryWeaponItems) select 0];
+	_data set [count _data, (call compile _handgunWeaponItems) select 0];
+	_data set [count _data, (call compile _items) select 0];
+	_data set [count _data, (call compile _assignedItems) select 0];
+	_data set [count _data, (call compile _magsWithAmmo) select 0];
+	_data set [count _data, (call compile _inventoryItems) select 0];
+	
+	_data
+};
+
+sqlite_deletePlayer = {
+	private "_res";
+	diag_log "delete called";
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'Delete FROM Player WHERE Id=''%1''']", _this];
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'Delete FROM Item WHERE PlayerId=''%1''']", _this];
+	
+	true
+};
+
+sqlite_exists = {
+	private ["_player", "_query"];
+	diag_log "Exists called";
+	_query = format ["SELECT Id FROM Player WHERE Id=''%1'' LIMIT 1", _this];
+	_player = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	
+	if (count ((call compile _player) select 0) > 0 ) then 
+	{
+		true
+	} else {
+		false
+	};
+};
