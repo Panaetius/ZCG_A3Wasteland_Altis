@@ -186,15 +186,16 @@ iniDB_write = {
 };
 
 sqlite_savePlayer = {
+	private ["_array", "_uid", "_varValue", "_res", "_query"];
+	diag_log text format ["%1, %2: PerfLog11", diag_tickTime, _uid];
 	_array = _this;
 	_uid = _array select 1;
 	_varValue = _array select 3;
 	
 	//delete stuff
-	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'Delete FROM Player WHERE Id=''%1''']", _uid];
-	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'Delete FROM Item WHERE PlayerId=''%1''']", _uid];
+	_query = format ["START TRANSACTION;Delete FROM Player WHERE Id=''%1'';Delete FROM Item WHERE PlayerId=''%1'';", _uid];
 	// save values
-	_query = format ["INSERT INTO Player (Id,Health,Side,AccountName, Money, Vest, Uniform, Backpack, Goggles, HeadGear,Position, Direction, PrimaryWeapon, SecondaryWeapon, HandgunWeapon) VALUES (''%1'', %2, ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', ''%9'', ''%10'', ''%11'', %12, ''%13'', ''%14'', ''%15'')", 
+	_query = _query + format ["INSERT INTO Player (Id,Health,Side,AccountName, Money, Vest, Uniform, Backpack, Goggles, HeadGear,Position, Direction, PrimaryWeapon, SecondaryWeapon, HandgunWeapon) VALUES (''%1'', %2, ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', ''%9'', ''%10'', ''%11'', %12, ''%13'', ''%14'', ''%15'');", 
 		_uid, 
 		_varValue select 0, 
 		_varValue select 1, 
@@ -211,82 +212,64 @@ sqlite_savePlayer = {
 		_varValue select 13,
 		_varValue select 15
 		];
-	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	
+	_query = _query + "INSERT INTO Item (PlayerId, Type, Name) Values ";
 	
 	{
-		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'PrimaryWeaponItem', ''%2'')", _uid, _x];
-		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+		_query = _query + format ["('%1', 'PrimaryWeaponItem', ''%2''),", _uid, _x];
 	}forEach (_varValue select 12);
 	
 	{
-		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'SecondaryWeaponItem', ''%2'')", _uid, _x];
-		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+		_query = _query + format [" ('%1', 'SecondaryWeaponItem', ''%2''),", _uid, _x];
 	}forEach (_varValue select 14);
 	
 	{
-		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'HandgunWeaponItem', ''%2'')", _uid, _x];
-		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+		_query = _query + format ["('%1', 'HandgunWeaponItem', ''%2''),", _uid, _x];
 	}forEach (_varValue select 16);
 	
 	{
-		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'Items', ''%2'')", _uid, _x];
-		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+		_query = _query + format ["('%1', 'Items', ''%2''),", _uid, _x];
 	}forEach (_varValue select 17);
 	
 	{
-		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'AssignedItem', ''%2'')", _uid, _x];
-		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+		_query = _query + format [" ('%1', 'AssignedItem', ''%2''),", _uid, _x];
 	}forEach (_varValue select 18);
 	
 	{
-		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'magWithAmmo', ''%2'')", _uid, _x];
-		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+		_query = _query + format [" ('%1', 'magWithAmmo', ''%2''),", _uid, _x];
 	}forEach (_varValue select 19);
 	
 	{
-		_query = format ["INSERT INTO Item (PlayerId, Type, Name) Values ('%1', 'inventoryItem', ''%2'')", _uid, _x];
-		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+		_query = _query + format ["('%1', 'inventoryItem', ''%2''),", _uid, _x];
 	}forEach (_varValue select 20);
+	
+	_query = [_query, ([_query] call KRON_StrLen) - 1] call KRON_StrLeft;
+	
+	_query = _query + ";COMMIT;";
+	
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	diag_log text format ["%1, %2: PerfLog12", diag_tickTime, _uid];
 };
 
 sqlite_readPlayer = {
-	private ["_data", "_player", "_query", "_primaryWeaponItems", "_secondaryWeaponItems", "_handgunWeaponItems", "_items", "_assignedItems", "_magsWithAmmo", "_inventoryItems"];
+	private ["_array", "_uid", "_data", "_player", "_query", "_items"];
 	_array = _this;
 	_uid = _array select 1;
+	
+	diag_log "perf111";
 	
 	_query = format ["SELECT * FROM Player WHERE Id=''%1'' LIMIT 1", _uid];
 	_player = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
 	
-	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='PrimaryWeaponItem'", _uid];
-	_primaryWeaponItems = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	diag_log "perf112";
 	
-	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='SecondaryWeaponItem'", _uid];
-	_secondaryWeaponItems = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
-	
-	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='HandgunWeaponItem'", _uid];
-	_handgunWeaponItems = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
-	
-	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='Item'", _uid];
+	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1''", _uid];
 	_items = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
 	
-	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='AssignedItem'", _uid];
-	_assignedItems = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
-	
-	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='magWithAmmo'", _uid];
-	_magsWithAmmo = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
-	
-	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1'' AND Type='inventoryItem'", _uid];
-	_inventoryItems = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	diag_log "perf113";
 	
 	_data = ((call compile _player) select 0) select 0;
-	
-	_data set [count _data, (call compile _primaryWeaponItems) select 0];
-	_data set [count _data, (call compile _secondaryWeaponItems) select 0];
-	_data set [count _data, (call compile _handgunWeaponItems) select 0];
 	_data set [count _data, (call compile _items) select 0];
-	_data set [count _data, (call compile _assignedItems) select 0];
-	_data set [count _data, (call compile _magsWithAmmo) select 0];
-	_data set [count _data, (call compile _inventoryItems) select 0];
 	
 	_data
 };
@@ -302,7 +285,6 @@ sqlite_deletePlayer = {
 
 sqlite_exists = {
 	private ["_player", "_query"];
-	diag_log "Exists called";
 	_query = format ["SELECT Id FROM Player WHERE Id=''%1'' LIMIT 1", _this];
 	_player = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
 	
@@ -312,4 +294,60 @@ sqlite_exists = {
 	} else {
 		false
 	};
+};
+
+sqlite_saveBaseObjects = {
+	private ["_query", "_res"];
+	_query = _this;
+	_query = [_query, ([_query] call KRON_StrLen) - 1] call KRON_StrLeft;
+	_query = "START TRANSACTION;DELETE FROM Objects;" + _query + ";COMMIT;";
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+};
+
+sqlite_countObjects = {
+	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'SELECT Count(*) FROM Objects']";
+	_res = parseNumber ((((call compile _res) select 0) select 0) select 0);
+	_res
+};
+
+sqlite_loadBaseObjects = {
+	private "_res";
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'SELECT * FROM Objects WHERE Id > %1 ORDER BY Id ASC LIMIT %2']", _this select 0, _this select 1];
+	_res = ((call compile _res) select 0);
+	_res
+};
+
+KRON_StrLeft = {
+	private["_in","_len","_arr","_out"];
+	_in=_this select 0;
+	_len=(_this select 1)-1;
+	_arr=[_in] call KRON_StrToArray;
+	_out="";
+	if (_len>=(count _arr)) then {
+		_out=_in;
+	} else {
+		for "_i" from 0 to _len do {
+			_out=_out + (_arr select _i);
+		};
+	};
+	_out
+};
+
+KRON_StrLen = {
+	private["_in","_arr","_len"];
+	_in=_this select 0;
+	_arr=[_in] call KRON_StrToArray;
+	_len=count (_arr);
+	_len
+};
+
+KRON_StrToArray = {
+	private["_in","_i","_arr","_out"];
+	_in=_this select 0;
+	_arr = toArray(_in);
+	_out=[];
+	for "_i" from 0 to (count _arr)-1 do {
+		_out=_out+[toString([_arr select _i])];
+	};
+	_out
 };

@@ -5,6 +5,8 @@
 
 if (!isServer) exitWith {};
 
+diag_log "oSave started";
+
 // Copy objectList array
 _saveableObjects = +objectList + +civilianVehicles + +lightMilitaryVehicles + +mediumMilitaryVehicles + +staticHeliList;
 
@@ -18,10 +20,15 @@ _saveableObjects = +objectList + +civilianVehicles + +lightMilitaryVehicles + +m
 	};
 } forEach (call genObjectsArray);
 
-while {true} do
-{
+while {true} do {
+	diag_log "sleeping!";
 	sleep 60;
-	_PersistentDB_ObjCount = 0;
+	
+	waitUntil {!isLoadingObjects};
+	
+	_PersistentDB_ObjCount = 1;
+	
+	_saveQuery = "INSERT INTO Objects (Id, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle) VALUES ";
 	
 	{
 		_object = _x;
@@ -33,7 +40,7 @@ while {true} do
 			// addition to check if the classname matches the building parts
 			if ({_classname == _x} count _saveableObjects > 0) then
 			{
-				_pos = getPosASL _object;
+				_pos = getPosATL _object;
 				_dir = [vectorDir _object] + [vectorUp _object];
 
 				_supplyleft = 0;
@@ -54,31 +61,24 @@ while {true} do
 				_weapons = getWeaponCargo _object;
 				_magazines = getMagazineCargo _object;
 				_items = getItemCargo _object;
-				
-				_objSaveName = format["obj%1", _PersistentDB_ObjCount];
-
-				["Objects" call PDB_databaseNameCompiler, _objSaveName, "classname", _classname] call iniDB_write;
-				["Objects" call PDB_databaseNameCompiler, _objSaveName, "pos", _pos] call iniDB_write;
-				["Objects" call PDB_databaseNameCompiler, _objSaveName, "dir", _dir] call iniDB_write;
-				["Objects" call PDB_databaseNameCompiler, _objSaveName, "supplyleft", _supplyleft] call iniDB_write;
-				["Objects" call PDB_databaseNameCompiler, _objSaveName, "weapons", _weapons] call iniDB_write;
-				["Objects" call PDB_databaseNameCompiler, _objSaveName, "magazines", _magazines] call iniDB_write;
-				["Objects" call PDB_databaseNameCompiler, _objSaveName, "items", _items] call iniDB_write;
+				_isVehicle = 0;
 				
 				if (_object isKindOf "Land" || _object isKindOf "Air" || _object isKindOf "Ship" ) then
 				{
-					["Objects" call PDB_databaseNameCompiler, _objSaveName, "isVehicle", 1] call iniDB_write;
-				} else {
-					["Objects" call PDB_databaseNameCompiler, _objSaveName, "isVehicle", 0] call iniDB_write;
+					_isVehicle = 1;
 				};
-
+				
+				_saveQuery = _saveQuery + format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle];
+				
 				_PersistentDB_ObjCount = _PersistentDB_ObjCount + 1;
 			};
 		};
-	} forEach allMissionObjects "All";
+	}forEach (allMissionObjects "All");
 	
-	["Objects" call PDB_databaseNameCompiler, "Count", "Count", _PersistentDB_ObjCount] call iniDB_write;
-	
-	diag_log format["A3W - %1 parts have been saved with iniDB", _PersistentDB_ObjCount];
+	if (_PersistentDB_ObjCount > 1 ) then {
+		_saveQuery call sqlite_saveBaseObjects;
+		
+		diag_log format["A3W - %1 parts have been saved with DB", _PersistentDB_ObjCount];
+	};
 	sleep 60;
 };

@@ -7,7 +7,7 @@ _UID = getPlayerUID player;
 
 diag_log text format ["%1: PerfLog1", diag_tickTime];
 
-[_UID, _UID, "dataValues", "STRING"] call sendToServer;
+[_UID, _UID, "dataValues", "STRING", player] call sendToServer;
 
 waitUntil {!isNil "dataLoaded"};
 
