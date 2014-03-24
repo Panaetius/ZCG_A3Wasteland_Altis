@@ -1,17 +1,5 @@
 private ["_saveToDB","_array","_varName","_varValue","_saveArray","_loadFromDB","_type","_loadArray", "_savePlayerToSqlite","_res"];
 
-_saveToDB =
-"
-	_array = _this;
-	_uid = _array select 1;
-	_varName = _array select 2;
-	_varValue = _array select 3;
-	_saveArray = [_uid, _uid, _varName, _varValue];
-	_saveArray call iniDB_write;
-";
-
-saveToDB = compile _saveToDB;
-
 _savePlayerToSqlite =
 "
 	_this call sqlite_savePlayer;

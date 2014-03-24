@@ -35,6 +35,6 @@ if (not(isNull _obj)) then {
 	MUTEX_LOCK_OR_FAIL;
 	deleteVehicle _obj;
 	[_id,1] call mf_inventory_add;
-	[false] execVM "persistence\players\c_savePlayerToServer.sqf";
+	//[false] execVM "persistence\players\c_savePlayerToServer.sqf";
 	MUTEX_UNLOCK;
 };

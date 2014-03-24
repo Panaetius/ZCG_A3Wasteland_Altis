@@ -12,5 +12,5 @@ while {true} do {
     publicVariable "clientRadarMarkers";
 	serverFPS = str(diag_fpsmin);
 	publicVariable "serverFPS";
-    sleep 1; 
+    sleep 5; 
 };

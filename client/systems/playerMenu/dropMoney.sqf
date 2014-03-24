@@ -26,7 +26,7 @@ _cash setVariable ["owner", "world", true];
 player setVariable ["cmoney", (player getVariable "cmoney") - _money, true];
 
 axeDiagLog = format ["%1 dropped %2 money", profileName, _money];
-publicVariable "axeDiagLog";
+publicVariableServer "axeDiagLog";
 
 [false] execVM "persistence\players\c_savePlayerToServer.sqf";
 mutexScriptInProgress = false;

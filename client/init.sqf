@@ -98,8 +98,8 @@ diag_log _playerWasMoved;
 if(!isNil "client_initEH") then {player removeEventHandler ["Respawn", client_initEH];};
 player addEventHandler ["Respawn", { _this spawn onRespawn }];
 player addEventHandler ["Killed", { _this spawn onKilled }];
-player addEventHandler ["Put", {[false] execVM "persistence\players\c_savePlayerToServer.sqf"}];
-player addEventHandler ["Take", {[false] execVM "persistence\players\c_savePlayerToServer.sqf"}];
+//player addEventHandler ["Put", {[false] execVM "persistence\players\c_savePlayerToServer.sqf"}];
+//player addEventHandler ["Take", {[false] execVM "persistence\players\c_savePlayerToServer.sqf"}];
 
 //Setup player menu scroll action.
 [] execVM "client\clientEvents\onMouseWheel.sqf";

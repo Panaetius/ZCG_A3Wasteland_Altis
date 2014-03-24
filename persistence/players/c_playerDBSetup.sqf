@@ -22,7 +22,7 @@ applyPlayerDBValues =
 		dataLoaded = 1;
 	};
 	
-	diag_log text format ["%1: PerfLog11", diag_tickTime];
+	diag_log text format ["%1: PerfLog11", serverTime];
 	
 	// if(_varName == 'DonationMoney') then {player setVariable["donationMoney",_varValue,true]; donationMoneyLoaded = 1;};
 	
@@ -36,7 +36,7 @@ applyPlayerDBValues =
 	player addHeadgear (_varValue select 9);
 	player addGoggles (_varValue select 8);
 	
-	diag_log text format ["%1: PerfLog12", diag_tickTime];
+	diag_log text format ["%1: PerfLog12", serverTime];
 	
 	_items = _varValue select 15;
 
@@ -62,7 +62,7 @@ applyPlayerDBValues =
 		};
 	} forEach _items;
 	
-	diag_log text format ["%1: PerfLog13", diag_tickTime];
+	diag_log text format ["%1: PerfLog13", serverTime];
 
 	{
 		if( (_x select 2 )== "Items") then {
@@ -84,7 +84,7 @@ applyPlayerDBValues =
 		};
 	} forEach _items;	
 	
-	diag_log text format ["%1: PerfLog14", diag_tickTime];
+	diag_log text format ["%1: PerfLog14", serverTime];
 
 	player addWeapon (_varValue select 12);
 	player addWeapon (_varValue select 14);
@@ -111,7 +111,7 @@ applyPlayerDBValues =
 		};
 	} forEach _items;
 	
-	diag_log text format ["%1: PerfLog15", diag_tickTime];
+	diag_log text format ["%1: PerfLog15", serverTime];
 	
 	{
 		if( (_x select 2 )== "HandgunWeaponItem") then {
@@ -123,7 +123,7 @@ applyPlayerDBValues =
 		};
 	} forEach _items;
 	
-	diag_log text format ["%1: PerfLog16", diag_tickTime];
+	diag_log text format ["%1: PerfLog16", serverTime];
 	
 	{
 		if( (_x select 2 )== "AssignedItem") then {
@@ -138,7 +138,7 @@ applyPlayerDBValues =
 		};
 	} forEach _items;
 	
-	diag_log text format ["%1: PerfLog17", diag_tickTime];
+	diag_log text format ["%1: PerfLog17", serverTime];
 
 	player setPos (call compile (_varValue select 10));
 	player setVariable["playerWasMoved",1,true];
@@ -147,7 +147,7 @@ applyPlayerDBValues =
 	player setDir (parseNumber (_varValue select 11));
 	player setVariable ["cmoney", parseNumber (_varValue select 2), true];	
 	
-	diag_log text format ["%1: PerfLog18", diag_tickTime];
+	diag_log text format ["%1: PerfLog18", serverTime];
 	
 	dataLoaded = 1;
 };

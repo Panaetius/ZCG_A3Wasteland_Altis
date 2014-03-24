@@ -29,7 +29,6 @@ for "_i" from 0 to (_objectscount - 1) step _stepSize do
 		
 		if (!isNil "_class" && !isNil "_pos" && !isNil "_dir" && !isNil "_supplyleft") then 
 		{
-			diag_log "Perf1";
 			_type = "NONE";
 			_placement = 10;
 			
@@ -38,8 +37,6 @@ for "_i" from 0 to (_objectscount - 1) step _stepSize do
 				_type = "CAN COLLIDE";
 				_placement = 0;
 			};
-			
-			diag_log "Perf2";
 			
 			_obj = createVehicle [_class, _pos, [], _placement, _type];
 			//_obj setPosASL _pos;
@@ -54,14 +51,10 @@ for "_i" from 0 to (_objectscount - 1) step _stepSize do
 			{
 				_obj setVariable["water",_supplyleft,true];
 			};
-			
-			diag_log "Perf3";
 
 			clearWeaponCargoGlobal _obj;
 			clearMagazineCargoGlobal _obj;
 			clearItemCargoGlobal _obj;
-			
-			diag_log "Perf4";
 
 			// disabled because i dont want to load contents just base parts
 			for [{_ii = 0}, {_ii < (count (_weapons select 0))}, {_ii = _ii + 1}] do {
@@ -82,6 +75,7 @@ for "_i" from 0 to (_objectscount - 1) step _stepSize do
 		};
 	} forEach _objects;
 };
+
 isLoadingObjects = false;
 
 diag_log format["GoT Wasteland - baseSaving loaded %1 parts from DB", _objectscount];

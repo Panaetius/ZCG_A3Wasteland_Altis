@@ -62,7 +62,7 @@ if((_player != _killer) && (vehicle _player != vehicle _killer) && (playerSide =
 
 if(!isNull(pvar_PlayerTeamKiller)) then {
 	publicVar_teamkillMessage = pvar_PlayerTeamKiller;
-	publicVariable "publicVar_teamkillMessage";
+	publicVariableServer "publicVar_teamkillMessage";
 };
 
 if (side _killer == INDEPENDENT && {side _player == INDEPENDENT} && {_killer != _player} && {vehicle _killer != vehicle _player}) then

@@ -38,4 +38,4 @@ if (_abs) then {
 };
 
 axeDiagLog = format ["%1 took %2 %3", profileName, _qty, _id];
-publicVariable "axeDiagLog";
+publicVariableServer "axeDiagLog";

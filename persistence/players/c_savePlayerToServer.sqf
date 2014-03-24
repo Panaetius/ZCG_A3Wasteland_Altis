@@ -15,20 +15,51 @@ if(playerSetupComplete) then
 {	
 	_uid = getPlayerUID player;
 	
-	magsWithAmmoCounts = [];
+	_items = [];
+	
 	{
 		_class = _x select 0;
 		_count = _x select 1;
-		_elem = [_class, _count];
-		magsWithAmmoCounts set [count magsWithAmmoCounts, _elem];
+		_elem = ['magWithAmmo', [_class, _count]];
+		_items set [count _items, _elem];
 	} forEach (magazinesAmmoFull player);
 	
-	inventoryItems = [];
+	
 	{
 		_keyName = _x select 0;
 		_value = _x select 1;
-		inventoryItems set [count inventoryItems, [_x select 0, _x select 1]];
+		_items set [count _items, ['inventoryItem',[_x select 0, _x select 1]]];
 	} forEach call mf_inventory_all;
+	
+	{
+		_class = _x;
+		_elem = ['PrimaryWeaponItem', _class];
+		_items set [count _items, _elem];
+	} forEach (primaryWeaponItems player);
+	
+	{
+		_class = _x;
+		_elem = ['SecondaryWeaponItem', _class];
+		_items set [count _items, _elem];
+	} forEach (secondaryWeaponItems player);
+		
+	{
+		_class = _x;
+		_elem = ['HandgunWeaponItem', _class];
+		_items set [count _items, _elem];
+	} forEach (handgunItems player);
+	
+	{
+		_class = _x;
+		_elem = ['Items', _class];
+		_items set [count _items, _elem];
+	} forEach (items player);
+	
+	{
+		_class = _x;
+		_elem = ['AssignedItem', _class];
+		_items set [count _items, _elem];
+	} forEach (assignedItems player);
 	
 	_playerData = [
 		damage player, 
@@ -43,15 +74,9 @@ if(playerSetupComplete) then
 		getPosATL vehicle player,
 		direction vehicle player,
 		primaryWeapon player,
-		primaryWeaponItems player,
 		SecondaryWeapon player,
-		secondaryWeaponItems player,
 		handgunWeapon player,
-		handgunItems player,
-		items player,
-		assignedItems player,
-		magsWithAmmoCounts,
-		inventoryItems
+		_items
 	];
 	
 	[_uid, _uid, "PlayerData", _playerData] call fn_SaveToServer;

@@ -51,7 +51,7 @@ if (_money > 0) then
 {
 	titleText [format ["You have picked up $%1", _money], "PLAIN DOWN", 0.5];
 	axeDiagLog = format ["%1 picked up %2 money", profileName, _money];
-	publicVariable "axeDiagLog";
+	publicVariableServer "axeDiagLog";
 }
 else
 {

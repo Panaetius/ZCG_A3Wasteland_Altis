@@ -56,19 +56,19 @@ lightMilitaryVehicles =
 	"I_Truck_02_covered_F",
 	"O_Truck_02_transport_F",
 	"I_Truck_02_transport_F",
-	"I_G_Offroad_01_armed_F"
-];
-
-//Medium Military Vehicle List - Random Spawns
-mediumMilitaryVehicles = 
-[
 	"I_Truck_02_Fuel_F",
 	"O_Truck_02_Fuel_F",
 	"I_Truck_02_medical_F",
 	"O_Truck_02_medical_F",
 	"O_Truck_03_fuel_F",
 	"O_Truck_03_ammo_F",
-	"O_Truck_03_medical_F",
+	"O_Truck_03_medical_F"
+];
+
+//Medium Military Vehicle List - Random Spawns
+mediumMilitaryVehicles = 
+[
+	"I_G_Offroad_01_armed_F",
 	"B_MRAP_01_F",
 	"O_MRAP_02_F",
 	"I_MRAP_03_F"

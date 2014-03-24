@@ -63,7 +63,6 @@ if (["A3W_baseSaving", 0] call getPublicVar > 0 || {["config_player_saving_enabl
 {
 	// Our custom iniDB methods which fixes some issues with the current iniDB addon release
 	call compile preProcessFile "persistence\fn_inidb_custom.sqf";
-	diag_log format["[INFO] A3W running with iniDB version %1", ([] call iniDB_version)];
 
 	// Have we got player persistence enabled?
 	if (["config_player_saving_enabled", 0] call getPublicVar > 0) then {
