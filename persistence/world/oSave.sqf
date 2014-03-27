@@ -51,7 +51,7 @@ while {true} do {
 					{
 						_supplyleft = _object getVariable ["food", 20];
 					};
-					case (_object isKindOf "Land_WaterBarrel_F"):
+					case (_object isKindOf "Land_BarrelWater_F"):
 					{ 
 						_supplyleft = _object getVariable ["water", 20];
 					};
