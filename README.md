@@ -6,7 +6,7 @@ ArmA 3 Wasteland is a harsh survival sandbox mission where 2 teams and independe
 
 The mission is not ready yet, so for now it's just a placeholder :)
 
-All development is done in the <a href="https://github.com/A3Wasteland/ArmA3_Wasteland.Altis/tree/Development_main">`Development_main`</a> branch.
+All development is done in the <a href="https://github.com/Panaetius/ZCG_A3Wasteland_Altis/tree/master">`Development_main`</a> branch.
 
 
 *Team Wasteland* collaborators:
@@ -17,3 +17,10 @@ All development is done in the <a href="https://github.com/A3Wasteland/ArmA3_Was
        KoS - His_Shadow
        KoS - Bewilderbeest
        404 - Del1te
+	   
+	   
+	   
+*ZCG* Collaborators:
+
+		Panaetius
+
