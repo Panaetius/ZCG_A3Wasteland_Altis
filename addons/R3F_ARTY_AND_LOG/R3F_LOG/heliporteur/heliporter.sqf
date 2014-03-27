@@ -61,7 +61,7 @@ else
 							_objet attachTo [_heliporteur, [
 								0,
 								0,
-								(boundingBox _heliporteur select 0 select 2) - (boundingBox _objet select 0 select 2) - (getPos _heliporteur select 2) + 0.5
+								(boundingBox _heliporteur select 0 select 2) - (boundingBox _objet select 0 select 2) - (getPos _heliporteur select 2) - 10
 							]];
 							
 							player globalChat format [STR_R3F_LOG_action_heliporter_fait, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];

@@ -28,7 +28,7 @@ while {true} do {
 	
 	_PersistentDB_ObjCount = 1;
 	
-	_saveQuery = "INSERT INTO Objects (Id, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle) VALUES ";
+	_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved) VALUES ";
 	
 	{
 		_object = _x;
@@ -40,7 +40,7 @@ while {true} do {
 			// addition to check if the classname matches the building parts
 			if ({_classname == _x} count _saveableObjects > 0) then
 			{
-				_pos = getPosATL _object;
+				_pos = getPosASL _object;
 				_dir = [vectorDir _object] + [vectorUp _object];
 
 				_supplyleft = 0;
@@ -68,17 +68,27 @@ while {true} do {
 					_isVehicle = 1;
 				};
 				
-				_saveQuery = _saveQuery + format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle];
+				_saveQuery = _saveQuery + format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 0),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle];
 				
 				_PersistentDB_ObjCount = _PersistentDB_ObjCount + 1;
+				
+				//Save in batches so we don't hit the max 4000 char arma2net string length limit
+				if ((_PersistentDB_ObjCount % 15) == 0) then { 
+					_saveQuery call sqlite_saveBaseObjects;
+					
+					_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved) VALUES ";
+				};
 			};
 		};
 	}forEach (allMissionObjects "All");
 	
-	if (_PersistentDB_ObjCount > 1 ) then {
+	if ((_PersistentDB_ObjCount > 1) && ((_PersistentDB_ObjCount % 15) != 0)) then {
 		_saveQuery call sqlite_saveBaseObjects;
 		
 		diag_log format["A3W - %1 parts have been saved with DB", _PersistentDB_ObjCount];
 	};
+	
+	call sqlite_commitBaseObject;
+	
 	sleep 60;
 };

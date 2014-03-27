@@ -27,5 +27,15 @@ switch (playerSide) do {
 		player setVariable["cmoney",(_money + _amount),true];
 		call mf_items_warchest_refresh;
     };
+	case resistance: {
+        if (pvar_warchest_funds_indep < _amount) exitWith {
+            [ERR_NOT_ENOUGH_FUNDS, 5] call mf_notify_client;
+        };
+        pvar_warchest_funds_indep = pvar_warchest_funds_indep - _amount;
+        publicVariable "pvar_warchest_funds_indep";
+		_money = player getVariable ["cmoney", 0];
+		player setVariable["cmoney",(_money + _amount),true];
+		call mf_items_warchest_refresh;
+    };
     default {hint "WarchestRefrest - This Shouldnt Happen"};
 };

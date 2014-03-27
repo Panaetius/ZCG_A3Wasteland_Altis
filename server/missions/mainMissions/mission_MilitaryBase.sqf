@@ -7,7 +7,7 @@
 if (!isServer) exitwith {};
 #include "mainMissionDefines.sqf";
 
-private ["_result","_missionMarkerName","_missionType","_startTime","_returnData","_randomPos","_randomIndex","_vehicleClass","_base","_veh","_picture","_vehicleName","_hint","_currTime","_playerPresent","_unitsAlive","_basetodelete", "_baseLocations"];
+private ["_result","_missionMarkerName","_missionType","_startTime","_returnData","_randomPos","_randomIndex","_vehicleClass","_base","_veh","_picture","_vehicleName","_hint","_currTime","_playerPresent","_unitsAlive","_basetodelete", "_baseLocations", "_marker", "_group1Alive", "_group2Alive", "_group3Alive"];
 
 //Mission Initialization.
 _result = 0;
@@ -27,9 +27,10 @@ _baseLocations = [[12812,16671.8],
 diag_log format["WASTELAND SERVER - Main Mission Started: %1",_missionType];
 
 //Get Mission Location
-_randomPos = createMarker ["military_base", (_baseLocations select (_baseLocations call BIS_fnc_randomIndex))];
-_randomPos2 = createMarker ["military_base2", [(_baseLocations select (_baseLocations call BIS_fnc_randomIndex)) select 0, ((_baseLocations select (_baseLocations call BIS_fnc_randomIndex)) select 1) + 10] ];
-_randomPos3 = createMarker ["military_base2", [(_baseLocations select (_baseLocations call BIS_fnc_randomIndex)) select 0, ((_baseLocations select (_baseLocations call BIS_fnc_randomIndex)) select 1) - 10] ];
+_pos = (_baseLocations select (_baseLocations call BIS_fnc_randomIndex));
+_randomPos = createMarker ["military_base", _pos];
+_randomPos2 = createMarker ["military_base2", [(_pos select 0) - 1, (_pos select 1) + 2] ];
+_randomPos3 = createMarker ["military_base2", [(_pos select 0) - 1, (_pos select 1) - 2] ];
 
 diag_log format["WASTELAND SERVER - Main Mission Waiting to run: %1",_missionType];
 //[mainMissionDelayTime] call createWaitCondition;
@@ -67,6 +68,12 @@ _CivGrpM3 setBehaviour "AWARE";
 _CivGrpM3 setFormation "STAG COLUMN";
 _CivGrpM3 setSpeedMode "NORMAL";
 
+_marker = createMarker [_missionMarkerName, position leader _CivGrpM1];
+_marker setMarkerType "mil_destroy";
+_marker setMarkerSize [1.25, 1.25];
+_marker setMarkerColor "ColorRed";
+_marker setMarkerText "Military Base";
+
 _box = createVehicle ["Box_East_Wps_F",[((getMarkerPos _randomPos) select 0), ((getMarkerPos _randomPos) select 1),0],[], 0, "NONE"];
 [_box,"mission_USLaunchers"] call fn_refillbox;
 _box allowDamage false;
@@ -82,10 +89,25 @@ _startTime = floor(time);
 waitUntil
 {
     sleep 1; 
+	
+	_group1Alive = ({alive _x} count units _CivGrpM1);
+	_group2Alive = ({alive _x} count units _CivGrpM2);
+	_group3Alive = ({alive _x} count units _CivGrpM3);
+	
+	if (_group1Alive > 0) then {
+		_marker setMarkerPos (position leader _CivGrpM1);
+	}else {
+		if (_group2Alive > 0) then {
+			_marker setMarkerPos (position leader _CivGrpM2);
+		} else {
+			_marker setMarkerPos (position leader _CivGrpM3);
+		};
+	};
+	
 	_playerPresent = false;
 	_currTime = floor(time);
     if(_currTime - _startTime >= mainMissionTimeout) then {_result = 1;};
-    _unitsAlive = ({alive _x} count units _CivGrpM1) + ({alive _x} count units _CivGrpM2) + ({alive _x} count units _CivGrpM3);
+    _unitsAlive =  _group1Alive + _group2Alive + _group3Alive;
     (_result == 1) OR (_unitsAlive < 1)
 };
 
@@ -128,3 +150,4 @@ if(_result == 1) then
 
 //Reset Mission Spot.
 [_missionMarkerName] call deleteClientMarker;
+deleteMarker _marker;

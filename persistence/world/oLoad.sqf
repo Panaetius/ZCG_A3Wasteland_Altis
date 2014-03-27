@@ -3,6 +3,7 @@
 // changes by: JoSchaap (GoT2DayZ.nl)
 diag_log "oLoad started";
 sleep 10;
+call sqlite_deleteUncommitedObjects;
 _objectscount = call sqlite_countObjects;
 diag_log text format ["Loading %1 objects", _objectscount];
 if (isNil "_objectscount" || _objectscount == 0) exitWith {isLoadingObjects = false;};
@@ -39,7 +40,7 @@ for "_i" from 0 to (_objectscount - 1) step _stepSize do
 			};
 			
 			_obj = createVehicle [_class, _pos, [], _placement, _type];
-			//_obj setPosASL _pos;
+			_obj setPosASL _pos;
 			_obj setVectorDirAndUp _dir;
 
 			if (_class == "Land_Sacks_goods_F") then 

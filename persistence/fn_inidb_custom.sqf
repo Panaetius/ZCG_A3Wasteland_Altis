@@ -100,12 +100,28 @@ sqlite_exists = {
 	};
 };
 
+sqlite_deleteBaseObjects = {
+		_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'DELETE FROM Objects;']";
+};
+
 sqlite_saveBaseObjects = {
 	private ["_query", "_res"];
 	_query = _this;
 	_query = [_query, ([_query] call KRON_StrLen) - 1] call KRON_StrLeft;
-	_query = "START TRANSACTION;DELETE FROM Objects;" + _query + ";COMMIT;";
+	_query = "START TRANSACTION;" + _query + ";COMMIT;";
 	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+};
+
+sqlite_commitBaseObject = {
+	private ["_res"];
+	
+	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'START TRANSACTION;DELETE FROM Objects WHERE IsSaved=1;COMMIT;START TRANSACTION;UPDATE Objects SET IsSaved=1 WHERE IsSaved=0;COMMIT;']";
+};
+
+sqlite_deleteUncommitedObjects = {
+	private ["_res"];
+	
+	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'DELETE FROM Objects WHERE IsSaved=0;']";
 };
 
 sqlite_countObjects = {
@@ -116,7 +132,7 @@ sqlite_countObjects = {
 
 sqlite_loadBaseObjects = {
 	private "_res";
-	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'SELECT * FROM Objects WHERE Id > %1 ORDER BY Id ASC LIMIT %2']", _this select 0, _this select 1];
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'SELECT * FROM Objects WHERE SequenceNumber > %1 ORDER BY Id ASC LIMIT %2']", _this select 0, _this select 1];
 	_res = ((call compile _res) select 0);
 	_res
 };

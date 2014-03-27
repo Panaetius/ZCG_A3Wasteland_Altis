@@ -36,7 +36,7 @@ if (_success) then
 		
 		player enableFatigue true;
 		player setVariable ["energy_drink_active", false];
-        ["The effects of the energy drink are wearing off", 5] call mf_notify_client;
+        ["The effects of the Vodka Redbull are wearing off", 5] call mf_notify_client;
     };
 };
 

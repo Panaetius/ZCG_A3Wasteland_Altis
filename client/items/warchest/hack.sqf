@@ -49,6 +49,11 @@ if (_success) then {
 			pvar_warchest_funds_west = pvar_warchest_funds_west - _amount;
 			publicVariable "pvar_warchest_funds_west";
 		};
+		case (resistance): {
+			_amount = round(pvar_warchest_funds_west/4);
+			pvar_warchest_funds_west = pvar_warchest_funds_west - _amount;
+			publicVariable "pvar_warchest_funds_west";
+		};
 	};
 	_money = (player getVariable ["cmoney", 0]) + _amount;
 	player setVariable ["cmoney", _money, true];
