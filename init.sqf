@@ -66,3 +66,4 @@ if (isServer) then
 //[] execVM "addons\scripts\DynamicWeatherEffects.sqf";
 [] execVM "addons\JumpMF\init.sqf";
 [] execVM "addons\zlt_fastrope\zlt_fastrope.sqf";
+call compileFinal preprocessFileLineNumbers "addons\far_revive\FAR_revive_init.sqf";

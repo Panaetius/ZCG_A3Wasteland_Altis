@@ -82,7 +82,7 @@ config_player_saving_enabled = compileFinal "1";
 config_player_donations_enabled = compileFinal "0";
 
 // How much do players spawn with?
-config_initial_spawn_money = compileFinal "500";
+config_initial_spawn_money = compileFinal "200";
 
 // Territory system definitions. See territory/README.md for more details.
 //

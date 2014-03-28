@@ -582,14 +582,7 @@ landArray = compileFinal str
 	["Zamak Ammo (AAF)", "I_Truck_02_ammo_F", 20000, "vehicle", 4000],
 	["Tempest Fuel", "O_Truck_03_fuel_F", 5000, "vehicle", 4000],
 	["Tempest Ammo", "O_Truck_03_ammo_F", 20000, "vehicle", 4000],
-	["Tempest Medical", "O_Truck_03_medical_F", 10000, "vehicle", 4000],
-
-	["UGV Stomper (NATO)", "B_UGV_01_F", 2500, "vehicle", 500],
-	["UGV Stomper (AAF)", "I_UGV_01_F", 2500, "vehicle", 500],
-	["UGV Saif (CSAT)", "O_UGV_01_F", 2500, "vehicle", 500],
-	["UGV Stomper RCWS (NATO)", "B_UGV_01_rcws_F", 10000, "vehicle", 2500],
-	["UGV Stomper RCWS (AAF)", "I_UGV_01_rcws_F", 10000, "vehicle", 2500],
-	["UGV Saif RCWS (CSAT)", "O_UGV_01_rcws_F", 10000, "vehicle", 2500]
+	["Tempest Medical", "O_Truck_03_medical_F", 10000, "vehicle", 4000]
 ]; 
 
 armoredArray = compileFinal str
@@ -641,13 +634,7 @@ helicoptersArray = compileFinal str
 planesArray = compileFinal str
 [
 	["A-143 Buzzard (AA)", "I_Plane_Fighter_03_AA_F", 20000, "vehicle", 10000],
-	["A-143 Buzzard (CAS)", "I_Plane_Fighter_03_CAS_F", 25000, "vehicle", 12500],
-	["MQ4A Greyhawk", "B_UAV_02_F", 10000, "vehicle", 5000],
-	["MQ4A Greyhawk CAS", "B_UAV_02_CAS_F", 10000, "vehicle", 5000],
-	["K40 Ababil-3 (CSAT)", "O_UAV_02_F", 10000, "vehicle", 5000],
-	["K40 Ababil-3 (AAF)", "I_UAV_02_F", 10000, "vehicle", 5000],
-	["K40 Ababil-3 CAS (CSAT)", "O_UAV_02_CAS_F", 10000, "vehicle", 5000],
-	["K40 Ababil-3 CAS (AAF)", "I_UAV_02_CAS_F", 10000, "vehicle", 5000]
+	["A-143 Buzzard (CAS)", "I_Plane_Fighter_03_CAS_F", 25000, "vehicle", 12500]
 ];
 
 boatsArray = compileFinal str
