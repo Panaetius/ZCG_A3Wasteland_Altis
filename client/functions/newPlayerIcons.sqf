@@ -52,7 +52,7 @@ FZF_IC_Icons =
 					_sx = _screen select 0;
 					_sy = _screen select 1;
 					
-					switch (if (alive _unit) then { side _unit } else { playerSide }) do
+					switch (if (alive _unit && _unit getVariable "FAR_isUnconscious" == 0) then { side _unit } else { playerSide }) do
 					{
 						case BLUFOR:		{ _pIcon = _bluIcon };
 						case OPFOR:			{ _pIcon = _opfIcon };

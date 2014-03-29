@@ -45,9 +45,9 @@ FAR_Player_Unconscious =
 	private["_unit", "_killer"];
 	_unit = _this select 0;
 	_killer = _this select 1;
-	
-	[false] execVM "persistence\players\c_savePlayerToServer.sqf";
-	
+		
+	(getPlayerUID _killed) call sqlite_deletePlayer;
+		
 	// Death message
 	if (FAR_EnableDeathMessages && !isNil "_killer" && isPlayer _killer && _killer != _unit) then
 	{
@@ -108,6 +108,8 @@ FAR_Player_Unconscious =
 			//Unit has been stabilized. Disregard bleedout timer and umute player
 			_unit setVariable ["ace_sys_wounds_uncon", false];
 			
+			_unit enableSimulation false;
+			
 			while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 } do
 			{
 				hintSilent format["You have been stabilized\n\n%1", call FAR_CheckFriendlies];
@@ -119,6 +121,66 @@ FAR_Player_Unconscious =
 		// Player bled out
 		if (FAR_BleedOut > 0 && {time > _bleedOut} && {_unit getVariable ["FAR_isStabilized",0] == 0}) then
 		{
+			//teamkill code
+			if((_unit != _killer) && (vehicle _unit != vehicle _killer) && (playerSide == side _killer) && (playerSide in [BLUFOR, OPFOR])) then {
+				pvar_unitTeamKiller = objNull;
+				if(_killer isKindOf "CAManBase") then {
+					pvar_unitTeamKiller = _killer;
+					
+					axeDiagLog = format ["%1 teamkilled %2", _killer, _unit];
+					publicVariable "axeDiagLog";
+				} else {
+					_veh = (_killer);
+					_trts = configFile >> "CfgVehicles" >> typeof _veh >> "turrets";
+					_paths = [[-1]];
+					if (count _trts > 0) then {
+						for "_i" from 0 to (count _trts - 1) do {
+							_trt = _trts select _i;
+							_trts2 = _trt >> "turrets";
+							_paths = _paths + [[_i]];
+							for "_j" from 0 to (count _trts2 - 1) do {
+								_trt2 = _trts2 select _j;
+								_paths = _paths + [[_i, _j]];
+							};
+						};
+					};
+					_ignore = ["SmokeLauncher", "FlareLauncher", "CMFlareLauncher", "CarHorn", "BikeHorn", "TruckHorn", "TruckHorn2", "SportCarHorn", "MiniCarHorn", "Laserdesignator_mounted"];
+					_suspects = [];
+					{
+						_weps = (_veh weaponsTurret _x) - _ignore;
+						if(count _weps > 0) then {
+							_unt = objNull;
+							if(_x select 0 == -1) then {_unt = driver _veh;}
+							else {_unt = _veh turretUnit _x;};
+							if(!isNull _unt) then {
+								_suspects = _suspects + [_unt];
+							};
+						};
+					} forEach _paths;
+
+					if(count _suspects == 1) then {
+						pvar_unitTeamKiller = _suspects select 0;
+						
+						axeDiagLog = format ["%1 teamkilled %2", _suspects select 0, _unit];
+						publicVariable "axeDiagLog";
+					};
+				};
+			};
+
+			if(!isNull(pvar_unitTeamKiller)) then {
+				publicVar_teamkillMessage = pvar_unitTeamKiller;
+				publicVariableServer "publicVar_teamkillMessage";
+			};
+
+			if (side _killer == INDEPENDENT && {side _unit == INDEPENDENT} && {_killer != _unit} && {vehicle _killer != vehicle _unit}) then
+			{
+				requestCompensateNegativeScore = _killer;
+				publicVariableServer "requestCompensateNegativeScore";
+			}; 
+			//teamkill code end
+			
+			_killer addScore 1;
+			
 			_unit setDamage 1;
 		}
 		else
@@ -306,8 +368,6 @@ FAR_public_EH =
 		{
 			systemChat format["%1 was injured by %2", name _killed, name _killer];
 		};
-		
-		(getPlayerUID _killed) call sqlite_deletePlayer;
 	};
 };
 
