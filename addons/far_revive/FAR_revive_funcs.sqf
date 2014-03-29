@@ -99,7 +99,7 @@ FAR_Player_Unconscious =
 		
 		while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 && _unit getVariable "FAR_isStabilized" == 0 && (FAR_BleedOut <= 0 || time < _bleedOut) } do
 		{
-			hintSilent format["Bleedout in %1 seconds\n\n%2", round (_bleedOut - time), call FAR_CheckFriendlies];
+			hintSilent format["Bleeding out in %1 seconds\n\nUse ScrollWheel to suicide\n\n%2", round (_bleedOut - time), call FAR_CheckFriendlies];
 			
 			sleep 0.5;
 		};
@@ -306,6 +306,8 @@ FAR_public_EH =
 		{
 			systemChat format["%1 was injured by %2", name _killed, name _killer];
 		};
+		
+		(getPlayerUID _killed) call sqlite_deletePlayer;
 	};
 };
 

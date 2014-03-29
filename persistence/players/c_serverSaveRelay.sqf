@@ -6,3 +6,7 @@ _save =
 ";
 
 fn_SaveToServer = compile _save;
+"confirmSave" addPublicVariableEventHandler 
+{
+	player globalChat "Player saved!";
+};

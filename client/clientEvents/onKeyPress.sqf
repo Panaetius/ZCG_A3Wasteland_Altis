@@ -73,6 +73,14 @@ switch _key do
         };  
         
     };
+	
+	//Escape
+    case 1:
+    {
+        if ((player getVariable ["FAR_isUnconscious", false]) == 1) then {
+            _handled = true;
+        };
+    };
 };
 
 _handled;

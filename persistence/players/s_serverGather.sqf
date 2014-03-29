@@ -2,7 +2,14 @@ private ["_saveToDB","_array","_varName","_varValue","_saveArray","_loadFromDB",
 
 _savePlayerToSqlite =
 "
-	_this call sqlite_savePlayer;
+	_this call sqlite_savePlayer;	
+	_clientId = owner (_this select 4);
+	_sendResponse = _this select 5;
+	
+	if (_sendResponse) then {
+		confirmSave = _this select 0;
+		_clientId publicVariableClient 'confirmSave';
+	};
 ";
 
 savePlayerToSqlite = compile _savePlayerToSqlite;

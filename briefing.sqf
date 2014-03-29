@@ -128,6 +128,8 @@ player createDiaryRecord ["infos",
 "
 <br/><font size='18'>A3Wasteland</font>
 <br/>
+<br/>* TS: ts.zcgserver.net  Password: ZCG
+<br/>
 <br/>* At the start of the game, spread out and find supplies before worrying about where to establish a meeting place or a base, supplies are important and very valuable.
 <br/>
 <br/>* When picking a base location, it is best advised to pick a place that is out of the way and not so obvious such as airports, cities, map-bound bases, etc. remember, players randomly spawn in and around towns and could even spawn inside your base should you set it up in a town.

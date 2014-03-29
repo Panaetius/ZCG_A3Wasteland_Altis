@@ -56,6 +56,9 @@ if((_player != _killer) && (vehicle _player != vehicle _killer) && (playerSide =
 
 		if(count _suspects == 1) then {
 			pvar_PlayerTeamKiller = _suspects select 0;
+			
+			axeDiagLog = format ["%1 teamkilled %2", _suspects select 0, _player];
+			publicVariable "axeDiagLog";
 		};
 	};
 };

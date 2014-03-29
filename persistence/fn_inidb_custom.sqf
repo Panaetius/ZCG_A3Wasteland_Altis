@@ -16,7 +16,6 @@ sqlite_savePlayer = {
 	private ["_array", "_uid", "_varValue", "_res", "_query"];
 	_array = _this;	
 	_uid = _array select 1;
-	diag_log text format ["%1, %2: PerfLog11", serverTime, _uid];
 	
 	_varValue = _array select 3;
 	
@@ -52,7 +51,6 @@ sqlite_savePlayer = {
 	_query = _query + ";COMMIT;";
 	
 	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
-	diag_log text format ["%1, %2: PerfLog12", serverTime, _uid];
 };
 
 sqlite_readPlayer = {
@@ -81,8 +79,7 @@ sqlite_readPlayer = {
 sqlite_deletePlayer = {
 	private "_res";
 	diag_log "delete called";
-	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'Delete FROM Player WHERE Id=''%1''']", _this];
-	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'Delete FROM Item WHERE PlayerId=''%1''']", _this];
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'Delete FROM Player WHERE Id=''%1'';Delete FROM Item WHERE PlayerId=''%1'';']", _this];
 	
 	true
 };
