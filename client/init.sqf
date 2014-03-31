@@ -155,3 +155,8 @@ if (secondaryWeapon player == "") then {
 } forEach playableUnits;
 
 [] execVM "addons\fpsFix\vehicleManager.sqf";
+
+while {True} do {
+	player setfatigue (getfatigue player - 0.02);
+	sleep 5;
+};
