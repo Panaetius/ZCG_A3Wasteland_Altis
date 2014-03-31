@@ -96,10 +96,15 @@ FAR_Player_Unconscious =
 	if (isPlayer _unit) then 
 	{
 		_bleedOut = time + FAR_BleedOut;
+					
+		[_unit, _killer] call FAR_checkTeamKill;
 		
 		while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 && _unit getVariable "FAR_isStabilized" == 0 && (FAR_BleedOut <= 0 || time < _bleedOut) } do
 		{
 			hintSilent format["Bleeding out in %1 seconds\n\nUse ScrollWheel to suicide\n\n%2", round (_bleedOut - time), call FAR_CheckFriendlies];
+			
+			_unit switchMove "AinjPpneMstpSnonWrflDnon";
+			_unit enableSimulation false;
 			
 			sleep 0.5;
 		};
@@ -108,11 +113,14 @@ FAR_Player_Unconscious =
 			//Unit has been stabilized. Disregard bleedout timer and umute player
 			_unit setVariable ["ace_sys_wounds_uncon", false];
 			
-			_unit enableSimulation false;
+			
 			
 			while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 } do
 			{
 				hintSilent format["You have been stabilized\n\n%1", call FAR_CheckFriendlies];
+				
+				_unit switchMove "AinjPpneMstpSnonWrflDnon";
+				_unit enableSimulation false;
 				
 				sleep 0.5;
 			};
@@ -121,64 +129,6 @@ FAR_Player_Unconscious =
 		// Player bled out
 		if (FAR_BleedOut > 0 && {time > _bleedOut} && {_unit getVariable ["FAR_isStabilized",0] == 0}) then
 		{
-			//teamkill code
-			if((_unit != _killer) && (vehicle _unit != vehicle _killer) && (playerSide == side _killer) && (playerSide in [BLUFOR, OPFOR])) then {
-				pvar_unitTeamKiller = objNull;
-				if(_killer isKindOf "CAManBase") then {
-					pvar_unitTeamKiller = _killer;
-					
-					axeDiagLog = format ["%1 teamkilled %2", _killer, _unit];
-					publicVariable "axeDiagLog";
-				} else {
-					_veh = (_killer);
-					_trts = configFile >> "CfgVehicles" >> typeof _veh >> "turrets";
-					_paths = [[-1]];
-					if (count _trts > 0) then {
-						for "_i" from 0 to (count _trts - 1) do {
-							_trt = _trts select _i;
-							_trts2 = _trt >> "turrets";
-							_paths = _paths + [[_i]];
-							for "_j" from 0 to (count _trts2 - 1) do {
-								_trt2 = _trts2 select _j;
-								_paths = _paths + [[_i, _j]];
-							};
-						};
-					};
-					_ignore = ["SmokeLauncher", "FlareLauncher", "CMFlareLauncher", "CarHorn", "BikeHorn", "TruckHorn", "TruckHorn2", "SportCarHorn", "MiniCarHorn", "Laserdesignator_mounted"];
-					_suspects = [];
-					{
-						_weps = (_veh weaponsTurret _x) - _ignore;
-						if(count _weps > 0) then {
-							_unt = objNull;
-							if(_x select 0 == -1) then {_unt = driver _veh;}
-							else {_unt = _veh turretUnit _x;};
-							if(!isNull _unt) then {
-								_suspects = _suspects + [_unt];
-							};
-						};
-					} forEach _paths;
-
-					if(count _suspects == 1) then {
-						pvar_unitTeamKiller = _suspects select 0;
-						
-						axeDiagLog = format ["%1 teamkilled %2", _suspects select 0, _unit];
-						publicVariable "axeDiagLog";
-					};
-				};
-			};
-
-			if(!isNull(pvar_unitTeamKiller)) then {
-				publicVar_teamkillMessage = pvar_unitTeamKiller;
-				publicVariableServer "publicVar_teamkillMessage";
-			};
-
-			if (side _killer == INDEPENDENT && {side _unit == INDEPENDENT} && {_killer != _unit} && {vehicle _killer != vehicle _unit}) then
-			{
-				requestCompensateNegativeScore = _killer;
-				publicVariableServer "requestCompensateNegativeScore";
-			}; 
-			//teamkill code end
-			
 			_killer addScore 1;
 			
 			_unit setDamage 1;
@@ -571,5 +521,67 @@ FAR_CheckFriendlies =
 	_hintMsg
 };
 
+FAR_checkTeamKill = {
+	private ["_unit", "_killer"];
+	
+	_unit = this select 0;
+	_killer = this select 1;
+	
+	//teamkill code
+	if((_unit != _killer) && (vehicle _unit != vehicle _killer) && (playerSide == side _killer) && (playerSide in [BLUFOR, OPFOR])) then {
+		pvar_unitTeamKiller = objNull;
+		if(_killer isKindOf "CAManBase") then {
+			pvar_unitTeamKiller = _killer;
+			
+			axeDiagLog = format ["%1 teamkilled %2", _killer, _unit];
+			publicVariable "axeDiagLog";
+		} else {
+			_veh = (_killer);
+			_trts = configFile >> "CfgVehicles" >> typeof _veh >> "turrets";
+			_paths = [[-1]];
+			if (count _trts > 0) then {
+				for "_i" from 0 to (count _trts - 1) do {
+					_trt = _trts select _i;
+					_trts2 = _trt >> "turrets";
+					_paths = _paths + [[_i]];
+					for "_j" from 0 to (count _trts2 - 1) do {
+						_trt2 = _trts2 select _j;
+						_paths = _paths + [[_i, _j]];
+					};
+				};
+			};
+			_ignore = ["SmokeLauncher", "FlareLauncher", "CMFlareLauncher", "CarHorn", "BikeHorn", "TruckHorn", "TruckHorn2", "SportCarHorn", "MiniCarHorn", "Laserdesignator_mounted"];
+			_suspects = [];
+			{
+				_weps = (_veh weaponsTurret _x) - _ignore;
+				if(count _weps > 0) then {
+					_unt = objNull;
+					if(_x select 0 == -1) then {_unt = driver _veh;}
+					else {_unt = _veh turretUnit _x;};
+					if(!isNull _unt) then {
+						_suspects = _suspects + [_unt];
+					};
+				};
+			} forEach _paths;
 
+			if(count _suspects == 1) then {
+				pvar_unitTeamKiller = _suspects select 0;
+				
+				axeDiagLog = format ["%1 teamkilled %2", _suspects select 0, _unit];
+				publicVariable "axeDiagLog";
+			};
+		};
+	};
 
+	if(!isNull(pvar_unitTeamKiller)) then {
+		publicVar_teamkillMessage = pvar_unitTeamKiller;
+		publicVariableServer "publicVar_teamkillMessage";
+	};
+
+	if (side _killer == INDEPENDENT && {side _unit == INDEPENDENT} && {_killer != _unit} && {vehicle _killer != vehicle _unit}) then
+	{
+		requestCompensateNegativeScore = _killer;
+		publicVariableServer "requestCompensateNegativeScore";
+	}; 
+	//teamkill code end
+};

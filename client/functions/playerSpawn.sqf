@@ -14,6 +14,10 @@ beaconSearch = 0;
 doKickTeamKiller = false;
 doKickTeamSwitcher = false;
 
+//Send player to debug zone to stop fake spawn locations.
+player setPosATL [7837.37,7627.14,0.00230217];
+player setDir 333.429;
+
 if (!isNil "pvar_teamKillList") then
 {
 	//Check Teamkiller
@@ -57,11 +61,6 @@ if(doKickTeamSwitcher) exitWith {
 	titleText [format[localize "STR_WL_Loading_Teamswitched", localize format ["STR_WL_Gen_Team%1_2", _side]], "black"]; titleFadeOut 9999;
 	[] spawn {sleep 20; endMission "LOSER";};
 };
-
-//Send player to debug zone to stop fake spawn locations.
-player setPosATL [7837.37,7627.14,0.00230217];
-player setDir 333.429;
-//             
 
 titleText ["Loading...", "BLACK OUT", 0.00001];
 
