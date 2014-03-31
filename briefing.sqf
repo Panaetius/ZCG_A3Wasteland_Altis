@@ -174,7 +174,7 @@ player createDiaryRecord ["infos",
 <br/>A. Simply go into global chat and get the attention of one of the admins or visit our forums, and make a report if the offense is serious.
 <br/>
 <br/>Q. How do I save Baseparts/Vehicles/My Player?
-<br/>A. To save base parts, simply move the part to the desired position and scroll to Lock to make the server save it. For vehicles, scroll to Save Vehicle and for players, lie down (Default with y/z) and scroll to Save Player
+<br/>A. To save base parts, simply move the part to the desired position and scroll to Lock to make the server save it. For vehicles, scroll to Save Vehicle and for players, lie down (Default with y/z) and scroll to Save Player (Wait until the player saving is confirmed before logging off).
 <br/>
 <br/>Q. Will bases/vehicles be wiped? How does the saving work?
 <br/>A. Bases and Vehicles are saved for 9 Server restart/3 days. If you don't want to lose your base/vehicle, you have to lock/save it again within those 3 days, otherwise it will be lost.
