@@ -30,7 +30,7 @@ diag_log format["WASTELAND SERVER - Main Mission Started: %1",_missionType];
 _pos = (_baseLocations select (_baseLocations call BIS_fnc_randomIndex));
 _randomPos = createMarker ["military_base", _pos];
 _randomPos2 = createMarker ["military_base2", [(_pos select 0) - 1, (_pos select 1) + 2] ];
-_randomPos3 = createMarker ["military_base2", [(_pos select 0) - 1, (_pos select 1) - 2] ];
+_randomPos3 = createMarker ["military_base3", [(_pos select 0) - 1, (_pos select 1) - 2] ];
 
 diag_log format["WASTELAND SERVER - Main Mission Waiting to run: %1",_missionType];
 //[mainMissionDelayTime] call createWaitCondition;
