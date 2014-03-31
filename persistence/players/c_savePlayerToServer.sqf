@@ -79,13 +79,12 @@ if(playerSetupComplete) then
 		_items
 	];
 	
-	player globalChat "Saving Player (this may take a couple of seconds)";
-	
 	[_uid, _uid, "PlayerData", _playerData, player, _showMessage] call fn_SaveToServer;
 	
-	// if (isNil "_showMessage" || _showMessage) then {
-		// player globalChat "Player saved!";
-	// };
+	if (isNil "_showMessage" || _showMessage) then {
+		player globalChat "Saving Player (this may take a couple of seconds)";
+		//player globalChat "Player saved!";
+	};
 };
 
 // Possible new methods

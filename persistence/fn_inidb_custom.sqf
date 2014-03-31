@@ -50,7 +50,14 @@ sqlite_savePlayer = {
 	
 	_query = _query + ";COMMIT;";
 	
-	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
 };
 
 sqlite_readPlayer = {
@@ -106,19 +113,33 @@ sqlite_saveBaseObjects = {
 	_query = _this;
 	_query = [_query, ([_query] call KRON_StrLen) - 1] call KRON_StrLeft;
 	_query = "START TRANSACTION;" + _query + ";COMMIT;";
-	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['players', '%1']", _query];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
 };
 
 sqlite_commitBaseObject = {
 	private ["_res"];
 	
-	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'START TRANSACTION;DELETE FROM Objects WHERE IsSaved=1;COMMIT;START TRANSACTION;UPDATE Objects SET IsSaved=1 WHERE IsSaved=0;COMMIT;']";
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'START TRANSACTION;DELETE FROM Objects WHERE IsSaved=1;UPDATE Objects SET IsSaved=1 WHERE IsSaved=0;COMMIT;']";
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
 };
 
 sqlite_deleteUncommitedObjects = {
 	private ["_res"];
 	
-	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'DELETE FROM Objects WHERE IsSaved=0;']";
+	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'DELETE FROM Objects WHERE IsSaved=0 OR GenerationCount > 9;']";
 };
 
 sqlite_countObjects = {
@@ -129,7 +150,15 @@ sqlite_countObjects = {
 
 sqlite_loadBaseObjects = {
 	private "_res";
-	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'SELECT * FROM Objects WHERE SequenceNumber > %1 ORDER BY Id ASC LIMIT %2']", _this select 0, _this select 1];
+	
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'SELECT * FROM Objects WHERE SequenceNumber > %1 ORDER BY Id ASC LIMIT %2']", _this select 0, _this select 1];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
 	_res = ((call compile _res) select 0);
 	_res
 };

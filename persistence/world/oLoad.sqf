@@ -12,9 +12,9 @@ isLoadingObjects = true;
 
 _vehicles = +civilianVehicles + +lightMilitaryVehicles + +mediumMilitaryVehicles + +staticHeliList;
 
-_stepSize = 10;
+_stepSize = 15;
 
-for "_i" from 0 to (_objectscount - 1) step _stepSize do
+for "_i" from 0 to (_objectscount) step _stepSize do
 {
 	_objects = [_i, _stepSize] call sqlite_loadBaseObjects;
 	
@@ -27,6 +27,7 @@ for "_i" from 0 to (_objectscount - 1) step _stepSize do
 		_magazines = call compile (_x select 6);
 		_items = call compile (_x select 7);
 		_isVehicle = parseNumber (_x select 8);
+		_generationCount = parseNumber (_x select 11);
 		
 		if (!isNil "_class" && !isNil "_pos" && !isNil "_dir" && !isNil "_supplyleft") then 
 		{
@@ -42,6 +43,7 @@ for "_i" from 0 to (_objectscount - 1) step _stepSize do
 			_obj = createVehicle [_class, _pos, [], _placement, _type];
 			_obj setPosASL _pos;
 			_obj setVectorDirAndUp _dir;
+			_obj setDamage 0;
 
 			if (_class == "Land_Sacks_goods_F") then 
 			{
@@ -71,6 +73,7 @@ for "_i" from 0 to (_objectscount - 1) step _stepSize do
 			};
 			
 			_obj setVariable ["objectLocked", true, true]; //force lock
+			_obj setVariable ["generationCount", _generationCount + 1, true];
 			
 			diag_log text format ["Loaded %1", _class];
 		};

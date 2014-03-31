@@ -8,7 +8,7 @@ if (!isServer) exitWith {};
 diag_log "oSave started";
 
 // Copy objectList array
-_saveableObjects = +objectList + +civilianVehicles + +lightMilitaryVehicles + +mediumMilitaryVehicles + +staticHeliList;
+_saveableObjects = +objectList + +R3F_LOG_CFG_objets_lockablevehicles;
 
 // Add general store objects
 {
@@ -28,7 +28,7 @@ while {true} do {
 	
 	_PersistentDB_ObjCount = 1;
 	
-	_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved) VALUES ";
+	_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount) VALUES ";
 	
 	{
 		_object = _x;
@@ -68,7 +68,7 @@ while {true} do {
 					_isVehicle = 1;
 				};
 				
-				_saveQuery = _saveQuery + format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 0),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle];
+				_saveQuery = _saveQuery + format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 0, %10),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle, _object getVariable ["generationCount", 0]];
 				
 				_PersistentDB_ObjCount = _PersistentDB_ObjCount + 1;
 				
@@ -76,7 +76,7 @@ while {true} do {
 				if ((_PersistentDB_ObjCount % 15) == 0) then { 
 					_saveQuery call sqlite_saveBaseObjects;
 					
-					_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved) VALUES ";
+					_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount) VALUES ";
 				};
 			};
 		};

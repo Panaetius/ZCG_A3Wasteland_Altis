@@ -47,6 +47,7 @@ switch (_lockState) do {
 			if (_iteration >= _totalDuration) exitWith { // Sleep a little extra to show that lock has completed.
 		        sleep 1;
                 _currObject setVariable ["objectLocked", true, true];
+				_object setVariable ["generationCount", 0, true];
                 2 cutText ["", "PLAIN DOWN", 1];
                 R3F_LOG_mutex_local_verrou = false;
 		    }; 
