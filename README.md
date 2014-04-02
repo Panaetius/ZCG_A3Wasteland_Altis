@@ -1,4 +1,4 @@
-*A3Wasteland.Altis* by Team Wasteland!
+*A3Wasteland.Altis* by ZCG!
 ===================
 
 ArmA 3 Wasteland is a harsh survival sandbox mission where 2 teams and independent players fight for survival.
