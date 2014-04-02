@@ -128,7 +128,7 @@ sqlite_commitBaseObject = {
 	
 	_res = nil;
 	while {isNil("_res")} do {
-		_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'START TRANSACTION;DELETE FROM Objects WHERE IsSaved=1;UPDATE Objects SET IsSaved=1 WHERE IsSaved=0;COMMIT;']";
+		_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'START TRANSACTION;DELETE FROM Objects WHERE IsSaved=1;COMMIT;START TRANSACTION;UPDATE Objects SET IsSaved=1 WHERE IsSaved=0;COMMIT;']";
 		if (_res == "") then {
                 _res = nil;
         };

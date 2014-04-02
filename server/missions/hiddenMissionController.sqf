@@ -16,7 +16,8 @@ _hiddenMissions =
 	["mission_HostileHelicopter",0.5], 
 	["mission_MiniConvoy", 1],
 	["mission_Truck", 1],
-	["mission_HostileSquad", 1]
+	["mission_HostileSquad", 1],
+	["mission_RoadBlock",1.5]
 ]; 
 
 // _notPlayedhiddenMissions = +_hiddenMissions;
