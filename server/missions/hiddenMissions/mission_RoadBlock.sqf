@@ -19,7 +19,8 @@ _startTime = floor(time);
 diag_log format["WASTELAND SERVER - Hidden Mission Started: %1",_missionType];
 
 //Get Mission Location
-_missionMarker = _missionMarkers select (_missionMarkers call BIS_fnc_randomIndex);
+_randomIndex = _missionMarkers call BIS_fnc_randomIndex;
+_missionMarker = _missionMarkers select _randomIndex;
 _randomPos = getMarkerPos _missionMarker;
 _markerDir = markerDir _missionMarker;
 
@@ -42,9 +43,9 @@ _hint = parseText format ["<t align='center' color='%3' shadow='2' size='1.75'>H
 
 _bargate = createVehicle ["Land_BarGate_F", _randomPos, [], 0, "NONE"];
 _bargate setDir _markerDir;
-_bunker1 = createVehicle ["Land_BagBunker_Small_F", _bargate modelToWorld [6.5,-2,-4.5], [], 0, "NONE"];
+_bunker1 = createVehicle ["Land_BagBunker_Small_F", _bargate modelToWorld [6.5,-2,-4.1], [], 0, "NONE"];
 _bunker1 setDir _markerDir;
-_bunker2 = createVehicle ["Land_BagBunker_Small_F", _bargate modelToWorld [-8,-2,-4.5], [], 0, "NONE"];
+_bunker2 = createVehicle ["Land_BagBunker_Small_F", _bargate modelToWorld [-8,-2,-4.1], [], 0, "NONE"];
 _bunker2 setDir _markerDir;
 
 _CivGrpM = createGroup civilian;
