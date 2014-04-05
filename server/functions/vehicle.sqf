@@ -76,7 +76,7 @@ _blownTire = false;
 
 _proxyExtra = _proxyExtra - _deserted;
 
-_sleepTime = 30;
+_sleepTime = 120;
 
 {
 	if (_x < _sleepTime) then {
