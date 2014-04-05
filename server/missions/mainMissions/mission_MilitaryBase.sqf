@@ -68,6 +68,11 @@ _CivGrpM3 setBehaviour "AWARE";
 _CivGrpM3 setFormation "STAG COLUMN";
 _CivGrpM3 setSpeedMode "NORMAL";
 
+_Objtype = staticWeaponsList select (random (count staticWeaponsList - 1));
+_obj = createVehicle [_Objtype,(getMarkerPos _randomPos),[], 50,"None"]; 
+
+_obj setpos [getpos _obj select 0,getpos _obj select 1,0];
+
 _marker = createMarker [_missionMarkerName, position leader _CivGrpM1];
 _marker setMarkerType "mil_destroy";
 _marker setMarkerSize [1.25, 1.25];
