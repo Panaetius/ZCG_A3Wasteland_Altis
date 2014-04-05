@@ -18,7 +18,7 @@ _deploy = build("deploy.sqf");
 
 mf_items_spawn_beacon_nearest = {
     _beacon = objNull;
-    _beacons = nearestObjects [player, [MF_ITEMS_SPAWN_BEACON_DEPLOYED_TYPE], 3];
+    _beacons = nearestObjects [player, [MF_ITEMS_SPAWN_BEACON_DEPLOYED_TYPE], 5];
     {
         if (_x getVariable ["spawn-beacon", false]) exitWith {
             _beacon = _x;

@@ -28,11 +28,11 @@ switch (playerSide) do {
 		call mf_items_warchest_refresh;
     };
 	case resistance: {
-        if (pvar_warchest_funds_indep < _amount) exitWith {
+		_warchestObj = [] call mf_items_warchest_nearest;
+        if (_warchestObj getVariable ["money",0] < _amount) exitWith {
             [ERR_NOT_ENOUGH_FUNDS, 5] call mf_notify_client;
         };
-        pvar_warchest_funds_indep = pvar_warchest_funds_indep - _amount;
-        publicVariable "pvar_warchest_funds_indep";
+        _warchestObj setVariable ["money", (_warchestObj getVariable ["money",0]) - _amount, true];
 		_money = player getVariable ["cmoney", 0];
 		player setVariable["cmoney",(_money + _amount),true];
 		call mf_items_warchest_refresh;

@@ -37,7 +37,7 @@ if (_success) then {
 	_beacon setPosATL _pos;
 	_beacon allowDamage false;
     _beacon setVariable ["spawn-beacon", true, true];
-	_beacon setVariable ["R3F_LOG_disabled", true];
+	_beacon setVariable ["R3F_LOG_disabled", true, true];
 	_beacon setVariable ['side', playerSide, true];
 	_beacon setVariable ['ownerName', name player, true];
 	_beacon setVariable ['ownerUID', _uid, true];

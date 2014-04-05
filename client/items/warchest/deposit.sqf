@@ -12,6 +12,7 @@ if (_money < _amount) exitWith {
     [ERR_NOT_ENOUGH_FUNDS, 5] call mf_notify_client;
 };
 player setVariable["cmoney",(_money - _amount),true];
+[false] execVM "persistence\players\c_savePlayerToServer.sqf";
 
 switch (playerSide) do {
     case east : {
@@ -22,6 +23,10 @@ switch (playerSide) do {
     	pvar_warchest_funds_west = pvar_warchest_funds_west + _amount;
     	publicVariable "pvar_warchest_funds_west";
     };
+	case resistance: {
+		_warchestObj = [] call mf_items_warchest_nearest;
+		_warchestObj setVariable ["money", (_warchestObj getVariable ["money",0]) + _amount, true];
+	};
     default {hint "WarchestRefrest - This Shouldnt Happen"};
 };
 

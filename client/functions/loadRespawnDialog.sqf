@@ -222,10 +222,23 @@ while {respawnDialogActive} do
             }forEach _dynamicControlsArray;
             _friendlyTowns = [];    
         } else { // Independant Spawn Beacons
-diag_log "==============starting spawn beacon check";
-            {
+			diag_log "==============starting spawn beacon check";
+			
+			{
                 if([_x] call mf_items_spawn_beacon_can_use) then {
-diag_log format["checking beacon %1: %2, %3", _forEachIndex, _x getVariable "side", _x getVariable "groupOnly"];
+					diag_log format["checking beacon %1: %2, %3", _forEachIndex, _x getVariable "side", _x getVariable "groupOnly"];
+					{
+						_button = _display displayCtrl (_x select 0);
+						_text = _display displayCtrl (_x select 1);
+						
+						_button ctrlSetText format[""];
+						_button ctrlShow false;   
+						_text ctrlSetText format[""];
+						_text ctrlShow false;  
+						
+					} foreach _dynamicControlsArray;
+					_btn_number = 0;
+					_btn_max = count _dynamicControlsArray;
                     _button = _display displayCtrl (_dynamicControlsArray select _btn_number select 0);
                     _enemyCount = 0;
                     _centrePos = getPos _x;
@@ -233,13 +246,13 @@ diag_log format["checking beacon %1: %2, %3", _forEachIndex, _x getVariable "sid
                         if(group player != group _x) then {
                             if((_x distance _centrePos) < 100) then {
                                 _enemyCount = _enemyCount + 1; 
-diag_log "Enemy too close";
+								diag_log "Enemy too close";
                             }; 
                         };  
                     } forEach playableUnits;
 
                     if({_enemyCount == 0} && {damage _x < 1}) then {
-diag_log "adding beacon";
+						diag_log "adding beacon";
                         _button ctrlSetText format["%1",_x getVariable ["ownerName", ""]]; 
                         _button ctrlShow true;
                         _btn_number = _btn_number + 1;

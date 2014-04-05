@@ -32,8 +32,15 @@ if (_success) then {
     _warchest = MF_ITEMS_WARCHEST_OBJECT_TYPE createVehicle getPosATL player;
     _warchest setPosATL (getPosATL player);
     _warchest setVariable ['side', playerSide, true];
-	_warchest setVariable ["R3F_LOG_disabled", true];
-    _warchest setVariable ["a3w_warchest", true];
+	_warchest setVariable ["R3F_LOG_disabled", true, true];
+    _warchest setVariable ["a3w_warchest", true, true];
+	
+	if(playerside == resistance) then {
+		_warchest setVariable ["money", 0, true];
+	};
+	
+	[false] execVM "persistence\players\c_savePlayerToServer.sqf";
+	
 	["Warchest Deployed!", 5] call mf_notify_client;
 };
 _success;

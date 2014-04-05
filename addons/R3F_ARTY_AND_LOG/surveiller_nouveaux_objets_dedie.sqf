@@ -48,7 +48,7 @@ while {true} do
 				_objet setVariable ["R3F_LOG_init_dedie_done", true];
 			}
 			
-			sleep (18/_count_liste_vehicules);
+			sleep (30/_count_liste_vehicules);
 		} forEach _liste_vehicules;
 	}
 	else

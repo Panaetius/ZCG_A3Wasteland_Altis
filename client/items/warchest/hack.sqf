@@ -8,7 +8,7 @@
 
 private ["_warchest", "_error", "_success"];
 _warchest = [] call mf_items_warchest_nearest;
-_error = [] call mf_items_warchest_can_pack;
+_error = [] call mf_items_warchest_can_hack;
 if (_error != "") exitWith {[_error, 5] call mf_notify_client};
 
 private "_checks";
@@ -50,9 +50,9 @@ if (_success) then {
 			publicVariable "pvar_warchest_funds_west";
 		};
 		case (resistance): {
-			_amount = round(pvar_warchest_funds_west/4);
-			pvar_warchest_funds_west = pvar_warchest_funds_west - _amount;
-			publicVariable "pvar_warchest_funds_west";
+			_warchestObj = [] call mf_items_warchest_nearest;
+			_amount = round((_warchestObj getVariable ["money",0])/4);
+			_warchestObj setVariable ["money", (_warchestObj getVariable ["money",0]) + _amount, true];
 		};
 	};
 	_money = (player getVariable ["cmoney", 0]) + _amount;
