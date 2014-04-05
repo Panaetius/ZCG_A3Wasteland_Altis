@@ -128,7 +128,7 @@ sqlite_commitBaseObject = {
 	
 	_res = nil;
 	while {isNil("_res")} do {
-		_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'START TRANSACTION;DELETE FROM Objects WHERE IsSaved=1;COMMIT;START TRANSACTION;UPDATE Objects SET IsSaved=1 WHERE IsSaved=0;COMMIT;START TRANSACTION;DELETE FROM objects WHERE Id IN (SELECT * FROM (SELECT DISTINCT o1.Id FROM objects o1 INNER JOIN objects o2 ON o2.Id < o1.Id AND o2.Position = o1.Position AND o2.Name = o1.Name AND o2.issaved = 1 AND o1.IsSaved = 1) as a);COMMIT;']";
+		_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'START TRANSACTION;DELETE FROM Objects WHERE IsSaved=1 AND IsVehicle=1;COMMIT;START TRANSACTION;UPDATE Objects SET IsSaved=1 WHERE IsSaved=0;COMMIT;START TRANSACTION;DELETE FROM objects WHERE Id IN (SELECT * FROM (SELECT DISTINCT o1.Id FROM objects o1 INNER JOIN objects o2 ON o2.Id < o1.Id AND o2.Position = o1.Position AND o2.Name = o1.Name AND o2.issaved = 1 AND o1.IsSaved = 1) as a);COMMIT;']";
 		if (_res == "") then {
                 _res = nil;
         };
@@ -153,7 +153,7 @@ sqlite_loadBaseObjects = {
 	
 	_res = nil;
 	while {isNil("_res")} do {
-		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'SELECT * FROM Objects WHERE SequenceNumber > %1 ORDER BY Id ASC LIMIT %2']", _this select 0, _this select 1];
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'SELECT * FROM Objects ORDER BY Id ASC LIMIT %1,%2']", _this select 0, _this select 1];
 		if (_res == "") then {
                 _res = nil;
         };
@@ -161,6 +161,34 @@ sqlite_loadBaseObjects = {
 	};
 	_res = ((call compile _res) select 0);
 	_res
+};
+
+sqlite_saveBasePart = {
+	private ["_query", "_res"];
+	_query = _this;
+	_query = format ["START TRANSACTION;DELETE FROM objects WHERE IsVehicle=0 AND Name=''%1'' AND Position=''%2'';INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount) VALUES (%3);COMMIT;", _this select 0, _this select 1, _this select 2];
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['players', '%1']", _query];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
+};
+
+sqlite_unsaveBasePart = {
+	private ["_query", "_res"];
+	_query = _this;
+	_query = format ["START TRANSACTION;DELETE FROM objects WHERE IsVehicle=0 AND Name=''%1'' AND Position=''%2'';COMMIT;", _this select 0, _this select 1];
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['players', '%1']", _query];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
 };
 
 KRON_StrLeft = {

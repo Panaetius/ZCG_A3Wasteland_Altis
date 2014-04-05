@@ -34,6 +34,20 @@ _loadFromDB =
 
 loadFromDB = compile _loadFromDB;
 
+_saveBasePart =
+"
+	_this call sqlite_saveBasePart;
+";
+
+saveBasePart = compile _saveBasePart;
+
+_unsaveBasePart =
+"
+	_this call sqlite_unsaveBasePart;
+";
+
+unsaveBasePart = compile _unsaveBasePart;
+
 _accountExists = 
 "	
 	_uid = _this Select 0;
@@ -50,5 +64,15 @@ accountExists = compile _accountExists;
 "accountToServerLoad" addPublicVariableEventHandler 
 {
 	(_this select 1) spawn loadFromDB;
+};
+
+"baseToServerSave" addPublicVariableEventHandler 
+{
+	(_this select 1) spawn saveBasePart;
+};
+
+"baseToServerUnsave" addPublicVariableEventHandler 
+{
+	(_this select 1) spawn unsaveBasePart;
 };
 
