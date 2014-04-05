@@ -46,7 +46,7 @@ FAR_Player_Unconscious =
 	_unit = _this select 0;
 	_killer = _this select 1;
 		
-	(getPlayerUID _killed) call sqlite_deletePlayer;
+	(getPlayerUID _unit) call sqlite_deletePlayer;
 		
 	// Death message
 	if (FAR_EnableDeathMessages && !isNil "_killer" && isPlayer _killer && _killer != _unit) then
@@ -524,8 +524,8 @@ FAR_CheckFriendlies =
 FAR_checkTeamKill = {
 	private ["_unit", "_killer"];
 	
-	_unit = this select 0;
-	_killer = this select 1;
+	_unit = _this select 0;
+	_killer = _this select 1;
 	
 	//teamkill code
 	if((_unit != _killer) && (vehicle _unit != vehicle _killer) && (playerSide == side _killer) && (playerSide in [BLUFOR, OPFOR])) then {
