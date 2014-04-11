@@ -53,7 +53,12 @@ if (_packetName == "BIS_fnc_MP_packet") then
 		"BIS_fnc_showNotification",
 		"BIS_fnc_taskSetState",
 		"BIS_fnc_tridentHandleDamage",
-		"BIS_fnc_tridentHandleDamage_server"
+		"BIS_fnc_tridentHandleDamage_server",
+		"T8_fnc_addActionLaptop",
+		"T8_fnc_abortActionLaptop",
+		"T8_fnc_removeActionLaptop",
+		"T8_fnc_ActionLaptop",
+		"zod_stakedown_minifunction"
 	];
 
 	if (_allowedFile || _allowedFunction) then

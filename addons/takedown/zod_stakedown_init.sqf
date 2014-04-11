@@ -6,7 +6,7 @@ if (isNil {_units}) then{
 _units = allUnits;
 };
 
-_killtime = 1.5;
+_killtime = 0.5;
 _killchance = 1;
 _mindamage = 0.5;
 _usesalute = true;
@@ -25,6 +25,13 @@ if (zod_stakedown_showtext) then {
 
 
 
+};
+
+"knifeKillMessage" addPublicVariableEventHandler {
+	diag_log "knife kill called";
+	_message = _this select 1;
+	
+	systemChat _message;
 };
 
 
