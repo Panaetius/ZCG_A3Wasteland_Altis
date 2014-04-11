@@ -13,6 +13,8 @@ if (_money < _amount) exitWith {
 };
 player setVariable["cmoney",(_money - _amount),true];
 [false] execVM "persistence\players\c_savePlayerToServer.sqf";
+axeDiagLog = format ["%1 deposited %2 money", player, _amount];
+publicVariableServer "axeDiagLog";
 
 switch (playerSide) do {
     case east : {

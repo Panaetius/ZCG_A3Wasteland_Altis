@@ -15,6 +15,8 @@ switch (playerSide) do {
         publicVariable "pvar_warchest_funds_east";
 		_money = player getVariable ["cmoney", 0];
 		player setVariable["cmoney",(_money + _amount),true];
+		axeDiagLog = format ["%1 withdrew %2 money", player, _amount];
+		publicVariableServer "axeDiagLog";
 		call mf_items_warchest_refresh;
     };
     case west : {
@@ -25,6 +27,8 @@ switch (playerSide) do {
         publicVariable "pvar_warchest_funds_west";
 		_money = player getVariable ["cmoney", 0];
 		player setVariable["cmoney",(_money + _amount),true];
+		axeDiagLog = format ["%1 withdrew %2 money", player, _amount];
+		publicVariableServer "axeDiagLog";
 		call mf_items_warchest_refresh;
     };
 	case resistance: {
@@ -35,6 +39,8 @@ switch (playerSide) do {
         _warchestObj setVariable ["money", (_warchestObj getVariable ["money",0]) - _amount, true];
 		_money = player getVariable ["cmoney", 0];
 		player setVariable["cmoney",(_money + _amount),true];
+		axeDiagLog = format ["%1 withdrew %2 money", player, _amount];
+		publicVariableServer "axeDiagLog";
 		call mf_items_warchest_refresh;
     };
     default {hint "WarchestRefrest - This Shouldnt Happen"};
