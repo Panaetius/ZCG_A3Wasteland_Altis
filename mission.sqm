@@ -2449,7 +2449,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=190;
+		items=229;
 		class Item0
 		{
 			position[]={3612.1487,12.11851,13020.892};
@@ -2697,7 +2697,7 @@ class Mission
 		};
 		class Item35
 		{
-			position[]={8679.1318,193.9523,18081.357};
+			position[]={8680.832,193.8165,18077.141};
 			name="Mission_2";
 			type="Empty";
 			colorName="ColorOrange";
@@ -3894,6 +3894,240 @@ class Mission
 			name="RoadBlock_11";
 			type="Empty";
 			angle=110;
+		};
+		class Item190
+		{
+			position[]={12835.922,86.180206,16742.08};
+			name="MilitaryBase1_1";
+			type="Empty";
+		};
+		class Item191
+		{
+			position[]={12891.648,83.839966,16736.68};
+			name="MilitaryBase1_2";
+			type="Empty";
+		};
+		class Item192
+		{
+			position[]={12802.537,87.719749,16658.121};
+			name="MilitaryBase1_3";
+			type="Empty";
+		};
+		class Item193
+		{
+			position[]={23464.914,90.822678,21154.879};
+			name="MilitaryBase2_1";
+			type="Empty";
+		};
+		class Item194
+		{
+			position[]={23528.744,91.998718,21119.033};
+			name="MilitaryBase2_2";
+			type="Empty";
+		};
+		class Item195
+		{
+			position[]={23587.662,93.533432,21101.359};
+			name="MilitaryBase2_3";
+			type="Empty";
+		};
+		class Item196
+		{
+			position[]={25340.266,81.174637,21806.434};
+			name="MilitaryBase3_1";
+			type="Empty";
+		};
+		class Item197
+		{
+			position[]={25312.264,82.607185,21834.822};
+			name="MilitaryBase3_2";
+			type="Empty";
+		};
+		class Item198
+		{
+			position[]={25248.922,86.081604,21821.303};
+			name="MilitaryBase3_3";
+			type="Empty";
+		};
+		class Item199
+		{
+			position[]={21002.408,16.85,19273.777};
+			name="MilitaryBase4_1";
+			type="Empty";
+		};
+		class Item200
+		{
+			position[]={20939.371,13.583008,19263.189};
+			name="MilitaryBase4_2";
+			type="Empty";
+		};
+		class Item201
+		{
+			position[]={20982.773,16.85,19181.936};
+			name="MilitaryBase4_3";
+			type="Empty";
+		};
+		class Item202
+		{
+			position[]={12298.882,123.94973,8874.3203};
+			name="MilitaryBase5_1";
+			type="Empty";
+		};
+		class Item203
+		{
+			position[]={12275.222,123.75702,8886.8662};
+			name="MilitaryBase5_2";
+			type="Empty";
+		};
+		class Item204
+		{
+			position[]={12314.058,124.06343,8898.5801};
+			name="MilitaryBase5_3";
+			type="Empty";
+		};
+		class Item205
+		{
+			position[]={8295.1055,74.42865,10108.11};
+			name="MilitaryBase6_1";
+			type="Empty";
+		};
+		class Item206
+		{
+			position[]={8307.5137,75.940002,10062.803};
+			name="MilitaryBase6_2";
+			type="Empty";
+		};
+		class Item207
+		{
+			position[]={8301.5928,76.169785,10082.917};
+			name="MilitaryBase6_3";
+			type="Empty";
+		};
+		class Item208
+		{
+			position[]={4585.2256,259.29266,15438.556};
+			name="MilitaryBase7_1";
+			type="Empty";
+		};
+		class Item209
+		{
+			position[]={4547.7051,260.2677,15448.711};
+			name="MilitaryBase7_2";
+			type="Empty";
+		};
+		class Item210
+		{
+			position[]={4524.4033,264.06854,15401.748};
+			name="MilitaryBase7_3";
+			type="Empty";
+		};
+		class Item211
+		{
+			position[]={16081.538,15.444239,17019.449};
+			name="MilitaryBase8_1";
+			type="Empty";
+		};
+		class Item212
+		{
+			position[]={16085.616,13.463235,16862.945};
+			name="MilitaryBase8_2";
+			type="Empty";
+		};
+		class Item213
+		{
+			position[]={15966.041,14.093886,16958.715};
+			name="MilitaryBase8_3";
+			type="Empty";
+		};
+		class Item214
+		{
+			position[]={12431.77,73.88353,15205.216};
+			name="MilitaryBase9_1";
+			type="Empty";
+		};
+		class Item215
+		{
+			position[]={12508.836,71.836502,15205.89};
+			name="MilitaryBase9_2";
+			type="Empty";
+		};
+		class Item216
+		{
+			position[]={12470.842,74.711807,15185.949};
+			name="MilitaryBase9_3";
+			type="Empty";
+		};
+		class Item217
+		{
+			position[]={23016.891,48.232605,7247.3511};
+			name="MilitaryBase10_1";
+			type="Empty";
+		};
+		class Item218
+		{
+			position[]={23119.381,51.103237,7325.0464};
+			name="MilitaryBase10_2";
+			type="Empty";
+		};
+		class Item219
+		{
+			position[]={23025.088,48.772682,7282.8555};
+			name="MilitaryBase10_3";
+			type="Empty";
+		};
+		class Item220
+		{
+			position[]={16809.236,4.6530957,12056.254};
+			name="MilitaryBase11_1";
+			type="Empty";
+		};
+		class Item221
+		{
+			position[]={16853.219,6.486465,12028.165};
+			name="MilitaryBase11_2";
+			type="Empty";
+		};
+		class Item222
+		{
+			position[]={16820.559,4.479712,12023.592};
+			name="MilitaryBase11_3";
+			type="Empty";
+		};
+		class Item223
+		{
+			position[]={17403.441,13.839899,13199.751};
+			name="MilitaryBase12_1";
+			type="Empty";
+		};
+		class Item224
+		{
+			position[]={17488.578,14.575371,13123.762};
+			name="MilitaryBase12_2";
+			type="Empty";
+		};
+		class Item225
+		{
+			position[]={17363.164,15.248991,13143.143};
+			name="MilitaryBase12_3";
+			type="Empty";
+		};
+		class Item226
+		{
+			position[]={14178.573,77.515312,21248.041};
+			name="MilitaryBase13_1";
+			type="Empty";
+		};
+		class Item227
+		{
+			position[]={14203.901,74.08979,21215.031};
+			name="MilitaryBase13_2";
+			type="Empty";
+		};
+		class Item228
+		{
+			position[]={14223.571,73.453423,21234.162};
+			name="MilitaryBase13_3";
+			type="Empty";
 		};
 	};
 };
