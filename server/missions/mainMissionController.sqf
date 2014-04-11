@@ -21,8 +21,8 @@ _MainMissions =
 	["mission_ArmedHeli", 1],
 	["mission_CivHeli", 1],
 	["mission_Outpost", 1],
-	["mission_MilitaryBase", 1.5],
-	["mission_Heli", 1]
+	["mission_Heli", 1],
+	["mission_MilitaryBase", 1.5]
 ];
 
 // _notPlayedMainMissions = +_MainMissions;

@@ -164,7 +164,14 @@ staticWeaponsList =
 	"B_Mortar_01_F",
 	"O_Mortar_01_F",
 	"I_Mortar_01_F",
-	"I_G_Mortar_01_F"
+	"I_G_Mortar_01_F",
+	"B_HMG_01_F",
+	"B_HMG_01_high_F",
+	"B_HMG_01_A_F",
+	"B_GMG_01_F",
+	"B_GMG_01_high_F",
+	"B_static_AA_F",
+	"B_static_AT_F"
 ];
 
 //Object List - Random Helis.

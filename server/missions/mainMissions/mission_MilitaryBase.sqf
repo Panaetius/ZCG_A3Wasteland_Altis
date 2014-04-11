@@ -14,26 +14,20 @@ _result = 0;
 _missionMarkerName = "MilitaryBase_Marker";
 _missionType = "Enemy Military Base";
 _startTime = floor(time);
-_baseLocations = [[12812,16671.8],
-	[23541.8,21117],
-	[25318.3,21837.7],
-	[20950.1,19265.7],
-	[12299.4,8875.46],
-	[8303.31,10087.1],
-	[4545.97,15429.3],
-	[16081,17018.7],
-	[12441.9,15204.2]];
+_missionIndex = floor (random 12) + 1;
 
 diag_log format["WASTELAND SERVER - Main Mission Started: %1",_missionType];
 
 //Get Mission Location
-_pos = (_baseLocations select (_baseLocations call BIS_fnc_randomIndex));
-_randomPos = createMarker ["military_base", _pos];
-_randomPos2 = createMarker ["military_base2", [(_pos select 0) - 1, (_pos select 1) + 2] ];
-_randomPos3 = createMarker ["military_base3", [(_pos select 0) - 1, (_pos select 1) - 2] ];
+
+_randomPos = format ["MilitaryBase%1_1", _missionIndex];
+_randomPos2 = format ["MilitaryBase%1_2", _missionIndex];
+_randomPos3 = format ["MilitaryBase%1_3", _missionIndex];
+
+diag_log text format ["%1,%2,%3,%4,%5,%6", _randomPos, getMarkerPos _randomPos,_randomPos2, getMarkerPos _randomPos2, _randomPos3, getMarkerPos _randomPos3];
 
 diag_log format["WASTELAND SERVER - Main Mission Waiting to run: %1",_missionType];
-//[mainMissionDelayTime] call createWaitCondition;
+[mainMissionDelayTime] call createWaitCondition;
 diag_log format["WASTELAND SERVER - Main Mission Resumed: %1",_missionType];
 
 [_missionMarkerName,(getMarkerPos _randomPos),_missionType] call createClientMarker;
@@ -69,8 +63,15 @@ _CivGrpM3 setFormation "STAG COLUMN";
 _CivGrpM3 setSpeedMode "NORMAL";
 
 _Objtype = staticWeaponsList select (random (count staticWeaponsList - 1));
-_obj = createVehicle [_Objtype,(getMarkerPos _randomPos),[], 50,"None"]; 
+_obj = createVehicle [_Objtype,(getMarkerPos _randomPos),[], 10,"None"]; 
+_obj setpos [getpos _obj select 0,getpos _obj select 1,0];
 
+_Objtype = staticWeaponsList select (random (count staticWeaponsList - 1));
+_obj = createVehicle [_Objtype,(getMarkerPos _randomPos2),[], 10,"None"]; 
+_obj setpos [getpos _obj select 0,getpos _obj select 1,0];
+
+_Objtype = staticWeaponsList select (random (count staticWeaponsList - 1));
+_obj = createVehicle [_Objtype,(getMarkerPos _randomPos3),[], 10,"None"]; 
 _obj setpos [getpos _obj select 0,getpos _obj select 1,0];
 
 _marker = createMarker [_missionMarkerName, position leader _CivGrpM1];
