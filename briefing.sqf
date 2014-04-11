@@ -25,6 +25,8 @@ player createDiaryRecord ["changelog",
 <br/> [Added] - Heli Fastroping
 <br/> [Added] - Player reviving
 <br/> [Added] - Perpetual base saving
+<br/> [Added] - Melee kills
+<br/> [Added] - Warchests for independent
 "
 ]];
 
@@ -86,7 +88,7 @@ player createDiaryRecord ["credits",
 <br/>	* Pulse
 <br/>	* Domuk
 <br/>
-<br/><font size='16'>Development of this version by:</font>
+<br/><font size='16'>Development of A3_Wasteland by:</font>
 <br/>	* JoSchaap (GoT/Tweakers.net)
 <br/>	* AgentRev (TeamPlayerGaming)
 <br/>	* MercyfulFate
@@ -95,6 +97,9 @@ player createDiaryRecord ["credits",
 <br/>	* Torndeco
 <br/>	* Del1te (404Games)
 <br/>	* Panaetius (ZCG)
+<br/>
+<br/><font size='16'>Development of ZCG version by:</font>
+<br/>	* Panaetius/Zenon (ZCG)
 <br/>
 <br/><font size='16'>Other contributors:</font>
 <br/>	* 82ndab-Bravo17 (GitHub)
@@ -144,6 +149,8 @@ player createDiaryRecord ["infos",
 <br/>* When you set up a base, never leave your supplies unguarded, one guard will suffice, but it is recommended you have at least 2, maybe 3 guards at base at all times.
 <br/>
 <br/>* There are very aggressive AI characters that spawn with most missions and will protect the mission objectives with deadly force, be aware of them.
+<br/>
+<br/>* You can knife kill an enemy player by pressing Shift+G when looking at him
 "
 ]];
 
