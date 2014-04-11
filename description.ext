@@ -40,6 +40,7 @@ overviewPicture = "Loading.jpg";
 #include "client\systems\playerMenu\dialog\respawn_dialog.hpp"
 #include "client\systems\playerMenu\dialog\teamkill_dialog.hpp"
 #include "addons\proving_ground\PG_config.hpp"
+#include "client\systems\hud\dialog\downloadData.hpp"
 
 class RscTitles
 {
