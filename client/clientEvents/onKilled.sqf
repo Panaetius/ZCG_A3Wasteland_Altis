@@ -82,6 +82,9 @@ _to_delete_quick = [];
 
 if (_player getVariable "cmoney" > 0) then
 {
+	axeDiagLog = format ["%1 died and dropped %2 money", _player, _player getVariable "cmoney"];
+	publicVariable "axeDiagLog";
+	
 	_m = "Land_Money_F" createVehicle (position _player);
 	_m setVariable ["cmoney", _player getVariable "cmoney", true];
 	_m setVariable ["owner", "world", true];
