@@ -36,7 +36,8 @@ _randomPos = getPosASL _bunker;
 _laptop = createVehicle ["Land_Laptop_unfolded_F", _randomPos, [], 0, "CAN COLLIDE"];
 _laptop setPosASL [_randomPos select 0, (_randomPos select 1) + 0.5, _randomPos select 2];
 
-[ _laptop, "T8_fnc_addActionLaptop", true, true] spawn BIS_fnc_MP;
+AddLaptopHandler = _laptop;
+publicVariable "AddLaptopHandler";
 
  _laptop setVariable [ "Done", false, true ];
 
@@ -52,14 +53,14 @@ diag_log format["WASTELAND SERVER - Money Mission Waiting to be Finished: %1",_m
 _startTime = floor(time);
 waitUntil
 {
-    sleep 1; 
+    sleep 5; 
 	_playerPresent = false;
 	_currTime = floor(time);
     if(_currTime - _startTime >= moneyMissionTimeout) then {_result = 1;};
     _unitsAlive = ({alive _x} count units _CivGrpM);
 	
-	[ _laptop, "T8_fnc_addActionLaptop", true, true] spawn BIS_fnc_MP;
-	diag_log (_laptop getVariable [ "Done", false ]);
+	AddLaptopHandler = _laptop;
+	publicVariable "AddLaptopHandler";
 	
     (_result == 1) OR (_laptop getVariable [ "Done", false ])
 };
@@ -76,6 +77,7 @@ if(_result == 1) then
     diag_log format["WASTELAND SERVER - Money Mission Failed: %1",_missionType];
 } else {
 	//Mission Complete.
+    {deleteVehicle _x }forEach units _CivGrpM;
     deleteGroup _CivGrpM;
 	deleteVehicle _laptop;
     _hint = parseText format ["<t align='center' color='%3' shadow='2' size='1.75'>Objective Complete</t><br/><t align='center' color='%3'>------------------------------</t><br/><t align='center' color='%4' size='1.25'>%1</t><br/><t align='center' color='%4'>The outpost has been captured, good work.</t>", _missionType, _vehicleName, successMissionColor, subTextColor];

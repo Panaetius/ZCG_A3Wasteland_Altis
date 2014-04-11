@@ -573,7 +573,7 @@ FAR_checkTeamKill = {
 		};
 	};
 
-	if(!isNull(pvar_unitTeamKiller)) then {
+	if(!isNil "pvar_unitTeamKiller" && {!isNull(pvar_unitTeamKiller)}) then {
 		publicVar_teamkillMessage = pvar_unitTeamKiller;
 		publicVariableServer "publicVar_teamkillMessage";
 	};

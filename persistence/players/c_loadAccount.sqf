@@ -5,13 +5,11 @@ player globalchat "Loading player account...";
 //Requests info from server in order to download stats
 _UID = getPlayerUID player;
 
-diag_log text format ["%1: PerfLog1", serverTime];
 
 [_UID, _UID, "dataValues", "STRING", player] call sendToServer;
 
 waitUntil {!isNil "dataLoaded"};
 
-diag_log text format ["%1: PerfLog2", serverTime];
 
 
 

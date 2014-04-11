@@ -76,7 +76,7 @@ switch _key do
 	
 	case 34:
 	{
-		if(_shift && ((cursorTarget distance player) < 3) && (alive cursorTarget) && (side cursorTarget != side player) && (cursorTarget isKindOf "Man")) then {
+		if(_shift && ((cursorTarget distance player) < 3) && (alive cursorTarget) && (side cursorTarget != side player || side player == resistance) && (cursorTarget isKindOf "Man")) then {
 			[player] execVM "addons\takedown\zod_stakedown.sqf";
 			_handled = true;
 		};

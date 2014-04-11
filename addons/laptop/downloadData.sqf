@@ -9,7 +9,7 @@
 =======================================================================================================================
 */
 
-T8_varFileSize = 131072;  								// Filesize ... smaller files will take shorter time to download!
+T8_varFileSize = 165072;  								// Filesize ... smaller files will take shorter time to download!
 
 T8_varTLine01 = "Download cancelled!";				// download aborted
 T8_varTLine02 = "Download already in progress by someone else!";			// download already in progress by someone else
@@ -26,6 +26,18 @@ downloadActionId = nil;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+if (isDedicated) exitWith {};
+
+"AddLaptopHandler" addPublicVariableEventHandler {
+	private [  "_cDT" ];
+	_laptop = _this select 1;
+	_cDT = _laptop getVariable [ "Done", false ];
+	if ( _cDT ) exitWith {};
+	if(isNil "downloadActionId") then {
+		downloadActionId = _laptop addAction [ T8_varTLine05, { call T8_fnc_ActionLaptop; }, [], 10, false, false ];
+	};
+};
+
 T8_fnc_abortActionLaptop =
 {
 	if ( T8_varDownSucce ) then 
@@ -41,23 +53,13 @@ T8_fnc_abortActionLaptop =
 	};
 };
 
-
-T8_fnc_addActionLaptop =
+"RemoveLaptopHandler" addPublicVariableEventHandler
 {
-	private [  "_cDT" ];
-		_cDT = _this getVariable [ "Done", false ];
-		if ( _cDT ) exitWith {};
-		if(isNil "downloadActionId") then {
-			downloadActionId = _this addAction [ T8_varTLine05, { call T8_fnc_ActionLaptop; }, [], 10, false, false ];
-		};
-};
-
-
-T8_fnc_removeActionLaptop =
-{
-	_laptop = _this select 0;
-	_id = _this select 1;
+	_data = _this select 1;
+	_laptop = _data select 0;
+	_id = _data select 1;
 	_laptop removeAction _id;
+	downloadActionId = nil;
 };
 
 
@@ -73,6 +75,8 @@ T8_fnc_ActionLaptop =
 	if ( _cIU ) exitWith { player sideChat T8_varTLine02; };
 	
 	player sideChat T8_varTLine03;
+	
+	T8_varDiagAbort = false;
 	
 	_laptop setVariable [ "InUse", true, true ];
 		
@@ -94,9 +98,9 @@ T8_fnc_ActionLaptop =
 		ctrlSetText [ 8003, format [ "%1 kb", T8_varFileSize ] ];		
 		ctrlSetText [ 8004, format [ "%1 kb", _newFile ] ];		
 		
-		while { !T8_varDiagAbort } do
+		while { !T8_varDiagAbort && alive player && (player getVariable ["FAR_isUnconscious", 0] == 0)} do
 		{
-			_dlRate = 200 + random 80;
+			_dlRate = 1000 + random 400;
 			_newFile = _newFile + _dlRate;
 
 			if ( _newFile > T8_varFileSize ) then 
@@ -110,22 +114,21 @@ T8_fnc_ActionLaptop =
 				
 				_laptop setVariable [ "Done", true, true ];
 				
-				player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + 2500, true];
+				player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + 5000, true];
 				
-				closeDialog 0;
-				
-				downloadActionId = nil;
-
-				[ [ _laptop, _id ], "T8_fnc_removeActionLaptop", true, true ] spawn BIS_fnc_MP;
+				RemoveLaptopHandler = [ _laptop, _id ];
+				publicVariable "RemoveLaptopHandler";
 			};
 			
 			ctrlSetText [ 8002, format [ "%1 kb/s", _dlRate ] ];		
 			ctrlSetText [ 8004, format [ "%1 kb", _newFile ] ];				
 			
-			sleep 0.2;
+			sleep 1;
 		};
 		
 		T8_varDiagAbort = false;
+		
+		closeDialog 0;
 
 		_laptop setVariable [ "InUse", false, false];	
 	};

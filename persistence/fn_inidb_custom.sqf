@@ -65,17 +65,11 @@ sqlite_readPlayer = {
 	_array = _this;
 	_uid = _array select 1;
 	
-	diag_log text format ["%1, %2: PerfLog11", serverTime, _uid];
-	
 	_query = format ["SELECT * FROM Player WHERE Id=''%1'' LIMIT 1", _uid];
 	_player = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
 	
-	diag_log text format ["%1, %2: PerfLog12", serverTime, _uid];
-	
 	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1''", _uid];
 	_items = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
-	
-	diag_log text format ["%1, %2: PerfLog13", serverTime, _uid];
 	
 	_data = ((call compile _player) select 0) select 0;
 	_data set [count _data, (call compile _items) select 0];

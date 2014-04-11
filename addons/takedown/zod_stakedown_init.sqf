@@ -17,11 +17,11 @@ zod_stakedown_script = {
   _unit = _this;
 
 
-if (zod_stakedown_showtext) then {  
-  _unit addAction [("<t color=""#F60707"">" + ("Silent takedown") + "</t>"), "scripts\zod_stakedown.sqf","", 6, true, true, "Salute", "(_target == _this)&&((cursorTarget distance _this)<3)&&(alive cursorTarget)&&(side cursorTarget != side _this)&&(cursorTarget isKindOf 'Man')"];
-} else{
-  _unit addAction [("<t color=""#F60707"">" + ("Silent takedown") + "</t>"), "scripts\zod_stakedown.sqf","", 6, false, true, "Salute", "(_target == _this)&&((cursorTarget distance _this)<3)&&(alive cursorTarget)&&(side cursorTarget != side _this)&&(cursorTarget isKindOf 'Man')"];
-}
+	if (zod_stakedown_showtext) then {  
+	  _unit addAction [("<t color=""#F60707"">" + ("Silent takedown") + "</t>"), "scripts\zod_stakedown.sqf","", 6, true, true, "Salute", "(_target == _this)&&((cursorTarget distance _this)<3)&&(alive cursorTarget)&&(side cursorTarget != side _this)&&(cursorTarget isKindOf 'Man')"];
+	} else{
+	  _unit addAction [("<t color=""#F60707"">" + ("Silent takedown") + "</t>"), "scripts\zod_stakedown.sqf","", 6, false, true, "Salute", "(_target == _this)&&((cursorTarget distance _this)<3)&&(alive cursorTarget)&&(side cursorTarget != side _this)&&(cursorTarget isKindOf 'Man')"];
+	};
 
 
 
