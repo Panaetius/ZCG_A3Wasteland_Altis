@@ -128,7 +128,7 @@ sqlite_commitBaseObject = {
 	
 	_res = nil;
 	while {isNil("_res")} do {
-		_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'START TRANSACTION;DELETE FROM Objects WHERE IsSaved=1 AND IsVehicle=1;COMMIT;START TRANSACTION;UPDATE Objects SET IsSaved=1 WHERE IsSaved=0;COMMIT;START TRANSACTION;DELETE FROM objects WHERE Id IN (SELECT * FROM (SELECT DISTINCT o1.Id FROM objects o1 INNER JOIN objects o2 ON o2.Id < o1.Id AND o2.Position = o1.Position AND o2.Name = o1.Name AND o2.issaved = 1 AND o1.IsSaved = 1) as a);COMMIT;']";
+		_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'START TRANSACTION;DELETE FROM Objects WHERE IsSaved=1;COMMIT;START TRANSACTION;UPDATE Objects SET IsSaved=1 WHERE IsSaved=0;COMMIT;START TRANSACTION;DELETE FROM objects WHERE Id IN (SELECT * FROM (SELECT DISTINCT o1.Id FROM objects o1 INNER JOIN objects o2 ON o2.Id < o1.Id AND o2.Position = o1.Position AND o2.Name = o1.Name AND o2.issaved = 1 AND o1.IsSaved = 1) as a);COMMIT;']";
 		if (_res == "") then {
                 _res = nil;
         };
@@ -139,7 +139,7 @@ sqlite_commitBaseObject = {
 sqlite_deleteUncommitedObjects = {
 	private ["_res"];
 	
-	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'DELETE FROM Objects WHERE IsSaved=0 OR GenerationCount > 9;']";
+	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'DELETE FROM objects WHERE IsSaved=0 OR GenerationCount > 9;']";
 };
 
 sqlite_countObjects = {
@@ -189,6 +189,26 @@ sqlite_unsaveBasePart = {
         };
         sleep 0.5;
 	};
+};
+
+sqlite_getVehicleSaveQuery = {
+	_classname = typeOf _this;
+			
+	_pos = getPosASL _this;
+	_dir = [vectorDir _this] + [vectorUp _this];
+
+	_supplyleft = 0;
+
+	// Save weapons & ammo
+	_weapons = getWeaponCargo _this;
+	_magazines = getMagazineCargo _this;
+	_items = getItemCargo _this;
+	
+	_isVehicle = 1;
+	
+	_saveQuery = format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 0, %10),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle, _this getVariable ["generationCount", 0]];
+	
+	_saveQuery
 };
 
 KRON_StrLeft = {

@@ -12,7 +12,7 @@ isLoadingObjects = true;
 
 _vehicles = +civilianVehicles + +lightMilitaryVehicles + +mediumMilitaryVehicles + +staticHeliList;
 
-_stepSize = 15;
+_stepSize = 20;
 
 for "_i" from 0 to (_objectscount) step _stepSize do
 {
@@ -72,40 +72,8 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 				_obj addItemCargoGlobal [(_items select 0) select _ii, (_items select 1) select _ii];
 			};
 			
-			_obj setVariable ["objectLocked", true, true]; //force lock
+			_obj setVariable ["objectLocked", true, true]; //force lock			
 			_obj setVariable ["generationCount", _generationCount + 1, true];
-			
-			if (_isVehicle == 0) then {
-				[_class, _pos] call sqlite_unsaveBasePart;
-				
-				_classname = typeOf _obj;
-				
-				_pos = getPosASL _obj;
-				_dir = [vectorDir _obj] + [vectorUp _obj];
-
-				_supplyleft = 0;
-
-				switch (true) do
-				{
-					case (_obj isKindOf "Land_Sacks_goods_F"):
-					{
-						_supplyleft = _obj getVariable ["food", 20];
-					};
-					case (_obj isKindOf "Land_BarrelWater_F"):
-					{ 
-						_supplyleft = _obj getVariable ["water", 20];
-					};
-				};
-
-				// Save weapons & ammo
-				_weapons = getWeaponCargo _obj;
-				_magazines = getMagazineCargo _obj;
-				_items = getItemCargo _obj;
-				_isVehicle = 0;
-				
-				_query = [_classname, _pos, format ["%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 1, %10", 0, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle, _object getVariable ["generationCount", 0]]];
-				_query call sqlite_saveBasePart;
-			};
 			
 			diag_log text format ["Loaded %1", _class];
 		};

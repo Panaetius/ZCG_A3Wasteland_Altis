@@ -48,35 +48,7 @@ switch (_lockState) do {
 		        sleep 1;
                 _currObject setVariable ["objectLocked", true, true];
 				_currObject setVariable ["generationCount", 0, true];
-				
-				_classname = typeOf _currObject;
-				
-				_pos = getPosASL _currObject;
-				_dir = [vectorDir _currObject] + [vectorUp _currObject];
-
-				_supplyleft = 0;
-
-				switch (true) do
-				{
-					case (_currObject isKindOf "Land_Sacks_goods_F"):
-					{
-						_supplyleft = _currObject getVariable ["food", 20];
-					};
-					case (_currObject isKindOf "Land_BarrelWater_F"):
-					{ 
-						_supplyleft = _currObject getVariable ["water", 20];
-					};
-				};
-
-				// Save weapons & ammo
-				_weapons = getWeaponCargo _currObject;
-				_magazines = getMagazineCargo _currObject;
-				_items = getItemCargo _currObject;
-				_isVehicle = 0;
-				
-				_query = [_classname, _pos, format ["%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 1, 0", 0, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle]];
-				baseToServerSave = _query;
-				publicVariableServer 'baseToServerSave';
+								
                 2 cutText ["", "PLAIN DOWN", 1];
                 R3F_LOG_mutex_local_verrou = false;
 		    }; 
