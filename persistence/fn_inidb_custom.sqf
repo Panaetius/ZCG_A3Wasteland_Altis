@@ -274,6 +274,12 @@ sqlite_loadWarchests = {
 	_res
 };
 
+sqlite_getTrigger = {
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'SELECT `Condition` FROM triggers WHERE Name=''%1''']", _this];
+	_res = parseNumber ((((call compile _res) select 0) select 0) select 0);
+	_res
+};
+
 KRON_StrLeft = {
 	private["_in","_len","_arr","_out"];
 	_in=_this select 0;
