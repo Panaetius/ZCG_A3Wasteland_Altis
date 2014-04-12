@@ -36,6 +36,9 @@ _randomPos = getPosASL _bunker;
 _laptop = createVehicle ["Land_Laptop_unfolded_F", _randomPos, [], 0, "CAN COLLIDE"];
 _laptop setPosASL [_randomPos select 0, (_randomPos select 1) + 0.5, _randomPos select 2];
 
+_obj = createVehicle ["B_static_AT_F",(getMarkerPos _randomPos),[], 10,"None"]; 
+_obj setPosASL [_randomPos select 0, (_randomPos select 1) + 2, _randomPos select 2];
+
 AddLaptopHandler = _laptop;
 publicVariable "AddLaptopHandler";
 
