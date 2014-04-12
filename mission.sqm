@@ -95,7 +95,7 @@ class Mission
 	randomSeed=14957468;
 	class Intel
 	{
-		briefingName="ZCG A3Wasteland Altis v0.9g";
+		briefingName="ZCG A3Wasteland Altis v0.9h";
 		overviewText="Wasteland survival sandbox by ZCGServers";
 		resistanceWest=0;
 		startWeather=0.10000001;

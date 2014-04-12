@@ -5,9 +5,20 @@ _showMessage = true;
 _showMessage = _this select 0;
 
 
+
+
 if(isNil "_showMessage" || typeName _showMessage != "BOOL") then {
 	_showMessage = _this select 3;
 };
+
+if (player getVariable ["IsSaving", false]) exitWith {
+	if (isNil "_showMessage" || _showMessage) then {
+		player globalChat "Can't save right now. Wait a couple of seconds and try again.";
+	};
+};
+
+player setVariable ["IsSaving", true, true];
+
 
 diag_log text format ["SavePlayer: %1 %2", _this, _showMessage];
 
@@ -51,9 +62,21 @@ if(playerSetupComplete) then
 	
 	{
 		_class = _x;
+		_elem = ['Vest', _class];
+		_items set [count _items, _elem];
+	} forEach (vestItems player);
+	
+	{
+		_class = _x;
+		_elem = ['Backpack', _class];
+		_items set [count _items, _elem];
+	} forEach (backpackItems player);
+	
+	{
+		_class = _x;
 		_elem = ['Items', _class];
 		_items set [count _items, _elem];
-	} forEach (items player);
+	} forEach (uniformItems player);
 	
 	{
 		_class = _x;
@@ -83,7 +106,6 @@ if(playerSetupComplete) then
 	
 	if (isNil "_showMessage" || _showMessage) then {
 		player globalChat "Saving Player (this may take a couple of seconds)";
-		//player globalChat "Player saved!";
 	};
 };
 

@@ -36,7 +36,7 @@ _randomPos = getPosASL _bunker;
 _laptop = createVehicle ["Land_Laptop_unfolded_F", _randomPos, [], 0, "CAN COLLIDE"];
 _laptop setPosASL [_randomPos select 0, (_randomPos select 1) + 0.5, _randomPos select 2];
 
-_obj = createVehicle ["B_static_AT_F",(getMarkerPos _randomPos),[], 10,"None"]; 
+_obj = createVehicle ["B_static_AT_F", _randomPos,[], 10,"None"]; 
 _obj setPosASL [_randomPos select 0, (_randomPos select 1) + 2, _randomPos select 2];
 
 AddLaptopHandler = _laptop;
@@ -83,7 +83,7 @@ if(_result == 1) then
     {deleteVehicle _x }forEach units _CivGrpM;
     deleteGroup _CivGrpM;
 	deleteVehicle _laptop;
-    _hint = parseText format ["<t align='center' color='%3' shadow='2' size='1.75'>Objective Complete</t><br/><t align='center' color='%3'>------------------------------</t><br/><t align='center' color='%4' size='1.25'>%1</t><br/><t align='center' color='%4'>The outpost has been captured, good work.</t>", _missionType, _vehicleName, successMissionColor, subTextColor];
+    _hint = parseText format ["<t align='center' color='%3' shadow='2' size='1.75'>Objective Complete</t><br/><t align='center' color='%3'>------------------------------</t><br/><t align='center' color='%4' size='1.25'>%1</t><br/><t align='center' color='%4'>The bank accounts have been hacked, good work.</t>", _missionType, _vehicleName, successMissionColor, subTextColor];
 	[_hint] call hintBroadcast;
     diag_log format["WASTELAND SERVER - Money Mission Success: %1",_missionType];
 };

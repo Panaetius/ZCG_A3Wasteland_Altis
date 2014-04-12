@@ -25,15 +25,6 @@ setViewDistance 1500;
 playerCompiledScripts = false;
 playerSetupComplete = false;
 
-//takedown
-if (isNil {zod_stakedown_showhint}) then {zod_stakedown_showhint = true;};
-if (isNil {zod_stakedown_showtext}) then {zod_stakedown_showtext = true;};
-
-_killtime = 1.5;
-_killchance = 1;
-_mindamage = 0.5;
-_usesalute = true;
-
 waitUntil {!isNull player};
 waitUntil {time > 0.1};
 

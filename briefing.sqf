@@ -10,6 +10,21 @@ player createDiarySubject ["credits", "Credits"];
 
 player createDiaryRecord ["changelog",
 [
+"0.9h",
+"
+<br/> [Added] - Warchests now save
+<br/> [Bugfix] - Inventory saving should now be correct
+<br/> [Added] - Anti money dupe measures
+<br/> [Added] - minor performance optomizations
+<br/> [Bugfix] - Fixed price of Vests in General Store
+<br/> [Added] - Melee kills
+<br/> [Added] - Warchests for independent
+<br/> [Added] - Moneysplosion Mission
+"
+]];
+
+player createDiaryRecord ["changelog",
+[
 "0.9g",
 "
 <br/> [Added] - Hidden missions
@@ -25,8 +40,6 @@ player createDiaryRecord ["changelog",
 <br/> [Added] - Heli Fastroping
 <br/> [Added] - Player reviving
 <br/> [Added] - Perpetual base saving
-<br/> [Added] - Melee kills
-<br/> [Added] - Warchests for independent
 "
 ]];
 

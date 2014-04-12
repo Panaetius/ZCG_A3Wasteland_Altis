@@ -16,20 +16,12 @@ player setVariable["cmoney",(_money - _amount),true];
 axeDiagLog = format ["%1 deposited %2 money", player, _amount];
 publicVariableServer "axeDiagLog";
 
-switch (playerSide) do {
-    case east : {
-    	pvar_warchest_funds_east = pvar_warchest_funds_east + _amount;
-    	publicVariable "pvar_warchest_funds_east";
-    };
-    case west : {
-    	pvar_warchest_funds_west = pvar_warchest_funds_west + _amount;
-    	publicVariable "pvar_warchest_funds_west";
-    };
-	case resistance: {
-		_warchestObj = [] call mf_items_warchest_nearest;
-		_warchestObj setVariable ["money", (_warchestObj getVariable ["money",0]) + _amount, true];
-	};
-    default {hint "WarchestRefrest - This Shouldnt Happen"};
-};
+_warchestObj = [] call mf_items_warchest_nearest;
+_warchestObj setVariable ["money", (_warchestObj getVariable ["money",0]) + _amount, true];
+
+updateWarchest = [_warchestObj getVariable ["Id",0], _warchestObj getVariable ["money",0]];
+publicVariableServer "updateWarchest";
 
 call mf_items_warchest_refresh;
+
+closeDialog 0;

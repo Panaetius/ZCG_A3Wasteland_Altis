@@ -29,4 +29,9 @@ axeDiagLog = format ["%1 dropped %2 money", profileName, _money];
 publicVariableServer "axeDiagLog";
 
 [false] execVM "persistence\players\c_savePlayerToServer.sqf";
+
+player playMove "AinvPknlMstpSlayWrflDnon_medic"; 
+
+sleep 8;
+
 mutexScriptInProgress = false;

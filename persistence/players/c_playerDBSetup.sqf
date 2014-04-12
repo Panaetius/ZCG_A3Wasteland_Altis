@@ -44,39 +44,31 @@ applyPlayerDBValues =
 		};
 	} forEach _items;
 
-	player setDamage (parseNumber (_varValue select 4));
-
 	{
-		if( (_x select 2 )== "magWithAmmo") then {
-			_entry = call compile (_x select 3);
-			_className = _entry select 0; // eg. 30Rnd_65x39_caseless_mag
-
-			if ([player, _className] call fn_fitsInventory) then
-			{
-				player addMagazine _entry;
-			};
+		if( (_x select 2 )== "Vest") then {
+			_name = (_x select 3);
+			
+			player addItemToVest _name;
 		};
 	} forEach _items;
 	
 	{
+		if( (_x select 2 )== "Backpack") then {
+			_name = (_x select 3);
+			
+			player addItemToBackpack _name;
+		};
+	} forEach _items;
+
+	{
 		if( (_x select 2 )== "Items") then {
 			_name = (_x select 3);
-			_backpack = unitBackpack player;
-			_inCfgWeapons = isClass (configFile >> "cfgWeapons" >> _name);
-
-			// Optics seems to denote an 'item' if 1 or 'weapon' is 0
-			_cfgOptics = getNumber (configFile >> "cfgWeapons" >> _name >> "optics");
-
-			if (_inCfgWeapons && _cfgOptics == 0 && (!isNil '_backpack')) then {_backpack addWeaponCargoGlobal [_name,1];}
-			else
+			if ([player, _name] call fn_fitsInventory) then
 			{
-				if ([player, _name] call fn_fitsInventory) then
-				{
-					player addItem _name;
-				};
+				player addItemToUniform _name;
 			};
 		};
-	} forEach _items;	
+	} forEach _items;
 	
 	player addWeapon (_varValue select 12);
 	player addWeapon (_varValue select 14);
@@ -131,7 +123,8 @@ applyPlayerDBValues =
 	positionLoaded = 1;
 	
 	player setDir (parseNumber (_varValue select 11));
-	player setVariable ["cmoney", parseNumber (_varValue select 2), true];	
+	player setVariable ["cmoney", parseNumber (_varValue select 2), true];
+	player setDamage (parseNumber (_varValue select 4));
 	
 	dataLoaded = 1;
 };

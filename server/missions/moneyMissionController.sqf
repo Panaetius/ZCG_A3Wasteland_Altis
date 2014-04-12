@@ -13,8 +13,9 @@ diag_log "WASTELAND SERVER - Started Money Mission State";
 
 _MoneyMissions = 
 [
-	["mission_MoneyShipment", 1],
-	["mission_HackLaptop", 0.75]
+	// ["mission_MoneyShipment", 1],
+	// ["mission_HackLaptop", 0.75],
+	["mission_Moneysplosion", 0.1]
 ];
 
 _MoneyMissionsOdds = [];

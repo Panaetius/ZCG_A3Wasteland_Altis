@@ -8,8 +8,8 @@ _warchestObj = [] call mf_items_warchest_nearest;
 
 _funds = -1;
 switch (playerSide) do {
-    case east : {_funds = pvar_warchest_funds_east};
-    case west : {_funds = pvar_warchest_funds_west};
+    case east : {_funds = _warchestObj getVariable ["money",0]};
+    case west : {_funds = _warchestObj getVariable ["money",0]};
 	case resistance : {_funds = _warchestObj getVariable ["money",0]};
     default {hint "WarchestRefrest - This Shouldnt Happen"};
 };

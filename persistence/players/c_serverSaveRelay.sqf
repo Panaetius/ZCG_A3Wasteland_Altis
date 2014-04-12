@@ -8,5 +8,8 @@ _save =
 fn_SaveToServer = compile _save;
 "confirmSave" addPublicVariableEventHandler 
 {
-	player globalChat "Player saved!";
+	if( _this select 1) then {
+		player globalChat "Player saved!";
+	};
+	player setVariable ["IsSaving", false, true];
 };

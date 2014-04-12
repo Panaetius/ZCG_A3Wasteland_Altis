@@ -6,10 +6,8 @@ _savePlayerToSqlite =
 	_clientId = owner (_this select 4);
 	_sendResponse = _this select 5;
 	
-	if (_sendResponse) then {
-		confirmSave = _this select 0;
-		_clientId publicVariableClient 'confirmSave';
-	};
+	confirmSave = _sendResponse;
+	_clientId publicVariableClient 'confirmSave';
 ";
 
 savePlayerToSqlite = compile _savePlayerToSqlite;
@@ -63,6 +61,27 @@ _deletePlayerFromDB =
 
 deletePlayerFromDB = compile _deletePlayerFromDB;
 
+_createWarchestToDB =
+"
+	_this call sqlite_createWarchest;
+";
+
+createWarchestToDB = compile _createWarchestToDB;
+
+_updateWarchestToDB =
+"
+	_this call sqlite_saveWarchest;
+";
+
+updateWarchestToDB = compile _updateWarchestToDB;
+
+_deleteWarchestFromDB =
+"
+	_this call sqlite_deleteWarchest;
+";
+
+deleteWarchestFromDB = compile _deleteWarchestFromDB;
+
 "accountToServerSave" addPublicVariableEventHandler 
 {
 	(_this select 1) spawn savePlayerToSqlite;
@@ -85,5 +104,17 @@ deletePlayerFromDB = compile _deletePlayerFromDB;
 
 "deletePlayer" addPublicVariableEventHandler {
 	(_this select 1) spawn deletePlayerFromDB;
+};
+
+"createWarchest" addPublicVariableEventHandler {
+	(_this select 1) spawn createWarchestToDB;
+};
+
+"updateWarchest" addPublicVariableEventHandler {
+	(_this select 1) spawn updateWarchestToDB;
+};
+
+"deleteWarchest" addPublicVariableEventHandler {
+	(_this select 1) spawn deleteWarchestFromDB;
 };
 

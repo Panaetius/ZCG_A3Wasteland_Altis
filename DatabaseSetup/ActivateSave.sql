@@ -1,0 +1,1 @@
+UPDATE `triggers` SET `Condition` = 1 WHERE Name="DoSave"

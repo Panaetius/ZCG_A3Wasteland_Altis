@@ -6,42 +6,18 @@ _warchest = findDisplay IDD_WARCHEST;
 if (isNull _warchest) exitWith {};
 _amount = round(parseNumber(ctrlText IDC_AMOUNT));
 
-switch (playerSide) do {
-    case east : {
-        if (pvar_warchest_funds_east < _amount) exitWith {
-            [ERR_NOT_ENOUGH_FUNDS, 5] call mf_notify_client;
-        };
-        pvar_warchest_funds_east = pvar_warchest_funds_east - _amount;
-        publicVariable "pvar_warchest_funds_east";
-		_money = player getVariable ["cmoney", 0];
-		player setVariable["cmoney",(_money + _amount),true];
-		axeDiagLog = format ["%1 withdrew %2 money", player, _amount];
-		publicVariableServer "axeDiagLog";
-		call mf_items_warchest_refresh;
-    };
-    case west : {
-        if (pvar_warchest_funds_west < _amount) exitWith {
-            [ERR_NOT_ENOUGH_FUNDS, 5] call mf_notify_client;
-        };
-        pvar_warchest_funds_west = pvar_warchest_funds_west - _amount;
-        publicVariable "pvar_warchest_funds_west";
-		_money = player getVariable ["cmoney", 0];
-		player setVariable["cmoney",(_money + _amount),true];
-		axeDiagLog = format ["%1 withdrew %2 money", player, _amount];
-		publicVariableServer "axeDiagLog";
-		call mf_items_warchest_refresh;
-    };
-	case resistance: {
-		_warchestObj = [] call mf_items_warchest_nearest;
-        if (_warchestObj getVariable ["money",0] < _amount) exitWith {
-            [ERR_NOT_ENOUGH_FUNDS, 5] call mf_notify_client;
-        };
-        _warchestObj setVariable ["money", (_warchestObj getVariable ["money",0]) - _amount, true];
-		_money = player getVariable ["cmoney", 0];
-		player setVariable["cmoney",(_money + _amount),true];
-		axeDiagLog = format ["%1 withdrew %2 money", player, _amount];
-		publicVariableServer "axeDiagLog";
-		call mf_items_warchest_refresh;
-    };
-    default {hint "WarchestRefrest - This Shouldnt Happen"};
+_warchestObj = [] call mf_items_warchest_nearest;
+if (_warchestObj getVariable ["money",0] < _amount) exitWith {
+	[ERR_NOT_ENOUGH_FUNDS, 5] call mf_notify_client;
 };
+_warchestObj setVariable ["money", (_warchestObj getVariable ["money",0]) - _amount, true];
+_money = player getVariable ["cmoney", 0];
+player setVariable["cmoney",(_money + _amount),true];
+
+updateWarchest = [_warchestObj getVariable ["Id",0], _warchestObj getVariable ["money",0]];
+publicVariableServer "updateWarchest";
+
+axeDiagLog = format ["%1 withdrew %2 money", player, _amount];
+publicVariableServer "axeDiagLog";
+call mf_items_warchest_refresh;
+closeDialog 0;

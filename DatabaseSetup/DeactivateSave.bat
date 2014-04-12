@@ -1,0 +1,1 @@
+PathToMysql\mysql.exe -u user -p password < DeactivateSave.sql

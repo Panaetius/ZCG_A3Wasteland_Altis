@@ -13,7 +13,6 @@ _checks = {
     _text = "";
     _failed = true;
     switch (true) do {
-        //case not(playerSide == east || playerSide == west) : {_text = ERR_NOT_EAST_WEST };
         case not(alive player): {}; //player dead, not need to notify them
         case (vehicle player != player): {_text = ERR_IN_VEHICLE};
         case (player distance _position > 3): {_text = ERR_TOO_FAR_AWAY};
@@ -35,9 +34,10 @@ if (_success) then {
 	_warchest setVariable ["R3F_LOG_disabled", true, true];
     _warchest setVariable ["a3w_warchest", true, true];
 	
-	if(playerside == resistance) then {
-		_warchest setVariable ["money", 0, true];
-	};
+	_warchest setVariable ["money", 0, true];
+	
+	createWarchest = [0, playerSide, [vectorDir _warchest] + [vectorUp _warchest], getPosASL _warchest, _warchest];
+	publicVariableServer "createWarchest";
 	
 	[false] execVM "persistence\players\c_savePlayerToServer.sqf";
 	

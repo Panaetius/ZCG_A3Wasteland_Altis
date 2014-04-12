@@ -38,23 +38,11 @@ _success = [DURATION, ANIMATION, _checks, [_warchest]] call a3w_actions_start;
 MUTEX_UNLOCK;
 if (_success) then {
 	_amount = 0;
-	switch (_warchest getVariable 'side') do {
-		case (east): {
-			_amount = round(pvar_warchest_funds_east/4);
-			pvar_warchest_funds_east = pvar_warchest_funds_east - _amount;
-			publicVariable "pvar_warchest_funds_east";
-		};
-		case (west): {
-			_amount = round(pvar_warchest_funds_west/4);
-			pvar_warchest_funds_west = pvar_warchest_funds_west - _amount;
-			publicVariable "pvar_warchest_funds_west";
-		};
-		case (resistance): {
-			_warchestObj = [] call mf_items_warchest_nearest;
-			_amount = round((_warchestObj getVariable ["money",0])/4);
-			_warchestObj setVariable ["money", (_warchestObj getVariable ["money",0]) + _amount, true];
-		};
-	};
+	
+	_warchestObj = [] call mf_items_warchest_nearest;
+	_amount = round((_warchestObj getVariable ["money",0])/4);
+	_warchestObj setVariable ["money", (_warchestObj getVariable ["money",0]) + _amount, true];
+	
 	_money = (player getVariable ["cmoney", 0]) + _amount;
 	player setVariable ["cmoney", _money, true];
 	[format["Hacking Warchest Complete! You Stole $%1", _amount], 5] call mf_notify_client;

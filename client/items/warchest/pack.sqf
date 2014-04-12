@@ -38,5 +38,9 @@ MUTEX_UNLOCK;
 if (_success) then {
     deleteVehicle _warchest;
 	[MF_ITEMS_WARCHEST, 1] call mf_inventory_add;
+	
+	deleteWarchest = _warchestObj getVariable ["Id",0];
+	publicVariableServer "deleteWarchest";
+	
     ["You successfully packed the Warchest", 5] call mf_notify_client;
 };
