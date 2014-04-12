@@ -13,14 +13,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
---
--- Create schema players
---
-
-CREATE DATABASE IF NOT EXISTS players;
-USE players;
-
 --
 -- Definition of table `item`
 --
@@ -80,3 +72,20 @@ CREATE TABLE `player` (
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `warchest`;
+CREATE TABLE  `warchest` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Money` int(10) unsigned NOT NULL,
+  `Side` varchar(45) NOT NULL,
+  `Direction` varchar(100) NOT NULL,
+  `Position` varchar(100) NOT NULL,
+  `GenerationCount` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `players`.`Triggers` (
+  `Name` VARCHAR(100) NOT NULL,
+  `Condition` BIT NOT NULL,
+  PRIMARY KEY (`Name`)
+)
+ENGINE = InnoDB;

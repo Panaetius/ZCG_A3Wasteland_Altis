@@ -207,6 +207,79 @@ sqlite_getVehicleSaveQuery = {
 	_saveQuery
 };
 
+sqlite_createWarchest = {
+	private ["_query", "_res", "_warchestData"];
+	_warchestData = _this;
+	_query = format ["INSERT INTO Warchest (Money, Side, Direction, Position) VALUES (%1, ''%2'', ''%3'', ''%4'');SELECT LAST_INSERT_ID();", _warchestData select 0, _warchestData select 1, _warchestData select 2, _warchestData select 3];
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['players', '%1']", _query];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
+	
+	_res = (((call compile _res) select 0) select 0) select 0;
+	diag_log _res;
+	
+	(_warchestData select 4) setVariable ["Id", _res, true];
+};
+
+sqlite_saveWarchest = {
+	private ["_query", "_res", "_warchestData"];
+	_warchestData = _this;
+	_query = format ["UPDATE Warchest SET Money=%2, GenerationCount=0 WHERE Id=%1", _warchestData select 0, _warchestData select 1];
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['players', '%1']", _query];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
+};
+
+sqlite_deleteWarchest = {
+	private ["_query", "_res"];
+	_query = format ["DELETE FROM Warchest WHERE Id=%1", _this];
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['players', '%1']", _query];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
+};
+
+sqlite_countWarchests = {
+	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'SELECT Count(*) FROM Warchest']";
+	_res = parseNumber ((((call compile _res) select 0) select 0) select 0);
+	_res
+};
+
+sqlite_loadWarchests = {
+	private "_res";
+	
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'UPDATE Warchest SET GenerationCount = GenerationCount + 1;SELECT * FROM Warchest WHERE GenerationCount < 10 ORDER BY Id ASC LIMIT %1,%2']", _this select 0, _this select 1];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
+	_res = ((call compile _res) select 0);
+	_res
+};
+
+sqlite_getTrigger = {
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'SELECT `Condition` FROM triggers WHERE Name=''%1''']", _this];
+	_res = parseNumber ((((call compile _res) select 0) select 0) select 0);
+	_res
+};
+
 KRON_StrLeft = {
 	private["_in","_len","_arr","_out"];
 	_in=_this select 0;
