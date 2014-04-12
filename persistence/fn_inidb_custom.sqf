@@ -71,6 +71,8 @@ sqlite_readPlayer = {
 	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1''", _uid];
 	_items = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
 	
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'DELETE FROM player WHERE Id = ''%1''; DELETE FROM item WHERE PlayerId=''%1''']", _uid];
+	
 	_data = ((call compile _player) select 0) select 0;
 	_data set [count _data, (call compile _items) select 0];
 	

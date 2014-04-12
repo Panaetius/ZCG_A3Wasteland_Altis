@@ -56,6 +56,13 @@ _accountExists =
 ";
 accountExists = compile _accountExists;
 
+_deletePlayerFromDB =
+"
+	_this call sqlite_deletePlayer;
+";
+
+deletePlayerFromDB = compile _deletePlayerFromDB;
+
 "accountToServerSave" addPublicVariableEventHandler 
 {
 	(_this select 1) spawn savePlayerToSqlite;
@@ -74,5 +81,9 @@ accountExists = compile _accountExists;
 "baseToServerUnsave" addPublicVariableEventHandler 
 {
 	(_this select 1) spawn unsaveBasePart;
+};
+
+"deletePlayer" addPublicVariableEventHandler {
+	(_this select 1) spawn deletePlayerFromDB;
 };
 

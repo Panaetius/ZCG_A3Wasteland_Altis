@@ -46,7 +46,8 @@ FAR_Player_Unconscious =
 	_unit = _this select 0;
 	_killer = _this select 1;
 		
-	(getPlayerUID _unit) call sqlite_deletePlayer;
+	deletePlayer = (getPlayerUID _unit);
+	publicVariableServer "deletePlayer";
 		
 	// Death message
 	if (FAR_EnableDeathMessages && !isNil "_killer" && isPlayer _killer && _killer != _unit) then
