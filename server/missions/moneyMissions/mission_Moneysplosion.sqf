@@ -23,7 +23,7 @@ _returnData = call createMissionLocation;
 _city = ((call citylist) call BIS_fnc_selectRandom);
 
 diag_log format["WASTELAND SERVER - Money Mission Waiting to run: %1",_missionType];
-//[moneyMissionDelayTime] call createWaitCondition;
+[moneyMissionDelayTime] call createWaitCondition;
 diag_log format["WASTELAND SERVER - Money Mission Resumed: %1",_missionType];
 
 _moneyArray = [];
@@ -32,7 +32,6 @@ _lcounter = 0;
 _counter = 0;
 _pos = getMarkerPos (_city select 0);
 _tradius = _city select 1;
-diag_log _tradius;
 _townname = _city select 2;
 _vehammount = 100; //100 * 100$ = 10k
 _angleIncr = 360 / _vehammount;
@@ -60,7 +59,6 @@ while {_lcounter < _vehammount} do
 	_langle = _langle + _angleIncr;
 	_counter = _counter + 1;
 	_lcounter = _lcounter + 1;
-	diag_log _counter;
 };	
 
 _marker = createMarker [_missionMarkerName, _pos];
@@ -92,9 +90,6 @@ waitUntil
 	}forEach _moneyArray;
 	
 	_moneyArray = _newMoneyArray;
-	
-	diag_log (_moneyArray select 0);
-	diag_log (getPos (_moneyArray select 0));
 	
 	_marker setMarkerPos (getPos (_moneyArray select 0));
 	

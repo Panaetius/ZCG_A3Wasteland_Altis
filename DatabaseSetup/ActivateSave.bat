@@ -1,1 +1,1 @@
-PathToMysql\mysql.exe -u user -p password < ActivateSave.sql
+PathToMysql\mysql.exe -uUser -pPassword -dDatabase < PathTo\ActivateSave.sql

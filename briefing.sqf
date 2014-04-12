@@ -15,7 +15,7 @@ player createDiaryRecord ["changelog",
 <br/> [Added] - Warchests now save
 <br/> [Bugfix] - Inventory saving should now be correct
 <br/> [Added] - Anti money dupe measures
-<br/> [Added] - minor performance optomizations
+<br/> [Added] - minor performance optimizations
 <br/> [Bugfix] - Fixed price of Vests in General Store
 <br/> [Added] - Melee kills
 <br/> [Added] - Warchests for independent

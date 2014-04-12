@@ -85,7 +85,7 @@ CREATE TABLE  `warchest` (
 
 CREATE TABLE `players`.`Triggers` (
   `Name` VARCHAR(100) NOT NULL,
-  `Condition` BIT NOT NULL,
+  `Condition` INT(1) NOT NULL,
   PRIMARY KEY (`Name`)
 )
 ENGINE = InnoDB;

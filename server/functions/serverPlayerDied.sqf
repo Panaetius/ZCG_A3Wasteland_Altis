@@ -30,7 +30,9 @@ if(!isNil "_corpse" && !isNull _corpse) then {
 	};
 };
 
+_uid = getPlayerUID _corpse;
+
 // Remove any persistent info about the player on death
-if ((call config_player_saving_enabled) == 1) then {
-	(getPlayerUID (owner _corpse)) call sqlite_deletePlayer;
+if ((call config_player_saving_enabled) == 1 && {not(isNil "_uid")} && {not(isNull _uid)}) then {
+	 _uid call sqlite_deletePlayer;
 };
