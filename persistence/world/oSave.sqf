@@ -96,6 +96,4 @@ while {true} do {
 		
 		call sqlite_commitBaseObject;
 	};
-	
-	sleep 120;
 };

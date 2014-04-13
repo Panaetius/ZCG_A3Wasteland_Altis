@@ -251,7 +251,7 @@ while {respawnDialogActive} do
                         };  
                     } forEach playableUnits;
 
-                    if({_enemyCount == 0} && {damage _x < 1}) then {
+                    if({_enemyCount == 0} && {(damage _x) < 1}) then {
 						diag_log "adding beacon";
                         _button ctrlSetText format["%1",_x getVariable ["ownerName", ""]]; 
                         _button ctrlShow true;

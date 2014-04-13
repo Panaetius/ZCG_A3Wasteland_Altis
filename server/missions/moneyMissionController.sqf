@@ -14,8 +14,8 @@ diag_log "WASTELAND SERVER - Started Money Mission State";
 _MoneyMissions = 
 [
 	["mission_MoneyShipment", 1],
-	["mission_HackLaptop", 0.75],
-	["mission_Moneysplosion", 0.4]
+	["mission_HackLaptop", 1],
+	["mission_Moneysplosion", 1]
 ];
 
 _MoneyMissionsOdds = [];
@@ -38,6 +38,6 @@ while {true} do
 	_hint = parseText format ["<t align='center' color='%2' shadow='2' size='1.75'>Money Objective</t><br/><t align='center' color='%2'>------------------------------</t><br/><t color='%3' size='1.0'>Starting in %1 minutes</t>", moneyMissionDelayTime / 60, moneyMissionColor, subTextColor];
 	[_hint] call hintBroadcast;
 	
-	waitUntil{sleep 0.1; scriptDone _missionRunning};
+	waitUntil{sleep 1; scriptDone _missionRunning};
     sleep 5; 
 };

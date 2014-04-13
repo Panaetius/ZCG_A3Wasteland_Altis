@@ -83,9 +83,11 @@ CREATE TABLE  `warchest` (
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `players`.`Triggers` (
+CREATE TABLE `Triggers` (
   `Name` VARCHAR(100) NOT NULL,
   `Condition` INT(1) NOT NULL,
   PRIMARY KEY (`Name`)
 )
 ENGINE = InnoDB;
+
+INSERT INTO `Triggers` (Name, `Condition`) Values ("DoSave", 1);
