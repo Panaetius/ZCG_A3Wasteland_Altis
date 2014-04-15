@@ -125,6 +125,7 @@ waituntil {!(IsNull (findDisplay 46))};
 [] execVM "client\functions\createVehicleStoreMarkers.sqf";
 [] execVM "client\functions\playerTags.sqf";
 [] execVM "client\functions\groupTags.sqf";
+[] execVM "addons\EmergencyEject\EmergencyEject.sqf";
 [] call updateMissionsMarkers;
 [] call updateRadarMarkers;
 if (isNil "FZF_IC_INIT") then

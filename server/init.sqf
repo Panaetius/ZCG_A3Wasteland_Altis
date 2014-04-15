@@ -165,5 +165,15 @@ if (["A3W_serverMissions", 0] call getPublicVar > 0) then
     sleep 5;
 };
 
+[] spawn {
+	while {true} do {
+		{
+			diag_log text format ["%1 has %2 money", _x, _x getVariable ["cmoney", 0]];
+		}forEach playableUnits;
+		
+		sleep 60;
+	};
+};
+
 // Start clean-up loop
 [] execVM "server\WastelandServClean.sqf";
