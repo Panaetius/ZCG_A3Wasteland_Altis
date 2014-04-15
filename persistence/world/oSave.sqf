@@ -24,7 +24,7 @@ _stepSize = 20;
 
 while {true} do {
 	diag_log "sleeping!";
-	sleep 60;
+	sleep 30;
 	
 	waitUntil {!isLoadingObjects};
 	
@@ -95,5 +95,7 @@ while {true} do {
 		};
 		
 		call sqlite_commitBaseObject;
+		
+		"DoSave" call sqlite_setTrigger;
 	};
 };

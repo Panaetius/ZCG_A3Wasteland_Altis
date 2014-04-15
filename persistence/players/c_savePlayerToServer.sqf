@@ -27,15 +27,7 @@ if(playerSetupComplete) then
 	_uid = getPlayerUID player;
 	
 	_items = [];
-	
-	{
-		_class = _x select 0;
-		_count = _x select 1;
-		_elem = ['magWithAmmo', [_class, _count]];
-		_items set [count _items, _elem];
-	} forEach (magazinesAmmoFull player);
-	
-	
+		
 	{
 		_keyName = _x select 0;
 		_value = _x select 1;

@@ -38,7 +38,7 @@ applyPlayerDBValues =
 
 	// Inventory item section. Use mf_inventory_all as set up by the mf_inv system
 	{
-		if ((_x select 2 )== "inventoryItem") then {
+		if ((_x select 2 ) == "inventoryItem") then {
 			_entry = call compile (_x select 3); 
 			[_entry select 0, _entry select 1, true] call mf_inventory_add;
 		};
@@ -53,7 +53,7 @@ applyPlayerDBValues =
 	} forEach _items;
 	
 	{
-		if( (_x select 2 )== "Backpack") then {
+		if( (_x select 2 ) == "Backpack") then {
 			_name = (_x select 3);
 			
 			player addItemToBackpack _name;
@@ -63,10 +63,7 @@ applyPlayerDBValues =
 	{
 		if( (_x select 2 )== "Items") then {
 			_name = (_x select 3);
-			if ([player, _name] call fn_fitsInventory) then
-			{
-				player addItemToUniform _name;
-			};
+			player addItemToUniform _name;
 		};
 	} forEach _items;
 	

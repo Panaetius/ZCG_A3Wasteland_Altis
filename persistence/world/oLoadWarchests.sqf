@@ -14,7 +14,7 @@ for "_i" from 0 to (_warchestCount) step _stepSize do
 	{
 		_id = _x select 0;
 		_money = parseNumber (_x select 1);
-		_side = call compile (_x select 2);
+		_side = _x select 2;
 		_dir = call compile (_x select 3);
 		_pos = call compile (_x select 4);
 		_generationCount = parseNumber (_x select 5);
@@ -29,7 +29,22 @@ for "_i" from 0 to (_warchestCount) step _stepSize do
 			_warchest setVectorDirAndUp _dir;
 			_warchest setDamage 0;
 			
-			_warchest setVariable ['side', _side, true];
+			switch(_side) do
+			{
+				case "WEST":
+				{
+					_warchest setVariable ['side', resistance, true];
+				};
+				case "EAST":
+				{
+					_warchest setVariable ['side', east, true];
+				};
+				case "GUER":
+				{
+					_warchest setVariable ['side', west, true];
+				};
+			};
+			
 			_warchest setVariable ["R3F_LOG_disabled", true, true];
 			_warchest setVariable ["a3w_warchest", true, true];
 			
