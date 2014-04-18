@@ -36,11 +36,11 @@ _success =  [DURATION, ANIM, _hasFailed, [_warchest]] call a3w_actions_start;
 MUTEX_UNLOCK;
     
 if (_success) then {
-    deleteVehicle _warchest;
-	[MF_ITEMS_WARCHEST, 1] call mf_inventory_add;
-	
-	deleteWarchest = _warchestObj getVariable ["Id",0];
+	deleteWarchest = _warchest getVariable ["Id",0];
 	publicVariableServer "deleteWarchest";
+	
+    deleteVehicle _warchest;
+	[MF_ITEMS_WARCHEST, 1] call mf_inventory_add;	
 	
     ["You successfully packed the Warchest", 5] call mf_notify_client;
 };

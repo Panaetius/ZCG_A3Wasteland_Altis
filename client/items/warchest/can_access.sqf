@@ -2,6 +2,7 @@
 #define ERR_TOO_FAR "You moved too far away"
 #define ERR_WRONG_SIDE "That warchest is not owned by your team"
 #define ERR_NOT_WARCHEST "That object is not a warchest"
+#define ERR_ALREADY_IN_USE "Warchest already in use"
 
 private ["_warchest", "_error"];
  _warchest = objNull;
@@ -19,6 +20,7 @@ switch (true) do {
     case not(_warchest getVariable ["a3w_warchest", false]): {_error = ERR_NOT_WARCHEST};
     case (player distance _warchest >= 5): {_error = ERR_TOO_FAR};
     case ((_warchest getVariable "side") != side player): {_error = ERR_WRONG_SIDE};
+	case ((_warchest getVariable ["InUse", false])): {_error = ERR_ALREADY_IN_USE};
     default {_error = ""};
 };
 _error;
