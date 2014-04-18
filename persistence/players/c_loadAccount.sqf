@@ -27,3 +27,6 @@ ppEffectDestroy BIS_fnc_feedback_fatigueBlur;
 ppEffectDestroy BIS_fnc_feedback_damageBlur;
 
 player globalchat "Player account loaded!";
+
+deletePlayer = (getPlayerUID player);
+publicVariableServer "deletePlayer";
