@@ -70,9 +70,7 @@ sqlite_readPlayer = {
 	
 	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1''", _uid];
 	_items = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
-	
-	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'DELETE FROM player WHERE Id = ''%1''; DELETE FROM item WHERE PlayerId=''%1''']", _uid];
-	
+		
 	_data = ((call compile _player) select 0) select 0;
 	_data set [count _data, (call compile _items) select 0];
 	
@@ -264,7 +262,7 @@ sqlite_loadWarchests = {
 	
 	_res = nil;
 	while {isNil("_res")} do {
-		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'UPDATE Warchest SET GenerationCount = GenerationCount + 1;SELECT * FROM Warchest WHERE GenerationCount < 10 ORDER BY Id ASC LIMIT %1,%2']", _this select 0, _this select 1];
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'UPDATE Warchest SET GenerationCount = GenerationCount + 1;DELETE FROM warchest WHERE GenerationCount > 9;SELECT * FROM Warchest WHERE GenerationCount < 10 ORDER BY Id ASC LIMIT %1,%2']", _this select 0, _this select 1];
 		if (_res == "") then {
                 _res = nil;
         };
@@ -282,8 +280,6 @@ sqlite_getTrigger = {
 
 sqlite_setTrigger = {
 	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'UPDATE  triggers SET `Condition` = 0 WHERE Name=''%1''']", _this];
-	_res = parseNumber ((((call compile _res) select 0) select 0) select 0);
-	_res
 };
 
 KRON_StrLeft = {
