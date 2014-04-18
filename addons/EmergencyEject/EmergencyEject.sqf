@@ -1,1 +1,0 @@
-player addAction[("<t color='#C90000'>Emergency Eject</t>"), "addons\EmergencyEject\doEject.sqf", [], 10, false, false, "", '((vehicle player) isKindOf "Air") && (!(isTouchingGround player) || ((getPos player select 2) > 10))'];
