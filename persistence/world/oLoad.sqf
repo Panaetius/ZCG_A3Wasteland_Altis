@@ -83,3 +83,6 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 isLoadingObjects = false;
 
 diag_log format["GoT Wasteland - baseSaving loaded %1 parts from DB", _objectscount];
+
+SendMessageToClients = "Base and Vehicle loading done";
+publicVariable "SendMessageToClients";
