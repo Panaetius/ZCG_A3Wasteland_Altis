@@ -31,12 +31,10 @@ if (isDedicated) exitWith {};
 };
 
 FreePrincess = {
-	private [ "_princess", "_caller", "_id", "_cIU" ];
+	private [ "_princess", "_caller" ];
 	_princess = _this select 0;
-	_caller = _this select 1;
-	_id = _this select 2;	
+	_caller = _this select 1;	
 	
-	diag_log "Calling Handler";
 	FreedPrincessHandler = [_princess, _caller];
 	publicVariable "FreedPrincessHandler";
 	

@@ -21,12 +21,12 @@ if (!isDedicated) exitWith {};
 	
 	(group _player) setCombatMode "BLUE";
 	(group _player) setBehaviour "CARELESS";
-	(group _player) setFormation "STAG COLUMN";
+	(group _player) setFormation "COLUMN";
 	
-	sleep 1;
-	
-	_princess doFollow _player;
-
 	FreedPrincessHandlerClient = [_princess, _player];
 	publicVariable "FreedPrincessHandlerClient";
+	
+	sleep 3;
+	
+	_princess doFollow _player;
 };
