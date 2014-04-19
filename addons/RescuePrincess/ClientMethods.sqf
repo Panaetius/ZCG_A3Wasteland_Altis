@@ -35,6 +35,8 @@ FreePrincess = {
 	_princess = _this select 0;
 	_caller = _this select 1;	
 	
+	_princess setVariable ["Master", _caller, true];
+	
 	FreedPrincessHandler = [_princess, _caller];
 	publicVariable "FreedPrincessHandler";
 	

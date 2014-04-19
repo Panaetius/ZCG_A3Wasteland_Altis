@@ -26,7 +26,20 @@ if (!isDedicated) exitWith {};
 	FreedPrincessHandlerClient = [_princess, _player];
 	publicVariable "FreedPrincessHandlerClient";
 	
-	sleep 3;
-	
-	_princess doFollow _player;
+	while {alive _player && ((_princess getVariable ["Master", nil]) == _player)} do {
+		[_princess] doFollow _player;
+		
+		if (vehicle _player != _player ) then {
+			if (vehicle _princess != vehicle _player) then {
+				_princess moveInCargo (vehicle _player);
+				_princess assignAsCargo (vehicle _player);
+			};
+		};
+		
+		if (vehicle _player == _player && vehicle _princess != _princess) then {
+			_princess action ["eject", vehicle _princess];
+		};
+		
+		sleep 2;
+	};
 };

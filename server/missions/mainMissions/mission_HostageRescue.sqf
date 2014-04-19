@@ -102,6 +102,7 @@ _heli allowDamage false;
 _pilotGrp = createGroup sideLogic;
 _pilot = _pilotGrp createUnit ["C_man_pilot_F", _randomPos, [], 0, "FORM"] ;
 _pilot allowDamage false;
+_pilotGrp selectLeader _pilot;
 
 _pilot moveInDriver _heli;
 
@@ -173,6 +174,8 @@ waitUntil
 	AddPrincessHandler = _princess;
 	publicVariable "AddPrincessHandler";
 	
+	_princess setUnitPos "up";
+	
 	_distance = _princess distance _heli;
 	
 	diag_log _distance;
@@ -206,18 +209,19 @@ if(_result == 1) then
 	_pilot enableAI 'AUTOTARGET';
 	_pilot enableAI 'ANIM';
 	
-	_princess joinSilent _pilotGrp;
+	[_princess] joinSilent _pilotGrp;
 	
 	_heli setVehicleLock "UNLOCKED";
+	sleep 0.1;
 	_princess moveInCargo _heli;
+	_princess assignAsCargo _heli;
+	sleep 0.1;
 	_heli setVehicleLock "LOCKED";
 	
 	
-	_pilotGrp selectLeader _pilot;
-	
 	_heli flyinheight 100;
 	
-	_pilotGrp addWaypoint [0, 0];
+	_pilotGrp addWaypoint [[0, 0], 0];
 	
 	sleep 4;
 	
