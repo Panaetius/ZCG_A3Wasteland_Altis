@@ -239,9 +239,24 @@ vehicleAddition2 =
 ];
 
 MissionSpawnMarkers = [];
+HostageRescueMarkers = [];
+HostageExtractionMarkers=[];
+HostageTerroristMarkers=[];
 {
 	if (["Mission_", _x] call fn_findString == 0) then
 	{
 		MissionSpawnMarkers set [count MissionSpawnMarkers, [_x, false]];
+	};
+	if (["Rescue_", _x] call fn_findString == 0) then
+	{
+		HostageRescueMarkers set [count HostageRescueMarkers, [_x, false]];
+	};
+	if (["Extraction_", _x] call fn_findString == 0) then
+	{
+		HostageExtractionMarkers set [count HostageExtractionMarkers, [_x, false]];
+	};
+	if (["Terrorists_", _x] call fn_findString == 0) then
+	{
+		HostageTerroristMarkers set [count HostageTerroristMarkers, [_x, false]];
 	};
 } forEach allMapMarkers;

@@ -29,24 +29,19 @@ for "_i" from 0 to (_warchestCount) step _stepSize do
 			_warchest setVectorDirAndUp _dir;
 			_warchest setDamage 0;
 			
-			diag_log _side;
-			
 			switch(_side) do
 			{
 				case "WEST":
 				{
 					_warchest setVariable ['side', west, true];
-					diag_log "West loaded";
 				};
 				case "EAST":
 				{
 					_warchest setVariable ['side', east, true];
-					diag_log "East loaded";
 				};
 				case "GUER":
 				{
 					_warchest setVariable ['side', independent, true];
-					diag_log "Indept loaded";
 				};
 			};
 			

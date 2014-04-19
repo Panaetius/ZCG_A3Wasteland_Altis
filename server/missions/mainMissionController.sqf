@@ -13,16 +13,17 @@ diag_log "WASTELAND SERVER - Started Main Mission State";
 
 _MainMissions =
 [		// increase the number (weight) to increase the missions chance to be selected
-	["mission_Convoy", 1],
-	["mission_HostileHeliFormation", 0.5],  
-	["mission_APC", 1],
-	["mission_MBT", 1],
-	["mission_LightArmVeh", 1],
-	["mission_ArmedHeli", 1],
-	["mission_CivHeli", 1],
-	["mission_Outpost", 1],
-	["mission_Heli", 1],
-	["mission_MilitaryBase", 1.5]
+	// ["mission_Convoy", 1],
+	// ["mission_HostileHeliFormation", 0.5],  
+	// ["mission_APC", 1],
+	// ["mission_MBT", 1],
+	// ["mission_LightArmVeh", 1],
+	// ["mission_ArmedHeli", 1],
+	// ["mission_CivHeli", 1],
+	// ["mission_Outpost", 1],
+	// ["mission_Heli", 1],
+	// ["mission_MilitaryBase", 1.5],
+	["mission_HostageRescue", 1]
 ];
 
 // _notPlayedMainMissions = +_MainMissions;

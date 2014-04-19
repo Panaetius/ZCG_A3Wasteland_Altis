@@ -50,7 +50,7 @@ gearProperties = "client\functions\gearProperties.sqf" call mf_compile;
 getCapacity = "client\functions\getCapacity.sqf" call mf_compile;
 getItemInfo = "client\functions\getItemInfo.sqf" call mf_compile;
 requestStoreObject = "client\functions\requestStoreObject.sqf" call mf_compile;
-call "client\functions\sendMessageToClients.sqf";
+[] execVM "client\functions\sendMessageToClients.sqf";
 
 // Custom paint/textures on vehicles
 applyVehicleTexture = "client\systems\vehicleStore\applyVehicleTexture.sqf" call mf_compile;

@@ -23,7 +23,6 @@ diag_log "oSave started";
 _stepSize = 20;
 
 while {true} do {
-	diag_log "sleeping!";
 	sleep 30;
 	
 	waitUntil {!isLoadingObjects};

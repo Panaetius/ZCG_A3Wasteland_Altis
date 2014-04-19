@@ -2449,7 +2449,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=229;
+		items=241;
 		class Item0
 		{
 			position[]={3612.1487,12.11851,13020.892};
@@ -4127,6 +4127,82 @@ class Mission
 		{
 			position[]={14223.571,73.453423,21234.162};
 			name="MilitaryBase13_3";
+			type="Empty";
+		};
+		class Item229
+		{
+			position[]={16558.1,10.393501,12614.8};
+			name="Rescue_1";
+			type="Empty";
+			angle=310;
+		};
+		class Item230
+		{
+			position[]={11229.673,182.41,8725.7227};
+			name="Rescue_2";
+			type="Empty";
+			angle=270;
+		};
+		class Item231
+		{
+			position[]={3049.0801,62.343983,13200.511};
+			name="Rescue_3";
+			type="Empty";
+			angle=110;
+		};
+		class Item232
+		{
+			position[]={4835.5615,339.05466,21948.223};
+			name="Rescue_4";
+			type="Empty";
+			angle=30;
+		};
+		class Item233
+		{
+			position[]={17295.428,19.638096,12018.849};
+			name="Extraction_1";
+			type="Empty";
+		};
+		class Item234
+		{
+			position[]={11752.189,14.479145,9458.4668};
+			name="Extraction_2";
+			type="Empty";
+		};
+		class Item235
+		{
+			position[]={4385.1841,19.986172,12969.791};
+			name="Extraction_3";
+			type="Empty";
+		};
+		class Item236
+		{
+			position[]={5477.1851,248.19458,20987.582};
+			name="Extraction_4";
+			type="Empty";
+		};
+		class Item237
+		{
+			position[]={16573.057,10.480771,12615.52};
+			name="Terrorists_1";
+			type="Empty";
+		};
+		class Item238
+		{
+			position[]={11210.378,182.41,8718.0176};
+			name="Terrorists_2";
+			type="Empty";
+		};
+		class Item239
+		{
+			position[]={3049.2578,49.330429,13165.957};
+			name="Terrorists_3";
+			type="Empty";
+		};
+		class Item240
+		{
+			position[]={4829.3174,338.50494,21950.74};
+			name="Terrorists_4";
 			type="Empty";
 		};
 	};
