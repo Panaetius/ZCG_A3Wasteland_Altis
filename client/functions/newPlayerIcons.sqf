@@ -52,12 +52,13 @@ FZF_IC_Icons =
 					_sx = _screen select 0;
 					_sy = _screen select 1;
 					
-					switch (if (alive _unit && _unit getVariable "FAR_isUnconscious" == 0) then { side _unit } else { playerSide }) do
+					_pIcon = _logicIcon ;
+					
+					switch (if (alive _unit && _unit getVariable ["FAR_isUnconscious", 0] == 0) then { side _unit } else { playerSide }) do
 					{
 						case BLUFOR:		{ _pIcon = _bluIcon };
 						case OPFOR:			{ _pIcon = _opfIcon };
-						case INDEPENDENT:	{ _pIcon = _indIcon };	
-						default: 			{ _pIcon = _logicIcon };
+						case INDEPENDENT:	{ _pIcon = _indIcon };
 					};
 					
 					_HUD_ICON = _FZF_IC_Hud_Disp displayCtrl (icons_idc + _index);

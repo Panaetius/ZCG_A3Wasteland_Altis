@@ -30,7 +30,7 @@ if (!((HostageRescueMarkers select _randomIndex) select 1)) then
 };
 
 diag_log format["WASTELAND SERVER - Main Mission Waiting to run: %1",_missionType];
-//[mainMissionDelayTime] call createWaitCondition;
+[mainMissionDelayTime] call createWaitCondition;
 diag_log format["WASTELAND SERVER - Main Mission Resumed: %1",_missionType];
 
 [_missionMarkerName,_randomPos,_missionType] call createClientMarker;
@@ -103,8 +103,11 @@ _pilotGrp = createGroup sideLogic;
 _pilot = _pilotGrp createUnit ["C_man_pilot_F", _randomPos, [], 0, "FORM"] ;
 _pilot allowDamage false;
 _pilotGrp selectLeader _pilot;
+_pilotGrp addVehicle _heli;
+_pilot disableAI 'MOVE';
 
 _pilot moveInDriver _heli;
+_pilot assignAsDriver _heli;
 
 _heli flyinheight 0;
 
@@ -115,10 +118,6 @@ _pilotGrp setFormation "STAG COLUMN";
 sleep 0.5;
 
 _heli setVehicleLock "LOCKED";
-
-_pilot disableAI 'MOVE';
-_pilot disableAI 'AUTOTARGET';
-_pilot disableAI 'ANIM';
 
  
  _marker = createMarker ["Princess", position leader _CivGrpM];
@@ -150,6 +149,8 @@ _princess enableAI 'ANIM';
 _princess enableAI 'AUTOTARGET';
 _princess enableAI 'MOVE';
 _princess switchMove "";
+
+{deleteVehicle _x }forEach units _CivGrpM;
 sleep 2;
 
 if (_result == 0) then {
@@ -206,10 +207,14 @@ if(_result == 1) then
     diag_log format["WASTELAND SERVER - Main Mission Success: %1",_missionType];
 	
 	_pilot enableAI 'MOVE';
-	_pilot enableAI 'AUTOTARGET';
-	_pilot enableAI 'ANIM';
+	_pilot switchMove '';
+	sleep 0.1;
 	
 	[_princess] joinSilent _pilotGrp;
+	
+	if (vehicle _princess != _princess) then {
+		_princess action ["eject", vehicle _princess];
+	};
 	
 	_heli setVehicleLock "UNLOCKED";
 	sleep 0.1;
@@ -218,12 +223,25 @@ if(_result == 1) then
 	sleep 0.1;
 	_heli setVehicleLock "LOCKED";
 	
+	_heli flyInHeight 100;
+	sleep 0.1;
 	
-	_heli flyinheight 100;
+	_heliPos = (getPos _heli);
 	
-	_pilotGrp addWaypoint [[0, 0], 0];
+	_wp1 = _pilotGrp addWaypoint [[_heliPos select 0, _heliPos select 1, (_heliPos select 2) + 100], 0];
+	_wp1 setWaypointType "MOVE";
+	_wp1 setWaypointCompletionRadius 10;
+	_wp1 setWaypointCombatMode "WHITE";
+    _wp1 setWaypointBehaviour "AWARE"; 
+	_wp1 setWaypointSpeed "NORMAL";
+	_wp2 = _pilotGrp addWaypoint [[1, 1, 100], 0];
+	_wp2 setWaypointType "MOVE";
+	_wp2 setWaypointCompletionRadius 10;
+	_wp2 setWaypointCombatMode "WHITE";
+    _wp2 setWaypointBehaviour "AWARE"; 
+	_wp2 setWaypointSpeed "NORMAL";
 	
-	sleep 4;
+	sleep 1;
 	
 	_box = createVehicle ["Box_East_Wps_F",[(_randomPos select 0), (_randomPos select 1),0],[], 0, "NONE"];
 	[_box,"mission_USLaunchers"] call fn_refillbox;
@@ -253,7 +271,7 @@ MissionSpawnMarkers select _randomIndex set[1, false];
 deleteMarker _marker;
 
 if (_result == 0) then {
-	sleep 120;
+	//sleep 120;
 	deleteVehicle _princess;
 	deleteVehicle _pilot;
 	deleteVehicle _heli;

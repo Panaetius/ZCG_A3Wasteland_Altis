@@ -78,6 +78,9 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 			diag_log text format ["Loaded %1", _class];
 		};
 	} forEach _objects;
+	
+	SendMessageToClients = format ["Loaded {0} vehicles and base parts", _i];
+	publicVariable "SendMessageToClients";
 };
 
 isLoadingObjects = false;

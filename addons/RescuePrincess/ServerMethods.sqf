@@ -18,28 +18,4 @@ if (!isDedicated) exitWith {};
 	
 	[_princess] joinSilent _player;
 	_princess setUnitPos "up";
-	
-	(group _player) setCombatMode "BLUE";
-	(group _player) setBehaviour "CARELESS";
-	(group _player) setFormation "COLUMN";
-	
-	FreedPrincessHandlerClient = [_princess, _player];
-	publicVariable "FreedPrincessHandlerClient";
-	
-	while {alive _player && ((_princess getVariable ["Master", nil]) == _player)} do {
-		[_princess] doFollow _player;
-		
-		if (vehicle _player != _player ) then {
-			if (vehicle _princess != vehicle _player) then {
-				_princess moveInCargo (vehicle _player);
-				_princess assignAsCargo (vehicle _player);
-			};
-		};
-		
-		if (vehicle _player == _player && vehicle _princess != _princess) then {
-			_princess action ["eject", vehicle _princess];
-		};
-		
-		sleep 2;
-	};
 };
