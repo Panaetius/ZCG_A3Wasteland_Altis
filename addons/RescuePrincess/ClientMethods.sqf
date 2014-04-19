@@ -27,14 +27,6 @@ if (isDedicated) exitWith {};
 	_princess enableAI 'AUTOTARGET';
 	_princess enableAI 'MOVE';
 	
-	_princess switchMove 'AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_GetInLow';
-	sleep 0.5;
-	_princess switchMove 'AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_GetInLow';
-	sleep 0.5;
-	_princess switchMove 'AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_GetInLow';
-	sleep 0.5;
-	_princess switchmove '';
-	
 	_princess setUnitPos "up";
 };
 

@@ -56,7 +56,8 @@ FZF_IC_Icons =
 					{
 						case BLUFOR:		{ _pIcon = _bluIcon };
 						case OPFOR:			{ _pIcon = _opfIcon };
-						case INDEPENDENT:	{ _pIcon = _indIcon };						
+						case INDEPENDENT:	{ _pIcon = _indIcon };	
+						default: 			{ _pIcon = _logicIcon };
 					};
 					
 					_HUD_ICON = _FZF_IC_Hud_Disp displayCtrl (icons_idc + _index);
@@ -133,6 +134,7 @@ FZF_IC_INIT =
 		_bluIcon = parseText "<t align='left'><img image='client\icons\igui_side_blufor_ca.paa'/></t>";
 		_opfIcon = parseText "<t align='left'><img image='client\icons\igui_side_opfor_ca.paa'/></t>";
 		_indIcon = parseText "<t align='left'><img image='client\icons\igui_side_indep_ca.paa'/></t>";
+		_logicIcon = parseText "<t align='left'><img image='client\icons\igui_side_logic_ca.paa'/></t>";
 		
 		sleep 1;
 		while {true} do

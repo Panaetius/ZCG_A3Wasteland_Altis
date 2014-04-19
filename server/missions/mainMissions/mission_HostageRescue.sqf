@@ -175,7 +175,9 @@ waitUntil
 	
 	_distance = _princess distance _heli;
 	
-    (_result == 1) OR (_distance < 10)
+	diag_log _distance;
+	
+    (_result == 1) OR (_distance < 20)
 };
 
 DeletePrincessHandler = _princess;
