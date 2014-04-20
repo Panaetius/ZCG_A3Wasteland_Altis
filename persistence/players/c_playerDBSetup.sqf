@@ -1,15 +1,18 @@
 //===========================================================================
 applyPlayerDBValues =
 {
-	private ["_array","_varName","_varValue","_i","_in","_exe","_backpack","_sendToServer","_uid", "_items"];
+	private ["_array", "_varName", "_varValue", "_i", "_in", "_exe", "_backpack", "_sendToServer", "_uid", "_items"];
 	diag_log format["applyPlayerDBValues called with %1", _this];
 	_array = _this;
 	_uid = _array select 0;
 	_varName = _array select 1;
 	
-	if (count _array == 3) then {
+	if (count _array == 3) then
+	{
 		_varValue = _array select 2;
-	} else {
+	}
+	else
+	{
 		 //diag_log format["applyPlayerDBValues failed to get a value for %1", _varName];
 	};
 
@@ -17,7 +20,7 @@ applyPlayerDBValues =
 	if(((getPlayerUID player) != _uid) AND ((getPlayerUID player) + "_donation" != _uid)) exitWith {};
 
 	//if there is not a value for items we care about exit early
-	if(isNil '_varValue') exitWith 	
+	if (isNil '_varValue') exitWith 	
 	{
 		dataLoaded = 1;
 	};
@@ -44,6 +47,7 @@ applyPlayerDBValues =
 		};
 	} forEach _items;
 
+	if (_varName == 'Health') then {player setDamage _varValue};
 	{
 		if( (_x select 2 )== "Vest") then {
 			_name = (_x select 3);
@@ -60,6 +64,20 @@ applyPlayerDBValues =
 		};
 	} forEach _items;
 
+	//if (_varName == 'Magazines') then {{player addMagazine _x}foreach _varValue};
+	if (_varName == 'MagazinesWithAmmoCount') then
+	{
+			_ammoCounts = _x select 1; // Different ammo counts for current magazine
+			
+			if (typeName _ammoCounts != "ARRAY") then
+				_ammoCounts = [_ammoCounts]; // for compatibility with previous saves
+			
+			{
+				if ([player, _className] call fn_fitsInventory) then
+				{
+					player addMagazine [_className, _x];
+				};
+			} forEach _ammoCounts;
 	{
 		if( (_x select 2 )== "Items") then {
 			_name = (_x select 3);
@@ -106,10 +124,14 @@ applyPlayerDBValues =
 		if( (_x select 2 )== "AssignedItem") then {
 			_name = (_x select 3);
 			_inCfgWeapons = isClass (configFile >> "cfgWeapons" >> _name);
-			if (_inCfgWeapons) then {
+			
+			if (_inCfgWeapons) then
+			{
 				// Its a 'weapon'
 				player addWeapon _name;
-			} else {
+			}
+			else
+			{
 				player linkItem _name;
 			};
 		};
@@ -127,13 +149,16 @@ applyPlayerDBValues =
 };
 
 //===========================================================================
-_sendToServer =
-"
-	accountToServerLoad = _this;
-	publicVariableServer 'accountToServerLoad';
-";
 
-sendToServer = compile _sendToServer;
+loadFromServer = compileFinal "accountToServerLoad = _this; publicVariableServer 'accountToServerLoad'";
+saveToServer = compileFinal = "accountToServerSave = _this; publicVariableServer 'accountToServerSave'";
+"confirmSave" addPublicVariableEventHandler 
+{
+	if( _this select 1) then {
+		player globalChat "Player saved!";
+	};
+	player setVariable ["IsSaving", false, true];
+};
 //===========================================================================
 "accountToClient" addPublicVariableEventHandler 
 {

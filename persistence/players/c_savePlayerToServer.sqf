@@ -22,7 +22,7 @@ player setVariable ["IsSaving", true, true];
 
 diag_log text format ["SavePlayer: %1 %2", _this, _showMessage];
 
-if(playerSetupComplete) then
+if (playerSetupComplete) then
 {	
 	_uid = getPlayerUID player;
 	
@@ -40,12 +40,12 @@ if(playerSetupComplete) then
 		_items set [count _items, _elem];
 	} forEach (primaryWeaponItems player);
 	
+	_magsAmmo = [];
 	{
 		_class = _x;
 		_elem = ['SecondaryWeaponItem', _class];
 		_items set [count _items, _elem];
 	} forEach (secondaryWeaponItems player);
-		
 	{
 		_class = _x;
 		_elem = ['HandgunWeaponItem', _class];

@@ -6,7 +6,7 @@ player globalchat "Loading player account...";
 _UID = getPlayerUID player;
 
 
-[_UID, _UID, "dataValues", "STRING", player] call sendToServer;
+[_UID, _UID, "dataValues", "STRING", player] call loadFromServer;
 
 waitUntil {!isNil "dataLoaded"};
 

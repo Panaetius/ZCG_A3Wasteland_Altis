@@ -32,7 +32,8 @@ removeAllWeapons player;
 player switchMove "";
 
 //Stop people being civ's.
-if(!(playerSide in [BLUFOR, OPFOR, INDEPENDENT, sideEnemy])) then {
+if (!(playerSide in [BLUFOR, OPFOR, INDEPENDENT, sideEnemy])) then
+{
 	endMission "LOSER";
 };
 
@@ -48,43 +49,51 @@ player call compile preprocessFileLineNumbers "client\functions\clientCompile.sq
 player call playerSetup;
 
 // Player saving - Load from iniDB
-if ((call config_player_saving_enabled) == 1) then {
+if (["config_player_saving_enabled", 0] call getPublicVar == 1) then
+{
 	positionLoaded = 0;
 	donationMoneyLoaded = 0; // used only if config_player_donations_enabled is set
 
-	[] execVM "persistence\players\c_serverSaveRelay.sqf";
-	waitUntil {!isNil "fn_SaveToServer"};
-	[] execVM "persistence\players\c_playerDBSetup.sqf";
-	waitUntil {!isNil "statFunctionsLoaded"};
+	_scriptHandle = [] execVM "persistence\players\c_playerDBSetup.sqf";
+	waitUntil {scriptDone _scriptHandle};
+	
 	
 	_loadHandle = [] execVM "persistence\players\c_loadAccount.sqf";
 
-	if ((call config_player_donations_enabled) == 1) then {
+	if (["config_player_donations_enabled", 0] call getPublicVar == 1) then
+	{
 		// If the server has configured donation money, load that from the DB
 		waitUntil {donationMoneyLoaded == 1};
 		_donationMoney = player getVariable ["donationMoney", 0];
-		if(_donationMoney > 0) then {player globalChat format["Thank you for your donation. You will have $%1 extra cash on spawn", _donationMoney];};
+		if (_donationMoney > 0) then {player globalChat format["Thank you for your donation. You will have $%1 extra cash on spawn", _donationMoney];};
 	};
 
 	// Deal with money here
 	// If there are server donations, bump up the amount players spawn with
-	_baseMoney = (call config_initial_spawn_money);
-	if ((call config_player_donations_enabled) == 1) then {
+	_baseMoney = ["config_initial_spawn_money", 0] call getPublicVar;
+	
+	if (["config_player_donations_enabled", 0] call getPublicVar == 1) then
+	{
 		_donationMoney = player getVariable ["donationMoney", 0];
 		diag_log format["Player starting with $%1 (%2 + %3)", _baseMoney + _donationMoney, _baseMoney, _donationMoney];
 		player setVariable["cmoney",_baseMoney + _donationMoney,true];
-	} else {
+	}
+	else
+	{
 		diag_log format["Player starting with $%1", _baseMoney];
 		player setVariable["cmoney",_baseMoney,true];
 	};
 
 	waitUntil {scriptDone _loadHandle};
-} else {
+}
+else
+{
 	diag_log format["Client has no player save functionality"];
 };
 
 // Territory system enabled?
-if (count (call config_territory_markers) > 0) then {
+if (count (["config_territory_markers", []] call getPublicVar) > 0) then
+{
 	territoryActivityHandler = "territory\client\territoryActivityHandler.sqf" call mf_compile;
 	[] execVM "territory\client\createCaptureTriggers.sqf";
 };
@@ -95,7 +104,7 @@ _playerWasMoved = player getVariable ["playerWasMoved", 0];
 diag_log _playerWasMoved;
 
 //Setup player events.
-if(!isNil "client_initEH") then {player removeEventHandler ["Respawn", client_initEH];};
+if (!isNil "client_initEH") then {player removeEventHandler ["Respawn", client_initEH];};
 player addEventHandler ["Respawn", { _this spawn onRespawn }];
 player addEventHandler ["Killed", { _this spawn onKilled }];
 //player addEventHandler ["Put", {[false] execVM "persistence\players\c_savePlayerToServer.sqf"}];
@@ -133,11 +142,14 @@ if (isNil "FZF_IC_INIT") then
 };
 
 // If we've got a position from the player save system, don't go through playerSpawn
-if (_playerWasMoved == 0) then {
+if (_playerWasMoved == 0) then 
+{
 	diag_log "spawn";
 	true spawn playerSpawn;
 	player addWeapon "hgun_ACPC2_F";
-} else {
+} 
+else 
+{
 	player switchMove "AmovPpneMstpSnonWnonDnon";
 };
 

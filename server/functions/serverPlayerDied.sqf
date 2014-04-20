@@ -33,6 +33,6 @@ if(!isNil "_corpse" && !isNull _corpse) then {
 _uid = getPlayerUID _corpse;
 
 // Remove any persistent info about the player on death
-if ((call config_player_saving_enabled) == 1 && {not(isNil "_uid")} && {_uid != ""}) then {
-	 _uid call sqlite_deletePlayer;
+if (["config_player_saving_enabled", 0] call getPublicVar == 1) then {
+	(getPlayerUID _corpse) call sqlite_deletePlayer;
 };
