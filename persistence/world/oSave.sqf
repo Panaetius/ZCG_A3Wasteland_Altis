@@ -33,7 +33,7 @@ while {true} do {
 	
 		_PersistentDB_ObjCount = 1;
 		
-		_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount) VALUES ";
+		_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount, Owner, Damage, AllowDamage) VALUES ";
 		
 		{
 			_object = _x;
@@ -61,6 +61,10 @@ while {true} do {
 							_supplyleft = _object getVariable ["water", 20];
 						};
 					};
+					
+					_owner = _object getVariable ["ownerUID", ""];
+					_damage = damage _object;
+					_allowDamage = if (_object getVariable ["allowDamage", false]) then { 1 } else { 0 };
 
 					// Save weapons & ammo
 					_weapons = getWeaponCargo _object;
@@ -73,7 +77,7 @@ while {true} do {
 						_isVehicle = 1;
 					};
 					
-					_saveQuery = _saveQuery + format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 0, %10),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle, _object getVariable ["generationCount", 0]];
+					_saveQuery = _saveQuery + format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 0, %10, ''%11'', %12, %13),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle, _object getVariable ["generationCount", 0], _owner, _damage, _allowDamage];
 					
 					_PersistentDB_ObjCount = _PersistentDB_ObjCount + 1;
 					
@@ -81,7 +85,7 @@ while {true} do {
 					if ((_PersistentDB_ObjCount % _stepSize) == 0) then { 
 						_saveQuery call sqlite_saveBaseObjects;
 						
-						_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount) VALUES ";
+						_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount, Owner, Damage, AllowDamage) VALUES ";
 					};
 				// };
 			};
@@ -90,7 +94,7 @@ while {true} do {
 		if ((_PersistentDB_ObjCount > 1) && ((_PersistentDB_ObjCount % _stepSize) != 0)) then {
 			_saveQuery call sqlite_saveBaseObjects;
 			
-			diag_log format["A3W - %1 parts have been saved with DB", _PersistentDB_ObjCount];
+			diag_log format["A3Wasteland - %1 parts have been saved with DB", _PersistentDB_ObjCount];
 		};
 		
 		call sqlite_commitBaseObject;

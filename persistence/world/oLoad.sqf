@@ -28,6 +28,10 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 		_items = call compile (_x select 7);
 		_isVehicle = parseNumber (_x select 8);
 		_generationCount = parseNumber (_x select 11);
+		_owner = (_x select 12);
+		_damageVal = parseNumber (_x select 13);
+		_allowDamage = parseNumber (_x select 14);
+	
 		
 		if (!isNil "_class" && !isNil "_pos" && !isNil "_dir" && !isNil "_supplyleft") then 
 		{
@@ -43,7 +47,15 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 			_obj = createVehicle [_class, _pos, [], _placement, _type];
 			_obj setPosASL _pos;
 			_obj setVectorDirAndUp _dir;
-			_obj setDamage 0;
+			if (_allowDamage > 0) then
+			{
+				_obj setDamage _damageVal;
+				_obj setVariable ["allowDamage", true];
+			}
+			else
+			{
+				_obj allowDamage false;
+			}
 
 			if (_class == "Land_Sacks_goods_F") then 
 			{
@@ -60,19 +72,22 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 			clearItemCargoGlobal _obj;
 
 			// disabled because i dont want to load contents just base parts
-			for [{_ii = 0}, {_ii < (count (_weapons select 0))}, {_ii = _ii + 1}] do {
-				_obj addWeaponCargoGlobal [(_weapons select 0) select _ii, (_weapons select 1) select _ii];				
+			for "_ii" from 0 to (count (_weapons select 0) - 1) do
+			{
+				_obj addWeaponCargoGlobal [(_weapons select 0) select _ii, (_weapons select 1) select _ii];
 			};
 
-			for [{_ii = 0}, {_ii < (count (_magazines select 0))}, {_ii = _ii + 1}] do {
+			for "_ii" from 0 to (count (_magazines select 0) - 1) do
+			{
 				_obj addMagazineCargoGlobal [(_magazines select 0) select _ii, (_magazines select 1) select _ii];
 			};
 			
-			for [{_ii = 0}, {_ii < (count (_items select 0))}, {_ii = _ii + 1}] do {
+			for "_ii" from 0 to (count (_items select 0) - 1) do {
 				_obj addItemCargoGlobal [(_items select 0) select _ii, (_items select 1) select _ii];
 			};
 			
-			_obj setVariable ["objectLocked", true, true]; //force lock			
+			_obj setVariable ["objectLocked", true, true]; //force lock
+			_obj setVariable ["ownerUID", _owner, true]; // Set owner id
 			_obj setVariable ["generationCount", _generationCount + 1, true];
 			
 			diag_log text format ["Loaded %1", _class];
@@ -85,7 +100,7 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 
 isLoadingObjects = false;
 
-diag_log format["GoT Wasteland - baseSaving loaded %1 parts from DB", _objectscount];
+diag_log format["A3Wasteland - baseSaving loaded %1 parts from DB", _objectscount];
 
 SendMessageToClients = "Base and Vehicle loading done";
 publicVariable "SendMessageToClients";
