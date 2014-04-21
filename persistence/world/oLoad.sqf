@@ -38,15 +38,20 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 			_type = "NONE";
 			_placement = 10;
 			
-			if(!isNil "_isVehicle" && _isVehicle == 0) then
+			if(!isNil "_isVehicle" && _isVehicle == 0 && ["Box_", _class] call fn_findString != 0) then
 			{
 				_type = "CAN COLLIDE";
+				_placement = 0;
+			};
+			
+			if(["Box_", _class] call fn_findString == 0) then {
 				_placement = 0;
 			};
 			
 			_obj = createVehicle [_class, _pos, [], _placement, _type];
 			_obj setPosASL _pos;
 			_obj setVectorDirAndUp _dir;
+			
 			if (_allowDamage > 0) then
 			{
 				_obj setDamage _damageVal;
@@ -55,7 +60,8 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 			else
 			{
 				_obj allowDamage false;
-			}
+				_obj setVariable ["allowDamage", false];
+			};
 
 			if (_class == "Land_Sacks_goods_F") then 
 			{

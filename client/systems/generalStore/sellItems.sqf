@@ -45,6 +45,8 @@ storeSellingHandle = [] spawn
 	if (!isNil "_price") then
 	{
 		[_itemData, 1] call mf_inventory_remove;
+		
+		diag_log text format ["%1 sold %2 for %3", player, _itemData, _price];
 
 		player setVariable ["cmoney", _playerMoney + _price, true];
 		_playerMoneyText ctrlSetText format ["Cash: $%1", player getVariable "cmoney"];

@@ -130,7 +130,7 @@ T8_fnc_ActionLaptop =
 		
 		closeDialog 0;
 
-		_laptop setVariable [ "InUse", false, false];	
+		_laptop setVariable [ "InUse", false, true];	
 	};
 };
 

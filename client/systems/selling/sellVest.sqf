@@ -131,6 +131,8 @@ else
 		{
 			// Remove vest if sale confirmed by player
 			removeVest player;
+			
+			diag_log text format ["%1 sold %2 for %3", player, _vest, _sellValue];
 
 			player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + _sellValue, true];
 			hint format ["You sold your vest for $%1", _sellValue];

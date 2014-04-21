@@ -124,6 +124,8 @@ else
 		{
 			// Remove backpack if sale confirmed by player
 			removeBackpack player;
+			
+			diag_log text format ["%1 sold %2 for %3", player, _backpack, _sellValue];
 
 			player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + _sellValue, true];
 			hint format ["You sold your backpack for $%1", _sellValue];

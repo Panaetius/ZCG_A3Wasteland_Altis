@@ -15,14 +15,14 @@ if(!isServer) exitWith {};
 sqlite_savePlayer = {
 	private ["_array", "_uid", "_varValue", "_res", "_query"];
 	_array = _this;	
-	_uid = _array select 1;
+	_uid = _array select 0;
 	
-	_varValue = _array select 3;
+	_varValue = _array select 1;
 	
 	//delete stuff
 	_query = format ["START TRANSACTION;Delete FROM Player WHERE Id=''%1'';Delete FROM Item WHERE PlayerId=''%1'';", _uid];
 	// save values
-	_query = _query + format ["INSERT INTO Player (Id,Health,Side,AccountName, Money, Vest, Uniform, Backpack, Goggles, HeadGear,Position, Direction, PrimaryWeapon, SecondaryWeapon, HandgunWeapon) VALUES (''%1'', %2, ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', ''%9'', ''%10'', ''%11'', %12, ''%13'', ''%14'', ''%15'');", 
+	_query = _query + format ["INSERT INTO Player (Id,Health,Side,AccountName, Money, Vest, Uniform, Backpack, Goggles, HeadGear,Position, Direction, PrimaryWeapon, SecondaryWeapon, HandgunWeapon,Hunger,Thirst) VALUES (''%1'', %2, ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', ''%9'', ''%10'', ''%11'', %12, ''%13'', ''%14'', ''%15'',%16,%17);", 
 		_uid, 
 		_varValue select 0, 
 		_varValue select 1, 
@@ -37,7 +37,9 @@ sqlite_savePlayer = {
 		_varValue select 10,
 		_varValue select 11,
 		_varValue select 12,
-		_varValue select 13
+		_varValue select 13,
+		_varValue select 15,
+		_varValue select 16
 		];
 	
 	_query = _query + "INSERT INTO Item (PlayerId, Type, Name) Values ";
@@ -58,12 +60,11 @@ sqlite_savePlayer = {
         };
         sleep 0.5;
 	};
-};
+} call mf_compile;
 
 sqlite_readPlayer = {
 	private ["_array", "_uid", "_data", "_player", "_query", "_items"];
-	_array = _this;
-	_uid = _array select 1;
+	_uid = _this;
 	
 	_query = format ["SELECT * FROM Player WHERE Id=''%1'' LIMIT 1", _uid];
 	_player = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', '%1']", _query];
@@ -75,7 +76,7 @@ sqlite_readPlayer = {
 	_data set [count _data, (call compile _items) select 0];
 	
 	_data
-};
+} call mf_compile;
 
 sqlite_deletePlayer = {
 	private "_res";
@@ -83,7 +84,7 @@ sqlite_deletePlayer = {
 	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'Delete FROM Player WHERE Id=''%1'';Delete FROM Item WHERE PlayerId=''%1'';']", _this];
 	
 	true
-};
+} call mf_compile;
 
 sqlite_exists = {
 	private ["_player", "_query"];
@@ -96,11 +97,11 @@ sqlite_exists = {
 	} else {
 		false
 	};
-};
+} call mf_compile;
 
 sqlite_deleteBaseObjects = {
 		_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'DELETE FROM Objects;']";
-};
+} call mf_compile;
 
 sqlite_saveBaseObjects = {
 	private ["_query", "_res"];
@@ -115,7 +116,7 @@ sqlite_saveBaseObjects = {
         };
         sleep 0.5;
 	};
-};
+} call mf_compile;
 
 sqlite_commitBaseObject = {
 	private ["_res"];
@@ -128,19 +129,19 @@ sqlite_commitBaseObject = {
         };
         sleep 0.5;
 	};
-};
+} call mf_compile;
 
 sqlite_deleteUncommitedObjects = {
 	private ["_res"];
 	
 	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'DELETE FROM objects WHERE IsSaved=0 OR GenerationCount > 9;']";
-};
+} call mf_compile;
 
 sqlite_countObjects = {
 	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'SELECT Count(*) FROM Objects']";
 	_res = parseNumber ((((call compile _res) select 0) select 0) select 0);
 	_res
-};
+} call mf_compile;
 
 sqlite_loadBaseObjects = {
 	private "_res";
@@ -155,7 +156,7 @@ sqlite_loadBaseObjects = {
 	};
 	_res = ((call compile _res) select 0);
 	_res
-};
+} call mf_compile;
 
 sqlite_saveBasePart = {
 	private ["_query", "_res"];
@@ -169,7 +170,7 @@ sqlite_saveBasePart = {
         };
         sleep 0.5;
 	};
-};
+} call mf_compile;
 
 sqlite_unsaveBasePart = {
 	private ["_query", "_res"];
@@ -183,7 +184,7 @@ sqlite_unsaveBasePart = {
         };
         sleep 0.5;
 	};
-};
+} call mf_compile;
 
 sqlite_getVehicleSaveQuery = {
 	_classname = typeOf _this;
@@ -203,7 +204,7 @@ sqlite_getVehicleSaveQuery = {
 	_saveQuery = format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 0, %10),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle, _this getVariable ["generationCount", 0]];
 	
 	_saveQuery
-};
+} call mf_compile;
 
 sqlite_createWarchest = {
 	private ["_query", "_res", "_warchestData"];
@@ -222,7 +223,7 @@ sqlite_createWarchest = {
 	diag_log _res;
 	
 	(_warchestData select 4) setVariable ["Id", _res, true];
-};
+} call mf_compile;
 
 sqlite_saveWarchest = {
 	private ["_query", "_res", "_warchestData"];
@@ -236,7 +237,7 @@ sqlite_saveWarchest = {
         };
         sleep 0.5;
 	};
-};
+} call mf_compile;
 
 sqlite_deleteWarchest = {
 	private ["_query", "_res"];
@@ -249,13 +250,13 @@ sqlite_deleteWarchest = {
         };
         sleep 0.5;
 	};
-};
+} call mf_compile;
 
 sqlite_countWarchests = {
 	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'SELECT Count(*) FROM Warchest']";
 	_res = parseNumber ((((call compile _res) select 0) select 0) select 0);
 	_res
-};
+} call mf_compile;
 
 sqlite_loadWarchests = {
 	private "_res";
@@ -270,17 +271,17 @@ sqlite_loadWarchests = {
 	};
 	_res = ((call compile _res) select 0);
 	_res
-};
+} call mf_compile;
 
 sqlite_getTrigger = {
 	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'SELECT `Condition` FROM triggers WHERE Name=''%1''']", _this];
 	_res = parseNumber ((((call compile _res) select 0) select 0) select 0);
 	_res
-};
+} call mf_compile;
 
 sqlite_setTrigger = {
 	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'UPDATE  triggers SET `Condition` = 0 WHERE Name=''%1''']", _this];
-};
+} call mf_compile;
 
 KRON_StrLeft = {
 	private["_in","_len","_arr","_out"];
@@ -296,7 +297,7 @@ KRON_StrLeft = {
 		};
 	};
 	_out
-};
+} call mf_compile;
 
 KRON_StrLen = {
 	private["_in","_arr","_len"];
@@ -304,7 +305,7 @@ KRON_StrLen = {
 	_arr=[_in] call KRON_StrToArray;
 	_len=count (_arr);
 	_len
-};
+} call mf_compile;
 
 KRON_StrToArray = {
 	private["_in","_i","_arr","_out"];
@@ -315,4 +316,4 @@ KRON_StrToArray = {
 		_out=_out+[toString([_arr select _i])];
 	};
 	_out
-};
+} call mf_compile;

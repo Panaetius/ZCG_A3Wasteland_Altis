@@ -28,6 +28,7 @@ _boxList =
 		_safePos = [_pos, 10, (_x select 1) / 2, 1, 0, 60 * (pi / 180), 0] call findSafePos; // spawns somewhere within half the town radius
 		_box = createVehicle [_boxClass, _safePos, [], 0, "NONE"];
 		_box allowDamage false;
+		_box setVariable ["allowDamage", false];
 		
 		// Clear prexisting cargo first
 		clearMagazineCargoGlobal _box;

@@ -64,7 +64,7 @@ while {true} do {
 					
 					_owner = _object getVariable ["ownerUID", ""];
 					_damage = damage _object;
-					_allowDamage = if (_object getVariable ["allowDamage", false]) then { 1 } else { 0 };
+					_allowDamage = if (_object getVariable ["allowDamage", true]) then { 1 } else { 0 };
 
 					// Save weapons & ammo
 					_weapons = getWeaponCargo _object;

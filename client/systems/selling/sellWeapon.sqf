@@ -149,6 +149,8 @@ else
 					player removeMagazines _x;
 				};
 			} forEach _weaponMags;
+			
+			diag_log text format ["%1 sold %2 for %3", player, _primary, _sellValue];
 
 			player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + _sellValue, true];
 			hint format ["You sold your gun for $%1", _sellValue];
