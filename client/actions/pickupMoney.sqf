@@ -62,4 +62,5 @@ else
 	titleText ["The money was counterfeit!", "PLAIN DOWN", 0.5];
 };
 
+sleep 0.5;
 mutexScriptInProgress = false;

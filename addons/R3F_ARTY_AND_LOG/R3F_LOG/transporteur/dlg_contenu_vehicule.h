@@ -65,8 +65,10 @@ class R3F_LOG_dlg_contenu_vehicule
 		
 		color[] = {0.543, 0.5742, 0.4102, 1.0};
 		color2[] = {0.95, 0.95, 0.95, 1};
+		colorFocused[] = {0.543, 0.5742, 0.4102, 1.0};
 		colorBackground[] = {1, 1, 1, 1};
 		colorbackground2[] = {1, 1, 1, 0.4};
+		colorBackgroundFocused[] = {1, 1, 1, 1};
 		colorDisabled[] = {1, 1, 1, 0.25};
 		periodFocus = 1.2;
 		periodOver = 0.8;
@@ -90,18 +92,18 @@ class R3F_LOG_dlg_contenu_vehicule
 		class TextPos 
 		{
 			left = 0.05;
-			top = 0.034;
+			top = 0.019;
 			right = 0.005;
 			bottom = 0.005;
 		};
 		
 		textureNoShortcut = "";
-		animTextureNormal = "client\ui\ui_button_normal_ca.paa";
-		animTextureDisabled = "client\ui\ui_button_disabled_ca.paa";
-		animTextureOver = "client\ui\ui_button_over_ca.paa";
-		animTextureFocused = "client\ui\ui_button_focus_ca.paa";
-		animTexturePressed = "client\ui\ui_button_down_ca.paa";
-		animTextureDefault = "client\ui\ui_button_default_ca.paa";
+		animTextureNormal = "client\ui\igui_button_normal_ca.paa";
+		animTextureDisabled = "client\ui\igui_button_disabled_ca.paa";
+		animTextureOver = "client\ui\igui_button_over_ca.paa";
+		animTextureFocused = "client\ui\igui_button_focus_ca.paa";
+		animTexturePressed = "client\ui\igui_button_down_ca.paa";
+		animTextureDefault = "client\ui\igui_button_normal_ca.paa";
 		period = 0.4;
 		font = "PuristaMedium";
 		
@@ -156,17 +158,6 @@ class R3F_LOG_dlg_contenu_vehicule
 		autoScrollSpeed = -1;
 		autoScrollDelay = 5;
 		autoScrollRewind = 0;
-		
-		class ScrollBar
-		{
-			color[] = {1, 1, 1, 0.6};
-			colorActive[] = {1, 1, 1, 1};
-			colorDisabled[] = {1, 1, 1, 0.3};
-			thumb = "client\ui\ui_scrollbar_thumb_ca.paa";
-			arrowFull = "client\ui\ui_arrow_top_active_ca.paa";
-			arrowEmpty = "client\ui\ui_arrow_top_ca.paa";
-			border = "client\ui\ui_border_scroll_ca.paa";
-		};
 		
 		class ListScrollBar
 		{

@@ -3,7 +3,7 @@
 #define ERR_IN_VEHICLE "Deploying Warchest Failed! You can't do that in a vehicle."
 #define ERR_CANCELLED "Deploying Warchest Cancelled!"
 #define ERR_TOO_FAR_AWAY "Deploying Warchest Failed! You are too far way."
-#define ERR_NOT_EAST_WEST "Deploying Warchest Failed! Independants dont have access to warchests yet."
+#define ERR_NOT_EAST_WEST "Deploying Warchest Failed! Independants don't have access to warchests yet."
 
 private "_checks";
 _checks = {
@@ -28,8 +28,8 @@ _checks = {
 private ["_success", "_warchest", "_hackAction", "_accessAction"];
 _success = [DURATION, ANIMATION, _checks, [getPosATL player]] call a3w_actions_start;
 if (_success) then {
-    _warchest = MF_ITEMS_WARCHEST_OBJECT_TYPE createVehicle getPosATL player;
-    _warchest setPosATL (getPosATL player);
+	_warchest = createVehicle [MF_ITEMS_WARCHEST_OBJECT_TYPE, [player, [0,1,0]] call relativePos, [], 0, "CAN_COLLIDE"];
+	_warchest setDir (getDir player + 180);
     _warchest setVariable ['side', playerSide, true];
 	_warchest setVariable ["R3F_LOG_disabled", true, true];
     _warchest setVariable ["a3w_warchest", true, true];
@@ -39,7 +39,7 @@ if (_success) then {
 	createWarchest = [0, playerSide, [vectorDir _warchest] + [vectorUp _warchest], getPosASL _warchest, _warchest];
 	publicVariableServer "createWarchest";
 	
-	[false] execVM "persistence\players\c_savePlayerToServer.sqf";
+	[false] spawn fn_savePlayerData;
 	
 	["Warchest Deployed!", 5] call mf_notify_client;
 };

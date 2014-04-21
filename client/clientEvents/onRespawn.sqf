@@ -5,38 +5,27 @@
 //	@file Args:
 
 private ["_player", "_corpse", "_town", "_spawn", "_temp"];
+
 playerSetupComplete = false;
 
 _player = _this select 0;
 _corpse = _this select 1;
-
 axeDiagLog = format ["%1 killed himself", profileName];
 publicVariableServer "axeDiagLog";
-
-//diag_log (unitBackpack _corpse);
-//clearMagazineCargoGlobal (unitBackpack _corpse);
-//removeBackpack _corpse;
 _corpse removeAction playerMenuId;
-{
-	_corpse removeAction _x;
-} forEach aActionsIDs;
+{ _corpse removeAction _x } forEach aActionsIDs;
 // The actions from mf_player_actions are removed in onKilled.
 
 player call playerSetup;
-waitUntil {playerSetupComplete};
-
-true spawn playerSpawn;
 
 [] execVM "client\clientEvents\onMouseWheel.sqf";
 
-[] spawn {
-	waitUntil{respawnDialogActive};
-	waitUntil{sleep 0.1; !respawnDialogActive};
+call playerSpawn;
 
-	if(!isNull pvar_PlayerTeamKiller) then {
-		pDialogTeamkiller = pvar_PlayerTeamKiller;
-		pvar_PlayerTeamKiller = objNull;
+if (isPlayer pvar_PlayerTeamKiller) then
+{
+	pDialogTeamkiller = pvar_PlayerTeamKiller;
+	pvar_PlayerTeamKiller = objNull;
 
-		[] execVM "client\functions\createTeamKillDialog.sqf";
-	};
+	[] execVM "client\functions\createTeamKillDialog.sqf";
 };

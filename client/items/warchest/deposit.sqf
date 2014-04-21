@@ -1,5 +1,5 @@
 #include "defines.sqf"
-#define ERR_NOT_ENOUGH_FUNDS "You dont have enough money."
+#define ERR_NOT_ENOUGH_FUNDS "You don't have enough money."
 private ["_warchest", "_amount", "_money"];
 disableSerialization;
 _warchest = findDisplay IDD_WARCHEST;
@@ -12,7 +12,7 @@ if (_money < _amount) exitWith {
     [ERR_NOT_ENOUGH_FUNDS, 5] call mf_notify_client;
 };
 player setVariable["cmoney",(_money - _amount),true];
-[false] execVM "persistence\players\c_savePlayerToServer.sqf";
+[false] spawn fn_savePlayerData;
 axeDiagLog = format ["%1 deposited %2 money", player, _amount];
 publicVariableServer "axeDiagLog";
 

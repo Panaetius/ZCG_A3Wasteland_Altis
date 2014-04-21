@@ -18,9 +18,9 @@ _money = parsenumber(GET_SELECTED_DATA(money_value));
 if((player getVariable "cmoney" < _money) OR (player getVariable "cmoney" < 0)) exitwith {hint format["You don't have $%1 to drop", _money];};
 
 mutexScriptInProgress = true;
-_pos = getPosATL player;
-_cash = "Land_Money_F" createVehicle (position player);
-_cash setPos _pos;
+player playMove "AinvPknlMstpSlayWrflDnon_medic";
+
+_cash = createVehicle ["Land_Money_F", [player, [0,1,0]] call relativePos, [], 0, "CAN_COLLIDE"];
 _cash setVariable ["cmoney", _money, true];
 _cash setVariable ["owner", "world", true];
 player setVariable ["cmoney", (player getVariable "cmoney") - _money, true];
@@ -28,9 +28,7 @@ player setVariable ["cmoney", (player getVariable "cmoney") - _money, true];
 axeDiagLog = format ["%1 dropped %2 money", profileName, _money];
 publicVariableServer "axeDiagLog";
 
-[false] execVM "persistence\players\c_savePlayerToServer.sqf";
-
-player playMove "AinvPknlMstpSlayWrflDnon_medic"; 
+[false] spawn fn_savePlayerData;
 
 sleep 8;
 

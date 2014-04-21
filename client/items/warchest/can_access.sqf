@@ -1,11 +1,11 @@
 #define ERR_IN_VEHICLE "Can't do that while in a vehicle"
-#define ERR_TOO_FAR "You moved too far away"
-#define ERR_WRONG_SIDE "That warchest is not owned by your team"
+#define ERR_TOO_FAR "You are too far away"
+#define ERR_WRONG_SIDE "The Warchest is not owned by your team"
 #define ERR_NOT_WARCHEST "That object is not a warchest"
 #define ERR_ALREADY_IN_USE "Warchest already in use"
 
 private ["_warchest", "_error"];
- _warchest = objNull;
+_warchest = objNull;
 if (count _this > 0) then {
 	_warchest = _this select 0;
 } else {
@@ -19,8 +19,8 @@ switch (true) do {
     case (isNull _warchest): {_error = ERR_TOO_FAR};
     case not(_warchest getVariable ["a3w_warchest", false]): {_error = ERR_NOT_WARCHEST};
     case (player distance _warchest >= 5): {_error = ERR_TOO_FAR};
-    case ((_warchest getVariable "side") != side player): {_error = ERR_WRONG_SIDE};
+    case (_warchest getVariable ["side", sideUnknown] != playerSide): {_error = ERR_WRONG_SIDE};
 	case ((_warchest getVariable ["InUse", false])): {_error = ERR_ALREADY_IN_USE};
     default {_error = ""};
 };
-_error;
+_error

@@ -30,14 +30,13 @@ currentStaticHelis = []; // Storage for the heli marker numbers so that we don't
 //Civilian Vehicle List - Random Spawns
 civilianVehicles =
 [
+	"C_Quadbike_01_F",
 	"C_Hatchback_01_F",
 	"C_Hatchback_01_sport_F",
 	"C_SUV_01_F",
 	"C_Offroad_01_F",
 	"I_G_Offroad_01_F",
-	"C_Van_01_box_F",
-	"C_Van_01_transport_F",
-	"I_G_Van_01_transport_F"
+	"C_Van_01_box_F"
 ];
 
 //Light Military Vehicle List - Random Spawns
@@ -46,7 +45,6 @@ lightMilitaryVehicles =
 	"B_Quadbike_01_F",
 	"O_Quadbike_01_F",
 	"I_Quadbike_01_F",
-	"C_Quadbike_01_F",
 	"I_G_Quadbike_01_F",
 	"O_Truck_02_covered_F",
 	"I_Truck_02_covered_F",
@@ -138,7 +136,6 @@ objectList =
 	"Land_HBarrierWall4_F",
 	"Land_HBarrierWall6_F",
 	"Land_HBarrierWall6_F",
-	"Land_LampShabby_F",
 	"Land_MetalBarrel_F",
 	"Land_Mil_ConcreteWall_F",
 	"Land_Mil_WallBig_4m_F",
@@ -175,6 +172,15 @@ staticHeliList =
 	"O_Heli_Light_02_unarmed_F",
 	"I_Heli_Transport_02_F",
 	"B_Heli_Transport_01_F"
+];
+
+//Object List - Random Planes.
+staticPlaneList = 
+[
+	"I_Plane_Fighter_03_CAS_F",
+	"B_Plane_CAS_01_F",
+	"O_Plane_CAS_02_F", 
+	"I_Plane_Fighter_03_AA_F"
 ];
 
 //Random Weapon List - Change this to what you want to spawn in cars.

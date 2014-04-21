@@ -23,5 +23,6 @@ aActionsIDs = aActionsIDs + [player addAction[("<t color='#C90000'>Emergency Eje
 //aActionsIDs = aActionsIDs + [player addAction["<img image='client\icons\store.paa'/> Open general store", "[] spawn loadGeneralStore;", [], 1, false, false, "", '(vehicle player == player) && player distance (nearestobjects [player, ["C_man_polo_6_F"],  3] select 0) < 2']];
 
 if (["config_player_saving_enabled", 0] call getPublicVar == 1) then {
-	aActionsIDs = aActionsIDs + [player addAction["<img image='client\icons\save.paa'/> <t color='#0080ff'>Save Player</t>", "persistence\players\c_savePlayerToServer.sqf", true, 1, false, false, "", '((stance player == "PRONE") && (player getVariable ["FAR_isUnconscious", false]) == 0)']];
+	aActionsIDs = aActionsIDs + [player addAction["<img image='client\icons\save.paa'/> <t color='#0080ff'>Save Player</t>", {[true] spawn fn_savePlayerData}, true, 1, false, false, "", '((stance player == "PRONE") && (player getVariable ["FAR_isUnconscious", false]) == 0 && (vehicle player == player))']];
 };
+aActionsIDs = aActionsIDs + [[player, "[0]"] call addPushPlaneAction];

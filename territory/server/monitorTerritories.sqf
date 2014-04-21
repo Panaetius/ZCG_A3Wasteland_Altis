@@ -92,11 +92,12 @@ _onCaptureStarted =
 
 	_territoryDescriptiveName = _this select 0;
     _ownerSideStr = _this select 1;
+	_newSide = _this select 2;
 
     if (_ownerSideStr != "") then 
 	{
         _sideObject = [_ownerSideStr] call _sideObjectForSideStr;
-        _descriptiveSideName = [_ownerSideStr] call _nameForSideStr;
+        _descriptiveSideName = [_newSide] call _nameForSideStr;
         _msg = format["Your territory at %1 is being captured by %2!", _territoryDescriptiveName, _descriptiveSideName];
         [[_msg], "territoryActivityHandler", _sideObject, false] call TPG_fnc_MP;
     };
@@ -444,7 +445,7 @@ _handleCapPointTick = {
                         _configEntry = [["config_territory_markers", []] call getPublicVar, { _x select 0 == _currentTerritoryName }] call BIS_fnc_conditionalSelect;
                         _territoryDescriptiveName = (_configEntry select 0) select 1;
 
-                        [_territoryDescriptiveName, _currentTerritoryOwner] call _onCaptureStarted;                        
+                        [_territoryDescriptiveName, _currentTerritoryOwner, _newDominantSide] call _onCaptureStarted;                        
                     };
 
                     _newCapPointTimer = _newCapPointTimer + realLoopTime

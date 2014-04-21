@@ -1,10 +1,10 @@
 #include "mutex.sqf"
 #define DURATION MF_ITEMS_WARCHEST_HACK_DURATION
 #define ANIMATION "AinvPknlMstpSlayWrflDnon_medic"
-#define ERR_IN_VEHICLE "Hacking Warchest Failed! You can't do that in a vehicle."
-#define ERR_TOO_FAR_AWAY "Hacking Warchest Failed! You are too far away."
-#define ERR_HACKED "Hacking Warchest Failed! Someone else just finished hacking this warchest."
-#define ERR_CANCELLED "Hacking Warchest Cancelled"
+#define ERR_IN_VEHICLE "Warchest Hacking Failed! You can't do that in a vehicle."
+#define ERR_TOO_FAR_AWAY "Warchest Hacking Failed! You are too far away."
+#define ERR_HACKED "Warchest Hacking Failed! Someone else just finished hacking this warchest."
+#define ERR_CANCELLED "Warchest Hacking Cancelled"
 #define ERR_EMPTY "No Money inside the Warchest"
 
 private ["_warchest", "_error", "_success"];
@@ -27,7 +27,7 @@ _checks = {
 		case ((_warchestObj getVariable ["money",0]) < 0): {_text = ERR_EMPTY};
 		case (doCancelAction): {_text = ERR_CANCELLED; doCancelAction = false;};
 		default {
-			_text = format["Hacking Warchest %1%2 Complete", round(100 * _progress), "%"];
+			_text = format["Warchest Hacking %1%2 Complete", round(100 * _progress), "%"];
 			_failed = false;
 		};
 	};
@@ -47,10 +47,8 @@ if (_success) then {
 	
 	_money = (player getVariable ["cmoney", 0]) + _amount;
 	player setVariable ["cmoney", _money, true];
-	
 	axeDiagLog = format ["%1 hacked %2 money", player, _amount];
 	publicVariableServer "axeDiagLog";
-	
-	[format["Hacking Warchest Complete! You Stole $%1", _amount], 5] call mf_notify_client;
+	[format["Warchest Hacking Complete! You stole $%1", _amount], 5] call mf_notify_client;
 };
 _success;
