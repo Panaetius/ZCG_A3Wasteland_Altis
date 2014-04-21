@@ -3062,21 +3062,21 @@ class Mission
 		class Item87
 		{
 			position[]={14221.6,34.789,18891.7};
-			name="VehStore1_Spawn_Land";
+			name="VehStore1_landSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item88
 		{
 			position[]={14221.6,34.789,18891.7};
-			name="VehStore1_Spawn_Heli";
+			name="VehStore1_heliSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item89
 		{
 			position[]={14221.6,34.789,18891.7};
-			name="VehStore1_Spawn_Air";
+			name="VehStore1_planeSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 			angle=128;
@@ -3084,28 +3084,28 @@ class Mission
 		class Item90
 		{
 			position[]={14221.6,34.789,18891.7};
-			name="VehStore1_Spawn_Sea";
+			name="VehStore1_seaSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item91
 		{
 			position[]={20253.7,41.5548,8830.35};
-			name="VehStore2_Spawn_Land";
+			name="VehStore2_landSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item92
 		{
 			position[]={20253.7,41.5548,8830.35};
-			name="VehStore2_Spawn_Heli";
+			name="VehStore2_heliSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item93
 		{
 			position[]={20253.7,41.5548,8830.35};
-			name="VehStore2_Spawn_Air";
+			name="VehStore2_planeSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 			angle=180;
@@ -3113,21 +3113,21 @@ class Mission
 		class Item94
 		{
 			position[]={4976.62,29.992,11070.4};
-			name="VehStore3_Spawn_Land";
+			name="VehStore3_landSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item95
 		{
 			position[]={4976.62,29.992,11070.4};
-			name="VehStore3_Spawn_Heli";
+			name="VehStore3_heliSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item96
 		{
 			position[]={4976.62,29.992,11070.4};
-			name="VehStore3_Spawn_Air";
+			name="VehStore3_planeSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 			angle=11;
@@ -3135,21 +3135,21 @@ class Mission
 		class Item97
 		{
 			position[]={14501.121,18.800117,16310.477};
-			name="VehStore4_Spawn_Land";
+			name="VehStore4_landSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item98
 		{
 			position[]={14515.698,18.365541,16297.085};
-			name="VehStore4_Spawn_Heli";
+			name="VehStore4_heliSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 		};
 		class Item99
 		{
 			position[]={14559.864,17.863695,16256.199};
-			name="VehStore4_Spawn_Air";
+			name="VehStore4_planeSpawn";
 			type="Empty";
 			colorName="ColorBlack";
 			angle=43;

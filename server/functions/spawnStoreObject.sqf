@@ -13,6 +13,8 @@ _class = [_this, 1, "", [""]] call BIS_fnc_param;
 _marker = [_this, 2, "", [""]] call BIS_fnc_param;
 _key = [_this, 3, "", [""]] call BIS_fnc_param;
 
+diag_log text format ["Spawn store object, %1, %2, %3, %4", _player, _class, _marker, _key];
+
 _isGenStore = (["GenStore", _marker] call fn_findString == 0);
 _isGunStore = (["GunStore", _marker] call fn_findString == 0);
 _isVehStore = (["VehStore", _marker] call fn_findString == 0);

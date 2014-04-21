@@ -100,7 +100,7 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 		};
 	} forEach _objects;
 	
-	SendMessageToClients = format ["Loaded {0} vehicles and base parts", _i];
+	SendMessageToClients = format ["Loaded %1 vehicles and base parts", (_i + _stepSize)];
 	publicVariable "SendMessageToClients";
 };
 
