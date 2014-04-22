@@ -14,25 +14,12 @@ if(((getPlayerUID player) != _uid) AND ((getPlayerUID player) + "_donation" != _
 //if there is not a value for items we care about exit early
 if (isNil '_varValue') exitWith {};
 
-removeUniform player; 
-
-_uniform = (_varValue select 6);
-if (_uniform != "") then {
-	player addUniform _uniform;
-};
 
 removeVest player; 
-
-_vest = (_varValue select 5);
-if (_vest != "") then {
-	player addVest _vest;
-};
-
+removeUniform player; 
 removeBackpack player; 
-_backpack = (_varValue select 7);
-if (_backpack != "") then {
-	player addBackpack _backpack;
-};
+
+player addBackpack "B_AssaultPack_rgr";
 
 removeHeadgear player; 
 _headgear = (_varValue select 9);
@@ -55,31 +42,94 @@ _items = _varValue select 17;
 } forEach _items;
 
 {
-	if( (_x select 2 )== "Vest") then {
-		_name = (_x select 3);
-		
-		player addItemToVest _name;
+	if((_x select 2) == "PrimaryWeaponMag") then {
+		_name = call compile (_x select 3);
+		diag_log _name;
+		player addMagazine _name;
 	};
 } forEach _items;
 
-{
-	if( (_x select 2 ) == "Backpack") then {
-		_name = (_x select 3);
-		
-		player addItemToBackpack _name;
-	};
-} forEach _items;
-
-{
-	if( (_x select 2 )== "Items") then {
-		_name = (_x select 3);
-		player addItemToUniform _name;
-	};
-} forEach _items;
 
 player addWeapon (_varValue select 12);
+
+{
+	if((_x select 2) == "HandgunMag") then {
+		_name = call compile (_x select 3);
+		diag_log _name;
+		player addMagazine _name;
+	};
+} forEach _items;
+
+
 player addWeapon (_varValue select 14);
+
+{
+	if((_x select 2) == "SecondaryWeaponMag") then {
+		_name = call compile (_x select 3);
+		diag_log _name;
+		player addMagazine _name;
+	};
+} forEach _items;
+
 player addWeapon (_varValue select 13);
+
+removeBackpack player; 
+
+
+_backpack = (_varValue select 7);
+if (_backpack != "") then {
+	player addBackpack _backpack;
+	
+	{
+		if( (_x select 2 )== "Backpack") then {
+			_name = call compile (_x select 3);
+			if ( typeName _name == "ARRAY" && {isClass (configFile >> "CFGMagazines" >> (_name select 0))}) then {
+				player addMagazine _name;
+			} 
+			else
+			{
+				player addItemToBackpack (_x select 3);
+			};
+		};
+	}forEach _items;
+};
+
+_vest = (_varValue select 5);
+if (_vest != "") then {
+	player addVest _vest;
+	
+	{
+		if( (_x select 2 )== "Vest") then {
+			_name = call compile (_x select 3);
+			if ( typeName _name == "ARRAY" && {isClass (configFile >> "CFGMagazines" >> (_name select 0))}) then {
+				player addMagazine _name;
+			} 
+			else
+			{
+				player addItemToVest (_x select 3);
+			};
+		};
+	}forEach _items;
+};
+
+
+_uniform = (_varValue select 6);
+if (_uniform != "") then {
+	player addUniform _uniform;
+	
+	{
+		if( (_x select 2 )== "Items") then {
+			_name = call compile (_x select 3);
+			if ( typeName _name == "ARRAY" && {isClass (configFile >> "CFGMagazines" >> (_name select 0))}) then {
+				player addMagazine _name;;
+			} 
+			else
+			{
+				player addItemToUniform (_x select 3);
+			};
+		};
+	} forEach _items;
+};
 
 {
 	if( (_x select 2 )== "PrimaryWeaponItem") then {

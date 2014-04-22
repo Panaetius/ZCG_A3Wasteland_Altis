@@ -31,6 +31,52 @@ savePlayerHandle = _this spawn
 		} forEach call mf_inventory_all;
 		
 		{
+			_class = _x select 0;
+			_ammoCount = _x select 1;
+			_isLoaded = _x select 2;
+			_type = _x select 3;
+			_container = _x select 4;
+			
+			_elem = [];
+			
+			switch (_type) do {
+				case 1://primary weapon mag
+				{
+					_elem = ['PrimaryWeaponMag', [_class, _ammoCount]];
+				};
+				case 2://handgun mag
+				{
+					_elem = ['HandgunMag', [_class, _ammoCount]];
+				};
+				case 4://secondary weapon mag
+				{
+					_elem = ['SecondaryWeaponMag', [_class, _ammoCount]];
+				};
+				default 
+				{
+					switch (_container) do {
+						case "Vest":
+						{
+							_elem = ['Vest', [_class, _ammoCount]];
+						};
+						case "Backpack":
+						{
+							_elem = ['Backpack', [_class, _ammoCount]];
+						};
+						case "Uniform":
+						{
+							_elem = ['Items', [_class, _ammoCount]];
+						};
+					};
+				};
+			};
+			
+			if (count _elem > 0) then {
+				_items set [count _items, _elem];
+			};
+		} forEach (magazinesAmmoFull player);
+		
+		{
 			_class = _x;
 			_elem = ['PrimaryWeaponItem', _class];
 			_items set [count _items, _elem];
@@ -49,21 +95,27 @@ savePlayerHandle = _this spawn
 		} forEach (handgunItems player);
 		
 		{
-			_class = _x;
-			_elem = ['Vest', _class];
-			_items set [count _items, _elem];
+			if ( !(isClass (configFile >> "CFGMagazines" >> _x))) then {
+				_class = _x;
+				_elem = ['Vest', _class];
+				_items set [count _items, _elem];
+			};
 		} forEach (vestItems player);
 		
 		{
-			_class = _x;
-			_elem = ['Backpack', _class];
-			_items set [count _items, _elem];
+			if ( !(isClass (configFile >> "CFGMagazines" >> _x))) then {
+				_class = _x;
+				_elem = ['Backpack', _class];
+				_items set [count _items, _elem];
+			};
 		} forEach (backpackItems player);
 		
 		{
-			_class = _x;
-			_elem = ['Items', _class];
-			_items set [count _items, _elem];
+			if ( !(isClass (configFile >> "CFGMagazines" >> _x))) then {
+				_class = _x;
+				_elem = ['Items', _class];
+				_items set [count _items, _elem];
+			};
 		} forEach (uniformItems player);
 		
 		{
