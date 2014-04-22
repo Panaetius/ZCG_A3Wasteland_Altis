@@ -46,6 +46,7 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 			
 			if(["Box_", _class] call fn_findString == 0) then {
 				_placement = 0;
+				_allowDamage = 0;
 			};
 			
 			_obj = createVehicle [_class, _pos, [], _placement, _type];
@@ -59,6 +60,7 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 			}
 			else
 			{
+				_obj setDamage 0;
 				_obj allowDamage false;
 				_obj setVariable ["allowDamage", false];
 			};

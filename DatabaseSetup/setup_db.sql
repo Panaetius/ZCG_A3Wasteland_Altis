@@ -45,6 +45,9 @@ CREATE TABLE `objects` (
   `IsSaved` int(1) unsigned NOT NULL,
   `SequenceNumber` int(10) unsigned NOT NULL,
   `GenerationCount` int(3) unsigned NOT NULL DEFAULT '0',
+  `Owner` varchar(100) NOT NULL,
+  `Damage` float NOT NULL DEFAULT '0',
+  `AllowDamage` int(1) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8;
 
@@ -69,6 +72,8 @@ CREATE TABLE `player` (
   `PrimaryWeapon` text NOT NULL,
   `SecondaryWeapon` text NOT NULL,
   `HandgunWeapon` text NOT NULL,
+  `Hunger` int(3) unsigned NOT NULL DEFAULT '100',
+  `Thirst` int(3) unsigned NOT NULL DEFAULT '100',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -85,7 +90,7 @@ CREATE TABLE  `warchest` (
 
 CREATE TABLE `Triggers` (
   `Name` VARCHAR(100) NOT NULL,
-  `Condition` INT(1) NOT NULL,
+  `Condition` INT(1) unsigned NOT NULL,
   PRIMARY KEY (`Name`)
 )
 ENGINE = InnoDB;
