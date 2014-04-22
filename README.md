@@ -8,6 +8,8 @@ The mission is not ready yet, so for now it's just a placeholder :)
 
 All development is done in the <a href="https://github.com/Panaetius/ZCG_A3Wasteland_Altis/tree/master">`master`</a> branch.
 
+See <a href="https://github.com/Panaetius/ZCG_A3Wasteland_Altis_AdditionalFiles">`ZCG_A3Wasteland_Altis_AdditionalFiles repository`</a> for additional files
+
 Installation
 ============
 
