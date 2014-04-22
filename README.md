@@ -16,7 +16,7 @@ Installation
 If you only want base saving to activate before a server restart (for performance reasons), use the batch files in the DatabaseSetup to set the "DoSave" flag to one before a restart (scheduled task or BEC command is fine) and set it back to 0 right before the restart
 - Use the BinPBO tools and the make_pbo.bat file (you need to edit this file) to compile the mission PBO file
 - Deploy the PBO on your server
-- To trigger base and vehicle saving, set the DoSave flag in the triggers table to 1, do disable it set it to 0. Once saving is done, the flag is set to 0 automatically (this is so you can externally start saving on restart, for instance, lock server -> kick all player -> start saving -> wait for flag to be 0 -> restart server
+- To trigger base and vehicle saving, set the DoSave flag in the triggers table to 1, do disable it set it to 0. Once saving is done, the flag is set to 0 automatically (this is so you can externally start saving on restart, for instance by using the WastelandRestarter tool)
 
 
 *Team Wasteland* collaborators:
