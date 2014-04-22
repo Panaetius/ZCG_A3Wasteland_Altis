@@ -53,6 +53,19 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 			_obj setPosASL _pos;
 			_obj setVectorDirAndUp _dir;
 			
+			//Fix position for more accurate positioning
+			_posX = (_pos select 0);
+			_posY = (_pos select 1);
+			_posZ = (_pos select 2);
+			
+			_currentPos = getPosASL _obj;
+			
+			_fixX = (_currentPos select 0) - _posX;
+			_fixY = (_currentPos select 1) - _posY;
+			_fixZ = (_currentPos select 2) - _posZ;
+		
+			_obj setPosASL [(_posX - _fixX), (_posY - _fixY), (_posZ - _fixZ)];
+			
 			if (_allowDamage > 0) then
 			{
 				_obj setDamage _damageVal;
