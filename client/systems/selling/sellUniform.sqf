@@ -125,7 +125,8 @@ else
 			// Remove uniform if sale confirmed by player
 			removeUniform player;
 			
-			diag_log text format ["%1 sold %2 for %3", player, _uniform, _sellValue];
+			axeDiagLog = format ["%1 sold %2 for %3", player, _uniform, _sellValue];
+			publicVariable "axeDiagLog";
 
 			player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + _sellValue, true];
 			hint format ["You sold your uniform for $%1", _sellValue];

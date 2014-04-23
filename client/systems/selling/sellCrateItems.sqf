@@ -147,7 +147,8 @@ else
 			clearWeaponCargoGlobal _crate;
 			clearItemCargoGlobal _crate;
 			
-			diag_log text format ["%1 sold %2 for %3", player, _crate, _sellValue];
+			axeDiagLog = format ["%1 sold %2 for %3", player, _crate, _sellValue];
+			publicVariable "axeDiagLog";
 
 			player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + _sellValue, true];
 			hint format ["You sold the contents for $%1", _sellValue];

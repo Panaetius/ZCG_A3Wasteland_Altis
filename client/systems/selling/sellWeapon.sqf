@@ -150,7 +150,8 @@ else
 				};
 			} forEach _weaponMags;
 			
-			diag_log text format ["%1 sold %2 for %3", player, _primary, _sellValue];
+			axeDiagLog = format ["%1 sold %2 for %3", player, _primary, _sellValue];
+			publicVariable "axeDiagLog";
 
 			player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + _sellValue, true];
 			hint format ["You sold your gun for $%1", _sellValue];

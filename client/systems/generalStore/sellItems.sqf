@@ -46,7 +46,8 @@ storeSellingHandle = [] spawn
 	{
 		[_itemData, 1] call mf_inventory_remove;
 		
-		diag_log text format ["%1 sold %2 for %3", player, _itemData, _price];
+		axeDiagLog = format ["%1 sold %2 for %3", player, _itemData, _price];
+		publicVariable "axeDiagLog";
 
 		player setVariable ["cmoney", _playerMoney + _price, true];
 		_playerMoneyText ctrlSetText format ["Cash: $%1", player getVariable "cmoney"];
