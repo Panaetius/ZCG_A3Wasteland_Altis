@@ -45,9 +45,10 @@ FAR_Player_Unconscious =
 	private["_unit", "_killer"];
 	_unit = _this select 0;
 	_killer = _this select 1;
-		
-	deletePlayer = (getPlayerUID _unit);
-	publicVariableServer "deletePlayer";
+	
+	if (isPlayer _unit) then {
+		[] spawn fn_deletePlayerData;
+	};
 		
 	// Death message
 	if (FAR_EnableDeathMessages && !isNil "_killer" && isPlayer _killer && _killer != _unit) then
