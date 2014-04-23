@@ -109,6 +109,7 @@ objectList =
 	"Box_EAST_Support_F",
 	"CamoNet_INDP_open_F",
 	"CamoNet_INDP_open_F",
+	"CamoNet_INDP_big_F",
 	"Land_BagBunker_Large_F",
 	"Land_BagBunker_Large_F",
 	"Land_BagBunker_Small_F",

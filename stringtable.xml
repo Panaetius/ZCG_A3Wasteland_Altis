@@ -91,6 +91,9 @@
 		<Key ID="STR_WL_ShopDescriptions_Camo">
 			<English>An improvised roof, 4 sticks and a blanket!</English>
 		</Key>
+		<Key ID="STR_WL_ShopDescriptions_CamoBig">
+			<English>An improvised roof, 4 sticks and a blanket!</English>
+		</Key>
 		<Key ID="STR_WL_ShopDescriptions_CanFood">
 			<English>The Greek wastelands may get you hungry!</English>
 		</Key>

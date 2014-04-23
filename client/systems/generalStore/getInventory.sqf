@@ -78,6 +78,12 @@ for [{_x=1},{_x<=_amount},{_x=_x+1}] do
 	playerInventory set [_index, "camonet"];
 	_index = _index + 1;
 };
+_amount = MF_ITEMS_CAMO_NET_BIG call mf_inventory_count;
+for [{_x=1},{_x<=_amount},{_x=_x+1}] do
+{
+	playerInventory set [_index, "camonetbig"];
+	_index = _index + 1;
+};
 _amount = MF_ITEMS_SYPHON_HOSE call mf_inventory_count;
 for [{_x=1},{_x<=_amount},{_x=_x+1}] do
 {
