@@ -28,7 +28,7 @@ player setVariable ["cmoney", (player getVariable "cmoney") - _money, true];
 axeDiagLog = format ["%1 dropped %2 money", profileName, _money];
 publicVariableServer "axeDiagLog";
 
-[false] spawn fn_savePlayerData;
+[] spawn fn_deletePlayerData;
 
 sleep 8;
 

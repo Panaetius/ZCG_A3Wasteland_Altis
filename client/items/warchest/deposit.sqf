@@ -12,7 +12,7 @@ if (_money < _amount) exitWith {
     [ERR_NOT_ENOUGH_FUNDS, 5] call mf_notify_client;
 };
 player setVariable["cmoney",(_money - _amount),true];
-[false] spawn fn_savePlayerData;
+[] spawn fn_deletePlayerData;
 axeDiagLog = format ["%1 deposited %2 money", player, _amount];
 publicVariableServer "axeDiagLog";
 

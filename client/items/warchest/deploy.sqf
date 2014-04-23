@@ -39,7 +39,7 @@ if (_success) then {
 	createWarchest = [0, playerSide, [vectorDir _warchest] + [vectorUp _warchest], getPosASL _warchest, _warchest];
 	publicVariableServer "createWarchest";
 	
-	[false] spawn fn_savePlayerData;
+	[] spawn fn_deletePlayerData;
 	
 	["Warchest Deployed!", 5] call mf_notify_client;
 };
