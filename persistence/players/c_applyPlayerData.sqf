@@ -20,6 +20,7 @@ removeUniform player;
 removeBackpack player; 
 
 player addBackpack "B_AssaultPack_rgr";
+sleep 0.1;
 
 removeHeadgear player; 
 _headgear = (_varValue select 9);
@@ -51,6 +52,7 @@ _items = _varValue select 17;
 
 
 player addWeapon (_varValue select 12);
+sleep 0.1;
 
 {
 	if((_x select 2) == "HandgunMag") then {
@@ -62,6 +64,7 @@ player addWeapon (_varValue select 12);
 
 
 player addWeapon (_varValue select 14);
+sleep 0.1;
 
 {
 	if((_x select 2) == "SecondaryWeaponMag") then {
@@ -72,9 +75,9 @@ player addWeapon (_varValue select 14);
 } forEach _items;
 
 player addWeapon (_varValue select 13);
+sleep 0.1;
 
 removeBackpack player; 
-
 
 _backpack = (_varValue select 7);
 if (_backpack != "") then {
@@ -82,10 +85,13 @@ if (_backpack != "") then {
 	
 	{
 		if( (_x select 2 )== "Backpack") then {
-			_name = call compile (_x select 3);
-			if ( typeName _name == "ARRAY" && {isClass (configFile >> "CFGMagazines" >> (_name select 0))}) then {
-				player addMagazine _name;
-			} 
+			_name = _x select 3;
+			if (["[", _name] call fn_findString != -1) then {
+				_name = call compile _name;
+				if (isClass (configFile >> "CFGMagazines" >> (_name select 0))) then {
+					player addMagazine _name;
+				}; 
+			}
 			else
 			{
 				player addItemToBackpack (_x select 3);
@@ -100,10 +106,13 @@ if (_vest != "") then {
 	
 	{
 		if( (_x select 2 )== "Vest") then {
-			_name = call compile (_x select 3);
-			if ( typeName _name == "ARRAY" && {isClass (configFile >> "CFGMagazines" >> (_name select 0))}) then {
-				player addMagazine _name;
-			} 
+			_name = _x select 3;
+			if (["[", _name] call fn_findString != -1) then {
+				_name = call compile _name;
+				if (isClass (configFile >> "CFGMagazines" >> (_name select 0))) then {
+					player addMagazine _name;
+				}; 
+			}
 			else
 			{
 				player addItemToVest (_x select 3);
@@ -119,10 +128,13 @@ if (_uniform != "") then {
 	
 	{
 		if( (_x select 2 )== "Items") then {
-			_name = call compile (_x select 3);
-			if ( typeName _name == "ARRAY" && {isClass (configFile >> "CFGMagazines" >> (_name select 0))}) then {
-				player addMagazine _name;;
-			} 
+			_name = _x select 3;
+			if (["[", _name] call fn_findString != -1) then {
+				_name = call compile _name;
+				if (isClass (configFile >> "CFGMagazines" >> (_name select 0))) then {
+					player addMagazine _name;
+				}; 
+			}
 			else
 			{
 				player addItemToUniform (_x select 3);
@@ -181,4 +193,5 @@ player setVariable ["cmoney", parseNumber (_varValue select 2), true];
 player setDamage (parseNumber (_varValue select 4));
 hungerLevel = parseNumber (_varValue select 15);
 thirstLevel = parseNumber (_varValue select 16);
+
 player switchMove "aidlppnemstpsraswrfldnon0s";

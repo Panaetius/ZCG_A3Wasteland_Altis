@@ -142,7 +142,7 @@ waituntil {!(IsNull (findDisplay 46))};
 } forEach playableUnits;
 
 _uid = getPlayerUID player;
-if (secondaryWeapon player == "") then {
+if (handgunWeapon player == "") then {
 	player addWeapon "hgun_ACPC2_F";
 };
 

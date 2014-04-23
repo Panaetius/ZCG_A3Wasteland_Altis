@@ -6,20 +6,6 @@
 if (!isServer) exitWith {};
 
 diag_log "oSave started";
-
-// Copy objectList array
-// _saveableObjects = +objectList + +R3F_LOG_CFG_objets_lockablevehicles;
-
-// // Add general store objects
-// {
-	// _genObject = _x select 1;
-	
-	// if ({_genObject == _x} count _saveableObjects == 0) then
-	// {
-		// _saveableObjects set [count _saveableObjects, _genObject];
-	// };
-// } forEach (call genObjectsArray);
-
 _stepSize = 20;
 
 while {true} do {

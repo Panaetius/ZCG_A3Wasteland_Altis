@@ -37,3 +37,44 @@ doSavePlayerData = {
 	(owner _player) publicVariableClient "applyPlayerData";
 };
 
+"deletePlayerData" addPublicVariableEventHandler
+{
+	_player = _this select 1;
+	_UID = getPlayerUID _player;
+	
+	_UID call sqlite_deletePlayer;
+};
+
+
+_createWarchestToDB =
+"
+	_this call sqlite_createWarchest;
+";
+
+createWarchestToDB = compile _createWarchestToDB;
+
+_updateWarchestToDB =
+"
+	_this call sqlite_saveWarchest;
+";
+
+updateWarchestToDB = compile _updateWarchestToDB;
+
+_deleteWarchestFromDB =
+"
+	_this call sqlite_deleteWarchest;
+";
+
+deleteWarchestFromDB = compile _deleteWarchestFromDB;
+
+"createWarchest" addPublicVariableEventHandler {
+	(_this select 1) spawn createWarchestToDB;
+};
+
+"updateWarchest" addPublicVariableEventHandler {
+	(_this select 1) spawn updateWarchestToDB;
+};
+
+"deleteWarchest" addPublicVariableEventHandler {
+	(_this select 1) spawn deleteWarchestFromDB;
+};
