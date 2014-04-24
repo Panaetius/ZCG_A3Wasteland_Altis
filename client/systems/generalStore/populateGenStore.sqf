@@ -88,52 +88,52 @@ _playerSideNum = switch (playerSide) do
 	
 	_showItem = true;
 	
-	// Side-based filtering
-	if (!isNil "_parentCfg") then
-	{
-		switch (configName _parentCfg) do
-		{
-			case "CfgVehicles":
-			{
-				_sideCfg = _parentCfg >> _weaponClass >> "side";
+	// // Side-based filtering
+	// if (!isNil "_parentCfg") then
+	// {
+		// switch (configName _parentCfg) do
+		// {
+			// case "CfgVehicles":
+			// {
+				// _sideCfg = _parentCfg >> _weaponClass >> "side";
 				
-				if (isNumber _sideCfg) then
-				{
-					_side = getNumber _sideCfg;
+				// if (isNumber _sideCfg) then
+				// {
+					// _side = getNumber _sideCfg;
 					
-					if (_side in [0,1,2] && {_side != _playerSideNum}) then
-					{
-						_showItem = false;
-					};
-				};
-			};
-			case "CfgWeapons":
-			{
-				_isUniform = isText (_parentCfg >> _weaponClass >> "ItemInfo" >> "uniformClass");
-				_sideCfg = _parentCfg >> _weaponClass >> "ItemInfo" >> "side";
+					// if (_side in [0,1,2] && {_side != _playerSideNum}) then
+					// {
+						// _showItem = false;
+					// };
+				// };
+			// };
+			// case "CfgWeapons":
+			// {
+				// _isUniform = isText (_parentCfg >> _weaponClass >> "ItemInfo" >> "uniformClass");
+				// _sideCfg = _parentCfg >> _weaponClass >> "ItemInfo" >> "side";
 				
-				switch (true) do
-				{
-					case (_isUniform):
-					{
-						if !([player, _weaponClass] call canWear) then
-						{
-							_showItem = false;
-						};
-					};
-					case (isNumber _sideCfg):
-					{
-						_side = getNumber _sideCfg;
+				// switch (true) do
+				// {
+					// case (_isUniform):
+					// {
+						// if !([player, _weaponClass] call canWear) then
+						// {
+							// _showItem = false;
+						// };
+					// };
+					// case (isNumber _sideCfg):
+					// {
+						// _side = getNumber _sideCfg;
 						
-						if (_side in [0,1,2] && {_side != _playerSideNum}) then
-						{
-							_showItem = false;
-						};
-					};
-				};
-			};
-		};
-	};
+						// if (_side in [0,1,2] && {_side != _playerSideNum}) then
+						// {
+							// _showItem = false;
+						// };
+					// };
+				// };
+			// };
+		// };
+	// };
 	
 	if (_showItem) then
 	{
