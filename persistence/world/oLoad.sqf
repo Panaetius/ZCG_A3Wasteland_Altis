@@ -36,21 +36,20 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 		if (!isNil "_class" && !isNil "_pos" && !isNil "_dir" && !isNil "_supplyleft") then 
 		{
 			_type = "NONE";
-			_placement = 10;
+			_placement = 0;
 			
 			if(!isNil "_isVehicle" && _isVehicle == 0 && ["Box_", _class] call fn_findString != 0) then
 			{
 				_type = "CAN COLLIDE";
-				_placement = 0;
 			};
 			
 			if(["Box_", _class] call fn_findString == 0) then {
-				_placement = 0;
 				_allowDamage = 0;
 			};
 			
 			_obj = createVehicle [_class, _pos, [], _placement, _type];
-			_obj setPosASL _pos;
+			_obj allowDamage false;
+			_obj setPosATL _pos;
 			_obj setVectorDirAndUp _dir;
 			
 			//Fix position for more accurate positioning
@@ -58,23 +57,23 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 			_posY = (_pos select 1);
 			_posZ = (_pos select 2);
 			
-			_currentPos = getPosASL _obj;
+			_currentPos = getPosATL _obj;
 			
 			_fixX = (_currentPos select 0) - _posX;
 			_fixY = (_currentPos select 1) - _posY;
 			_fixZ = (_currentPos select 2) - _posZ;
 		
-			_obj setPosASL [(_posX - _fixX), (_posY - _fixY), (_posZ - _fixZ)];
+			_obj setPosATL [(_posX - _fixX), (_posY - _fixY), (_posZ - _fixZ)];
 			
 			if (_allowDamage > 0) then
 			{
 				_obj setDamage _damageVal;
 				_obj setVariable ["allowDamage", true];
+				_obj allowDamage true;
 			}
 			else
 			{
 				_obj setDamage 0;
-				_obj allowDamage false;
 				_obj setVariable ["allowDamage", false];
 			};
 

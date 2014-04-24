@@ -31,7 +31,7 @@ while {true} do {
 				// addition to check if the classname matches the building parts
 				// if ({_classname == _x} count _saveableObjects > 0) then
 				// {
-					_pos = getPosASL _object;
+					_pos = getPosATL _object;
 					_dir = [vectorDir _object] + [vectorUp _object];
 
 					_supplyleft = 0;
