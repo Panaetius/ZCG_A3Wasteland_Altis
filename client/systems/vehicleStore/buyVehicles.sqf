@@ -97,6 +97,7 @@ storePurchaseHandle = _this spawn
 		if (!isNil "_texture") then
 		{
 			[_vehicle, _texture] call applyVehicleTexture;
+			_vehicle setVariable ["Texture", _texture, true];
 		};
 
 		// If UAV or UGV, fill vehicle with UAV AI, give UAV terminal to our player, and connect it to the vehicle

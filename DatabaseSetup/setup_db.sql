@@ -31,8 +31,8 @@ CREATE TABLE `item` (
 -- Definition of table `objects`
 --
 
-DROP TABLE IF EXISTS `objects`;
-CREATE TABLE `objects` (
+DROP TABLE IF EXISTS `players`.`objects`;
+CREATE TABLE  `players`.`objects` (
   `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
   `Position` text NOT NULL,
@@ -48,8 +48,9 @@ CREATE TABLE `objects` (
   `Owner` varchar(100) NOT NULL,
   `Damage` float NOT NULL DEFAULT '0',
   `AllowDamage` int(1) unsigned NOT NULL DEFAULT '1',
+  `Texture` varchar(100) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `player`

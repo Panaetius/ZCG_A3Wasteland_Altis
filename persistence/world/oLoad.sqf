@@ -19,6 +19,7 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 	_objects = [_i, _stepSize] call sqlite_loadBaseObjects;
 	
 	{
+		diag_log _x;
 		_class = _x select 1;
 		_pos = call compile (_x select 2);
 		_dir = call compile (_x select 3);
@@ -31,7 +32,9 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 		_owner = (_x select 12);
 		_damageVal = parseNumber (_x select 13);
 		_allowDamage = parseNumber (_x select 14);
-	
+		_texture = _x select 15;
+		diag_log _texture;
+		diag_log _isVehicle;
 		
 		if (!isNil "_class" && !isNil "_pos" && !isNil "_dir" && !isNil "_supplyleft") then 
 		{
@@ -106,6 +109,14 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 				_obj addItemCargoGlobal [(_items select 0) select _ii, (_items select 1) select _ii];
 			};
 			
+			if(!isNil "_isVehicle" && _isVehicle == 1) then 
+			{
+				diag_log _texture;
+				if (_texture != "") then {
+					[_obj, _texture] call applyVehicleTexture;
+					_obj setVariable ["Texture", _texture, true];
+				};
+			};
 			_obj setVariable ["objectLocked", true, true]; //force lock
 			_obj setVariable ["ownerUID", _owner, true]; // Set owner id
 			_obj setVariable ["generationCount", _generationCount + 1, true];

@@ -19,7 +19,7 @@ while {true} do {
 	
 		_PersistentDB_ObjCount = 1;
 		
-		_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount, Owner, Damage, AllowDamage) VALUES ";
+		_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount, Owner, Damage, AllowDamage, Texture) VALUES ";
 		
 		{
 			_object = _x;
@@ -57,13 +57,14 @@ while {true} do {
 					_magazines = getMagazineCargo _object;
 					_items = getItemCargo _object;
 					_isVehicle = 0;
+					_texture = _object getVariable ["Texture", ""];
 					
 					if (_object isKindOf "Car" || _object isKindOf "Air" || _object isKindOf "Ship" || _object isKindOf "Tank" ) then
 					{
 						_isVehicle = 1;
 					};
 					
-					_saveQuery = _saveQuery + format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 0, %10, ''%11'', %12, %13),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle, _object getVariable ["generationCount", 0], _owner, _damage, _allowDamage];
+					_saveQuery = _saveQuery + format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 0, %10, ''%11'', %12, %13, ''%14''),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle, _object getVariable ["generationCount", 0], _owner, _damage, _allowDamage, _texture];
 					
 					_PersistentDB_ObjCount = _PersistentDB_ObjCount + 1;
 					
@@ -71,7 +72,7 @@ while {true} do {
 					if ((_PersistentDB_ObjCount % _stepSize) == 0) then { 
 						_saveQuery call sqlite_saveBaseObjects;
 						
-						_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount, Owner, Damage, AllowDamage) VALUES ";
+						_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount, Owner, Damage, AllowDamage, Texture) VALUES ";
 					};
 				// };
 			};

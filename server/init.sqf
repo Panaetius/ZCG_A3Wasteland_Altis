@@ -20,6 +20,8 @@ _serverCompileHandle = [] execVM "server\functions\serverCompile.sqf";
 [] execVM "server\functions\relations.sqf";
 [] execVM (externalConfigFolder + "\init.sqf");
 
+applyVehicleTexture = "client\systems\vehicleStore\applyVehicleTexture.sqf" call mf_compile;
+
 waitUntil {scriptDone _serverCompileHandle};
 
 // Broadcast server rules
