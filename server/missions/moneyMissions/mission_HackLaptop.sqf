@@ -71,7 +71,8 @@ waitUntil
 if(_result == 1) then
 {
 	//Mission Failed.
-	_baseToDelete = nearestObjects [_randomPos, ["All"], 25];
+	deleteVehicle _laptop;
+	_baseToDelete = nearestObjects [_randomPos, ["All"], 50];
     { deleteVehicle _x } forEach _baseToDelete;    
     {deleteVehicle _x }forEach units _CivGrpM;
     deleteGroup _CivGrpM;

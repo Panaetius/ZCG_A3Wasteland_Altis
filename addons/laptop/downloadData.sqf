@@ -34,7 +34,7 @@ if (isDedicated) exitWith {};
 	_cDT = _laptop getVariable [ "Done", false ];
 	if ( _cDT ) exitWith {};
 	if(isNil "downloadActionId") then {
-		downloadActionId = _laptop addAction [ T8_varTLine05, { call T8_fnc_ActionLaptop; }, [], 10, false, false ];
+		downloadActionId = _laptop addAction [ T8_varTLine05, { call T8_fnc_ActionLaptop; }, [], 10, true, false ];
 	};
 };
 

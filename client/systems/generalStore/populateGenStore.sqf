@@ -50,11 +50,6 @@ switch(_switch) do
 	case 5: 
 	{
 		_itemsArray = call customPlayerItems;
-		
-		if (playerSide == INDEPENDENT) then
-		{
-			_itemsArray = [_itemsArray, { _x select 1 != "warchest" }] call BIS_fnc_conditionalSelect;
-		};
 	};
 	case 6: 
 	{
