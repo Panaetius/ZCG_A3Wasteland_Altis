@@ -551,7 +551,7 @@ R3F_LOG_CFG_objects_movables =
 	"Land_ToiletBox_F",
 	"Land_BarrelWater_F",
 	"CamoNet_INDP_open_F",
-	"CamoNet_INDP_big_F",
+	"CamoNet_INDP_big_F"
 ];
 
 R3F_LOG_CFG_objets_lockablevehicles =
