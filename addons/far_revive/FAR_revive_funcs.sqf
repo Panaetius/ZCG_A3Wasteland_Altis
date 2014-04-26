@@ -27,6 +27,18 @@ FAR_HandleDamage_EH =
 	
 	if (alive _unit && _amountOfDamage >= 1 && _isUnconscious == 0) then 
 	{
+		if (_unit getVariable ["RelicCount", 0] > 0) then {
+			if(!isNil "_killer" && isPlayer _killer && _killer != _unit) then {
+				AddRelicsToPlayer = [_killer, _unit];
+				publicVariableServer "AddRelicsToPlayer";
+			}
+			else
+			{
+				SpawnDroppedRelic = [_unit, true];
+				publicVariableServer "SpawnDroppedRelic";
+			};
+		};
+		
 		_unit setDamage 0;
 		_unit allowDamage false;
 		_amountOfDamage = 0;

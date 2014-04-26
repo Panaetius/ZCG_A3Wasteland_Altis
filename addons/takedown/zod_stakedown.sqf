@@ -20,11 +20,17 @@ if ((_target isKindOf "Man")&&((_target distance _unit) < 3)) then {
     knifeKillMessage = _message;
 	publicVariable "knifeKillMessage";
 	
-     _target setDamage 1;
+	if (_target getVariable ["RelicCount", 0] > 0) then {
+		AddRelicsToPlayer = [_unit, _target getVariable ["RelicCount", 0]];
+		publicVariableServer "AddRelicsToPlayer";
+	};
+	
+    _target setDamage 1;
   } else {
-	if ((getDammage _target)<(_unit getVariable ["zod_stakedown_mindamage", 0.5])) then {
+	if ((getDammage _target)<(_unit getVariable ["zod_stakedown_mindamage", 0.5])) then 
+	{
 		_target setDamage (_unit getVariable ["zod_stakedown_mindamage", 0.5]);
-		};
+	};
  	_target setUnitPos "Middle";
 	sleep 1.5;
 	_target setUnitPos "AUTO";

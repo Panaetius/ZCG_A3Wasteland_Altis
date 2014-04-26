@@ -121,6 +121,7 @@ waituntil {!(IsNull (findDisplay 46))};
 [] execVM "client\functions\playerTags.sqf";
 [] execVM "client\functions\groupTags.sqf";
 [] call updateMissionsMarkers;
+[] execVM "client\functions\ThereCanBeOnlyOne.sqf";
 // [] call updateRadarMarkers;
 
 [] spawn playerSpawn;
@@ -154,6 +155,13 @@ if (handgunWeapon player == "") then {
 		_x setVariable ["side", playerSide, true];
 	};
 } forEach pvar_spawn_beacons;
+
+//Hide ThereCanOnlyBeOne mission markers
+for "_i" from 1 to 13 do
+{
+	_markerName = format ["ThereCanBeOnlyOne_%1", _i];
+	_markerName setMarkerAlpha 0;
+};
 
 [] execVM "addons\fpsFix\vehicleManager.sqf";
 [] execVM "addons\Lootspawner\LSclientScan.sqf";

@@ -26,3 +26,5 @@ if (["config_player_saving_enabled", 0] call getPublicVar == 1) then {
 	aActionsIDs = aActionsIDs + [player addAction["<img image='client\icons\save.paa'/> <t color='#0080ff'>Save Player</t>", {[true] spawn fn_savePlayerData}, true, 1, false, false, "", '((stance player == "PRONE") && (player getVariable ["FAR_isUnconscious", false]) == 0 && (vehicle player == player))']];
 };
 aActionsIDs = aActionsIDs + [[player, "[0]"] call addPushPlaneAction];
+aActionsIDs = aActionsIDs + [player addAction [ "Pick up Relic", { call fnc_PickUpRelic; }, [], 10, true, false,  "", '(count (nearestObjects [player, ["Sign_Arrow_Large_Yellow_F"], 10]) > 0) && (player getVariable ["FAR_isUnconscious", 0] == 0) && (vehicle player == player) && (getPos player select 2) < 3']];
+aActionsIDs = aActionsIDs + [player addAction [ "Drop Relic(s)", { call fnc_DropRelic; }, [], 10, false, false,  "", 'player getVariable ["RelicCount", 0] > 0 && (vehicle player == player) && (getPos player select 2) < 3']];

@@ -246,22 +246,22 @@ if(_result == 1) then
 	_box = createVehicle ["Box_East_Wps_F",[(_randomPos select 0), (_randomPos select 1),0],[], 0, "NONE"];
 	[_box,"mission_USLaunchers"] call fn_refillbox;
 	_box allowDamage false;
-	_box setVariable ["R3F_LOG_disabled", true, true];
+	_box setVariable ["R3F_LOG_disabled", false, true];
 
 	_box2 = createVehicle ["Box_NATO_Wps_F",[(_randomPos select 0), (_randomPos select 1) - 10,0],[], 0, "NONE"];
 	[_box2,"mission_USSpecial"] call fn_refillbox;
 	_box2 allowDamage false;
-	_box2 setVariable ["R3F_LOG_disabled", true, true];
+	_box2 setVariable ["R3F_LOG_disabled", false, true];
 	
 	_box3 = createVehicle ["Box_NATO_WpsLaunch_F",[(_randomPos select 0), (_randomPos select 1) + 10,0],[], 0, "NONE"];
 	[_box3,"mission_USSpecial2"] call fn_refillbox;
 	_box3 allowDamage false;
-	_box3 setVariable ["R3F_LOG_disabled", true, true];
+	_box3 setVariable ["R3F_LOG_disabled", false, true];
 
 	_box4 = createVehicle ["Box_NATO_WpsSpecial_F",[(_randomPos select 0) + 10, (_randomPos select 1) - 10,0],[], 0, "NONE"];
 	[_box4,"mission_Main_A3snipers"] call fn_refillbox;
 	_box4 allowDamage false;
-	_box4 setVariable ["R3F_LOG_disabled", true, true];
+	_box4 setVariable ["R3F_LOG_disabled", false, true];
 };
 
 //Reset Mission Spot.

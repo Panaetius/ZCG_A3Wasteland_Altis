@@ -18,6 +18,7 @@ call compile preprocessFileLineNumbers "server\antihack\setup.sqf";
 _serverCompileHandle = [] execVM "server\functions\serverCompile.sqf";
 [] execVM "server\functions\broadcaster.sqf";
 [] execVM "server\functions\relations.sqf";
+[] execVM "server\functions\ThereCanBeOnlyOne.sqf";
 [] execVM (externalConfigFolder + "\init.sqf");
 
 applyVehicleTexture = "client\systems\vehicleStore\applyVehicleTexture.sqf" call mf_compile;
@@ -185,6 +186,13 @@ if (["A3W_serverMissions"] call isConfigOn) then
 	[] execVM "server\missions\moneyMissionController.sqf";
 	[] execVM "server\missions\hiddenMissionController.sqf";
     sleep 5;
+};
+
+//Hide ThereCanOnlyBeOne mission markers
+for "_i" from 1 to 13 do
+{
+	_markerName = format ["ThereCanBeOnlyOne_%1", _i];
+	_markerName setMarkerAlpha 0;
 };
 
 [] spawn {

@@ -47,7 +47,7 @@ with missionNamespace do
 					{
 						missionNamespace setVariable ["cannotAbortMessage", true];
 						
-						with missionNamespace do { [false] spawn fn_savePlayerData };
+						//with missionNamespace do { [false] spawn fn_savePlayerData };
 						false call _enableButtons;
 						
 						private "_timeStamp";
@@ -69,13 +69,13 @@ with missionNamespace do
 					}
 					else
 					{
-						with missionNamespace do { [true] spawn fn_savePlayerData };
+						//with missionNamespace do { [true] spawn fn_savePlayerData };
 					};
 				};
 			}
 			else
 			{
-				with missionNamespace do { [true] spawn fn_savePlayerData };
+				//with missionNamespace do { [true] spawn fn_savePlayerData };
 			};
 		};
 	};

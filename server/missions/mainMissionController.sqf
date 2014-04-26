@@ -23,7 +23,8 @@ _MainMissions =
 	["mission_Outpost", 1],
 	["mission_Heli", 1],
 	["mission_MilitaryBase", 1.5],
-	["mission_HostageRescue", 1]
+	["mission_HostageRescue", 1],
+	["mission_ThereCanBeOnlyOne", 1]
 ];
 
 // _notPlayedMainMissions = +_MainMissions;

@@ -58,7 +58,8 @@ if (_packetName == "BIS_fnc_MP_packet") then
 		"T8_fnc_abortActionLaptop",
 		"T8_fnc_removeActionLaptop",
 		"T8_fnc_ActionLaptop",
-		"zod_stakedown_minifunction"
+		"zod_stakedown_minifunction",
+		"BIS_fnc_moduleLightning"
 	];
 
 	if (_allowedFile || _allowedFunction) then
