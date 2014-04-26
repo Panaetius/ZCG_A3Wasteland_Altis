@@ -1,8 +1,5 @@
 private ["_unit"];
-diag_log _this;
 _unit = _this select 1;
-diag_log _unit;
-sleep 3;
 removeBackpack _unit; 
 _unit addBackpack "b_parachute"; 
 
