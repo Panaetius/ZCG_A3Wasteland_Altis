@@ -63,7 +63,7 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 			_fixY = (_currentPos select 1) - _posY;
 			_fixZ = (_currentPos select 2) - _posZ;
 		
-			_obj setPosATL [(_posX - _fixX), (_posY - _fixY), (_posZ - _fixZ)];
+			_obj setPosATL [(_posX - _fixX), (_posY - _fixY), (_posZ - _fixZ) + 0.3];
 			
 			if (_allowDamage > 0) then
 			{
