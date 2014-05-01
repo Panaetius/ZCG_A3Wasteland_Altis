@@ -17,7 +17,7 @@ player setVariable["cmoney",(_money + _amount),true];
 updateWarchest = [_warchestObj getVariable ["Id",0], _warchestObj getVariable ["money",0]];
 publicVariableServer "updateWarchest";
 
-axeDiagLog = format ["%1 withdrew %2 money", player, _amount];
+axeDiagLog = format ["%1 withdrew %2 money from warchest %3", player, _amount, _warchestObj getVariable ["Id",0]];
 publicVariableServer "axeDiagLog";
 call mf_items_warchest_refresh;
 closeDialog 0;

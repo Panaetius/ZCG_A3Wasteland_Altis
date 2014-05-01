@@ -13,11 +13,12 @@ if (_money < _amount) exitWith {
 };
 player setVariable["cmoney",(_money - _amount),true];
 [] spawn fn_deletePlayerData;
-axeDiagLog = format ["%1 deposited %2 money", player, _amount];
-publicVariableServer "axeDiagLog";
 
 _warchestObj = [] call mf_items_warchest_nearest;
 _warchestObj setVariable ["money", (_warchestObj getVariable ["money",0]) + _amount, true];
+
+axeDiagLog = format ["%1 deposited %2 money to warchest %3", player, _amount, _warchestObj getVariable ["Id",0]];
+publicVariableServer "axeDiagLog";
 
 updateWarchest = [_warchestObj getVariable ["Id",0], _warchestObj getVariable ["money",0]];
 publicVariableServer "updateWarchest";

@@ -24,6 +24,8 @@ if (_uid call isAdmin) then
 	_index = lbCurSel _playerListBox;
 	_playerData = _playerListBox lbData _index;
 	
+	_check = 0;
+	
 	{
 		if (str(_x) == _playerData) then {
 			_target = _x;

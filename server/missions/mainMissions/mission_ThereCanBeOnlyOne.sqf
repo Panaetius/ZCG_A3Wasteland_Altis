@@ -26,7 +26,7 @@ relicArray = [];
 
 _playerCount = {alive _x} count playableUnits;
 
-_relicCount = ceil _playerCount;
+_relicCount = ceil (_playerCount/2);
 
 for "_i" from 1 to _relicCount do
 {
@@ -141,9 +141,6 @@ waitUntil
 	
     (_result == 1) OR _done
 };
-
-RemoveAncientRelicHandlers = [];
-publicVariable "RemoveAncientRelicHandlers";
 
 {
 	deleteMarker _x;

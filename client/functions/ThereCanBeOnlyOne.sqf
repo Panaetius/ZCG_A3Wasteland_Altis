@@ -1,11 +1,6 @@
 if (isDedicated) exitWith {};
 
 
-"RemoveAncientRelicHandlers" addPublicVariableEventHandler
-{
-	player setVariable ["RelicCount", nil, true];	
-};
-
 fnc_PickUpRelic = 
 {
 	private ["_relic"];

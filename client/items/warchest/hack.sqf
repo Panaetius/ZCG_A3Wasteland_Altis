@@ -24,7 +24,7 @@ _checks = {
 		case (vehicle player != player): {_text = ERR_IN_VEHICLE};
 		case (player distance _warchest > 3): {_text = ERR_TOO_FAR_AWAY};
 		case (_warchest getVariable "side" == playerSide): {_text = ERR_HACKED};
-		case ((_warchestObj getVariable ["money",0]) < 0): {_text = ERR_EMPTY};
+		case ((_warchest getVariable ["money",0]) < 0): {_text = ERR_EMPTY};
 		case (doCancelAction): {_text = ERR_CANCELLED; doCancelAction = false;};
 		default {
 			_text = format["Warchest Hacking %1%2 Complete", round(100 * _progress), "%"];
@@ -41,13 +41,12 @@ MUTEX_UNLOCK;
 if (_success) then {
 	_amount = 0;
 	
-	_warchestObj = [] call mf_items_warchest_nearest;
-	_amount = round((_warchestObj getVariable ["money",0])/4);
-	_warchestObj setVariable ["money", (_warchestObj getVariable ["money",0]) - _amount, true];
+	_amount = round((_warchest getVariable ["money",0])/4);
+	_warchest setVariable ["money", (_warchest getVariable ["money",0]) - _amount, true];
 	
 	_money = (player getVariable ["cmoney", 0]) + _amount;
 	player setVariable ["cmoney", _money, true];
-	axeDiagLog = format ["%1 hacked %2 money", player, _amount];
+	axeDiagLog = format ["%1 hacked %2 money from warchest %3", player, _amount, _warchest getVariable ["Id",0]];
 	publicVariableServer "axeDiagLog";
 	[format["Warchest Hacking Complete! You stole $%1", _amount], 5] call mf_notify_client;
 };

@@ -543,9 +543,9 @@ FAR_checkTeamKill = {
 	
 	//teamkill code
 	if((_unit != _killer) && (vehicle _unit != vehicle _killer) && (playerSide == side _killer) && (playerSide in [BLUFOR, OPFOR])) then {
-		pvar_unitTeamKiller = objNull;
+		pvar_PlayerTeamKiller = objNull;
 		if(_killer isKindOf "CAManBase") then {
-			pvar_unitTeamKiller = _killer;
+			pvar_PlayerTeamKiller = _killer;
 			
 			axeDiagLog = format ["%1 teamkilled %2", _killer, _unit];
 			publicVariable "axeDiagLog";
@@ -579,7 +579,7 @@ FAR_checkTeamKill = {
 			} forEach _paths;
 
 			if(count _suspects == 1) then {
-				pvar_unitTeamKiller = _suspects select 0;
+				pvar_PlayerTeamKiller = _suspects select 0;
 				
 				axeDiagLog = format ["%1 teamkilled %2", _suspects select 0, _unit];
 				publicVariable "axeDiagLog";
@@ -587,8 +587,8 @@ FAR_checkTeamKill = {
 		};
 	};
 
-	if(!isNil "pvar_unitTeamKiller" && {!isNull(pvar_unitTeamKiller)}) then {
-		publicVar_teamkillMessage = pvar_unitTeamKiller;
+	if(!isNil "pvar_PlayerTeamKiller" && {!isNull(pvar_PlayerTeamKiller)}) then {
+		publicVar_teamkillMessage = pvar_PlayerTeamKiller;
 		publicVariableServer "publicVar_teamkillMessage";
 	};
 

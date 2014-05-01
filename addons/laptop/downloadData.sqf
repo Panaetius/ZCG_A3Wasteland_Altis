@@ -116,6 +116,9 @@ T8_fnc_ActionLaptop =
 				
 				player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + 5000, true];
 				
+				axeDiagLog = format ["%1 hacked laptop for %2 money", player, 5000];
+				publicVariableServer "axeDiagLog";
+				
 				RemoveLaptopHandler = [ _laptop, _id ];
 				publicVariable "RemoveLaptopHandler";
 			};
