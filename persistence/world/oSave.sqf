@@ -6,7 +6,7 @@
 if (!isServer) exitWith {};
 
 diag_log "oSave started";
-_stepSize = 20;
+_stepSize = 18;
 
 while {true} do {
 	sleep 30;

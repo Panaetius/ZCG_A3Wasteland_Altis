@@ -55,10 +55,8 @@ T8_fnc_abortActionLaptop =
 
 "RemoveLaptopHandler" addPublicVariableEventHandler
 {
-	_data = _this select 1;
-	_laptop = _data select 0;
-	_id = _data select 1;
-	_laptop removeAction _id;
+	_laptop = _this select 1;
+	_laptop removeAction downloadActionId;
 	downloadActionId = nil;
 };
 
@@ -118,9 +116,6 @@ T8_fnc_ActionLaptop =
 				
 				axeDiagLog = format ["%1 hacked laptop for %2 money", player, 5000];
 				publicVariableServer "axeDiagLog";
-				
-				RemoveLaptopHandler = [ _laptop, _id ];
-				publicVariable "RemoveLaptopHandler";
 			};
 			
 			ctrlSetText [ 8002, format [ "%1 kb/s", _dlRate ] ];		

@@ -34,7 +34,18 @@ _bunker = createVehicle ["Land_BagBunker_Small_F", [_randomPos select 0, _random
 _randomPos = getPosASL _bunker;
 
 _laptop = createVehicle ["Land_Laptop_unfolded_F", _randomPos, [], 0, "CAN COLLIDE"];
-_laptop setPosASL [_randomPos select 0, (_randomPos select 1) + 0.5, _randomPos select 2];
+//Fix position for more accurate positioning
+_posX = (_randomPos select 0);
+_posY = (_randomPos select 1);
+_posZ = (_randomPos select 2);
+
+_currentPos = getPosATL _obj;
+
+_fixX = (_currentPos select 0) - _posX;
+_fixY = (_currentPos select 1) - _posY;
+_fixZ = (_currentPos select 2) - _posZ;
+
+_laptop setPosASL [(_posX - _fixX), (_posY - _fixY) + 0.5, (_posZ - _fixZ)];
 
 _obj = createVehicle ["B_static_AT_F", _randomPos,[], 10,"None"]; 
 _obj setPosASL [_randomPos select 0, (_randomPos select 1) + 2, _randomPos select 2];
@@ -67,6 +78,9 @@ waitUntil
 	
     (_result == 1) OR (_laptop getVariable [ "Done", false ])
 };
+				
+RemoveLaptopHandler = _laptop;
+publicVariable "RemoveLaptopHandler";
 
 if(_result == 1) then
 {
