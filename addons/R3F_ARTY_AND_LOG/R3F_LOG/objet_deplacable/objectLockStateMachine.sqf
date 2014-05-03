@@ -52,8 +52,12 @@ switch (_lockState) do
 			if (_iteration >= _totalDuration) exitWith
 			{
 		        sleep 1;
+				if(!_object getVariable ["objectLocked", false] ) then
+				{
+					_object setVariable ["ownerUID", getPlayerUID player, true];
+				};
                 _object setVariable ["objectLocked", true, true];
-				_object setVariable ["ownerUID", getPlayerUID player, true];
+				
 				_object setVariable ["generationCount", 0, true];
                 2 cutText ["", "PLAIN DOWN", 1];
                 R3F_LOG_mutex_local_verrou = false;
