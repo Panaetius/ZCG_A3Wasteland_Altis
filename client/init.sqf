@@ -6,11 +6,17 @@
 
 if (isDedicated) exitWith {};
 
-waitUntil {!isNil "A3W_network_compileFuncs"};
-waitUntil {!isNil "A3W_serverSetupComplete"};
+if (!isServer) then
+{
+	waitUntil {!isNil "A3W_network_compileFuncs"};
+	
+	_networkCompile = [] spawn A3W_network_compileFuncs;
+	A3W_network_compileFuncs = nil;
+	
+	waitUntil {scriptDone _networkCompile};
+};
 
-call A3W_network_compileFuncs;
-A3W_network_compileFuncs = nil;
+waitUntil {!isNil "A3W_serverSetupComplete"};
 
 [] execVM "client\functions\bannedNames.sqf";
 
@@ -114,19 +120,25 @@ waituntil {!(IsNull (findDisplay 46))};
 //client Executes
 [] execVM "client\functions\initSurvival.sqf";
 [] execVM "client\systems\hud\playerHud.sqf";
-[] execVM "client\functions\createTownMarkers.sqf";
-[] execVM "client\functions\createGunStoreMarkers.sqf";
-[] execVM "client\functions\createGeneralStoreMarkers.sqf";
-[] execVM "client\functions\createVehicleStoreMarkers.sqf";
 [] execVM "client\functions\playerTags.sqf";
 [] execVM "client\functions\groupTags.sqf";
 [] call updateMissionsMarkers;
 [] execVM "client\functions\ThereCanBeOnlyOne.sqf";
 // [] call updateRadarMarkers;
 
+[] spawn
+{
+	call compile preprocessFileLineNumbers "client\functions\createTownMarkers.sqf"; // wait until town markers are placed before adding others
+	[] execVM "client\functions\createGunStoreMarkers.sqf";
+	[] execVM "client\functions\createGeneralStoreMarkers.sqf";
+	[] execVM "client\functions\createVehicleStoreMarkers.sqf";
+};
+
 [] spawn playerSpawn;
 
 [] execVM "client\functions\drawPlayerIcons.sqf";
+[] execVM "addons\fpsFix\vehicleManager.sqf";
+[] execVM "addons\Lootspawner\LSclientScan.sqf";
 
 // Synchronize score compensation
 {
@@ -142,20 +154,18 @@ waituntil {!(IsNull (findDisplay 46))};
 	};
 } forEach playableUnits;
 
-_uid = getPlayerUID player;
 if (handgunWeapon player == "") then {
 	player addWeapon "hgun_ACPC2_F";
 };
 
 // update player's spawn beaoon
 {
-	if (_x getVariable ["ownerUID",""] == _uid) exitWith
+	if (_x getVariable ["ownerUID",""] == getPlayerUID player) then
 	{
 		_x setVariable ["ownerName", name player, true];
 		_x setVariable ["side", playerSide, true];
 	};
 } forEach pvar_spawn_beacons;
-
 //Hide ThereCanOnlyBeOne mission markers
 for "_i" from 1 to 13 do
 {
