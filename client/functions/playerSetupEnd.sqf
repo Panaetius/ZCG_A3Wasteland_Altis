@@ -10,5 +10,4 @@ _player addRating 9999999;
 [] execVM "client\functions\playerActions.sqf";
 
 _player groupChat "Wasteland - Initialization Complete";
-call fn_deletePlayerData;
 playerSetupComplete = true;

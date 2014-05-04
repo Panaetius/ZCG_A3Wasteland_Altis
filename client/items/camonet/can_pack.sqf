@@ -17,12 +17,12 @@ if (count _this == 0) then {
 } else {
     _netting = _this select 0;
 };
-
 _error = "";
 switch (true) do {
 	case (isNull _netting): {_error = ERR_NO_TARGET};
 	case not(alive player): {};// Player is dead, no need for a error message
-	case not(player distance _netting < 5): {_error = ERR_TOO_FAR_AWAY};
+	case not(player distance _netting < 10): {_error = ERR_TOO_FAR_AWAY};
 	case (MF_ITEMS_CAMO_NET call mf_inventory_is_full): {_error = ERR_ALREADY_HAVE};
 };
+
 _error;

@@ -29,7 +29,7 @@ _spawnPos = _this select 1;
 	_currHeli setFuel (0.1 + random 0.2);
 	_currHeli setVehicleAmmo 0.5;
 	// _currHeli spawn cleanVehicleWreck;
-	_currHeli setDir (random 360);
+	//_currHeli setDir (random 360);
 	
 	_currHeli enableSimulationGlobal true;
 	[_currHeli, 30*60, 45*60, 60*60, 1000, 0, false, _spawnPos] execVM "server\functions\vehicle.sqf";

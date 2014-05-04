@@ -70,6 +70,7 @@ player setVariable ["cmoney", _baseMoney, true];
 if (["A3W_playerSaving"] call isConfigOn) then
 {
 	player globalchat "Loading player account...";
+	playerData_loaded = nil;
 	call compile preprocessFileLineNumbers "persistence\players\c_setupPlayerDB.sqf";
 	call fn_requestPlayerData;
 	

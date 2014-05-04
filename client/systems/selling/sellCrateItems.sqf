@@ -143,6 +143,9 @@ else
 		// Display confirmation
 		if ([parseText _confirmMsg, "Confirm", "Sell", true] call BIS_fnc_guiMessage) then
 		{
+			axeDiagLog = format ["%1 sold %2 for %3", player, _allCrateItems, _sellValue];
+			publicVariable "axeDiagLog";
+			
 			clearMagazineCargoGlobal _crate;
 			clearWeaponCargoGlobal _crate;
 			clearItemCargoGlobal _crate;
