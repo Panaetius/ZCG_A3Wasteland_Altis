@@ -16,13 +16,14 @@ fn_savePlayerData = "persistence\players\c_savePlayerData.sqf" call mf_compile;
 		
 		if (count _data > 0) then
 		{
-			playerData_alive = true;
 			_data call fn_applyPlayerData;
 			
 			player globalChat "Player account loaded!";
 			
 			//fixes the issue with saved player being GOD when they log back on the server!
 			player allowDamage true;
+			
+			playerData_alive = true;
 			
 			execVM "client\functions\firstSpawn.sqf";
 		};

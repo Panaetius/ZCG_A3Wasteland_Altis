@@ -52,7 +52,7 @@ switch (_lockState) do
 			if (_iteration >= _totalDuration) exitWith
 			{
 		        sleep 1;
-				if(!_object getVariable ["objectLocked", false] ) then
+				if(!(_object getVariable ["objectLocked", false]) ) then
 				{
 					_object setVariable ["ownerUID", getPlayerUID player, true];
 				};

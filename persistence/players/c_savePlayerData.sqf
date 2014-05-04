@@ -78,20 +78,30 @@ savePlayerHandle = _this spawn
 		
 		{
 			_class = _x;
-			_elem = ['PrimaryWeaponItem', _class];
-			_items set [count _items, _elem];
+			if(_class != "") then
+			{
+				_elem = ['PrimaryWeaponItem', _class];
+				_items set [count _items, _elem];
+			};
 		} forEach (primaryWeaponItems player);
 		
 		_magsAmmo = [];
 		{
 			_class = _x;
-			_elem = ['SecondaryWeaponItem', _class];
-			_items set [count _items, _elem];
+			if(_class != "") then
+			{
+				_elem = ['SecondaryWeaponItem', _class];
+				_items set [count _items, _elem];
+			};
 		} forEach (secondaryWeaponItems player);
 		{
 			_class = _x;
-			_elem = ['HandgunWeaponItem', _class];
-			_items set [count _items, _elem];
+			
+			if(_class != "") then
+			{
+				_elem = ['HandgunWeaponItem', _class];
+				_items set [count _items, _elem];
+			};
 		} forEach (handgunItems player);
 		
 		{
@@ -120,8 +130,11 @@ savePlayerHandle = _this spawn
 		
 		{
 			_class = _x;
-			_elem = ['AssignedItem', _class];
-			_items set [count _items, _elem];
+			if(_class != "") then
+			{
+				_elem = ['AssignedItem', _class];
+				_items set [count _items, _elem];
+			};
 		} forEach (assignedItems player);
 		
 		_playerData = [
