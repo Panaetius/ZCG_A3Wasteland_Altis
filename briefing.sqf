@@ -20,6 +20,7 @@ player createDiaryRecord ["changelog",
 <br/> [Added] - Melee kills
 <br/> [Added] - Warchests for independent
 <br/> [Added] - Moneysplosion Mission
+<br/> [Added] - There can only be One! Mission
 "
 ]];
 
