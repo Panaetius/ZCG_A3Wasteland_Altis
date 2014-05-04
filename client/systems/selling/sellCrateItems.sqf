@@ -150,6 +150,8 @@ else
 			clearWeaponCargoGlobal _crate;
 			clearItemCargoGlobal _crate;
 			
+			deleteVehicle _crate;
+			
 			axeDiagLog = format ["%1 sold %2 for %3", player, _crate, _sellValue];
 			publicVariable "axeDiagLog";
 

@@ -2449,7 +2449,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=254;
+		items=244;
 		class Item0
 		{
 			position[]={3612.1487,12.11851,13020.892};
@@ -4207,121 +4207,30 @@ class Mission
 		};
 		class Item241
 		{
-			position[]={9110.5771,156.77438,17628.355};
+			position[]={11369.8,75.782295,16695.197};
 			name="ThereCanBeOnlyOne_1";
 			markerType="ELLIPSE";
 			type="Empty";
-			a=4700;
-			b=4700;
+			a=2500;
+			b=2500;
 		};
 		class Item242
 		{
-			position[]={5411.8105,73.058151,12570.604};
+			position[]={19024.891,49.705311,15954.159};
 			name="ThereCanBeOnlyOne_2";
 			markerType="ELLIPSE";
 			type="Empty";
-			a=2000;
-			b=2000;
+			a=2100;
+			b=2100;
 		};
 		class Item243
 		{
-			position[]={24707.424,42.026985,21499.861};
+			position[]={15556.408,21.238644,17866.363};
 			name="ThereCanBeOnlyOne_3";
 			markerType="ELLIPSE";
 			type="Empty";
 			a=1800;
 			b=1800;
-		};
-		class Item244
-		{
-			position[]={21993.521,17.055569,17821.51};
-			name="ThereCanBeOnlyOne_4";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=1800;
-			b=1800;
-		};
-		class Item245
-		{
-			position[]={19548.77,26.976084,14726.316};
-			name="ThereCanBeOnlyOne_5";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=2100;
-			b=2100;
-		};
-		class Item246
-		{
-			position[]={18880.236,83.563492,10906.824};
-			name="ThereCanBeOnlyOne_6";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=2100;
-			b=2100;
-		};
-		class Item247
-		{
-			position[]={20378.635,33.2943,7481.7544};
-			name="ThereCanBeOnlyOne_7";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=1800;
-			b=1800;
-		};
-		class Item248
-		{
-			position[]={15556.408,21.238644,17866.363};
-			name="ThereCanBeOnlyOne_11";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=1800;
-			b=1800;
-		};
-		class Item249
-		{
-			position[]={13995.836,69.564339,21226.02};
-			name="ThereCanBeOnlyOne_12";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=1800;
-			b=1800;
-		};
-		class Item250
-		{
-			position[]={10962.926,137.15341,8244.1797};
-			name="ThereCanBeOnlyOne_8";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=1700;
-			b=1700;
-		};
-		class Item251
-		{
-			position[]={10726.507,14.779873,12486.31};
-			name="ThereCanBeOnlyOne_9";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=1300;
-			b=1300;
-		};
-		class Item252
-		{
-			position[]={8509.1426,61.564087,11924.707};
-			name="ThereCanBeOnlyOne_10";
-			markerType="ELLIPSE";
-			type="Empty";
-			colorName="ColorGrey";
-			a=1300;
-			b=1300;
-		};
-		class Item253
-		{
-			position[]={4269.3394,259.60052,20966.471};
-			name="ThereCanBeOnlyOne_13";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=1300;
-			b=1300;
 		};
 	};
 };

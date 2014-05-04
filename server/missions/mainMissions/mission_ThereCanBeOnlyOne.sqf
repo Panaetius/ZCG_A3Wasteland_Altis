@@ -26,11 +26,11 @@ relicArray = [];
 
 _playerCount = {alive _x} count playableUnits;
 
-_relicCount = ceil (_playerCount/2);
+_relicCount = ceil (_playerCount/3);
 
 for "_i" from 1 to _relicCount do
 {
-	_index = ceil random 13;
+	_index = ceil random 3;
 	_circle = format ["ThereCanBeOnlyOne_%1", _index];
 	_pos = [getMarkerPos _circle, 0, (getMarkerSize _circle) select 0, 10, 0, 60*(pi/180), 0, "Sign_Arrow_Large_Yellow_F"] call findSafePos;
 	
@@ -146,18 +146,23 @@ waitUntil
 	deleteMarker _x;
 } forEach _playerMarkers;
 
-{
-	_x setVariable ["RelicCount", nil, true];
-} forEach playableUnits;
-
 if(_result == 1) then
 {
-	//Mission Failed.   
+	//Mission Failed.  
+	{
+		_playerRelicCount = _x getVariable ["RelicCount", 0];
+		if (_playerRelicCount > 0) then
+		{
+			player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + (200 * _playerRelicCount), true];
+		};
+		_x setVariable ["RelicCount", nil, true];
+	} forEach playableUnits;
+	
 	{
 		deleteVehicle (_x select 0);
 		deleteMarker (_x select 1);
 	} forEach relicArray;
-    _hint = parseText format ["<t align='center' color='%3' shadow='2' size='1.75'>Objective Failed</t><br/><t align='center' color='%3'>------------------------------</t><br/><t align='center' color='%4' size='1.25'>%1</t><br/><t align='center' color='%4'>Objective failed, better luck next time.</t>", _missionType, '', failMissionColor, subTextColor];
+    _hint = parseText format ["<t align='center' color='%3' shadow='2' size='1.75'>Objective Failed</t><br/><t align='center' color='%3'>------------------------------</t><br/><t align='center' color='%4' size='1.25'>%1</t><br/><t align='center' color='%4'>Objective failed, better luck next time. You got 200$ for each artifact as a consolation price</t>", _missionType, '', failMissionColor, subTextColor];
 	[_hint] call hintBroadcast;
     diag_log format["WASTELAND SERVER - Main Mission Failed: %1",_missionType];
 } else {
@@ -165,6 +170,10 @@ if(_result == 1) then
     {
 		deleteMarker (_x select 1);
 	} forEach relicArray;
+	
+	{
+		_x setVariable ["RelicCount", nil, true];
+	} forEach playableUnits;
 	
 	_randomPos = getPos _winner;
 	
