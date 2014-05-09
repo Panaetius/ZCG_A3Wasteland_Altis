@@ -10,7 +10,9 @@ savePlayerHandle = _this spawn
 	if (alive player &&
 	   {!isNil "isConfigOn" && {["A3W_playerSaving"] call isConfigOn}} &&
 	   {!isNil "playerSetupComplete" && {playerSetupComplete}} &&
-	   {!isNil "respawnDialogActive" && {!respawnDialogActive}}) then
+	   {!isNil "respawnDialogActive" && {!respawnDialogActive}} &&
+	   {((getPosATL player) select 2) < 5} &&
+	   { player getVariable ["FAR_isUnconscious",0] == 0}) then
 	{
 		player setVariable ["IsSaving", true, true];
 		_uid = getPlayerUID player;
