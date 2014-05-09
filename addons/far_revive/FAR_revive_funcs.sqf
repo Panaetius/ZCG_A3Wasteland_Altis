@@ -70,6 +70,8 @@ FAR_Player_Unconscious =
 		["FAR_deathMessage", [_unit, _killer]] call FAR_public_EH;
 	};
 	
+	_unit setVariable ["FAR_isUnconscious", 1, true];
+	
 	if (isPlayer _unit) then
 	{
 		disableUserInput true;
