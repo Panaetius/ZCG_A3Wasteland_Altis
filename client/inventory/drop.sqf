@@ -32,7 +32,7 @@ if (_item select QTY <= 0) exitWith {
 
 private ["_pos", "_obj"];
 
-if (alive player) then
+if (alive player && player getVariable ["FAR_isUnconscious",0] == 0) then
 {
 	MUTEX_LOCK_OR_FAIL;
 	player playMove ([player, "AmovMstpDnon_AinvMstpDnon", "putdown"] call getFullMove);
