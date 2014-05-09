@@ -76,15 +76,15 @@ if (["A3W_playerSaving"] call isConfigOn) then
 	
 	waitUntil {!isNil "playerData_loaded"};
 	
-	// [] spawn
-	// {
-		// // Save player every 60s
-		// while {true} do
-		// {
-			// sleep 60;
-			// call fn_savePlayerData;
-		// };
-	// };
+	[] spawn
+	{
+		// Save player every 60s
+		while {true} do
+		{
+			sleep 600;
+			call fn_savePlayerData;
+		};
+	};
 };
 
 if (isNil "playerData_alive") then
