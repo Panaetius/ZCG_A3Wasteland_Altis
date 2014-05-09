@@ -39,6 +39,7 @@ if (_success) then {
 	_beacon setVariable ["ownerUID", _uid, true];
     _beacon setVariable ["packing", false, true];
     _beacon setVariable ["groupOnly", (playerSide == INDEPENDENT), true];
+	_beacon setVariable ['haloJump', false, true];
 	_beacon setVariable ["GenerationCount", 0, true];
 	_beacon setVariable ["Id", 0, true];
 	

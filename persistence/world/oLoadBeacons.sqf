@@ -20,6 +20,7 @@ for "_i" from 0 to (_beaconCount) step _stepSize do
 		_pos = call compile (_x select 6);
 		_groupOnly = parseNumber (_x select 4);
 		_generationCount = parseNumber (_x select 5);
+		_haloJump = parseNumber (_x select 8);
 		
 		if (!isNil "_pos" && !isNil "_dir") then 
 		{
@@ -67,6 +68,7 @@ for "_i" from 0 to (_beaconCount) step _stepSize do
 			_beacon setVariable ["ownerUID", _ownerId, true];
 			_beacon setVariable ["packing", false, true];
 			_beacon setVariable ["groupOnly", _groupOnly == 1, true];
+			_beacon setVariable ['haloJump', _haloJump == 1, true];
 			_beacon setVariable ["GenerationCount", _generationCount, true];
 			
 			_beacon setVariable ["Id", _id, true];

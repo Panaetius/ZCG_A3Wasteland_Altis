@@ -43,3 +43,7 @@ _steal = ["Steal Spawn Beacon", path("steal.sqf"), [], 1, true, false, "", _cond
 _condition = "'' == [] call mf_items_spawn_beacon_can_pack && {playerSide != independent}";
 _pack =["Change Spawn Permissions", path("toggle_spawn_permissions.sqf"), [], 1, true, false, "", _condition];
 ["beacon-spawn-toggle", _pack] call mf_player_actions_set;
+
+_condition = "'' == [] call mf_items_spawn_beacon_can_pack";
+_pack =["Change Spawn Mode", path("toggle_spawn_mode.sqf"), [], 1, true, false, "", _condition];
+["beacon-spawnmode-toggle", _pack] call mf_player_actions_set;

@@ -8,10 +8,21 @@ private ["_pos", "_owner"];
 _pos = _this select 0;
 _owner = _this select 1;
 
-_pos = [_pos select 0, _pos select 1, 1500];
-waitUntil {sleep 0.1; preloadCamera _pos};
-player setPos _pos;
-[player, 1500, false, false, true] spawn fn_haloJump;
+_beacons = nearestObjects [_pos, ["Land_TentDome_F"], 5];
+
+if (not(isNil "_beacons") && count _beacons > 0 && (_beacons select 0) getVariable ["haloJump", false]) then 
+{
+	_pos = [_pos select 0, _pos select 1, 1500];
+	waitUntil {sleep 0.1; preloadCamera _pos};
+	player setPos _pos;
+
+	[player, 1500, false, false, true] spawn fn_haloJump;
+}
+else
+{
+	waitUntil {sleep 0.1; preloadCamera _pos};
+	player setPos _pos;
+};
 
 respawnDialogActive = false;
 closeDialog 0;

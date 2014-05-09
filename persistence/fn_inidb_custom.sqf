@@ -290,15 +290,23 @@ sqlite_saveBeacon = {
 	if(_beacon getVariable ["groupOnly",false]) then
 	{
 		_groupOnly = 1;
+	};	
+	
+	_haloJump = 0;
+	
+	if(_beacon getVariable ["haloJump",false]) then
+	{
+		_haloJump = 1;
 	};
 	
-	_query = format ["INSERT INTO beacon (Side, Direction, Position, OwnerName, OwnerId, GroupOnly, GenerationCount) VALUES (''%1'', ''%2'', ''%3'', ''%4'', %5, %6, 0);SELECT LAST_INSERT_ID();", 
+	_query = format ["INSERT INTO beacon (Side, Direction, Position, OwnerName, OwnerId, GroupOnly, GenerationCount, HaloJump) VALUES (''%1'', ''%2'', ''%3'', ''%4'', %5, %6, 0, %7);SELECT LAST_INSERT_ID();", 
 		_beacon getVariable ["side", resistance],
 		[vectorDir _beacon] + [vectorUp _beacon],
 		getPosATL _beacon,
 		_beacon getVariable ["ownerName",""],
 		_beacon getVariable ["ownerUID",0],
-		_groupOnly];
+		_groupOnly,
+		_haloJump];
 	_res = nil;
 	while {isNil("_res")} do {
 		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['players', '%1']", _query];
@@ -324,7 +332,14 @@ sqlite_updateBeacon = {
 		_groupOnly = 1;
 	};
 	
-	_query = format ["UPDATE beacon SET GroupOnly=%2, GenerationCount=%3 WHERE Id=%1", _beacon getVariable ["Id", -1], _groupOnly, _beacon getVariable ["GenerationCount", 0]];
+	_haloJump = 0;
+	
+	if(_beacon getVariable ["haloJump",false]) then
+	{
+		_haloJump = 1;
+	};
+	
+	_query = format ["UPDATE beacon SET GroupOnly=%2, GenerationCount=%3, HaloJump=%4 WHERE Id=%1", _beacon getVariable ["Id", -1], _groupOnly, _beacon getVariable ["GenerationCount", 0], _haloJump];
 	_res = nil;
 	while {isNil("_res")} do {
 		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['players', '%1']", _query];

@@ -108,5 +108,6 @@ CREATE TABLE  `players`.`beacon` (
   `GenerationCount` int(10) unsigned NOT NULL,
   `Position` varchar(100) NOT NULL,
   `Direction` varchar(100) NOT NULL,
+  `HaloJump` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
