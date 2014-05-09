@@ -97,3 +97,16 @@ CREATE TABLE `Triggers` (
 ENGINE = InnoDB;
 
 INSERT INTO `Triggers` (Name, `Condition`) Values ("DoSave", 1);
+
+DROP TABLE IF EXISTS `players`.`beacon`;
+CREATE TABLE  `players`.`beacon` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Side` varchar(45) NOT NULL,
+  `OwnerName` varchar(45) NOT NULL,
+  `OwnerId` bigint(50) unsigned NOT NULL,
+  `GroupOnly` int(10) unsigned NOT NULL,
+  `GenerationCount` int(10) unsigned NOT NULL,
+  `Position` varchar(100) NOT NULL,
+  `Direction` varchar(100) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
