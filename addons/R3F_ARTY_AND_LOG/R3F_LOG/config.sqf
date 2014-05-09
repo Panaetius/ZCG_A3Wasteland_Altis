@@ -492,7 +492,7 @@ R3F_LOG_CFG_objets_transportables =
 	["Land_Shoot_House_Wall_F", 3],
 	["Land_Stone_8m_F", 5],
 	["Land_ToiletBox_F", 2],
-	["Land_BarrelWater_F", 2],
+	["Land_WaterBarrel_F", 2],
 	["CamoNet_INDP_open_F",2],
 	["CamoNet_INDP_big_F",2]
 ];
@@ -550,7 +550,7 @@ R3F_LOG_CFG_objects_movables =
 	"Land_Shoot_House_Wall_F",
 	"Land_Stone_8m_F",
 	"Land_ToiletBox_F",
-	"Land_BarrelWater_F",
+	"Land_WaterBarrel_F",
 	"CamoNet_INDP_open_F",
 	"CamoNet_INDP_big_F"
 ];
