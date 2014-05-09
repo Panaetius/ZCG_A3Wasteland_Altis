@@ -14,9 +14,10 @@ _marker = _this;
 		_rad = _x select 1;
 		_townName = _x select 2;
 		
-		_playerPos = [_pos,5,_rad,1,0,0,0] call findSafePos;
-		waitUntil {sleep 0.1; preloadCamera _playerPos};
-		player setPos _playerPos;
+		_pos = [_pos select 0, _pos select 1, 1500];
+		waitUntil {sleep 0.1; preloadCamera _pos};
+		player setPos _pos;
+		[player, 1500, false, false, true] spawn fn_haloJump;
 	};
 } forEach (call cityList);
 
