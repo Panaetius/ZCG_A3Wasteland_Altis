@@ -39,6 +39,8 @@ _hasFailed = {
 _success =  [DURATION, ANIM, _hasFailed, [_beacon]] call a3w_actions_start;
     
 if (_success) then {
+	deleteBeacon = _beacon getVariable ["Id", -1];
+	publicVariableServer "deleteBeacon";
     pvar_spawn_beacons = pvar_spawn_beacons - [_beacon];
     publicVariable "pvar_spawn_beacons";
     deleteVehicle _beacon;

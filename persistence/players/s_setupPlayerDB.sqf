@@ -67,6 +67,26 @@ _deleteWarchestFromDB =
 
 deleteWarchestFromDB = compile _deleteWarchestFromDB;
 
+_saveBeaconToDB =
+"
+	_this call sqlite_saveBeacon;
+";
+saveBeaconToDB = compile _saveBeaconToDB;
+
+_updateBeaconToDB =
+"
+	_this call sqlite_updateBeacon;
+";
+
+updateBeaconToDB = compile _updateBeaconToDB;
+
+_deleteBeaconFromDB =
+"
+	_this call sqlite_deleteBeacon;
+";
+
+deleteBeaconFromDB = compile _deleteBeaconFromDB;
+
 "createWarchest" addPublicVariableEventHandler {
 	(_this select 1) spawn createWarchestToDB;
 };
@@ -77,4 +97,15 @@ deleteWarchestFromDB = compile _deleteWarchestFromDB;
 
 "deleteWarchest" addPublicVariableEventHandler {
 	(_this select 1) spawn deleteWarchestFromDB;
+};
+
+"saveBeacon" addPublicVariableEventHandler {
+	(_this select 1) spawn saveBeaconToDB;
+};
+"updateBeacon" addPublicVariableEventHandler {
+	(_this select 1) spawn updateBeaconToDB;
+};
+
+"deleteBeacon" addPublicVariableEventHandler {
+	(_this select 1) spawn deleteBeaconFromDB;
 };

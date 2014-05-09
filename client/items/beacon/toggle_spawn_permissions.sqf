@@ -54,4 +54,9 @@ if (_success) then {
 		["The Spawn Beacon is now limited to your group", 5] call mf_notify_client;
 		_beacon setVariable ['groupOnly', true, true];
 	};
+	
+	_beacon setVariable ["GenerationCount", 0, true];
+	
+	updateBeacon = _beacon;
+	publicVariableServer "updateBeacon";
 };

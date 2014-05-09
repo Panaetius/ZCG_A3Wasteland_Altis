@@ -15,4 +15,5 @@ isLoadingObjects = false;
 
 execVM "persistence\world\oLoad.sqf";
 execVM "persistence\world\oLoadWarchests.sqf";
+execVM "persistence\world\oLoadBeacons.sqf";
 execVM "persistence\world\oSave.sqf";

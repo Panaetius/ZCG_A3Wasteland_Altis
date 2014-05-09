@@ -220,7 +220,6 @@ sqlite_createWarchest = {
 	};
 	
 	_res = (((call compile _res) select 0) select 0) select 0;
-	diag_log _res;
 	
 	(_warchestData select 4) setVariable ["Id", _res, true];
 } call mf_compile;
@@ -263,7 +262,7 @@ sqlite_loadWarchests = {
 	
 	_res = nil;
 	while {isNil("_res")} do {
-		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'UPDATE Warchest SET GenerationCount = GenerationCount + 1;DELETE FROM warchest WHERE GenerationCount > 9;SELECT * FROM Warchest WHERE GenerationCount < 10 ORDER BY Id ASC LIMIT %1,%2']", _this select 0, _this select 1];
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'UPDATE Warchest SET GenerationCount = GenerationCount + 1;DELETE FROM warchest WHERE GenerationCount > 21;SELECT * FROM Warchest WHERE GenerationCount < 22 ORDER BY Id ASC LIMIT %1,%2']", _this select 0, _this select 1];
 		if (_res == "") then {
                 _res = nil;
         };
@@ -281,6 +280,93 @@ sqlite_getTrigger = {
 
 sqlite_setTrigger = {
 	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'UPDATE  triggers SET `Condition` = 0 WHERE Name=''%1''']", _this];
+} call mf_compile;
+
+sqlite_saveBeacon = {
+	private ["_query", "_res", "_beacon", "_groupOnly"];
+	_beacon = _this;
+	_groupOnly = 0;
+	
+	if(_beacon getVariable ["groupOnly",false]) then
+	{
+		_groupOnly = 1;
+	};
+	
+	_query = format ["INSERT INTO beacon (Side, Direction, Position, OwnerName, OwnerId, GroupOnly, GenerationCount) VALUES (''%1'', ''%2'', ''%3'', ''%4'', %5, %6, 0);SELECT LAST_INSERT_ID();", 
+		_beacon getVariable ["side", resistance],
+		[vectorDir _beacon] + [vectorUp _beacon],
+		getPosATL _beacon,
+		_beacon getVariable ["ownerName",""],
+		_beacon getVariable ["ownerUID",0],
+		_groupOnly];
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['players', '%1']", _query];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
+	
+	_res = (((call compile _res) select 0) select 0) select 0;
+	
+	_beacon setVariable ["Id", _res, true];
+} call mf_compile;
+
+sqlite_updateBeacon = {
+	private ["_query", "_res", "_beacon", "_groupOnly"];
+	_beacon = _this;
+	
+	_groupOnly = 0;
+	
+	if(_beacon getVariable ["groupOnly",false]) then
+	{
+		_groupOnly = 1;
+	};
+	
+	_query = format ["UPDATE beacon SET GroupOnly=%2, GenerationCount=%3 WHERE Id=%1", _beacon getVariable ["Id", -1], _groupOnly, _beacon getVariable ["GenerationCount", 0]];
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['players', '%1']", _query];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
+} call mf_compile;
+
+sqlite_deleteBeacon = {
+	private ["_query", "_res"];
+	_query = format ["DELETE FROM beacon WHERE Id=%1", _this];
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['players', '%1']", _query];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
+} call mf_compile;
+
+sqlite_loadBeacons = {
+	private "_res";
+	
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['players', 'UPDATE beacon SET GenerationCount = GenerationCount + 1;DELETE FROM beacon WHERE GenerationCount > 9;SELECT * FROM beacon WHERE GenerationCount < 10 ORDER BY Id ASC LIMIT %1,%2']", _this select 0, _this select 1];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
+	_res = ((call compile _res) select 0);
+	_res
+} call mf_compile;
+
+sqlite_countBeacons = {
+	_res = "Arma2Net.Unmanaged" callExtension "Arma2NETMySQLCommand ['players', 'SELECT Count(*) FROM beacon']";
+	_res = parseNumber ((((call compile _res) select 0) select 0) select 0);
+	_res
 } call mf_compile;
 
 KRON_StrLeft = {
