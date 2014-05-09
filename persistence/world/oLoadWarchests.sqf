@@ -21,13 +21,31 @@ for "_i" from 0 to (_warchestCount) step _stepSize do
 		
 		if (!isNil "_pos" && !isNil "_dir") then 
 		{
+			_posZ = _pos select 2;
+			if (_posZ > 1) then {//for migration purposes from setPosASL to setPosATL
+				_pos = [_pos select 0, _pos select 1, 0];
+			};
+		
 			_type = "CAN COLLIDE";
 			_placement = 0;
 			
 			_warchest = createVehicle ["Land_CashDesk_F", _pos, [], _placement, _type];
-			_warchest setPosASL _pos;
+			_warchest setPosATL _pos;
 			_warchest setVectorDirAndUp _dir;
 			_warchest setDamage 0;
+			
+			//Fix position for more accurate positioning
+			_posX = (_pos select 0);
+			_posY = (_pos select 1);
+			_posZ = (_pos select 2);
+			
+			_currentPos = getPosATL _warchest;
+			
+			_fixX = (_currentPos select 0) - _posX;
+			_fixY = (_currentPos select 1) - _posY;
+			_fixZ = (_currentPos select 2) - _posZ;			
+			
+			_warchest setPosATL [(_posX - _fixX), (_posY - _fixY), (_posZ - _fixZ)];
 			
 			switch(_side) do
 			{

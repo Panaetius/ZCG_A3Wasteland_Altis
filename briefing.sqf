@@ -21,6 +21,11 @@ player createDiaryRecord ["changelog",
 <br/> [Added] - Warchests for independent
 <br/> [Added] - Moneysplosion Mission
 <br/> [Added] - There can only be One! Mission
+<br/> [Added] - Multiple spawn beacons per player
+<br/> [Added] - Spawn Beacons now save
+<br/> [Changed] - Warchests now despawn after 7 days/21 restarts of inactivity instead of 3 days/9 restarts
+<br/> [Added] - Camo Nets now save for 3 days/9 restarts
+<br/> [Bugfix] - Warchests should now spawn more accurately and not fall from the sky when spawning
 "
 ]];
 

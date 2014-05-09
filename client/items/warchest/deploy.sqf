@@ -36,7 +36,7 @@ if (_success) then {
 	
 	_warchest setVariable ["money", 0, true];
 	
-	createWarchest = [0, playerSide, [vectorDir _warchest] + [vectorUp _warchest], getPosASL _warchest, _warchest];
+	createWarchest = [0, playerSide, [vectorDir _warchest] + [vectorUp _warchest], getPosATL _warchest, _warchest];
 	publicVariableServer "createWarchest";
 	
 	[] spawn fn_deletePlayerData;
