@@ -41,6 +41,7 @@ if (_success) then {
 	_pos = getPosATL player;
 	_netting = MF_ITEMS_CAMO_NET_TYPE createVehicle _pos;
     _netting setPosATL _pos;
+	_netting setVariable ["objectLocked", true, true];
     ["You successfully unpacked the Camouflage Netting", 5] call mf_notify_client;
 };
 _success
