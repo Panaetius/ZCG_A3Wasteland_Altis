@@ -70,4 +70,5 @@ if (_vehicleType isKindOf "Offroad_01_armed_base_F") then
 if (_type > 1) then { _vehicle setVehicleAmmo (random 1.0) };
 
 _vehicle setDir (random 360);
+_vehicle enableSimulationGlobal true;
 [_vehicle] call randomWeapons;

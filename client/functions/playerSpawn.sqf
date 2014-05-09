@@ -76,7 +76,7 @@ if (isNil "playerData_alive") then
 }
 else
 {
-	call fn_deletePlayerData;
+	//call fn_deletePlayerData;
 	playerData_alive = nil;
 };
 

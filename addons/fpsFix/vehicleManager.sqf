@@ -36,7 +36,7 @@ _vehicleManager =
 			if (!local _vehicle &&
 			   {_vehicle isKindOf "Man" || {count crew _vehicle == 0}} &&
 			   {_vehicle getVariable ["fpsFix_simulationCooloff", 0] < diag_tickTime} &&
-			   {isTouchingGround _vehicle || {!(_vehicle isKindOf "AllVehicles")} || {_vehicle isKindOf "Ship"}}) then
+			   {(isTouchingGround _vehicle && ((getPosATL _vehicle) select 2) < 3) || {!(_vehicle isKindOf "AllVehicles")} || {_vehicle isKindOf "Ship"}}) then
 			{
 				_dist = _vehicle distance positionCameraToWorld [0,0,0];
 				_vel = velocity _vehicle distance [0,0,0];

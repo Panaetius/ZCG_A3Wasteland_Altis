@@ -253,6 +253,7 @@ while {respawnDialogActive} do
 	};
 	
 	_btnIndex = 0;
+	_count = 1;
 	
 	{
 		_location = _x;
@@ -303,8 +304,9 @@ while {respawnDialogActive} do
 			_pos = getPos _location;
 			_owner = _location getVariable ["ownerName", "[Beacon]"];
 			
-			_button ctrlSetText format ["%1", _owner];
+			_button ctrlSetText format ["%1%2", _owner, _count];
 			_data = format ["2,%1", [_pos, _owner]];
+			_count = _count + 1;
 		}
 		else
 		{

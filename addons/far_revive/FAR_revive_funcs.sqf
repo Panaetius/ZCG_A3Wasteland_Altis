@@ -60,7 +60,7 @@ FAR_Player_Unconscious =
 	
 	if (isPlayer _unit) then {
 		[] spawn fn_deletePlayerData;
-	};
+	};	
 		
 	// Death message
 	if (FAR_EnableDeathMessages && !isNil "_killer" && isPlayer _killer && _killer != _unit) then
@@ -74,6 +74,23 @@ FAR_Player_Unconscious =
 	{
 		disableUserInput true;
 		titleText ["", "BLACK FADED"];
+		
+		if (_unit getVariable "cmoney" > 0) then
+		{
+			axeDiagLog = format ["%1 is unconscious and dropped %2 money", _unit, _unit getVariable "cmoney"];
+			publicVariable "axeDiagLog";
+			_m = createVehicle ["Land_Money_F", _unit call fn_getPos3D, [], 0.5, "CAN_COLLIDE"];
+			_m setVariable ["cmoney", _unit getVariable "cmoney", true];
+			_m setVariable ["owner", "world", true];
+			_unit setVariable ["cmoney", 0, true];
+		};
+
+		{
+			for "_i" from 1 to (_x select 1) do
+			{
+				(_x select 0) call mf_inventory_drop;
+			};
+		} forEach call mf_inventory_all;
 	};
 	
 	// Eject unit if inside vehicle

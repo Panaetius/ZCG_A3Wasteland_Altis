@@ -29,6 +29,7 @@ _takeable = objNull;
 		case (_lineOfSightBroken): {};
 	    case (_id call mf_inventory_is_full): {};
 	    case (_x getVariable ["mf_item_id", ""] != _id): {};
+		case (not(alive player) || player getVariable ["FAR_isUnconscious", 0] == 1): {};
 	    default {_takeable = _x};
 	};
 } forEach (nearestObjects [player, [_type], MF_INVENTORY_TAKE_DISTANCE]);

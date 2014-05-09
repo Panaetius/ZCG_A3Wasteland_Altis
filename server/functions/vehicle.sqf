@@ -142,7 +142,7 @@ while {_run} do
 		
 		if (_deserted > 0 && 
 		   {getPosASL _veh distance _position > 10 || _veh getVariable ["itemTakenFromVehicle", false]} &&
-		   {{alive _veh} count crew _veh == 0}&& {not(_unit getVariable ['objectLocked', false])}) then 
+		   {{alive _veh} count crew _veh == 0}&& {not(_veh getVariable ['objectLocked', false])}) then 
 		{
 			if (_desertedTimeout == 0) then {
 				_desertedTimeout = diag_tickTime + _deserted;

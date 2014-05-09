@@ -39,7 +39,7 @@ _posX = (_randomPos select 0);
 _posY = (_randomPos select 1);
 _posZ = (_randomPos select 2);
 
-_currentPos = getPosATL _obj;
+_currentPos = getPosATL _laptop;
 
 _fixX = (_currentPos select 0) - _posX;
 _fixY = (_currentPos select 1) - _posY;
