@@ -17,7 +17,7 @@ _marker = _this;
 		_pos = [_pos select 0, _pos select 1, 1500];
 		waitUntil {sleep 0.1; preloadCamera _pos};
 		player setPos _pos;
-		[player, 1500, false, false, true] spawn fn_haloJump;
+		[player, 1500, false, true, true] spawn fn_haloJump;
 	};
 } forEach (call cityList);
 

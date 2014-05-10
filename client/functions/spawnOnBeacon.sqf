@@ -16,7 +16,7 @@ if (not(isNil "_beacons") && count _beacons > 0 && (_beacons select 0) getVariab
 	waitUntil {sleep 0.1; preloadCamera _pos};
 	player setPos _pos;
 
-	[player, 1500, false, false, true] spawn fn_haloJump;
+	[player, 1500, false, true, true] spawn fn_haloJump;
 }
 else
 {
