@@ -28,8 +28,11 @@ STR_R3F_LOG_action_charger_selection = "... load the selected object in this veh
 STR_R3F_LOG_action_charger_selection_en_cours = "Loading in progress...";
 STR_R3F_LOG_action_charger_selection_fait = "The object ""%1"" has been loaded in the vehicle.";
 STR_R3F_LOG_action_charger_selection_trop_loin = "The object ""%1"" is too far from the vehicle to be loaded.";
+STR_R3F_LOG_action_attach_selection_trop_loin = "The object ""%1"" is too far from the vehicle to be attached.";
 STR_R3F_LOG_action_charger_selection_pas_assez_de_place = "There is not enough space in this vehicle. Space left: %1, Required: %2";
 STR_R3F_LOG_action_charger_selection_objet_transporte = "The object ""%1"" is in transit.";
+STR_R3F_LOG_action_attach_selection = "... attach the selected object to this vehicle";
+STR_R3F_LOG_action_detach_selection = "Detach the selected object from this vehicle";
 
 STR_R3F_LOG_action_charger_deplace = "Load in the vehicle";
 STR_R3F_LOG_action_charger_deplace_en_cours = "Loading in progress...";
