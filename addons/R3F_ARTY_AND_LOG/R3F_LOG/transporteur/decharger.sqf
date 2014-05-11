@@ -47,6 +47,12 @@ else
 		
 		detach _objet_a_decharger;
 		
+		_actionId = _objet_a_decharger getVariable ["AttachActionId", -1];
+		
+		if ( _actionId > -1) then {
+			_objet_a_decharger removeAction _actionId;
+		};
+		
 		if ({_objet_a_decharger isKindOf _x} count R3F_LOG_CFG_objects_movables > 0) then
 		{
 			[_objet_a_decharger] execVM "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\deplacer.sqf";

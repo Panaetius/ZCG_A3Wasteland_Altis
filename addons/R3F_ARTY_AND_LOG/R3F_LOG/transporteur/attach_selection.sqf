@@ -84,8 +84,6 @@ else
 				
 				_offset = (_width min _depth) / 2;
 				
-				diag_log "start";
-				
 				if ((_objet distance _transporteur <= 10) 
 					&& (_relPos select 0) > (_p1 select 0) - _offset && (_relPos select 0) < (_p2 select 0) + _offset //check stuff is in bounding box 
 					&& (_relPos select 1) > (_p1 select 1) - _offset && (_relPos select 1) < (_p2 select 1) + _offset 
@@ -95,9 +93,10 @@ else
 					_objets_charges = _objets_charges + [_objet];
 					_transporteur setVariable ["R3F_LOG_objets_charges", _objets_charges, true];
 					_objet setVariable ["R3F_LOG_est_transporte_par", _transporteur, true];
-					_dir = getDir _objet;
-					_transporterDir = getDir _transporteur;
-					_dir = _dir - _transporterDir;
+					_dir = vectorDir _objet;
+					_center = _transporteur modelToWorld [0,0,0];
+					_dir = [(_center select 0) + (_dir select 0),(_center select 1) + (_dir select 1),(_center select 2) + (_dir select 2)];
+					_dir = _transporteur worldToModel _dir;
 					
 					player globalChat STR_R3F_LOG_action_charger_deplace_en_cours;
 					
@@ -107,7 +106,7 @@ else
 					R3F_LOG_is_attach = true;
 					sleep 1;
 					
-					R3F_LOG_PUBVAR_point_attache enableSimulationGlobal true;
+					_transporteur enableSimulationGlobal true;
 					_objet enableSimulationGlobal true;
 					detach _objet;
 					_objet attachTo [_transporteur, _relPos];
@@ -126,19 +125,27 @@ else
 					detach _objet;
 					
 					_objet attachto [_transporteur, _relPos];
+					sleep 0.1;
+					//transform up vector relative to attached object
+					_up = vectorDir _objet;
+					_center = _objet modelToWorld [0,0,0];
+					_up = [(_center select 0) + (_up select 0),(_center select 1) + (_up select 1),(_center select 2) + (_up select 2)];
+					_up = _objet worldToModel _up;
 					
-					R3F_ARTY_AND_LOG_PUBVAR_setDir = [_objet, _dir];
+					R3F_ARTY_AND_LOG_PUBVAR_setVectorDir = [_objet, [_dir, _up]];
 					if (isServer) then
 					{
-						["R3F_ARTY_AND_LOG_PUBVAR_setDir", R3F_ARTY_AND_LOG_PUBVAR_setDir] spawn R3F_ARTY_AND_LOG_FNCT_PUBVAR_setDir;
+						["R3F_ARTY_AND_LOG_PUBVAR_setVectorDir", R3F_ARTY_AND_LOG_PUBVAR_setVectorDir] spawn R3F_ARTY_AND_LOG_FNCT_PUBVAR_setVectorDir;
 					}
 					else
 					{
-						publicVariable "R3F_ARTY_AND_LOG_PUBVAR_setDir";
+						publicVariable "R3F_ARTY_AND_LOG_PUBVAR_setVectorDir";
 					};
 					sleep 0.1;
 					
-					_objet addAction [("<img image='client\icons\r3f_loadin.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_R3F_LOG_action_detach_selection + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\transporteur\detach.sqf", nil, 6, true, true, ""];
+					_actionId = _objet addAction [("<img image='client\icons\r3f_loadin.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_R3F_LOG_action_detach_selection + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\transporteur\detach.sqf", nil, 6, true, true, "isNull R3F_LOG_joueur_deplace_objet && vehicle player == player"];
+					_objet setVariable ["AttachActionId", _actionId, true];
+					_objet setVariable ["AttachDirection", _dir, true];
 					
 					player globalChat format [STR_R3F_LOG_action_charger_deplace_fait, getText (configFile >> "CfgVehicles" >> (typeOf _transporteur) >> "displayName")];
 				}

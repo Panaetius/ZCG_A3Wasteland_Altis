@@ -77,6 +77,7 @@ if !(isServer && isDedicated) then
 	R3F_LOG_action_deplacer_objet_valide = false;
 	R3F_LOG_action_tow_move_valid = false;
 	R3F_LOG_action_charger_deplace_valide = false;
+	R3F_LOG_action_charger_attach_valide = false;
 	R3F_LOG_action_selected_object_tow_valid = false;
 	R3F_LOG_action_detach_valid = false;
 	R3F_LOG_action_selected_object_tow_valid = false;

@@ -23,6 +23,7 @@ else
 	_actionId = _this select 2;
 	
 	_transporteur = attachedTo _objet_a_decharger;
+	_objets_charges = _transporteur getVariable "R3F_LOG_objets_charges";
 	
 	if !(isNull _objet_a_decharger) then
 	{
@@ -34,6 +35,8 @@ else
 		R3F_LOG_PUBVAR_point_attache enableSimulationGlobal true;
 		
 		detach _objet_a_decharger;
+		
+		_objet_a_decharger removeAction _actionId;
 		
 		if ({_objet_a_decharger isKindOf _x} count R3F_LOG_CFG_objects_movables > 0) then
 		{
@@ -55,8 +58,6 @@ else
 				0
 			];
 			_objet_a_decharger setVelocity [0,0,0];
-			
-			__objet_a_decharger removeAction _actionId;
 			
 			player globalChat STR_R3F_LOG_action_decharger_fait;
 		};

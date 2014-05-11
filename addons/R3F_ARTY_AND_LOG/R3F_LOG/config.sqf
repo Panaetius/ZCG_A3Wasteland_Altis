@@ -555,6 +555,12 @@ R3F_LOG_CFG_objects_movables =
 	"CamoNet_INDP_big_F"
 ];
 
+R3F_LOG_CFG_objects_not_attachables =
+[
+	"Land_Cargo_Patrol_V1_F",
+	"Land_Cargo_Tower_V1_F"
+];
+
 R3F_LOG_CFG_objets_lockablevehicles =
 [
 	"ArmoredSUV_PMC",

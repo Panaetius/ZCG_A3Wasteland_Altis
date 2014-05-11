@@ -31,6 +31,9 @@
 	#include "R3F_ARTY_disable_enable.sqf"
 	#include "R3F_LOG_disable_enable.sqf"
 	
+	fn_getPitchBank = "addons\R3F_ARTY_AND_LOG\GetPitchBank.sqf" call mf_compile;
+	fn_setPitchBank = "addons\R3F_ARTY_AND_LOG\SetPitchBank.sqf" call mf_compile;
+	
 	// Chargement du fichier de langage
 	call compile preprocessFile format ["addons\R3F_ARTY_AND_LOG\%1_strings_lang.sqf", R3F_ARTY_AND_LOG_CFG_langage];
 	
@@ -48,6 +51,18 @@
 			_objet setPos (getPos _objet);
 		};
 		"R3F_ARTY_AND_LOG_PUBVAR_setDir" addPublicVariableEventHandler R3F_ARTY_AND_LOG_FNCT_PUBVAR_setDir;
+		
+		R3F_ARTY_AND_LOG_FNCT_PUBVAR_setVectorDir =
+		{
+			private ["_objet", "_direction"];
+			_objet = _this select 1 select 0;
+			_direction = _this select 1 select 1;
+			
+			// Orienter l'objet et broadcaster l'effet
+			_objet setVectorDirAndUp _direction;
+			_objet setPos (getPos _objet);
+		};
+		"R3F_ARTY_AND_LOG_PUBVAR_setVectorDir" addPublicVariableEventHandler R3F_ARTY_AND_LOG_FNCT_PUBVAR_setVectorDir;
 	};
 	
 	#ifdef R3F_ARTY_enable
