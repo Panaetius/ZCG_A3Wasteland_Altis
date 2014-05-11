@@ -20,7 +20,7 @@ switch (true) do {
     case not(_warchest getVariable ["a3w_warchest", false]): {_error = ERR_NOT_WARCHEST};
     case (player distance _warchest >= 5): {_error = ERR_TOO_FAR};
 	case (_warchest getVariable ["side", sideUnknown] != playerSide): {_error = ERR_WRONG_SIDE};
-	case (_warchestObj getVariable ["money",0] > 0): {_error = ERR_NOT_EMPTY};
+	case (_warchest getVariable ["money",0] > 0): {_error = ERR_NOT_EMPTY};
 	default {_error = ""};
 };
 _error
