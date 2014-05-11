@@ -32,16 +32,12 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 		_damageVal = parseNumber (_x select 13);
 		_allowDamage = parseNumber (_x select 14);
 		_texture = _x select 15;
+		_attachedObjects = call compile (_x select 16);
 		
 		if (!isNil "_class" && !isNil "_pos" && !isNil "_dir" && !isNil "_supplyleft") then 
 		{
-			_type = "NONE";
+			_type = "CAN_COLLIDE";
 			_placement = 0;
-			
-			if(!isNil "_isVehicle" && _isVehicle == 0 && ["Box_", _class] call fn_findString != 0) then
-			{
-				_type = "CAN COLLIDE";
-			};
 			
 			if(["Box_", _class] call fn_findString == 0) then {
 				_allowDamage = 0;
@@ -71,6 +67,8 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 			{
 				_obj setPosATL [(_posX - _fixX), (_posY - _fixY), (_posZ - _fixZ) + 0.3];
 			};
+			
+			_obj setVectorDirAndUp _dir;
 			
 			if (_allowDamage > 0) then
 			{
@@ -118,6 +116,33 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 				if (!isNil "_texture" && _texture != "") then {
 					[_obj, _texture] call applyVehicleTexture;
 					_obj setVariable ["Texture", _texture, true];
+				};
+				
+				if (count _attachedObjects > 0) then
+				{
+					{
+						_attObj = createVehicle [_x select 0, _pos, [], 0, "CAN_COLLIDE"];
+						_relPos = _x select 2;
+						_attObj attachTo [_obj, _relPos];
+						
+						_posX = (_relPos select 0);
+						_posY = (_relPos select 1);
+						_posZ = (_relPos select 2);
+						
+						_currentPos = _obj worldToModel (getPosATL _attObj);
+						
+						_fixX = (_currentPos select 0) - _posX;
+						_fixY = (_currentPos select 1) - _posY;
+						_fixZ = (_currentPos select 2) - _posZ;
+						
+						_relPos = [(_posX - _fixX), (_posY - _fixY), (_posZ - _fixZ)];
+						detach _attObj;
+						
+						_attObj attachto [_obj, _relPos];
+						
+						_attObj setVectorDirAndUp (_x select 1);
+						_attObj setPos (getPos _attObj);
+					} forEach _attachedObjects;
 				};
 			};
 			_obj setVariable ["objectLocked", true, true]; //force lock

@@ -6,7 +6,12 @@
 if (!isServer) exitWith {};
 
 diag_log "oSave started";
-_stepSize = 18;
+
+countStrChars = {
+	count (toArray (_this select 0));
+} call mf_compile;
+
+_baseQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount, Owner, Damage, AllowDamage, Texture, AttachedObjects) VALUES ";
 
 while {true} do {
 	sleep 30;
@@ -19,7 +24,7 @@ while {true} do {
 	
 		_PersistentDB_ObjCount = 1;
 		
-		_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount, Owner, Damage, AllowDamage, Texture) VALUES ";
+		_saveQuery = _baseQuery;
 		
 		{
 			_object = _x;
@@ -58,27 +63,43 @@ while {true} do {
 					_items = getItemCargo _object;
 					_isVehicle = 0;
 					_texture = _object getVariable ["Texture", ""];
+					_attachedObjects = [];
 					
 					if (_object isKindOf "Car" || _object isKindOf "Air" || _object isKindOf "Ship" || _object isKindOf "Tank" ) then
 					{
 						_isVehicle = 1;
+						
+						{
+							_attObj = _x;
+							_attDir = _attObj getVariable [ "AttachDirection", objNull ];
+							
+							if (!(isNil "_attDir") && !(isNull _attDir))
+							{
+								_attachedObjects set [count _attachedObjects, [ (typeOf _attObj), _attDir, (_object worldToModel (getPosATL _attObj)) ]];
+							};
+							
+						} forEach (attachedObjects _object);
 					};
 					
-					_saveQuery = _saveQuery + format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 0, %10, ''%11'', %12, %13, ''%14''),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle, _object getVariable ["generationCount", 0], _owner, _damage, _allowDamage, _texture];
+					_addQuery = format ["(%1, ''%2'', ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', %9, 0, %10, ''%11'', %12, %13, ''%14'', ''%15''),", _PersistentDB_ObjCount, _classname, _pos, _dir, _supplyleft, _weapons, _magazines, _items, _isvehicle, _object getVariable ["generationCount", 0], _owner, _damage, _allowDamage, _texture, _attachedObjects];
+					
+					
 					
 					_PersistentDB_ObjCount = _PersistentDB_ObjCount + 1;
 					
 					//Save in batches so we don't hit the max 4000 char arma2net string length limit
-					if ((_PersistentDB_ObjCount % _stepSize) == 0) then { 
+					if ((_saveQuery call countStrChars) + (_addQuery call countStrChars) > 4000) then { 
 						_saveQuery call sqlite_saveBaseObjects;
 						
-						_saveQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount, Owner, Damage, AllowDamage, Texture) VALUES ";
+						_saveQuery = _baseQuery;
 					};
+					
+					_saveQuery = _saveQuery + _addQuery;
 				// };
 			};
 		}forEach (allMissionObjects "All");
 		
-		if ((_PersistentDB_ObjCount > 1) && ((_PersistentDB_ObjCount % _stepSize) != 0)) then {
+		if ((_saveQuery call countStrChars) > (_baseQuery call countStrChars)) then {
 			_saveQuery call sqlite_saveBaseObjects;
 			
 			diag_log format["A3Wasteland - %1 parts have been saved with DB", _PersistentDB_ObjCount];
