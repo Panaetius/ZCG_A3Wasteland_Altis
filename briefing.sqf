@@ -27,7 +27,8 @@ player createDiaryRecord ["changelog",
 <br/> [Added] - Camo Nets now save for 3 days/9 restarts
 <br/> [Bugfix] - Warchests should now spawn more accurately and not fall from the sky when spawning
 <br/> [Added] - Halo jump!
-<br/> [Added] - Vehicle crafting.
+<br/> [Added] - Vehicle crafting
+<br/> [Added] - Saving of attached vehicle parts
 "
 ]];
 

@@ -8,7 +8,7 @@ if (!isServer) exitWith {};
 diag_log "oSave started";
 
 countStrChars = {
-	count (toArray (_this select 0));
+	count (toArray _this);
 } call mf_compile;
 
 _baseQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount, Owner, Damage, AllowDamage, Texture, AttachedObjects) VALUES ";
@@ -73,7 +73,7 @@ while {true} do {
 							_attObj = _x;
 							_attDir = _attObj getVariable [ "AttachDirection", objNull ];
 							
-							if (!(isNil "_attDir") && !(isNull _attDir))
+							if (!(isNil "_attDir") && (count _attDir > 0)) then
 							{
 								_attachedObjects set [count _attachedObjects, [ (typeOf _attObj), _attDir, (_object worldToModel (getPosATL _attObj)) ]];
 							};

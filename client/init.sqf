@@ -174,9 +174,6 @@ for "_i" from 1 to 13 do
 	_markerName setMarkerAlpha 0;
 };
 
-[] execVM "addons\fpsFix\vehicleManager.sqf";
-[] execVM "addons\Lootspawner\LSclientScan.sqf";
-
 while {True} do {
 	player setfatigue (getfatigue player - 0.02);
 	sleep 5;

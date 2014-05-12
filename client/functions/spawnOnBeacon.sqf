@@ -20,6 +20,7 @@ if (not(isNil "_beacons") && count _beacons > 0 && (_beacons select 0) getVariab
 }
 else
 {
+	[] spawn fn_vehicleManager; //call vehicle manager to enable simulation on all close vehicles
 	waitUntil {sleep 0.1; preloadCamera _pos};
 	player setPos _pos;
 };

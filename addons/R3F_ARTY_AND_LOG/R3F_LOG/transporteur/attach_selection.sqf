@@ -92,11 +92,10 @@ else
 					// On mémorise sur le réseau le nouveau contenu du véhicule
 					_objets_charges = _objets_charges + [_objet];
 					_transporteur setVariable ["R3F_LOG_objets_charges", _objets_charges, true];
-					_objet setVariable ["R3F_LOG_est_transporte_par", _transporteur, true];
-					_dir = vectorDir _objet;
-					_center = _transporteur modelToWorld [0,0,0];
-					_dir = [(_center select 0) + (_dir select 0),(_center select 1) + (_dir select 1),(_center select 2) + (_dir select 2)];
-					_dir = _transporteur worldToModel _dir;
+					_objet setVariable ["R3F_LOG_est_transporte_par", _transporteur, true];					
+					
+					// //don't question this part, doing coordinate transformations between 3 coordinate systems (up is relative to dir and dir of attached object is relative to system of the object it's attached to...)
+					 _dir = ([ vectorDir _transporteur, vectorDir _objet, [0,1,0]] call fn_getRelativeDir);
 					
 					player globalChat STR_R3F_LOG_action_charger_deplace_en_cours;
 					
@@ -109,6 +108,8 @@ else
 					_transporteur enableSimulationGlobal true;
 					_objet enableSimulationGlobal true;
 					detach _objet;
+					_objet setPos (getPos _objet);
+					sleep 0.1;
 					_objet attachTo [_transporteur, _relPos];
 					sleep 0.1;
 					_posX = (_relPos select 0);
@@ -123,16 +124,10 @@ else
 					
 					_relPos = [(_posX - _fixX), (_posY - _fixY), (_posZ - _fixZ)];
 					detach _objet;
-					
 					_objet attachto [_transporteur, _relPos];
 					sleep 0.1;
-					//transform up vector relative to attached object
-					_up = vectorDir _objet;
-					_center = _objet modelToWorld [0,0,0];
-					_up = [(_center select 0) + (_up select 0),(_center select 1) + (_up select 1),(_center select 2) + (_up select 2)];
-					_up = _objet worldToModel _up;
 					
-					R3F_ARTY_AND_LOG_PUBVAR_setVectorDir = [_objet, [_dir, _up]];
+					R3F_ARTY_AND_LOG_PUBVAR_setVectorDir = [_objet, _dir];
 					if (isServer) then
 					{
 						["R3F_ARTY_AND_LOG_PUBVAR_setVectorDir", R3F_ARTY_AND_LOG_PUBVAR_setVectorDir] spawn R3F_ARTY_AND_LOG_FNCT_PUBVAR_setVectorDir;

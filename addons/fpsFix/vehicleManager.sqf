@@ -16,19 +16,19 @@ if (isServer) exitWith {};
 
 private ["_eventCode", "_vehicleManager", "_lastPos", "_R3F_attachPoint"];
 
-_eventCode =
-{
-	_vehicle = _this select 0;
-	if (!simulationEnabled _vehicle) then { _vehicle enableSimulation true };
-	_vehicle setVariable ["fpsFix_simulationCooloff", diag_tickTime + 20];
-};
-
-_vehicleManager =
+fn_vehicleManager =
 {
 	private ["_vehicle", "_tryEnable", "_dist", "_vel"];
-
+	
+	_eventCode =
 	{
-		if (!(_x isKindOf "CAManBase") && _x != _R3F_attachPoint) then
+		_vehicle = _this select 0;
+		if (!simulationEnabled _vehicle) then { _vehicle enableSimulation true };
+		_vehicle setVariable ["fpsFix_simulationCooloff", diag_tickTime + 15];
+	};
+	
+	{
+		if (!(_x isKindOf "CAManBase") && (isNil "_R3F_attachPoint" || {_x != _R3F_attachPoint})) then
 		{
 			_vehicle = _x;
 			_tryEnable = true;
@@ -36,7 +36,7 @@ _vehicleManager =
 			if (!local _vehicle &&
 			   {_vehicle isKindOf "Man" || {count crew _vehicle == 0}} &&
 			   {_vehicle getVariable ["fpsFix_simulationCooloff", 0] < diag_tickTime} &&
-			   {(isTouchingGround _vehicle && ((getPosATL _vehicle) select 2) < 2) || {!(_vehicle isKindOf "AllVehicles")} || {_vehicle isKindOf "Ship"}}) then
+			   {isTouchingGround _vehicle || {!(_vehicle isKindOf "AllVehicles")} || {_vehicle isKindOf "Ship"}}) then
 			{
 				_dist = _vehicle distance positionCameraToWorld [0,0,0];
 				_vel = velocity _vehicle distance [0,0,0];
@@ -86,7 +86,7 @@ while {true} do
 		};
 
 		_lastPos = _camPos;
-		call _vehicleManager;
+		call fn_vehicleManager;
 	};
 
 	sleep 5;
