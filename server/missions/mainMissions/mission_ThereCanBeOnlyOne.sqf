@@ -26,7 +26,7 @@ relicArray = [];
 
 _playerCount = {alive _x} count playableUnits;
 
-_relicCount = ceil (_playerCount/3);
+_relicCount = 4 + (ceil (_playerCount/4));//minimum of 5, maximum of 15 relics, depending on amount of players
 
 for "_i" from 1 to _relicCount do
 {
@@ -208,8 +208,19 @@ if(_result == 1) then
 	
 	for "_x" from 1 to 10 do
 	{
+		_randomPos = getPos _winner;
 		
-		_pos = [_randomPos, [[30,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd;
+		_save = false;
+		_pos = objNull;
+		while {!_save} do {
+			_pos = [_randomPos, [[30,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd;
+			
+			_objects = nearestObjects [_pos, ["All"], 3];
+			
+			if (count _objects == 0) then {//make sure nothing is hit by the lightning
+				_save = true;
+			};
+		};
 		_center = createCenter sideLogic;
 		_group = createGroup _center;  
 		diag_log _pos;
