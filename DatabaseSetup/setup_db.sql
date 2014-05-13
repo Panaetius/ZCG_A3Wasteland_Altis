@@ -49,8 +49,9 @@ CREATE TABLE  `players`.`objects` (
   `Damage` float NOT NULL DEFAULT '0',
   `AllowDamage` int(1) unsigned NOT NULL DEFAULT '1',
   `Texture` varchar(100) NOT NULL,
+  `AttachedObjects` varchar(4000) NOT NULL DEFAULT '[]',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `player`
