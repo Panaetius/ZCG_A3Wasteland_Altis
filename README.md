@@ -10,6 +10,8 @@ All development is done in the <a href="https://github.com/Panaetius/ZCG_A3Waste
 
 See <a href="https://github.com/Panaetius/ZCG_A3Wasteland_Altis_AdditionalFiles">`ZCG_A3Wasteland_Altis_AdditionalFiles repository`</a> for additional files
 
+Visit our <a href="http://zcgservers.net/">Homepage and Forums</a>
+
 Installation
 ============
 
