@@ -143,10 +143,11 @@ for "_i" from 0 to (_objectscount) step _stepSize do
 						_attObj setVectorDirAndUp [(_x select 1), [0,0,1]];
 						_attObj setPos (getPos _attObj);
 						
-						_actionId = _attObj addAction [("<img image='client\icons\r3f_loadin.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_R3F_LOG_action_detach_selection + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\transporteur\detach.sqf", nil, 6, true, true, "isNull R3F_LOG_joueur_deplace_objet && vehicle player == player"];
-						_attObj setVariable ["AttachActionId", _actionId, true];
 						_attObj setVariable ["AttachDirection", (_x select 1), true];
 						_attObj setVariable ["R3F_LOG_est_transporte_par", _obj, true];	
+						_inventory = _obj getVariable ["R3F_LOG_objets_charges", []];
+						_inventory = _inventory + [_attObj];
+						_obj setVariable ["R3F_LOG_objets_charges", _inventory, true];
 					} forEach _attachedObjects;
 				};
 			};

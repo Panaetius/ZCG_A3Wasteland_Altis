@@ -15,6 +15,7 @@ _resetConditions =
 {
 	R3F_LOG_action_charger_deplace_valide = false;
 	R3F_LOG_action_charger_attach_valide = false;
+	R3F_LOG_action_charger_detach_valide = false;
 	R3F_LOG_action_charger_selection_valide = false;
 	R3F_LOG_action_contenu_vehicule_valide = false;
 	R3F_LOG_action_tow_move_valid = false;
@@ -89,6 +90,13 @@ while {true} do
 						!(_x getVariable "R3F_LOG_disabled")} count (nearestObjects [_objet_pointe, R3F_LOG_classes_transporteurs, 18]) > 0 &&
 						!(_objet_pointe getVariable "R3F_LOG_disabled") &&
 						({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_not_attachables) == 0);
+						
+					R3F_LOG_action_charger_detach_valide = (vehicle player == player && (count crew _objet_pointe == 0) && (isNull R3F_LOG_joueur_deplace_objet) &&
+						{_x != _objet_pointe && alive _x && ((velocity _x) call BIS_fnc_magnitude < 6) && (getPos _x select 2 < 2) &&
+						!(_x getVariable "R3F_LOG_disabled")} count (nearestObjects [_objet_pointe, R3F_LOG_classes_transporteurs, 18]) > 0 &&
+						!(_objet_pointe getVariable "R3F_LOG_disabled") &&
+						({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_not_attachables) == 0 
+						&& count (_objet_pointe getVariable ["AttachDirection", []]) == 0);
 				};
 				
 				// Condition action selectionner_objet_charge

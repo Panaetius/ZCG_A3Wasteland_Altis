@@ -138,8 +138,6 @@ else
 					};
 					sleep 0.1;
 					
-					_actionId = _objet addAction [("<img image='client\icons\r3f_loadin.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_R3F_LOG_action_detach_selection + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\transporteur\detach.sqf", nil, 6, true, true, "isNull R3F_LOG_joueur_deplace_objet && vehicle player == player"];
-					_objet setVariable ["AttachActionId", _actionId, true];
 					_objet setVariable ["AttachDirection", _dir, true];
 					
 					player globalChat format [STR_R3F_LOG_action_charger_deplace_fait, getText (configFile >> "CfgVehicles" >> (typeOf _transporteur) >> "displayName")];

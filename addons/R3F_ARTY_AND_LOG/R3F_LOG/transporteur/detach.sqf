@@ -36,7 +36,7 @@ else
 		
 		detach _objet_a_decharger;
 		
-		_objet_a_decharger removeAction _actionId;
+		_objet_a_decharger setVariable ["AttachDirection", nil, true];
 		
 		if ({_objet_a_decharger isKindOf _x} count R3F_LOG_CFG_objects_movables > 0) then
 		{
