@@ -71,7 +71,7 @@ while {true} do {
 						
 						{
 							_attObj = _x;
-							_attDir = _attObj getVariable [ "AttachDirection", objNull ];
+							_attDir = _attObj getVariable [ "AttachDirection", [] ];
 							
 							if (!(isNil "_attDir") && (count _attDir > 0)) then
 							{
