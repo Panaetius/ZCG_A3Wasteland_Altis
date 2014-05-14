@@ -89,14 +89,18 @@ while {true} do
 						{_x != _objet_pointe && alive _x && ((velocity _x) call BIS_fnc_magnitude < 6) && (getPos _x select 2 < 2) &&
 						!(_x getVariable "R3F_LOG_disabled")} count (nearestObjects [_objet_pointe, R3F_LOG_classes_transporteurs, 18]) > 0 &&
 						!(_objet_pointe getVariable "R3F_LOG_disabled") &&
-						({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_not_attachables) == 0);
+						({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_not_attachables) == 0
+						&& !(isNull (_objet_pointe getVariable ["R3F_LOG_est_transporte_par", objNull])));
 						
 					R3F_LOG_action_charger_detach_valide = (vehicle player == player && (count crew _objet_pointe == 0) && (isNull R3F_LOG_joueur_deplace_objet) &&
 						{_x != _objet_pointe && alive _x && ((velocity _x) call BIS_fnc_magnitude < 6) && (getPos _x select 2 < 2) &&
 						!(_x getVariable "R3F_LOG_disabled")} count (nearestObjects [_objet_pointe, R3F_LOG_classes_transporteurs, 18]) > 0 &&
 						!(_objet_pointe getVariable "R3F_LOG_disabled") &&
 						({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_not_attachables) == 0 
-						&& count (_objet_pointe getVariable ["AttachDirection", []]) == 0);
+						&& count (_objet_pointe getVariable ["AttachDirection", []]) == 3
+						&& !(isNull (_objet_pointe getVariable ["R3F_LOG_est_transporte_par", objNull])));
+						
+					diag_log text format ["1: %1, %2", R3F_LOG_action_charger_detach_valide, _objet_pointe];
 				};
 				
 				// Condition action selectionner_objet_charge
@@ -139,6 +143,13 @@ while {true} do
 					({R3F_LOG_joueur_deplace_objet isKindOf _x} count R3F_LOG_classes_objets_transportables > 0) &&
 					((velocity _objet_pointe) call BIS_fnc_magnitude < 6) && (getPos _objet_pointe select 2 < 2) && !(_objet_pointe getVariable "R3F_LOG_disabled") &&
 					({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_not_attachables) == 0);
+					
+				R3F_LOG_action_charger_detach_valide = (alive _objet_pointe && (vehicle player == player) && (isNull R3F_LOG_joueur_deplace_objet) &&
+					((velocity _objet_pointe) call BIS_fnc_magnitude < 6) && (getPos _objet_pointe select 2 < 2) && !(_objet_pointe getVariable "R3F_LOG_disabled") &&
+					({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_not_attachables) == 0
+					&& count (_objet_pointe getVariable ["AttachDirection", []]) == 3
+					&& !isNull (_objet_pointe getVariable ["R3F_LOG_est_transporte_par", objNull]));
+				diag_log text format ["2: %1, %2", R3F_LOG_action_charger_detach_valide, _objet_pointe];
 				
 				// Condition action charger_selection
 				R3F_LOG_action_charger_selection_valide = (alive _objet_pointe && (vehicle player == player) && (isNull R3F_LOG_joueur_deplace_objet) &&

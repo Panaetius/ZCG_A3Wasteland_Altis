@@ -421,9 +421,14 @@ R3F_LOG_CFG_transporteurs =
 	["Heli_Transport_02_base_F", 30],
 	["Heli_Attack_01_base_F", 10],
 	["Heli_Attack_02_base_F", 20],
-	["O_Truck_03_fuel_F"],
-	["O_Truck_03_ammo_F"],
-	["O_Truck_03_medical_F"]
+	["O_Truck_03_fuel_F", 75],
+	["O_Truck_03_ammo_F", 75],
+	["O_Truck_03_medical_F", 75],
+	["Plane_Base_F",20],
+	["I_Plane_Fighter_03_AA_F",20],
+	["I_Plane_Fighter_03_CAS_F",20],
+	["B_Plane_CAS_01_F",20],
+	["O_Plane_CAS_02_F",20]
 ];
 
  

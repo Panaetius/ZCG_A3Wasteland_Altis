@@ -89,6 +89,7 @@ else
 					&& (_relPos select 1) > (_p1 select 1) - _offset && (_relPos select 1) < (_p2 select 1) + _offset 
 					&& (_relPos select 2) > (_p1 select 2) - _height && (_relPos select 2) < (_p2 select 2) + _height ) then
 				{
+					_objet disableCollisionWith _transporteur;
 					// On mémorise sur le réseau le nouveau contenu du véhicule
 					_objets_charges = _objets_charges + [_objet];
 					_transporteur setVariable ["R3F_LOG_objets_charges", _objets_charges, true];
@@ -100,9 +101,10 @@ else
 					player globalChat STR_R3F_LOG_action_charger_deplace_en_cours;
 					
 					// Faire relacher l'objet au joueur (si il l'a dans "les mains")
-					_objet disableCollisionWith _transporteur;
+					
 					R3F_LOG_joueur_deplace_objet = objNull;
 					R3F_LOG_is_attach = true;
+					_objet disableCollisionWith _transporteur;
 					sleep 1;
 					
 					_transporteur enableSimulationGlobal true;
@@ -110,6 +112,7 @@ else
 					detach _objet;
 					_objet setPos (getPos _objet);
 					sleep 0.1;
+					_objet disableCollisionWith _transporteur;
 					_objet attachTo [_transporteur, _relPos];
 					sleep 0.1;
 					_posX = (_relPos select 0);

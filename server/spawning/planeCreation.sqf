@@ -19,7 +19,7 @@ if (_noBuzzard && {_planeType isKindOf "Plane_Fighter_03_base_F"}) exitWith {};
 _pos = _markerPos;
 
 //Car Initialization
-_plane = createVehicle [_planeType, _pos, [], 0, "None"];
+_plane = createVehicle [_planeType, _pos, [], 0, "CAN_COLLIDE"];
 
 [_plane] call vehicleSetup;
 

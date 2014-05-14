@@ -23,7 +23,7 @@ else
 	_actionId = _this select 2;
 	
 	_transporteur = attachedTo _objet_a_decharger;
-	_objets_charges = _transporteur getVariable "R3F_LOG_objets_charges";
+	_objets_charges = _transporteur getVariable ["R3F_LOG_objets_charges", []];
 	
 	if !(isNull _objet_a_decharger) then
 	{

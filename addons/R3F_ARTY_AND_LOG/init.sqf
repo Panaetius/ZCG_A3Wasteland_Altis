@@ -57,7 +57,6 @@
 			
 			_objet = _this select 1 select 0;
 			_direction = _this select 1 select 1;
-			
 			// Orienter l'objet et broadcaster l'effet
 			_objet setVectorDirAndUp [ _direction, [0,0,1]];
 			

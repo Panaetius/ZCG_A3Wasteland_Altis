@@ -84,7 +84,7 @@ if ({_objet isKindOf _x} count R3F_LOG_classes_objets_transportables > 0) then
 	{
 		_objet addAction [("<img image='client\icons\r3f_loadin.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_R3F_LOG_action_charger_deplace + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\transporteur\charger_deplace.sqf", nil, 6, true, true, "", "R3F_LOG_objet_addAction == _target && R3F_LOG_action_charger_deplace_valide"];
 		_objet addAction [("<img image='client\icons\r3f_loadin.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_R3F_LOG_action_attach_selection + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\transporteur\attach_selection.sqf", nil, 6, true, true, "", "R3F_LOG_objet_addAction == _target && R3F_LOG_action_charger_attach_valide"];
-		_objet addAction [("<img image='client\icons\r3f_loadin.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_R3F_LOG_action_detach_selection + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\transporteur\detach.sqf", nil, 6, true, true, "R3F_LOG_objet_addAction == _target && R3F_LOG_action_charger_detach_valide"];
+		_objet addAction [("<img image='client\icons\r3f_loadin.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_R3F_LOG_action_detach_selection + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\transporteur\detach.sqf", nil, 6, true, true, "", "R3F_LOG_objet_addAction == _target && R3F_LOG_action_charger_detach_valide"];
 	};
 	
 	_objet addAction [("<img image='client\icons\r3f_loadin.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_R3F_LOG_action_selectionner_objet_charge + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\transporteur\selectionner_objet.sqf", nil, 5, false, true, "", "R3F_LOG_objet_addAction == _target && R3F_LOG_action_selectionner_objet_charge_valide && Object_canLock"];
