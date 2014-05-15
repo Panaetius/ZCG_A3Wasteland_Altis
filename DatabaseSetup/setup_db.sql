@@ -31,8 +31,8 @@ CREATE TABLE `item` (
 -- Definition of table `objects`
 --
 
-DROP TABLE IF EXISTS `players`.`objects`;
-CREATE TABLE  `players`.`objects` (
+DROP TABLE IF EXISTS `objects`;
+CREATE TABLE  `objects` (
   `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
   `Position` text NOT NULL,
