@@ -12,9 +12,9 @@ sqlite_savePlayer = {
 	_varValue = _array select 1;
 	
 	//delete stuff
-	_query = format ["START TRANSACTION;Delete FROM Player WHERE Id=''%1'';Delete FROM Item WHERE PlayerId=''%1'';", _uid];
+	_query = format ["START TRANSACTION;Delete FROM player WHERE Id=''%1'';Delete FROM item WHERE PlayerId=''%1'';", _uid];
 	// save values
-	_query = _query + format ["INSERT INTO Player (Id,Health,Side,AccountName, Money, Vest, Uniform, Backpack, Goggles, HeadGear,Position, Direction, PrimaryWeapon, SecondaryWeapon, HandgunWeapon,Hunger,Thirst) VALUES (''%1'', %2, ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', ''%9'', ''%10'', ''%11'', %12, ''%13'', ''%14'', ''%15'',%16,%17);", 
+	_query = _query + format ["INSERT INTO player (Id,Health,Side,AccountName, Money, Vest, Uniform, Backpack, Goggles, HeadGear,Position, Direction, PrimaryWeapon, SecondaryWeapon, HandgunWeapon,Hunger,Thirst) VALUES (''%1'', %2, ''%3'', ''%4'', %5, ''%6'', ''%7'', ''%8'', ''%9'', ''%10'', ''%11'', %12, ''%13'', ''%14'', ''%15'',%16,%17);", 
 		_uid, 
 		_varValue select 0, 
 		_varValue select 1, 
@@ -34,7 +34,7 @@ sqlite_savePlayer = {
 		_varValue select 16
 		];
 	
-	_query = _query + "INSERT INTO Item (PlayerId, Type, Name) Values ";
+	_query = _query + "INSERT INTO item (PlayerId, Type, Name) Values ";
 	
 	{
 		_query = _query + format ["('%1', '%2', ''%3''),", _uid, _x select 0, _x select 1];
@@ -58,10 +58,10 @@ sqlite_readPlayer = {
 	private ["_array", "_uid", "_data", "_player", "_query", "_items"];
 	_uid = _this;
 	
-	_query = format ["SELECT * FROM Player WHERE Id=''%1'' LIMIT 1", _uid];
+	_query = format ["SELECT * FROM player WHERE Id=''%1'' LIMIT 1", _uid];
 	_player = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%2', '%1']", _query, A3W_DatabaseName];
 	
-	_query = format ["SELECT * FROM Item WHERE PlayerId=''%1''", _uid];
+	_query = format ["SELECT * FROM item WHERE PlayerId=''%1''", _uid];
 	_items = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%2', '%1']", _query, A3W_DatabaseName];
 		
 	_data = ((call compile _player) select 0) select 0;
@@ -73,14 +73,14 @@ sqlite_readPlayer = {
 sqlite_deletePlayer = {
 	private "_res";
 	diag_log "delete called";
-	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%2', 'Delete FROM Player WHERE Id=''%1'';Delete FROM Item WHERE PlayerId=''%1'';']", _this, A3W_DatabaseName];
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%2', 'Delete FROM player WHERE Id=''%1'';Delete FROM Item WHERE PlayerId=''%1'';']", _this, A3W_DatabaseName];
 	
 	true
 } call mf_compile;
 
 sqlite_exists = {
 	private ["_player", "_query"];
-	_query = format ["SELECT Id FROM Player WHERE Id=''%1'' LIMIT 1", _this];
+	_query = format ["SELECT Id FROM player WHERE Id=''%1'' LIMIT 1", _this];
 	_player = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%2', '%1']", _query, A3W_DatabaseName];
 	
 	if (count ((call compile _player) select 0) > 0 ) then 
@@ -92,7 +92,7 @@ sqlite_exists = {
 } call mf_compile;
 
 sqlite_deleteBaseObjects = {
-		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%1', 'DELETE FROM Objects;']", A3W_DatabaseName];
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%1', 'DELETE FROM objects;']", A3W_DatabaseName];
 } call mf_compile;
 
 sqlite_saveBaseObjects = {

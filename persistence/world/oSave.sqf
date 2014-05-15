@@ -11,7 +11,7 @@ countStrChars = {
 	count (toArray _this);
 } call mf_compile;
 
-_baseQuery = "INSERT INTO Objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount, Owner, Damage, AllowDamage, Texture, AttachedObjects) VALUES ";
+_baseQuery = "INSERT INTO objects (SequenceNumber, Name, Position, Direction, SupplyLeft, Weapons, Magazines, Items, IsVehicle, IsSaved, GenerationCount, Owner, Damage, AllowDamage, Texture, AttachedObjects) VALUES ";
 
 while {true} do {
 	sleep 30;

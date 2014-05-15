@@ -90,14 +90,14 @@ CREATE TABLE  `warchest` (
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `Triggers` (
+CREATE TABLE `triggers` (
   `Name` VARCHAR(100) NOT NULL,
   `Condition` INT(1) unsigned NOT NULL,
   PRIMARY KEY (`Name`)
 )
 ENGINE = InnoDB;
 
-INSERT INTO `Triggers` (Name, `Condition`) Values ("DoSave", 1);
+INSERT INTO `triggers` (Name, `Condition`) Values ("DoSave", 1);
 
 DROP TABLE IF EXISTS `players`.`beacon`;
 CREATE TABLE  `players`.`beacon` (
