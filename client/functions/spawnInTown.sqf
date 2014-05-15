@@ -14,6 +14,8 @@ _marker = _this;
 		_rad = _x select 1;
 		_townName = _x select 2;
 		
+		_pos = [_pos,5,_rad,1,0,0,0] call findSafePos;
+		
 		_pos = [_pos select 0, _pos select 1, 1500];
 		waitUntil {sleep 0.1; preloadCamera _pos};
 		player setPos _pos;

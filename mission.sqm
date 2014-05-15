@@ -2449,7 +2449,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=244;
+		items=246;
 		class Item0
 		{
 			position[]={3612.1487,12.11851,13020.892};
@@ -4231,6 +4231,20 @@ class Mission
 			type="Empty";
 			a=1800;
 			b=1800;
+		};
+		class Item244
+		{
+			position[]={20230.1328,118.540359,12950.696};
+			name="Permanent_Blufor_Base";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item245
+		{
+			position[]={9210.1328,110.540359,16169.696};
+			name="Permanent_Opfor_Base";
+			type="Empty";
+			colorName="ColorRed";
 		};
 	};
 };

@@ -14,6 +14,8 @@
 #define respawn_Random_Button 3413
 #define respawn_LoadTowns_Button 3414
 #define respawn_LoadBeacons_Button 3415
+#define respawn_BluforSpawn_Button 3416
+#define respawn_OpforSpawn_Button 3417
 
 
 	class RespawnSelectionDialog {
@@ -34,7 +36,7 @@
 			x = 0.2745 * safezoneW + safezoneX;
 			y = 0.166 * safezoneH + safezoneY;
 			w = 0.455 * safezoneW;
-			h = 0.620 * safezoneH;
+			h = 0.689 * safezoneH;
 		};
 
 		class TopBar: w_RscPicture
@@ -90,7 +92,7 @@
 			text = "#(argb,8,8,3)color(1,1,1,1)";
 
 			x = 0.328 * safezoneW + safezoneX;
-			y = 0.426 * safezoneH + safezoneY;
+			y = 0.486 * safezoneH + safezoneY;
 			w = 0.343 * safezoneW;
 			h = 0.0025 * safezoneH;
 		};
@@ -101,7 +103,7 @@
 			text = "#(argb,8,8,3)color(1,1,1,1)";
 
 			x = 0.328 * safezoneW + safezoneX;
-			y = 0.693 * safezoneH + safezoneY;
+			y = 0.762 * safezoneH + safezoneY;
 			w = 0.343 * safezoneW;
 			h = 0.0025 * safezoneH;
 		};
@@ -112,7 +114,7 @@
 			text = "Mission Uptime: 00:00:00";
 
 			x = 0.540 * safezoneW + safezoneX;
-			y = 0.719 * safezoneH + safezoneY;
+			y = 0.788 * safezoneH + safezoneY;
 			w = 0.2 * safezoneW;
 			h = 0.025 * safezoneH;
 		};
@@ -126,7 +128,7 @@
 		h = 0.030 * safezoneH;
 	};
 	
-	#define PlayersInTown_Y 0.446
+	#define PlayersInTown_Y 0.515
 	#define PlayersInTown_Y_offset 0.05
 	
 	class controls {
@@ -172,6 +174,30 @@
 			w = 0.078 * safezoneW;
 			h = 0.033 * safezoneH;
 		};
+		
+		class SpawnBluforButton: w_RscButton
+		{
+			idc = respawn_BluforSpawn_Button;
+			onButtonClick = "";
+			text = "Blufor Base";
+
+			x = 0.406 * safezoneW + safezoneX;
+			y = 0.379 * safezoneH + safezoneY;
+			w = 0.078 * safezoneW;
+			h = 0.033 * safezoneH;
+		};
+		
+		class SpawnOpforButton: w_RscButton
+		{
+			idc = respawn_OpforSpawn_Button;
+			onButtonClick = "";
+			text = "Opfor Base";
+
+			x = 0.515 * safezoneW + safezoneX;
+			y = 0.379 * safezoneH + safezoneY;
+			w = 0.078 * safezoneW;
+			h = 0.033 * safezoneH;
+		};
 	
 		class LoadTownsButton: w_RscButton
 		{
@@ -180,7 +206,7 @@
 			text = "Towns";
 
 			x = 0.406 * safezoneW + safezoneX;
-			y = 0.379 * safezoneH + safezoneY;
+			y = 0.448 * safezoneH + safezoneY;
 			w = 0.078 * safezoneW;
 			h = 0.033 * safezoneH;
 		};
@@ -192,7 +218,7 @@
 			text = "Beacons";
 
 			x = 0.515 * safezoneW + safezoneX;
-			y = 0.379 * safezoneH + safezoneY;
+			y = 0.448 * safezoneH + safezoneY;
 			w = 0.078 * safezoneW;
 			h = 0.033 * safezoneH;
 		};
@@ -204,7 +230,7 @@
 			text = "";
 
 			x = 0.337 * safezoneW + safezoneX;
-			y = 0.443 * safezoneH + safezoneY;
+			y = 0.512 * safezoneH + safezoneY;
 			w = 0.078 * safezoneW;
 			h = 0.033 * safezoneH;
 		};
@@ -216,7 +242,7 @@
 			text = "";
 
 			x = 0.337 * safezoneW + safezoneX;
-			y = 0.493 * safezoneH + safezoneY;
+			y = 0.562 * safezoneH + safezoneY;
 			w = 0.078 * safezoneW;
 			h = 0.033 * safezoneH;
 		};
@@ -228,7 +254,7 @@
 			text = "";
 
 			x = 0.337 * safezoneW + safezoneX;
-			y = 0.543 * safezoneH + safezoneY;
+			y = 0.612 * safezoneH + safezoneY;
 			w = 0.078 * safezoneW;
 			h = 0.033 * safezoneH;
 		};
@@ -240,7 +266,7 @@
 			text = "";
 
 			x = 0.337 * safezoneW + safezoneX;
-			y = 0.593 * safezoneH + safezoneY;
+			y = 0.662 * safezoneH + safezoneY;
 			w = 0.078 * safezoneW;
 			h = 0.033 * safezoneH;
 		};
@@ -252,7 +278,7 @@
 			text = "";
 
 			x = 0.337 * safezoneW + safezoneX;
-			y = 0.643 * safezoneH + safezoneY;
+			y = 0.712 * safezoneH + safezoneY;
 			w = 0.078 * safezoneW;
 			h = 0.033 * safezoneH;
 		};
@@ -264,7 +290,7 @@
 			text = "Lobby";
 
 			x = 0.327 * safezoneW + safezoneX;
-			y = 0.712 * safezoneH + safezoneY;
+			y = 0.781 * safezoneH + safezoneY;
 			w = 0.078 * safezoneW;
 			h = 0.033 * safezoneH;
 			color[] = {0.95,0.1,0.1,1};
