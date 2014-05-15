@@ -16,7 +16,7 @@ Installation
 ============
 
 - Follow the instructions to install <a href="http://arma2netmysqlplugin.readthedocs.org/en/latest/">`Arma2NETMySql</a>
-- Use the setup_db.sql in the DatabaseSetup folder to set up your MySQL Database. At the moment the database name is hardcoded to "players", so you database has to be called this
+- Use the setup_db.sql in the DatabaseSetup folder to set up your MySQL Database. Change the database name in the settings (A3W_DatabaseName) to the name of your MySql Database
 - If you only want base saving to activate before a server restart (for performance reasons), use the batch files in the DatabaseSetup to set the "DoSave" flag to one before a restart (scheduled task or BEC command is fine) and set it back to 0 right before the restart
 - Use the BinPBO tools and the make_pbo.bat file (you need to edit this file) to compile the mission PBO file
 - Deploy the PBO on your server

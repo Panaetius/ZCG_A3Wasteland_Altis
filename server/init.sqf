@@ -74,7 +74,7 @@ _setupPlayerDB = [] spawn {}; // blank script to feed scriptDone a non-nil value
 if (_playerSavingOn || {_serverSavingOn}) then
 {
 	// Our custom iniDB methods which fixes some issues with the current iniDB addon release
-	call compile preProcessFileLineNumbers "persistence\fn_inidb_custom.sqf";
+	call compile preProcessFileLineNumbers "persistence\sql_commands.sqf";
 
 	// Have we got player persistence enabled?
 	if (_playerSavingOn) then

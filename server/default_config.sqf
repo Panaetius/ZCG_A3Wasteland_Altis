@@ -20,7 +20,7 @@ A3W_warchestSaving = 0;            // Save warchest objects deployed by players 
 A3W_warchestMoneySaving = 0;       // Save warchest team money between server restarts (0 = no, 1 = yes)
 A3W_spawnBeaconSaving = 0;         // Save spawn beacons between server restarts (0 = no, 1 = yes)
 A3W_objectLifetime = 5*24;         // Maximum lifetime in hours for saved objects (baseparts, crates, etc.) across server restarts (0 = no time limit)
-PDB_ServerID = "A3W_";             // iniDB savefiles prefix (change this in case you run multiple servers from the same folder)
+A3W_DatabaseName = "players";           // the name of the sql database
 
 // Spawning settings
 A3W_serverSpawning = 1;            // Vehicle, object, and loot spawning (0 = no, 1 = yes)
