@@ -18,6 +18,8 @@ if (!isServer) then
 
 waitUntil {!isNil "A3W_serverSetupComplete"};
 
+// load default config
+call compile preprocessFileLineNumbers "client\default_config.sqf";
 [] execVM "client\functions\bannedNames.sqf";
 
 showPlayerIcons = true;
@@ -126,6 +128,21 @@ waituntil {!(IsNull (findDisplay 46))};
 [] call updateMissionsMarkers;
 [] execVM "client\functions\ThereCanBeOnlyOne.sqf";
 // [] call updateRadarMarkers;
+
+if ( A3W_NoGlobalVoice > 0) then
+{
+	[0, A3W_NoGlobalVoice] execVM "client\functions\novoice.sqf";
+};
+
+if ( A3W_NoSideVoice > 0) then
+{
+	[1, A3W_NoSideVoice] execVM "client\functions\novoice.sqf";
+};
+
+if ( A3W_NoCommandVoice > 0) then
+{
+	[2, A3W_NoCommandVoice] execVM "client\functions\novoice.sqf";
+};
 
 [] spawn
 {

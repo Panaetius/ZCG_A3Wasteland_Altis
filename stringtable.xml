@@ -30,6 +30,9 @@
 		<Key ID="STR_WL_Loading_Teamswitched">
 			<English>You have played as %1 for too long and cannot switch to the other team. You can still play as Independent. (or if online, ask an admin to unlock you)</English>
 		</Key>
+		<Key ID="STR_WL_Loading_GlobalVoice">
+			<English>You have been kicked too many times for using voice and cannot play on this server anymore.</English>
+		</Key>
 	</Package>
 	<Package name="Gameplay">
 		<Key ID="STR_WL_Action_Refuel_DriverSeat">

@@ -12,6 +12,8 @@ pvar_teamSwitchList = [];
 publicVariable "pvar_teamSwitchList";
 pvar_teamKillList = [];
 publicVariable "pvar_teamKillList";
+pvar_voiceBanPlayerArray = [];
+publicVariable "pvar_voiceBanPlayerArray";
 pvar_spawn_beacons = [];
 publicVariable "pvar_spawn_beacons";
 clientMissionMarkers = [];
