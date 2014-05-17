@@ -1,8 +1,10 @@
-private ["_chat", "_chatIndex", "_seconds", "_reset_timer", "_disconnect_me", "_warn_one", "_warn_last", "_reset_timer"];
+private ["_chat", "_chatIndex", "_seconds", "_reset_timer", "_disconnect_me", "_warn_one", "_warn_last", "_reset_timer", "_checkInterval"];
 _chatIndex = _this select 0;
 _seconds = _this select 1;
 
 _chat = "";
+
+_checkInterval = 0.1;
 
 switch (_chatIndex) do
 {
@@ -63,20 +65,26 @@ _voiceBanAction = {
 };
 
 while {true} do {
-	waitUntil {sleep 0.1;((!isNull findDisplay 63) && (!isNull findDisplay 55))};
+	waitUntil {
+		sleep _checkInterval;
+		if (!isNil "_reset_timer") then {
+			_reset_timer = _reset_timer + _checkInterval;
+			if( _reset_timer > A3W_VoiceKickTimeout) then
+			{
+				_disconnect_me = nil;
+				_warn_one = nil;
+				_warn_last = nil;
+				_reset_timer = nil;
+			};
+		};
+		((!isNull findDisplay 63) && (!isNull findDisplay 55))
+	};
 	if (ctrlText ((findDisplay 55) displayCtrl 101) == "\A3\ui_f\data\igui\rscingameui\rscdisplayvoicechat\microphone_ca.paa") then {
 		if (ctrlText ((findDisplay 63) displayCtrl 101) == _chat) then {
-			[] spawn {
-				if (isNil "reset_timer") then {
-					_reset_timer = true;
-					sleep A3W_VoiceKickTimeout;
-					_disconnect_me = nil;
-					_warn_one = nil;
-					_warn_last = nil;
-					_reset_timer = nil;
-				};
+			if (isNil "reset_timer") then {
+				_reset_timer = 0;
 			};
-			if (isNil "_disconnect_me") then {_disconnect_me = 0;} else {_disconnect_me = _disconnect_me + 1;};
+			if (isNil "_disconnect_me") then {_disconnect_me = 0;} else {_disconnect_me = _disconnect_me + _checkInterval;};
 			if (_disconnect_me == 0) then {
 				if (isNil "_warn_one") then {
 					_warn_one = true;
@@ -84,10 +92,11 @@ while {true} do {
 					[] spawn _DS_slap_them;
 					["Alarm"] spawn _DS_really_loud_sounds;
 					[format ["NO VOICE ON %1", _chat]] spawn _DS_double_cut;
-					sleep 3;
+					axeDiagLog = format ["%1 got warned for talking on %2", name player, _chat];
+					publicVariable "axeDiagLog";
 				};
 			};
-			if (_disconnect_me >= 3) then {//kick after 3 seconds of talking
+			if (_disconnect_me >= _seconds) then {//kick after x seconds of talking
 				if (isNil "_warn_last") then {
 					_warn_last = true;
 					_chatIndex call _voiceBanAction;
@@ -105,5 +114,5 @@ while {true} do {
 			};
 		};
 	};
-	sleep 1;
+	sleep _checkInterval;
 };
