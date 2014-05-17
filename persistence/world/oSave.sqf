@@ -21,7 +21,11 @@ while {true} do {
 	_trigger = "DoSave" call sqlite_getTrigger;
 	
 	if (_trigger == 1) then {
-	
+		//remove all AI from the mission to speed up the server when saving (since we only need to save before restart with no players on anyways)
+		{
+			deleteVehicle _x;
+		} forEach (allMissionObjects "CAManBase");
+		
 		_PersistentDB_ObjCount = 1;
 		
 		_saveQuery = _baseQuery;
