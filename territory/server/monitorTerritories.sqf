@@ -1,3 +1,4 @@
+//todo: there's a while with a shitton of foreaches in here, maybe this should be optimized...
 /*********************************************************#
 # @@ScriptName: monitorTerritories.sqf
 # @@Author: Nick 'Bewilderbeest' Ludlam <bewilder@recoil.org>

@@ -78,11 +78,11 @@ _proxyExtra = _proxyExtra - _deserted;
 
 _sleepTime = 120;
 
-{
-	if (_x < _sleepTime) then {
-		_sleepTime = ( if (_x > 4) then { _x / 4 } else { 1 } );
-	};
-} forEach [_delay, _deserted];
+// {
+	// if (_x < _sleepTime) then {
+		// _sleepTime = ( if (_x > 4) then { _x / 4 } else { 1 } );
+	// };
+// } forEach [_delay, _deserted];
 
 _wheels = [];
 _hitPoints = configFile >> "CfgVehicles" >> (typeOf _veh) >> "HitPoints";

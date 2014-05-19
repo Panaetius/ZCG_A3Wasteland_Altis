@@ -199,7 +199,7 @@ for "_i" from 1 to 13 do
 	while {true} do {
 		{
 			diag_log text format ["%1 has %2 money", _x, _x getVariable ["cmoney", 0]];
-		}forEach playableUnits;
+		} count playableUnits;
 		
 		sleep 60;
 	};

@@ -24,7 +24,7 @@ fn_vehicleManager =
 	{
 		_vehicle = _this select 0;
 		if (!simulationEnabled _vehicle) then { _vehicle enableSimulation true };
-		_vehicle setVariable ["fpsFix_simulationCooloff", diag_tickTime + 15];
+		_vehicle setVariable ["fpsFix_simulationCooloff", diag_tickTime + 10];
 	};
 	
 	{
@@ -69,7 +69,7 @@ fn_vehicleManager =
 			};
 		};
 	} forEach allMissionObjects "All";
-};
+} call mf_compile;
 
 _lastPos = [0,0,0];
 _R3F_attachPoint = objNull;
@@ -89,5 +89,5 @@ while {true} do
 		call fn_vehicleManager;
 	};
 
-	sleep 5;
+	sleep 10;
 };

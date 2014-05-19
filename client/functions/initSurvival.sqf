@@ -4,7 +4,7 @@
 //	@file Created: 20/11/2012 05:19
 //	@file Args:
 
-#define TIME_DELTA 5 //seconds between each "check"
+#define TIME_DELTA 10 //seconds between each "check"
 #define HEALTH_TIME (60*5) //seconds till death
 #define HUNGER_TIME (60*60) //seconds till starving
 #define THIRST_TIME (60*50) //seconds till dehydrated

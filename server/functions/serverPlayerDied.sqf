@@ -37,7 +37,7 @@ if (vehicle _corpse != _corpse) then
 
 if(!isNil "_corpse" && !isNull _corpse) then {
 	diag_log text format ["Corpse: %1", _corpse];
-	_nearEntites = _corpse nearEntities ["All", 20];
+	_nearEntites =  nearestObjects [_corpse, "All", 20];
 
 	if(!isNil "_nearEntites" && {count _nearEntites > 0}) then
 	{

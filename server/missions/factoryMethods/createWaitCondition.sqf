@@ -15,5 +15,5 @@ while {_running} do
 { 
     _currTime = floor(time);
     if(_currTime - _startTime >= _delayTime) then {_running = false;};
-    sleep 1;
+    sleep 5;
 };

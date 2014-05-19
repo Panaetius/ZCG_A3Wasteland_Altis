@@ -80,21 +80,20 @@ while {true} do
 				if ({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_movables > 0) then
 				{
 					// Condition action charger_deplace
+					_checkTransporteurs = ({_x != _objet_pointe && alive _x && ((velocity _x) call BIS_fnc_magnitude < 6) && (getPos _x select 2 < 2) &&
+						!(_x getVariable "R3F_LOG_disabled")} count (_objet_pointe nearEntities [R3F_LOG_classes_transporteurs, 18]) > 0);
 					R3F_LOG_action_charger_deplace_valide = (vehicle player == player && (count crew _objet_pointe == 0) && (R3F_LOG_joueur_deplace_objet == _objet_pointe) &&
-						{_x != _objet_pointe && alive _x && ((velocity _x) call BIS_fnc_magnitude < 6) && (getPos _x select 2 < 2) &&
-						!(_x getVariable "R3F_LOG_disabled")} count (nearestObjects [_objet_pointe, R3F_LOG_classes_transporteurs, 18]) > 0 &&
+						_checkTransporteurs &&
 						!(_objet_pointe getVariable "R3F_LOG_disabled"));
 						
 					R3F_LOG_action_charger_attach_valide = (vehicle player == player && (count crew _objet_pointe == 0) && (R3F_LOG_joueur_deplace_objet == _objet_pointe) &&
-						{_x != _objet_pointe && alive _x && ((velocity _x) call BIS_fnc_magnitude < 6) && (getPos _x select 2 < 2) &&
-						!(_x getVariable "R3F_LOG_disabled")} count (nearestObjects [_objet_pointe, R3F_LOG_classes_transporteurs, 18]) > 0 &&
+						_checkTransporteurs &&
 						!(_objet_pointe getVariable "R3F_LOG_disabled") &&
 						({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_not_attachables) == 0
 						&& !(isNull (_objet_pointe getVariable ["R3F_LOG_est_transporte_par", objNull])));
 						
 					R3F_LOG_action_charger_detach_valide = (vehicle player == player && (count crew _objet_pointe == 0) && (isNull R3F_LOG_joueur_deplace_objet) &&
-						{_x != _objet_pointe && alive _x && ((velocity _x) call BIS_fnc_magnitude < 6) && (getPos _x select 2 < 2) &&
-						!(_x getVariable "R3F_LOG_disabled")} count (nearestObjects [_objet_pointe, R3F_LOG_classes_transporteurs, 18]) > 0 &&
+						_checkTransporteurs &&
 						!(_objet_pointe getVariable "R3F_LOG_disabled") &&
 						({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_not_attachables) == 0 
 						&& count (_objet_pointe getVariable ["AttachDirection", []]) == 3
@@ -179,7 +178,7 @@ while {true} do
 		
 		// Condition action heliporter
 		R3F_LOG_action_heliporter_valide = (driver R3F_LOG_objet_addAction == player &&
-			({_x != R3F_LOG_objet_addAction && !(_x getVariable "R3F_LOG_disabled")} count (nearestObjects [R3F_LOG_objet_addAction, R3F_LOG_CFG_objets_heliportables, 15]) > 0) &&
+			({_x != R3F_LOG_objet_addAction && !(_x getVariable "R3F_LOG_disabled")} count (R3F_LOG_objet_addAction nearEntities [R3F_LOG_CFG_objets_heliportables, 15]) > 0) &&
 			isNull (R3F_LOG_objet_addAction getVariable "R3F_LOG_heliporte") && ((velocity R3F_LOG_objet_addAction) call BIS_fnc_magnitude < 6) && (getPos R3F_LOG_objet_addAction select 2 > 1) &&
 			!(R3F_LOG_objet_addAction getVariable "R3F_LOG_disabled"));
 		
@@ -188,5 +187,5 @@ while {true} do
 			/*((velocity R3F_LOG_objet_addAction) call BIS_fnc_magnitude < 15) && (getPos R3F_LOG_objet_addAction select 2 < 40) && */ !(R3F_LOG_objet_addAction getVariable "R3F_LOG_disabled"));
 	};
 	
-	sleep 0.3;
+	sleep 1;
 };

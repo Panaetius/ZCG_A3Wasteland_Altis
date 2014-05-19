@@ -9,5 +9,5 @@ while {true} do
 {
 	currentDate = date;
 	publicVariable "currentDate";
-	sleep 30;
+	sleep 120;
 };

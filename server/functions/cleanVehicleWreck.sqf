@@ -5,8 +5,8 @@
 
 while {alive _this} do
 {
-	sleep 60;
+	sleep 120;
 };
 
-sleep 300;
+sleep 180;
 deleteVehicle _this;

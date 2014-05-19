@@ -9,7 +9,7 @@ private ["_runInt", "_deathTime"];
 
 // configure cleanup below this line
 
-_runInt = 5*60;		// Interval to run the cleanup 
+_runInt = 10*60;		// Interval to run the cleanup 
 _deathTime = 10*60;	// Time a body has to have been dead before cleaning it up
 
 // you should not change code below this line :)
@@ -27,7 +27,7 @@ while { true } do
 			_delQtyO = _delQtyO + 1;
 		};
 		sleep 0.01;
-	} forEach entities "All";
+	} forEach entities "All";//todo: optimize this. Why do we have to check ALL entities when it's just corpses, backpacks and stuff with mfitemid? maybe split into several loops
 	
 	diag_log format ["SERVER CLEANUP: Deleted %1 expired objects", _delQtyO];
 	

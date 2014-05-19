@@ -60,6 +60,6 @@ while {true} do
     diag_log format["WASTELAND SERVER - Execute New Main Mission: %1",_missionType];
     _hint = parseText format ["<t align='center' color='%2' shadow='2' size='1.75'>Main Objective</t><br/><t align='center' color='%2'>------------------------------</t><br/><t color='%3' size='1.0'>Starting in %1 Minutes</t>", mainMissionDelayTime / 60, mainMissionColor, subTextColor];
 	[_hint] call hintBroadcast;
-	waitUntil{sleep 1; scriptDone _missionRunning};
+	waitUntil{sleep 30; scriptDone _missionRunning};
     sleep 5; 
 };

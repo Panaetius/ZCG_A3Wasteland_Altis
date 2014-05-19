@@ -33,7 +33,7 @@ _counter = 0;
 _pos = getMarkerPos (_city select 0);
 _tradius = _city select 1;
 _townname = _city select 2;
-_vehammount = 50; //100 * 100$ = 10k
+_vehammount = 20; //20*500 = 10k
 _angleIncr = 360 / _vehammount;
 _langle = random _angleIncr;
 _minrad = 0;
@@ -52,7 +52,7 @@ while {_lcounter < _vehammount} do
 	_lpos = [_lpos, _minrad, _maxrad, _mindist, 0, 60*(pi/180), 0, "Land_Money_F"] call findSafePos;
 	
 	_m = "Land_Money_F" createVehicle _lpos;
-	_m setVariable ["cmoney", 200, true];
+	_m setVariable ["cmoney", 500, true];
 	_m setVariable ["owner", "world", true];
 	_moneyArray set [count _moneyArray, _m];
 	

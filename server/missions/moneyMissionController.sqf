@@ -38,6 +38,6 @@ while {true} do
 	_hint = parseText format ["<t align='center' color='%2' shadow='2' size='1.75'>Money Objective</t><br/><t align='center' color='%2'>------------------------------</t><br/><t color='%3' size='1.0'>Starting in %1 minutes</t>", moneyMissionDelayTime / 60, moneyMissionColor, subTextColor];
 	[_hint] call hintBroadcast;
 	
-	waitUntil{sleep 1; scriptDone _missionRunning};
+	waitUntil{sleep 30; scriptDone _missionRunning};
     sleep 5; 
 };

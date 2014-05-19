@@ -4,7 +4,7 @@ _seconds = _this select 1;
 
 _chat = "";
 
-_checkInterval = 0.1;
+_checkInterval = 0.3;
 
 switch (_chatIndex) do
 {

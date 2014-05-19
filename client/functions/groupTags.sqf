@@ -3,17 +3,18 @@
 
 #define __REFRESH 0.34
 
-private["_inGroup","_isLeader","_refresh","_distance","_myGroup","_tempArray","_icon"];
+private["_inGroup","_isLeader","_refresh","_distance","_myGroup","_tempArray","_icon", "_playerGroupMembers"];
 
 while {true} do
 {
-    if(count units group player > 1) then 
+	_playerGroupMembers = units player;
+    if(count _playerGroupMembers > 1) then 
     {	
         //Getting your group
 		_tempArray = [];
         {
         	_tempArray set [count _tempArray,getPlayerUID _x];    
-        }forEach units player;
+        }forEach _playerGroupMembers;
         
 		//Player Tags	   
 		_target = cursorTarget;
@@ -56,8 +57,8 @@ while {true} do
 				};				
 			};
 		}; 	
-		sleep 0.1;
+		sleep 0.3;
 	} else {
-        sleep 1;        
+        sleep 10;        
     };     
 };

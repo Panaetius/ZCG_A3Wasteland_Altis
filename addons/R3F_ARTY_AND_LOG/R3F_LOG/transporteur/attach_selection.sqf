@@ -20,7 +20,7 @@ else
 	
 	_objet = R3F_LOG_joueur_deplace_objet;
 	
-	_transporteur = nearestObjects [_objet, R3F_LOG_classes_transporteurs, 22];
+	_transporteur = _objet nearEntities [R3F_LOG_classes_transporteurs, 22];
 	// Parce que le transporteur peut être un objet transportable
 	_transporteur = _transporteur - [_objet];
 	

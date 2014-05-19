@@ -27,6 +27,8 @@ _liste_objets_depl_heli_remorq_transp = R3F_LOG_CFG_objects_movables + R3F_LOG_C
 
 while {true} do
 {
+	sleep 3;
+	
 	if !(isNull player) then
 	{
 		// Récupération des tout les nouveaux véhicules de la carte et des nouveaux objets dérivant de "Static" (caisse de mun, drapeau, ...) proches du joueur
@@ -36,7 +38,7 @@ while {true} do
 		
 		if (_count_liste_vehicules > 0) then
 		{
-			_sleepDelay = 10 / _count_liste_vehicules;
+			_sleepDelay = 20 / _count_liste_vehicules;
 			
 			// On parcoure tout les véhicules présents dans le jeu en 18 secondes
 			{

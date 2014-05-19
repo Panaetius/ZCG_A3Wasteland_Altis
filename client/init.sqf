@@ -128,20 +128,21 @@ waituntil {!(IsNull (findDisplay 46))};
 [] call updateMissionsMarkers;
 [] execVM "client\functions\ThereCanBeOnlyOne.sqf";
 // [] call updateRadarMarkers;
+_novoice = "client\functions\novoice.sqf" call mf_compile;
 
 if ( A3W_NoGlobalVoice > 0) then
 {
-	[0, A3W_NoGlobalVoice] execVM "client\functions\novoice.sqf";
+	[0, A3W_NoGlobalVoice] spawn _novoice;
 };
 
 if ( A3W_NoSideVoice > 0) then
 {
-	[1, A3W_NoSideVoice] execVM "client\functions\novoice.sqf";
+	[1, A3W_NoSideVoice] spawn _novoice;
 };
 
 if ( A3W_NoCommandVoice > 0) then
 {
-	[2, A3W_NoCommandVoice] execVM "client\functions\novoice.sqf";
+	[2, A3W_NoCommandVoice] spawn _novoice;
 };
 
 [] spawn

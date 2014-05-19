@@ -492,7 +492,7 @@ FAR_CheckFriendlies =
 {
 	private ["_unit", "_units", "_medics", "_hintMsg"];
 	
-	_units = nearestObjects [getpos player, ["Man", "Car", "Air", "Ship"], 800];
+	_units = (getpos player) nearEntities [["Man", "Car", "Air", "Ship"], 800];
 	_medics = [];
 	_dist = 800;
 	_hintMsg = "";
