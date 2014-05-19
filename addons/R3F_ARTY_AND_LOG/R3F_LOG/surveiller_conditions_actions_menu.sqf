@@ -98,8 +98,6 @@ while {true} do
 						({_objet_pointe isKindOf _x} count R3F_LOG_CFG_objects_not_attachables) == 0 
 						&& count (_objet_pointe getVariable ["AttachDirection", []]) == 3
 						&& !(isNull (_objet_pointe getVariable ["R3F_LOG_est_transporte_par", objNull])));
-						
-					diag_log text format ["1: %1, %2", R3F_LOG_action_charger_detach_valide, _objet_pointe];
 				};
 				
 				// Condition action selectionner_objet_charge

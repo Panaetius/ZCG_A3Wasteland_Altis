@@ -97,7 +97,6 @@ zlt_fnc_ropes_cond = {
 
 zlt_fnc_fastropeaiunits = {
 		private ["_heli","_grunits"];
-		diag_log ["zlt_fnc_fastropeaiunits", _this];
 		_heli = _this select 0;
 		_grunits = _this select 1;
 
@@ -129,7 +128,6 @@ zlt_fnc_fastropeaiunits = {
 
 
 zlt_fnc_fastrope = {
-	diag_log ["fastrope", _this];
 	zlt_mutexAction = true;
 	sleep random 0.3;
 	if (player == leader group player) then {

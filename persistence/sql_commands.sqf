@@ -72,7 +72,6 @@ sqlite_readPlayer = {
 
 sqlite_deletePlayer = {
 	private "_res";
-	diag_log "delete called";
 	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%2', 'Delete FROM player WHERE Id=''%1'';Delete FROM Item WHERE PlayerId=''%1'';']", _this, A3W_DatabaseName];
 	
 	true

@@ -223,9 +223,6 @@ if(_result == 1) then
 		};
 		_center = createCenter sideLogic;
 		_group = createGroup _center;  
-		diag_log _pos;
-		diag_log _center;
-		diag_log _group;
 		_zlb = _group createUnit ["ModuleLightning_F",_pos,[],0,"FORM"];
 		sleep 0.5;
 		deleteVehicle _zlb;

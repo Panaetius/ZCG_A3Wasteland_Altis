@@ -130,19 +130,9 @@ waituntil {!(IsNull (findDisplay 46))};
 // [] call updateRadarMarkers;
 _novoice = "client\functions\novoice.sqf" call mf_compile;
 
-if ( A3W_NoGlobalVoice > 0) then
+if ( (A3W_NoGlobalVoice > 0) || (A3W_NoSideVoice > 0) || (A3W_NoCommandVoice > 0)) then
 {
-	[0, A3W_NoGlobalVoice] spawn _novoice;
-};
-
-if ( A3W_NoSideVoice > 0) then
-{
-	[1, A3W_NoSideVoice] spawn _novoice;
-};
-
-if ( A3W_NoCommandVoice > 0) then
-{
-	[2, A3W_NoCommandVoice] spawn _novoice;
+	[A3W_NoGlobalVoice, A3W_NoSideVoice, A3W_NoCommandVoice] spawn _novoice;
 };
 
 [] spawn

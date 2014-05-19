@@ -203,10 +203,6 @@ else
 					_objectPos = getPos _objet;
 					_objectPos set [2, ((player call fn_getPos3D) select 2) + _zOffset];
 					_objet setPos _objectPos;
-					
-					
-			
-			diag_log (_objet call BIS_fnc_getpitchbank);
 				};
 			};
 			

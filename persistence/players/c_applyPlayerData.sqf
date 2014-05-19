@@ -45,7 +45,6 @@ _items = _varValue select 17;
 {
 	if((_x select 2) == "PrimaryWeaponMag") then {
 		_name = call compile (_x select 3);
-		diag_log _name;
 		player addMagazine _name;
 	};
 } forEach _items;
@@ -57,7 +56,6 @@ sleep 0.1;
 {
 	if((_x select 2) == "HandgunMag") then {
 		_name = call compile (_x select 3);
-		diag_log _name;
 		player addMagazine _name;
 	};
 } forEach _items;
@@ -69,7 +67,6 @@ sleep 0.1;
 {
 	if((_x select 2) == "SecondaryWeaponMag") then {
 		_name = call compile (_x select 3);
-		diag_log _name;
 		player addMagazine _name;
 	};
 } forEach _items;
