@@ -18,6 +18,8 @@
 #define respawn_Random_Button 3413
 #define respawn_LoadTowns_Button 3414
 #define respawn_LoadBeacons_Button 3415
+#define respawn_BluforSpawn_Button 3416
+#define respawn_OpforSpawn_Button 3417
 
 // Check if both players are on the same side, and that our player is BLUFOR or OPFOR, or that both are in the same group
 #define FRIENDLY_CONDITION (side _x == playerSide && {playerSide in [BLUFOR,OPFOR] || {group _x == group player}})
@@ -60,7 +62,7 @@ _disableAllButtons = "";
 
 {
 	_disableAllButtons = _disableAllButtons + (format ["ctrlEnable [%1, false]; ", _x]);
-} forEach [respawn_Random_Button, respawn_LoadTowns_Button, respawn_LoadBeacons_Button];
+} forEach [respawn_Random_Button, respawn_LoadTowns_Button, respawn_LoadBeacons_Button, respawn_BluforSpawn_Button, respawn_OpforSpawn_Button];
 
 {
 	_button = _display displayCtrl (_x select 0);
@@ -70,6 +72,15 @@ _disableAllButtons = "";
 } forEach _dynamicControlsArray;
 
 buttonSetAction [respawn_Random_Button, format ["%1 [%2,0] execVM 'client\functions\spawnAction.sqf'", _disableAllButtons, respawn_Random_Button]];
+buttonSetAction [respawn_BluforSpawn_Button, format ["%1 [%2,3] execVM 'client\functions\spawnAction.sqf'", _disableAllButtons, respawn_BluforSpawn_Button]];
+buttonSetAction [respawn_OpforSpawn_Button, format ["%1 [%2,4] execVM 'client\functions\spawnAction.sqf'", _disableAllButtons, respawn_OpforSpawn_Button]];
+
+switch (playerSide) do
+{
+	case OPFOR:       { ctrlEnable [respawn_BluforSpawn_Button, false]; };
+	case BLUFOR: { ctrlEnable [respawn_OpforSpawn_Button, false]; };
+	default           { ctrlEnable [respawn_OpforSpawn_Button, false];ctrlEnable [respawn_OpforSpawn_Button, false];};
+};
 
 _setPlayersInfo =
 {

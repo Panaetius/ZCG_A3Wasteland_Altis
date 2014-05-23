@@ -114,7 +114,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=71;
+		items=73;
 		class Item0
 		{
 			side="WEST";
@@ -2228,6 +2228,48 @@ class Mission
 				};
 			};
 		};
+		class Item71
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={20201.625, 110.2, 12963.849};
+					azimut=90;
+					special="NONE";
+					id=117;
+					side="LOGIC";
+					vehicle="C_man_polo_1_F_asia";
+					leader=1;
+					skill=0.60000002;
+					text="GenStore6";
+					init="[this, 'GenStore', 6] execVM 'server\functions\setupStoreNPC.sqf'";
+				};
+			};
+		};
+		class Item72
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={12263.729, 139.9, 21120.564};
+					azimut=90;
+					special="NONE";
+					id=117;
+					side="LOGIC";
+					vehicle="C_man_polo_1_F_asia";
+					leader=1;
+					skill=0.60000002;
+					text="GenStore7";
+					init="[this, 'GenStore', 7] execVM 'server\functions\setupStoreNPC.sqf'";
+				};
+			};
+		};
 	};
 	class Vehicles
 	{
@@ -2449,7 +2491,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=244;
+		items=248;
 		class Item0
 		{
 			position[]={3612.1487,12.11851,13020.892};
@@ -4231,6 +4273,34 @@ class Mission
 			type="Empty";
 			a=1800;
 			b=1800;
+		};
+		class Item244
+		{
+			position[]={20230.1328,118.540359,12950.696};
+			name="Permanent_Opfor_Base";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item245
+		{
+			position[]={12287.311,139.9945,21094.117};
+			name="Permanent_Blufor_Base";
+			type="Empty";
+			colorName="ColorRed";
+		};
+		class Item246
+		{
+			position[]={20215.914, 110.56, 12961.011};
+			name="GenStore6_objSpawn";
+			type="Empty";
+			colorName="ColorBlack";
+		};
+		class Item247
+		{
+			position[]={12272.87, 139.94, 21106.729};
+			name="GenStore7_objSpawn";
+			type="Empty";
+			colorName="ColorBlack";
 		};
 	};
 };
