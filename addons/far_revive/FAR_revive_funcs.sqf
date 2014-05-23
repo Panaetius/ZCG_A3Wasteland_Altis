@@ -432,8 +432,9 @@ FAR_Check_Suicide =
 {
 	_return = false;
 	_isPlayerUnconscious = player getVariable ["FAR_isUnconscious",0];
+	_isPlayerStabilized = player getVariable ["FAR_isStabilized",0];
 	
-	if (alive player && _isPlayerUnconscious == 1) then 
+	if (alive player && (_isPlayerUnconscious == 1 || _isPlayerStabilized == 1)) then 
 	{
 		_return = true;
 	};
