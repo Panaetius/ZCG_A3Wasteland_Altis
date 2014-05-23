@@ -2245,7 +2245,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="GenStore6";
-					init="[this, 'GenStore', 6] execVM 'server\functions\setupStoreNPC.sqf'";
+					init="[this, 'GenStore', 6, false] execVM 'server\functions\setupStoreNPC.sqf'";
 				};
 			};
 		};
@@ -2266,7 +2266,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="GenStore7";
-					init="[this, 'GenStore', 7] execVM 'server\functions\setupStoreNPC.sqf'";
+					init="[this, 'GenStore', 7, false] execVM 'server\functions\setupStoreNPC.sqf'";
 				};
 			};
 		};

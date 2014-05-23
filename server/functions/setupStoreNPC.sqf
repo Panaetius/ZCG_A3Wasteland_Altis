@@ -12,6 +12,12 @@ private ["_npc", "_type", "_num", "_npcName"];
 _npc = _this select 0;
 _type = _this select 1;
 _num = _this select 2;
+_showMarker = _this select 3;
+
+if (!isNil "_showMarker") then 
+{
+	_npc setVariable ["ShowMarker", false, true];
+};
 
 if (hasInterface) then
 {

@@ -191,4 +191,25 @@ player setDamage (parseNumber (_varValue select 4));
 hungerLevel = parseNumber (_varValue select 15);
 thirstLevel = parseNumber (_varValue select 16);
 
+switch (side player) do
+{
+	case BLUFOR: 
+	{ 
+		"Permanent_Blufor_Base" setMarkerTypeLocal "b_hq";
+		"Permanent_Blufor_Base" setMarkerSizeLocal [1.25, 1.25];
+		"Permanent_Blufor_Base" setMarkerColorLocal "ColorBlue";
+		"Permanent_Blufor_Base" setMarkerTextLocal "Main Blufor Base";
+	};
+	case OPFOR:	 
+	{ 
+		"Permanent_Opfor_Base" setMarkerTypeLocal "o_hq";
+		"Permanent_Opfor_Base" setMarkerSizeLocal [1.25, 1.25];
+		"Permanent_Opfor_Base" setMarkerColorLocal "ColorRed";
+		"Permanent_Opfor_Base" setMarkerTextLocal "Main Opfor Base";
+	};
+	default	     
+	{ 
+	};
+};
+
 player switchMove "aidlppnemstpsraswrfldnon0s";

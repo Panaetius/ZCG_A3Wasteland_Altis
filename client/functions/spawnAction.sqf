@@ -35,6 +35,27 @@ spawnActionHandle = [_this select 1, _this select 2] spawn
 	[MF_ITEMS_CANNED_FOOD, 1] call mf_inventory_add;
 	[MF_ITEMS_WATER, 1] call mf_inventory_add;
 	[MF_ITEMS_REPAIR_KIT, 1] call mf_inventory_add;
+	
+	switch (side player) do
+	{
+		case BLUFOR: 
+		{ 
+			"Permanent_Blufor_Base" setMarkerTypeLocal "b_hq";
+			"Permanent_Blufor_Base" setMarkerSizeLocal [1.25, 1.25];
+			"Permanent_Blufor_Base" setMarkerColorLocal "ColorBlue";
+			"Permanent_Blufor_Base" setMarkerTextLocal "Main Blufor Base";
+		};
+		case OPFOR:	 
+		{ 
+			"Permanent_Opfor_Base" setMarkerTypeLocal "o_hq";
+			"Permanent_Opfor_Base" setMarkerSizeLocal [1.25, 1.25];
+			"Permanent_Opfor_Base" setMarkerColorLocal "ColorRed";
+			"Permanent_Opfor_Base" setMarkerTextLocal "Main Opfor Base";
+		};
+		default	     
+		{ 
+		};
+	};
 
 	switch (_switch) do 
 	{

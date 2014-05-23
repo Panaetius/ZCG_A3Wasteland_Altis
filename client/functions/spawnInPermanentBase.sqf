@@ -7,20 +7,6 @@
 private ["_marker", "_pos", "_baseName"];
 _index = _this;
 
-{
-	if (_x select 0 == _marker) exitWith
-	{
-		_pos = getMarkerPos _marker;
-		_rad = _x select 1;
-		_townName = _x select 2;
-		
-		_pos = [_pos select 0, _pos select 1, 1500];
-		waitUntil {sleep 0.1; preloadCamera _pos};
-		player setPos _pos;
-		[player, 1500, false, true, true] spawn fn_haloJump;
-	};
-} forEach (call cityList);
-
 _pos = nil;
 _baseName = "";
 
@@ -30,19 +16,11 @@ switch (_index) do
 	{
 		_pos = getMarkerPos "Permanent_Blufor_Base";
 		_baseName = "Main Blufor Base";
-		"Permanent_Blufor_Base" setMarkerTypeLocal "b_hq";
-		"Permanent_Blufor_Base" setMarkerSizeLocal [1.25, 1.25];
-		"Permanent_Blufor_Base" setMarkerColorLocal "ColorBlue";
-		"Permanent_Blufor_Base" setMarkerTextLocal _baseName;
 	};
 	case 4:
 	{
 		_pos = getMarkerPos "Permanent_Opfor_Base";
 		_baseName = "Main Opfor Base";
-		"Permanent_Opfor_Base" setMarkerTypeLocal "o_hq";
-		"Permanent_Opfor_Base" setMarkerSizeLocal [1.25, 1.25];
-		"Permanent_Opfor_Base" setMarkerColorLocal "ColorRed";
-		"Permanent_Opfor_Base" setMarkerTextLocal _baseName;
 	};
 };
 
