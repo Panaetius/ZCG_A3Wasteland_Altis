@@ -40,7 +40,7 @@ _missionUptimeText = _display displayCtrl respawn_MissionUptime_Text;
 switch (playerSide) do
 {
 	case BLUFOR: { _side = "BLUFOR" };
-	case OPFOR:  { _side = "BLUFOR" };
+	case OPFOR:  { _side = "OPFOR" };
 	default      { _side = "Independent" };
 };
 
@@ -79,7 +79,7 @@ switch (playerSide) do
 {
 	case OPFOR:       { ctrlEnable [respawn_BluforSpawn_Button, false]; };
 	case BLUFOR: { ctrlEnable [respawn_OpforSpawn_Button, false]; };
-	default           { ctrlEnable [respawn_OpforSpawn_Button, false];ctrlEnable [respawn_OpforSpawn_Button, false];};
+	default           { ctrlEnable [respawn_BluforSpawn_Button, false];ctrlEnable [respawn_OpforSpawn_Button, false];};
 };
 
 _setPlayersInfo =
