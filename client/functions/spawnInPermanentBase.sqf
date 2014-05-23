@@ -30,11 +30,19 @@ switch (_index) do
 	{
 		_pos = getMarkerPos "Permanent_Blufor_Base";
 		_baseName = "Main Blufor Base";
+		"Permanent_Blufor_Base" setMarkerTypeLocal "b_hq";
+		"Permanent_Blufor_Base" setMarkerSizeLocal [1.25, 1.25];
+		"Permanent_Blufor_Base" setMarkerColorLocal "ColorBlue";
+		"Permanent_Blufor_Base" setMarkerTextLocal _baseName;
 	};
 	case 4:
 	{
 		_pos = getMarkerPos "Permanent_Opfor_Base";
 		_baseName = "Main Opfor Base";
+		"Permanent_Opfor_Base" setMarkerTypeLocal "o_hq";
+		"Permanent_Opfor_Base" setMarkerSizeLocal [1.25, 1.25];
+		"Permanent_Opfor_Base" setMarkerColorLocal "ColorRed";
+		"Permanent_Opfor_Base" setMarkerTextLocal _baseName;
 	};
 };
 
