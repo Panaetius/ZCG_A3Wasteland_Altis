@@ -135,3 +135,7 @@ CREATE TABLE `donators` (
 )
 ENGINE = InnoDB;
 
+----------------------------------------------------------------------------
+------------EXAMPLE DONATOR DATA--------------------------------------------
+----------------------------------------------------------------------------
+INSERT INTO donators VALUES (76561197992571685, 1234, 3, 3, 3, 'U_B_Wetsuit', 'V_TacVestIR_blk', 'B_Carryall_oucamo', 'H_Beret_red', 'G_Diving', 'arifle_Mk20_F', 'launch_NLAW_F', 'hgun_Rook40_F', '["FirstAidKit","FirstAidKit", "30Rnd_556x45_Stanag"]', 1, 1, '')
