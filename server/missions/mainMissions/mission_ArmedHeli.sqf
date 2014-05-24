@@ -20,6 +20,7 @@ diag_log format["WASTELAND SERVER - Main Mission Started: %1",_missionType];
 //Get Mission Location
 _returnData = call createMissionLocation;
 _randomPos = _returnData select 0;
+_randomPos = [_randomPos select 0, _randomPos select 1, 0.3];
 _randomIndex = _returnData select 1;
 
 diag_log format["WASTELAND SERVER - Main Mission Waiting to run: %1",_missionType];
