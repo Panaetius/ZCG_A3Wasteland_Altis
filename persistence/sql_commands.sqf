@@ -375,6 +375,31 @@ sqlite_countBeacons = {
 	_res
 } call mf_compile;
 
+sqlite_donatorExists = {
+	private ["_player", "_query"];
+	_query = format ["SELECT PlayerId FROM donators WHERE PlayerId=''%1'' LIMIT 1", _this];
+	_player = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%2', '%1']", _query, A3W_DatabaseName];
+	
+	if (count ((call compile _player) select 0) > 0 ) then 
+	{
+		true
+	} else {
+		false
+	};
+} call mf_compile;
+
+sqlite_readDonator = {
+	private ["_array", "_uid", "_data", "_player", "_query"];
+	_uid = _this;
+	
+	_query = format ["SELECT * FROM donators WHERE PlayerId=''%1'' LIMIT 1", _uid];
+	_player = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%2', '%1']", _query, A3W_DatabaseName];
+		
+	_data = ((call compile _player) select 0) select 0;
+	
+	_data
+} call mf_compile;
+
 KRON_StrLeft = {
 	private["_in","_len","_arr","_out"];
 	_in=_this select 0;

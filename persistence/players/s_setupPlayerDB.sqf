@@ -37,6 +37,23 @@ doSavePlayerData = {
 	(owner _player) publicVariableClient "applyPlayerData";
 };
 
+"requestDonatorData" addPublicVariableEventHandler
+{
+	_player = _this select 1;
+	_UID = getPlayerUID _player;
+	
+	if (_UID call sqlite_donatorExists) then
+	{
+		applyDonatorData = _UID call sqlite_readDonator;
+	}
+	else
+	{
+		applyDonatorData = [];
+	};
+
+	(owner _player) publicVariableClient "applyDonatorData";
+};
+
 "deletePlayerData" addPublicVariableEventHandler
 {
 	_player = _this select 1;

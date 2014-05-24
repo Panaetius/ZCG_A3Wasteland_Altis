@@ -99,8 +99,8 @@ ENGINE = InnoDB;
 
 INSERT INTO `triggers` (Name, `Condition`) Values ("DoSave", 1);
 
-DROP TABLE IF EXISTS `players`.`beacon`;
-CREATE TABLE  `players`.`beacon` (
+DROP TABLE IF EXISTS `beacon`;
+CREATE TABLE  `beacon` (
   `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Side` varchar(45) NOT NULL,
   `OwnerName` varchar(45) NOT NULL,
@@ -112,3 +112,26 @@ CREATE TABLE  `players`.`beacon` (
   `HaloJump` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `donators` (
+  `PlayerId` BIGINT(40) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `StartingMoney` INTEGER(10) UNSIGNED NOT NULL DEFAULT 0,
+  `StartingFood` INTEGER(2) UNSIGNED NOT NULL DEFAULT 0,
+  `StartingDrink` INTEGER(2) UNSIGNED NOT NULL DEFAULT 0,
+  `StartingRepairKits` INTEGER(2) UNSIGNED NOT NULL DEFAULT 0,
+  `Uniform` VARCHAR(100) NOT NULL DEFAULT '',
+  `Vest` VARCHAR(100) NOT NULL DEFAULT '',
+  `Backpack` VARCHAR(100) NOT NULL DEFAULT '',
+  `Helmet` VARCHAR(100) NOT NULL DEFAULT '',
+  `Glasses` VARCHAR(100) NOT NULL DEFAULT '',
+  `PrimaryWeapon` VARCHAR(100) NOT NULL DEFAULT '',
+  `SecondaryWeapon` VARCHAR(100) NOT NULL DEFAULT '',
+  `HandgunWeapon` VARCHAR(100) NOT NULL DEFAULT '',
+  `InventoryItems` VARCHAR(100) NOT NULL DEFAULT '',
+  `HasGPS` INT(1) NOT NULL DEFAULT 0,
+  `HasNVG` INT(1) NOT NULL DEFAULT 0,
+  `Remarks` VARCHAR(4000) NOT NULL DEFAULT '',
+  PRIMARY KEY (`PlayerId`)
+)
+ENGINE = InnoDB;
+

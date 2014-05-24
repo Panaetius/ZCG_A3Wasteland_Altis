@@ -32,6 +32,7 @@ player createDiaryRecord ["changelog",
 <br/> [Added] - Permanent Player Bases for Opfor and Blufor
 <br/> [Bugfix] - Despawning of dead players should work again
 <br/> [Added] - Suicide option when player is stabilized
+<br/> [Added] - Donator Perks
 "
 ]];
 

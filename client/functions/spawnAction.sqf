@@ -29,8 +29,10 @@ spawnActionHandle = [_this select 1, _this select 2] spawn
 	player allowDamage false;
 
 	// Deal with money here
-	_baseMoney = ["A3W_startingMoney", 200] call getPublicVar;
-	player setVariable ["cmoney", _baseMoney, true];
+	if (player getVariable ["cmoney", 0] < 200) then {
+		_baseMoney = ["A3W_startingMoney", 200] call getPublicVar;
+		player setVariable ["cmoney", _baseMoney, true];
+	};
 
 	[MF_ITEMS_CANNED_FOOD, 1] call mf_inventory_add;
 	[MF_ITEMS_WATER, 1] call mf_inventory_add;

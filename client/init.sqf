@@ -92,6 +92,10 @@ if (["A3W_playerSaving"] call isConfigOn) then
 if (isNil "playerData_alive") then
 {
 	player call playerSetupGear;
+	
+	call fn_requestDonatorData;
+	
+	waitUntil {!isNil "donatorData_loaded"};
 };
 
 player call playerSetupEnd;

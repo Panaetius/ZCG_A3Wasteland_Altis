@@ -4,8 +4,10 @@
 if (isDedicated) exitWith {};
 
 fn_requestPlayerData = compileFinal "requestPlayerData = player; publicVariableServer 'requestPlayerData'";
+fn_requestDonatorData = compileFinal "requestDonatorData = player; publicVariableServer 'requestDonatorData'";
 fn_deletePlayerData = compileFinal "deletePlayerData = player; publicVariableServer 'deletePlayerData'";
 fn_applyPlayerData = "persistence\players\c_applyPlayerData.sqf" call mf_compile;
+fn_applyDonatorData = "persistence\players\c_applyDonatorData.sqf" call mf_compile;
 fn_savePlayerData = "persistence\players\c_savePlayerData.sqf" call mf_compile;
 
 "applyPlayerData" addPublicVariableEventHandler
@@ -38,6 +40,25 @@ fn_savePlayerData = "persistence\players\c_savePlayerData.sqf" call mf_compile;
 		};
 		
 		playerData_loaded = true;
+	};
+};
+
+"applyDonatorData" addPublicVariableEventHandler
+{
+	_this spawn
+	{
+		_data = _this select 1;
+		
+		if (count _data > 0) then
+		{
+			playerData_isDonator = true;
+			
+			_data call fn_applyDonatorData;
+			
+			player groupChat "Donator data loaded!";
+		};
+		
+		donatorData_loaded = true;
 	};
 };
 
