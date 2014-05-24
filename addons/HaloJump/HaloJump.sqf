@@ -88,7 +88,6 @@ if (_chemLight) then {
 //save the backpack and its contents, also adds fake pack to front of unit
 if (_saveLoadOut && !isNull (unitBackpack _unit) && (backpack _unit) != "b_parachute") then {
     private ["_pack","_class","_magazines","_weapons","_items","_helmet"];
-	diag_log "Adding parachute";
     _pack       = unitBackpack _unit;
     _class       = typeOf _pack;
     _magazines = getMagazineCargo _pack;

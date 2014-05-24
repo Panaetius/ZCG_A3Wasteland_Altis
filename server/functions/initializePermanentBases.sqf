@@ -9,7 +9,9 @@ if (true) then
 	_vehicle_0 = _this;
 	_this setDir -23.510794;
 	_this setPos [20238.51, 12951.671, -0.00018310547];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2 = objNull;
@@ -19,7 +21,9 @@ if (true) then
 	_vehicle_2 = _this;
 	_this setDir -23.510794;
 	_this setPos [20232.885, 12949.234, -6.1035156e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_4 = objNull;
@@ -29,7 +33,9 @@ if (true) then
 	_vehicle_4 = _this;
 	_this setDir -23.510794;
 	_this setPos [20250.623, 12956.381, -7.6293945e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_6 = objNull;
@@ -39,7 +45,11 @@ if (true) then
 	_vehicle_6 = _this;
 	_this setDir -23.510794;
 	_this setPos [20244.518, 12953.484, 6.1035156e-005];
+    [_this] call vehicleSetup;
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
+    [_this] call randomWeapons;
 };
 
 _vehicle_8 = objNull;
@@ -49,7 +59,9 @@ if (true) then
 	_vehicle_8 = _this;
 	_this setDir -23.510794;
 	_this setPos [20256.463, 12958.68, -0.00012207031];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_10 = objNull;
@@ -59,7 +71,9 @@ if (true) then
 	_vehicle_10 = _this;
 	_this setDir -24.825394;
 	_this setPos [20238.027, 12939.659, 6.8664551e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_12 = objNull;
@@ -69,7 +83,9 @@ if (true) then
 	_vehicle_12 = _this;
 	_this setDir -24.825394;
 	_this setPos [20242.666, 12941.61, -7.6293945e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_14 = objNull;
@@ -79,7 +95,9 @@ if (true) then
 	_vehicle_14 = _this;
 	_this setDir -24.825394;
 	_this setPos [20248.67, 12943.979, -5.3405762e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_16 = objNull;
@@ -89,7 +107,9 @@ if (true) then
 	_vehicle_16 = _this;
 	_this setDir -24.825394;
 	_this setPos [20254.816, 12946.372, -4.5776367e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_18 = objNull;
@@ -99,7 +119,9 @@ if (true) then
 	_vehicle_18 = _this;
 	_this setDir -24.825394;
 	_this setPos [20261.164, 12949.392, 6.1035156e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_20 = objNull;
@@ -109,7 +131,9 @@ if (true) then
 	_vehicle_20 = _this;
 	_this setDir -25.837759;
 	_this setPos [20243.18, 12928.595, 6.8664551e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_22 = objNull;
@@ -119,7 +143,9 @@ if (true) then
 	_vehicle_22 = _this;
 	_this setDir -25.837759;
 	_this setPos [20247.887, 12931.326, 3.8146973e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_24 = objNull;
@@ -129,7 +155,9 @@ if (true) then
 	_vehicle_24 = _this;
 	_this setDir -25.837759;
 	_this setPos [20254.037, 12934.613, 0.0001373291];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_26 = objNull;
@@ -139,7 +167,9 @@ if (true) then
 	_vehicle_26 = _this;
 	_this setDir -25.837759;
 	_this setPos [20258.832, 12937.518, 0.0001373291];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_28 = objNull;
@@ -149,7 +179,9 @@ if (true) then
 	_vehicle_28 = _this;
 	_this setDir -25.837759;
 	_this setPos [20264.73, 12939.912, 0.00011444092];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_30 = objNull;
@@ -159,7 +191,9 @@ if (true) then
 	_vehicle_30 = _this;
 	_this setDir -203.07155;
 	_this setPos [20226.199, 12963.497, 3.0517578e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_32 = objNull;
@@ -169,7 +203,9 @@ if (true) then
 	_vehicle_32 = _this;
 	_this setDir -203.07155;
 	_this setPos [20231.535, 12965.484, -3.8146973e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_34 = objNull;
@@ -179,7 +215,9 @@ if (true) then
 	_vehicle_34 = _this;
 	_this setDir -203.07155;
 	_this setPos [20236.674, 12967.582, 2.2888184e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_36 = objNull;
@@ -189,7 +227,9 @@ if (true) then
 	_vehicle_36 = _this;
 	_this setDir -203.07155;
 	_this setPos [20243.643, 12970.239, 3.0517578e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_38 = objNull;
@@ -199,7 +239,9 @@ if (true) then
 	_vehicle_38 = _this;
 	_this setDir -203.07155;
 	_this setPos [20249.902, 12971.949, 3.0517578e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_40 = objNull;
@@ -209,7 +251,9 @@ if (true) then
 	_vehicle_40 = _this;
 	_this setDir -206.49657;
 	_this setPos [20222.379, 12972.017, 6.8664551e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_42 = objNull;
@@ -219,7 +263,9 @@ if (true) then
 	_vehicle_42 = _this;
 	_this setDir -206.49657;
 	_this setPos [20224.779, 12973.045, 0.0005645752];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_44 = objNull;
@@ -229,7 +275,9 @@ if (true) then
 	_vehicle_44 = _this;
 	_this setDir -206.49657;
 	_this setPos [20228.115, 12973.94];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_46 = objNull;
@@ -239,7 +287,9 @@ if (true) then
 	_vehicle_46 = _this;
 	_this setDir -206.49657;
 	_this setPos [20231.354, 12975.311, -0.0001449585];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_48 = objNull;
@@ -249,7 +299,9 @@ if (true) then
 	_vehicle_48 = _this;
 	_this setDir -206.49657;
 	_this setPos [20234.346, 12976.328, -0.00015258789];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_50 = objNull;
@@ -259,7 +311,9 @@ if (true) then
 	_vehicle_50 = _this;
 	_this setDir -206.49657;
 	_this setPos [20237.246, 12977.529, -0.00011444092];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_52 = objNull;
@@ -269,7 +323,9 @@ if (true) then
 	_vehicle_52 = _this;
 	_this setDir -206.49657;
 	_this setPos [20240.197, 12979.066, 7.6293945e-006];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_54 = objNull;
@@ -279,7 +335,9 @@ if (true) then
 	_vehicle_54 = _this;
 	_this setDir -206.49657;
 	_this setPos [20243.184, 12980.032, 9.9182129e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_64 = objNull;
@@ -806,7 +864,9 @@ if (true) then
 	_vehicle_211 = _this;
 	_this setDir -206.49657;
 	_this setPos [20221.104, 12976.087, 4.5776367e-005];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_212 = objNull;
@@ -816,7 +876,9 @@ if (true) then
 	_vehicle_212 = _this;
 	_this setDir -206.49657;
 	_this setPos [20223.504, 12977.115, -0.10250092];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_213 = objNull;
@@ -826,7 +888,9 @@ if (true) then
 	_vehicle_213 = _this;
 	_this setDir -206.49657;
 	_this setPos [20226.84, 12978.009, -0.26257324];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_214 = objNull;
@@ -836,7 +900,9 @@ if (true) then
 	_vehicle_214 = _this;
 	_this setDir -206.49657;
 	_this setPos [20230.078, 12979.377, -0.25422668];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_215 = objNull;
@@ -846,7 +912,9 @@ if (true) then
 	_vehicle_215 = _this;
 	_this setDir -206.49657;
 	_this setPos [20233.07, 12980.396, -0.22814178];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_216 = objNull;
@@ -856,7 +924,9 @@ if (true) then
 	_vehicle_216 = _this;
 	_this setDir -206.49657;
 	_this setPos [20235.971, 12981.6, -0.32282257];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_217 = objNull;
@@ -866,7 +936,9 @@ if (true) then
 	_vehicle_217 = _this;
 	_this setDir -206.49657;
 	_this setPos [20238.922, 12983.134, -0.43968201];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_218 = objNull;
@@ -876,7 +948,9 @@ if (true) then
 	_vehicle_218 = _this;
 	_this setDir -206.49657;
 	_this setPos [20241.908, 12984.103, -0.55131531];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_229 = objNull;
@@ -886,7 +960,9 @@ if (true) then
 	_vehicle_229 = _this;
 	_this setDir -206.49657;
 	_this setPos [20219.174, 12980.536, 7.6293945e-006];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_230 = objNull;
@@ -896,7 +972,9 @@ if (true) then
 	_vehicle_230 = _this;
 	_this setDir -206.49657;
 	_this setPos [20221.574, 12981.563, -0.1206665];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_231 = objNull;
@@ -906,7 +984,9 @@ if (true) then
 	_vehicle_231 = _this;
 	_this setDir -206.49657;
 	_this setPos [20224.91, 12982.457, -0.27458191];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_232 = objNull;
@@ -916,7 +996,9 @@ if (true) then
 	_vehicle_232 = _this;
 	_this setDir -206.49657;
 	_this setPos [20228.148, 12983.83, -0.094573975];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_233 = objNull;
@@ -926,7 +1008,9 @@ if (true) then
 	_vehicle_233 = _this;
 	_this setDir -206.49657;
 	_this setPos [20231.141, 12984.85, 0.049835205];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_234 = objNull;
@@ -936,7 +1020,9 @@ if (true) then
 	_vehicle_234 = _this;
 	_this setDir -206.49657;
 	_this setPos [20234.041, 12986.049, -0.17145538];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_235 = objNull;
@@ -946,7 +1032,9 @@ if (true) then
 	_vehicle_235 = _this;
 	_this setDir -206.49657;
 	_this setPos [20236.992, 12987.582, -0.31122589];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_236 = objNull;
@@ -956,7 +1044,9 @@ if (true) then
 	_vehicle_236 = _this;
 	_this setDir -206.49657;
 	_this setPos [20239.979, 12988.551, -0.25241852];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_247 = objNull;
@@ -1060,7 +1150,9 @@ if (true) then
 	_vehicle_2034 = _this;
 	_this setDir 3.4429252;
 	_this setPos [12287.311, 21094.117, -0.024944283];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2035 = objNull;
@@ -1070,7 +1162,9 @@ if (true) then
 	_vehicle_2035 = _this;
 	_this setDir 3.4429252;
 	_this setPos [12281.193, 21094.494, 0.15588166];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2036 = objNull;
@@ -1080,7 +1174,9 @@ if (true) then
 	_vehicle_2036 = _this;
 	_this setDir 3.4429252;
 	_this setPos [12300.243, 21092.832, 0.076687425];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2037 = objNull;
@@ -1090,7 +1186,9 @@ if (true) then
 	_vehicle_2037 = _this;
 	_this setDir 3.4429252;
 	_this setPos [12293.481, 21093.012, 0.1233113];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2038 = objNull;
@@ -1100,7 +1198,9 @@ if (true) then
 	_vehicle_2038 = _this;
 	_this setDir 3.4429252;
 	_this setPos [12306.493, 21092.23, 0.21047731];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2039 = objNull;
@@ -1110,7 +1210,9 @@ if (true) then
 	_vehicle_2039 = _this;
 	_this setDir 2.1283255;
 	_this setPos [12281.436, 21083.627, 0.13199483];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2040 = objNull;
@@ -1120,7 +1222,9 @@ if (true) then
 	_vehicle_2040 = _this;
 	_this setDir 2.1283255;
 	_this setPos [12286.46, 21083.27, 0.17716052];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2041 = objNull;
@@ -1130,7 +1234,9 @@ if (true) then
 	_vehicle_2041 = _this;
 	_this setDir 2.1283255;
 	_this setPos [12292.877, 21082.664, 0.25954011];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2042 = objNull;
@@ -1140,7 +1246,9 @@ if (true) then
 	_vehicle_2042 = _this;
 	_this setDir 2.1283255;
 	_this setPos [12299.443, 21082.016, 0.041881066];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2043 = objNull;
@@ -1150,7 +1258,9 @@ if (true) then
 	_vehicle_2043 = _this;
 	_this setDir 2.1283255;
 	_this setPos [12306.473, 21081.822, 0.15338695];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2044 = objNull;
@@ -1160,7 +1270,9 @@ if (true) then
 	_vehicle_2044 = _this;
 	_this setDir 1.1159589;
 	_this setPos [12281.017, 21071.436, 0.1187989];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2045 = objNull;
@@ -1170,7 +1282,9 @@ if (true) then
 	_vehicle_2045 = _this;
 	_this setDir 1.1159589;
 	_this setPos [12286.446, 21071.74, 0.18334529];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2046 = objNull;
@@ -1180,7 +1294,9 @@ if (true) then
 	_vehicle_2046 = _this;
 	_this setDir 1.1159589;
 	_this setPos [12293.423, 21071.881, 0.24149728];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2047 = objNull;
@@ -1190,7 +1306,9 @@ if (true) then
 	_vehicle_2047 = _this;
 	_this setDir 1.1159589;
 	_this setPos [12299.012, 21072.287, 0.19481114];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2048 = objNull;
@@ -1200,7 +1318,9 @@ if (true) then
 	_vehicle_2048 = _this;
 	_this setDir 1.1159589;
 	_this setPos [12305.349, 21071.752, 0.10915733];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2049 = objNull;
@@ -1210,7 +1330,9 @@ if (true) then
 	_vehicle_2049 = _this;
 	_this setDir -176.11783;
 	_this setPos [12281.696, 21110.24, 0.10245508];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2050 = objNull;
@@ -1220,7 +1342,9 @@ if (true) then
 	_vehicle_2050 = _this;
 	_this setDir -176.11783;
 	_this setPos [12287.354, 21109.594, 0.073146246];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2051 = objNull;
@@ -1230,7 +1354,9 @@ if (true) then
 	_vehicle_2051 = _this;
 	_this setDir -176.11783;
 	_this setPos [12292.884, 21109.129, -0.0068463138];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2052 = objNull;
@@ -1240,7 +1366,9 @@ if (true) then
 	_vehicle_2052 = _this;
 	_this setDir -176.11783;
 	_this setPos [12300.301, 21108.346, -0.034701549];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2053 = objNull;
@@ -1250,7 +1378,9 @@ if (true) then
 	_vehicle_2053 = _this;
 	_this setDir -176.11783;
 	_this setPos [12306.654, 21107.031, 0.10125865];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2054 = objNull;
@@ -1260,7 +1390,9 @@ if (true) then
 	_vehicle_2054 = _this;
 	_this setDir -179.54285;
 	_this setPos [12282.15, 21119.568, 0.13074589];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2055 = objNull;
@@ -1270,7 +1402,9 @@ if (true) then
 	_vehicle_2055 = _this;
 	_this setDir -179.54285;
 	_this setPos [12284.762, 21119.398, 0.17857875];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2056 = objNull;
@@ -1280,7 +1414,9 @@ if (true) then
 	_vehicle_2056 = _this;
 	_this setDir -179.54285;
 	_this setPos [12288.137, 21118.682, 0.18726256];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2057 = objNull;
@@ -1290,7 +1426,9 @@ if (true) then
 	_vehicle_2057 = _this;
 	_this setDir -179.54285;
 	_this setPos [12291.65, 21118.443, 0.21419427];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2058 = objNull;
@@ -1300,7 +1438,9 @@ if (true) then
 	_vehicle_2058 = _this;
 	_this setDir -179.54285;
 	_this setPos [12294.775, 21117.988, 0.31225836];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2059 = objNull;
@@ -1310,7 +1450,9 @@ if (true) then
 	_vehicle_2059 = _this;
 	_this setDir -179.54285;
 	_this setPos [12297.9, 21117.738, 0.20692651];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2060 = objNull;
@@ -1320,7 +1462,9 @@ if (true) then
 	_vehicle_2060 = _this;
 	_this setDir -179.54285;
 	_this setPos [12301.232, 21117.771, 0.25035569];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2061 = objNull;
@@ -1330,7 +1474,9 @@ if (true) then
 	_vehicle_2061 = _this;
 	_this setDir -179.54285;
 	_this setPos [12304.335, 21117.279, 0.26537815];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2062 = objNull;
@@ -1840,7 +1986,9 @@ if (true) then
 	_vehicle_2115 = _this;
 	_this setDir -179.54285;
 	_this setPos [12282.86, 21123.777, 0.2453042];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2116 = objNull;
@@ -1850,7 +1998,9 @@ if (true) then
 	_vehicle_2116 = _this;
 	_this setDir -179.54285;
 	_this setPos [12285.462, 21123.602, 0.30483609];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2117 = objNull;
@@ -1860,7 +2010,9 @@ if (true) then
 	_vehicle_2117 = _this;
 	_this setDir -179.54285;
 	_this setPos [12288.849, 21122.889, 0.29917878];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2118 = objNull;
@@ -1870,7 +2022,9 @@ if (true) then
 	_vehicle_2118 = _this;
 	_this setDir -179.54285;
 	_this setPos [12292.351, 21122.641, 0.17669414];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2119 = objNull;
@@ -1880,7 +2034,9 @@ if (true) then
 	_vehicle_2119 = _this;
 	_this setDir -179.54285;
 	_this setPos [12295.485, 21122.193, 0.22053874];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2120 = objNull;
@@ -1890,7 +2046,9 @@ if (true) then
 	_vehicle_2120 = _this;
 	_this setDir -179.54285;
 	_this setPos [12298.608, 21121.951, 0.28565311];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2121 = objNull;
@@ -1900,7 +2058,9 @@ if (true) then
 	_vehicle_2121 = _this;
 	_this setDir -179.54285;
 	_this setPos [12301.934, 21121.979, 0.14216231];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2122 = objNull;
@@ -1910,7 +2070,9 @@ if (true) then
 	_vehicle_2122 = _this;
 	_this setDir -179.54285;
 	_this setPos [12305.035, 21121.484, 0.25136641];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2123 = objNull;
@@ -1920,7 +2082,9 @@ if (true) then
 	_vehicle_2123 = _this;
 	_this setDir -179.54285;
 	_this setPos [12283.16, 21128.617, 0.18060446];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2124 = objNull;
@@ -1930,7 +2094,9 @@ if (true) then
 	_vehicle_2124 = _this;
 	_this setDir -179.54285;
 	_this setPos [12285.762, 21128.445, 0.017466662];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2125 = objNull;
@@ -1940,7 +2106,9 @@ if (true) then
 	_vehicle_2125 = _this;
 	_this setDir -179.54285;
 	_this setPos [12289.146, 21127.729, 0.13571306];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2126 = objNull;
@@ -1950,7 +2118,9 @@ if (true) then
 	_vehicle_2126 = _this;
 	_this setDir -179.54285;
 	_this setPos [12292.648, 21127.482, 0.10935415];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2127 = objNull;
@@ -1960,7 +2130,9 @@ if (true) then
 	_vehicle_2127 = _this;
 	_this setDir -179.54285;
 	_this setPos [12295.779, 21127.033, 0.14479655];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2128 = objNull;
@@ -1970,7 +2142,9 @@ if (true) then
 	_vehicle_2128 = _this;
 	_this setDir -179.54285;
 	_this setPos [12298.904, 21126.779, 0.18419172];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2129 = objNull;
@@ -1980,7 +2154,9 @@ if (true) then
 	_vehicle_2129 = _this;
 	_this setDir -179.54285;
 	_this setPos [12302.235, 21126.813, 0.12914528];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2130 = objNull;
@@ -1990,7 +2166,9 @@ if (true) then
 	_vehicle_2130 = _this;
 	_this setDir -179.54285;
 	_this setPos [12305.338, 21126.322, 0.19862948];
+    [_this] call vehicleSetup;
     [_this, 30*60, 45*60, 60*60, 1000, 0, false, getPos _this] execVM "server\functions\vehicle.sqf";
+    [_this] call randomWeapons;
 };
 
 _vehicle_2131 = objNull;
