@@ -190,7 +190,7 @@ if (["A3W_serverMissions"] call isConfigOn) then
 };
 
 //Hide ThereCanOnlyBeOne mission markers
-for "_i" from 1 to 13 do
+for "_i" from 1 to 3 do
 {
 	_markerName = format ["ThereCanBeOnlyOne_%1", _i];
 	_markerName setMarkerAlpha 0;

@@ -82,7 +82,7 @@ waitUntil
 			_marker setMarkerType "mil_destroy";
 			_marker setMarkerSize [1.25, 1.25];
 			_marker setMarkerColor "ColorRed";
-			_marker setMarkerText "Ancient Object";
+			_marker setMarkerText "Ancient Relic";
 	
 			_newRelicArray set [count _newRelicArray, [_object, _marker]];
 		};
@@ -121,7 +121,7 @@ waitUntil
 	if (_currentRelicCount < _relicCount) then {
 		for "_i" from (_currentRelicCount + 1) to _relicCount do
 		{
-			_index = ceil random 13;
+			_index = ceil random 3;
 			_circle = format ["ThereCanBeOnlyOne_%1", _index];
 			_pos = [getMarkerPos _circle, 0, (getMarkerSize _circle) select 0, 10, 0, 60*(pi/180), 0, "Sign_Arrow_Large_Yellow_F"] call findSafePos;
 			
