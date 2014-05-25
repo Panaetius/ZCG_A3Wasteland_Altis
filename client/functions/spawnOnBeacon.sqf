@@ -20,7 +20,15 @@ if (not(isNil "_beacons") && count _beacons > 0 && (_beacons select 0) getVariab
 }
 else
 {
-	[] spawn fn_vehicleManager; //call vehicle manager to enable simulation on all close vehicles
+	_R3F_attachPoint = objNull;
+	
+	if (isNull _R3F_attachPoint && !isNil "R3F_LOG_PUBVAR_point_attache") then
+	{
+		_R3F_attachPoint = R3F_LOG_PUBVAR_point_attache;
+	};
+	
+	_R3F_attachPoint spawn fn_vehicleManager; //call vehicle manager to enable simulation on all close vehicles
+	
 	waitUntil {sleep 0.1; preloadCamera _pos};
 	player setPos _pos;
 };

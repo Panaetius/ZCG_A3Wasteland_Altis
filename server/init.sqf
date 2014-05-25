@@ -20,11 +20,11 @@ _serverCompileHandle = [] execVM "server\functions\serverCompile.sqf";
 [] execVM "server\functions\relations.sqf";
 [] execVM "server\functions\ThereCanBeOnlyOne.sqf";
 [] execVM (externalConfigFolder + "\init.sqf");
-[] execVM "server\functions\initializePermanentBases.sqf";
 
 applyVehicleTexture = "client\systems\vehicleStore\applyVehicleTexture.sqf" call mf_compile;
 
 waitUntil {scriptDone _serverCompileHandle};
+[] execVM "server\functions\initializePermanentBases.sqf";
 
 // Broadcast server rules
 if (loadFile (externalConfigFolder + "\serverRules.sqf") != "") then

@@ -56,12 +56,11 @@ if (_packetName == "BIS_fnc_MP_packet") then
 		"BIS_fnc_tridentHandleDamage",
 		"BIS_fnc_tridentHandleDamage_server",
 		"JTS_FNC_SENT", // PM Compact by JTS
-		"T8_fnc_addActionLaptop",
 		"T8_fnc_abortActionLaptop",
-		"T8_fnc_removeActionLaptop",
 		"T8_fnc_ActionLaptop",
-		"zod_stakedown_minifunction",
-		"BIS_fnc_moduleLightning"
+		"BIS_fnc_moduleLightning",
+		"fn_removeObjectActions",
+		"fn_addBountyAction"
 	];
 
 	if (_allowedFile || _allowedFunction) then

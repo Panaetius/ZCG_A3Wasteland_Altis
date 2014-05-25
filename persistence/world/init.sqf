@@ -12,7 +12,7 @@
 if(!isServer) exitWith {};
 
 isLoadingObjects = false;
-
+execVM "persistence\world\oLoadBounties.sqf";
 execVM "persistence\world\oLoad.sqf";
 execVM "persistence\world\oLoadWarchests.sqf";
 execVM "persistence\world\oLoadBeacons.sqf";

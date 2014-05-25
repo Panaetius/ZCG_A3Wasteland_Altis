@@ -19,6 +19,7 @@ private ["_eventCode", "_vehicleManager", "_lastPos", "_R3F_attachPoint"];
 fn_vehicleManager =
 {
 	private ["_vehicle", "_tryEnable", "_dist", "_vel"];
+	_R3F_attachPoint = _this;
 	
 	_eventCode =
 	{
@@ -86,7 +87,7 @@ while {true} do
 		};
 
 		_lastPos = _camPos;
-		call fn_vehicleManager;
+		_R3F_attachPoint call fn_vehicleManager;
 	};
 
 	sleep 10;

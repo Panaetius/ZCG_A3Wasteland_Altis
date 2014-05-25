@@ -173,6 +173,7 @@ storePurchaseHandle = _this spawn
 		else
 		{
 			player setVariable ["cmoney", _playerMoney - _price, true];
+			[] spawn fn_deletePlayerData;
 			_playerMoneyText ctrlSetText format ["Cash: $%1", player getVariable "cmoney"];
 		};
 	};

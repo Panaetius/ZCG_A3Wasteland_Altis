@@ -400,6 +400,46 @@ sqlite_readDonator = {
 	_data
 } call mf_compile;
 
+sqlite_deleteBountyBoard = {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%1', 'DELETE FROM bounties;']", A3W_DatabaseName];
+} call mf_compile;
+
+sqlite_saveBountyBoard = {
+	private ["_query", "_res"];
+	_query = _this;
+	_query = [_query, ([_query] call KRON_StrLen) - 1] call KRON_StrLeft;
+	_query = "START TRANSACTION;" + _query + ";COMMIT;";
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['%2', '%1']", _query, A3W_DatabaseName];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
+} call mf_compile;
+
+sqlite_countBountyBoard = {
+	_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%1', 'SELECT Count(*) FROM bounties']", A3W_DatabaseName];
+	_res = parseNumber ((((call compile _res) select 0) select 0) select 0);
+	_res
+} call mf_compile;
+
+sqlite_loadBountyBoard = {
+	private "_res";
+	
+	_res = nil;
+	while {isNil("_res")} do {
+		_res = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['%3', 'SELECT * FROM bounties ORDER BY PlayerId ASC LIMIT %1,%2']", _this select 0, _this select 1, A3W_DatabaseName];
+		if (_res == "") then {
+                _res = nil;
+        };
+        sleep 0.5;
+	};
+	_res = ((call compile _res) select 0);
+	_res
+} call mf_compile;
+
 KRON_StrLeft = {
 	private["_in","_len","_arr","_out"];
 	_in=_this select 0;

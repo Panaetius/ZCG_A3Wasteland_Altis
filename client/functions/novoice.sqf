@@ -1,11 +1,11 @@
-private ["_chat", "_chatIndex", "_seconds", "_reset_timer", "_disconnect_me", "_warn_one", "_warn_last", "_reset_timer", "_checkInterval"];
+#define CHECK_INTERVAL 0.25
+private ["_chat", "_chatIndex", "_seconds", "_reset_timer", "_disconnect_me", "_warn_one", "_warn_last", "_reset_timer"];
 _globalSeconds = _this select 0;
 _sideSeconds = _this select 1;
 _commandSeconds = _this select 2;
 
 _chat = [ localize "str_channel_global", localize "str_channel_side", localize "str_channel_command" ];
 
-_checkInterval = 0.2;
 noVoiceResetTimer = [0, 0, 0];
 noVoiceWarnOne = [false, false, false];
 noVoiceWarnFinal = [false, false, false];
@@ -73,7 +73,7 @@ _checkVoiceChat = {
 	if (noVoiceDisconnectMe select _chatIndex < 0) then {
 		noVoiceDisconnectMe set [_chatIndex, 0];
 	} else {
-		noVoiceDisconnectMe set [_chatIndex, (noVoiceDisconnectMe select _chatIndex) + _checkInterval];
+		noVoiceDisconnectMe set [_chatIndex, (noVoiceDisconnectMe select _chatIndex) + CHECK_INTERVAL];
 	};
 	
 	if (noVoiceDisconnectMe select _chatIndex == 0) then {
@@ -107,7 +107,7 @@ _checkVoiceChat = {
 
 while {true} do {
 	waitUntil {
-		sleep _checkInterval;
+		sleep CHECK_INTERVAL;
 		((!isNull findDisplay 63) && (!isNull findDisplay 55))
 	};
 	if (ctrlText ((findDisplay 55) displayCtrl 101) == "\A3\ui_f\data\igui\rscingameui\rscdisplayvoicechat\microphone_ca.paa") then {
@@ -127,5 +127,5 @@ while {true} do {
 			};
 		};
 	};
-	sleep _checkInterval;
+	sleep CHECK_INTERVAL;
 };

@@ -16,9 +16,35 @@ _corpse removeAction playerMenuId;
 { _corpse removeAction _x } forEach aActionsIDs;
 // The actions from mf_player_actions are removed in onKilled.
 
+_bounties = [];
+
+diag_log "Handling bounties";
+
+{
+	if ( (_x select 0) == (getPlayerUID _player)) then //add bounty handler and remove bounty from bounty list
+	{
+		if(_x select 1 > 1000) then {
+			_bountyMoney = _x select 1;
+			_corpse setVariable ["BountyCollectionActive", false, true];
+			[[_corpse, _bountyMoney], "fn_addBountyAction"] spawn BIS_fnc_MP;
+		};
+	}
+	else
+	{
+		_bounties set [count _bounties, _x ];//add back all other bounty entries
+	};
+} foreach pvar_bountyBoard;
+
+pvar_bountyBoard = _bounties;
+publicVariable "pvar_bountyBoard";
+
 player call playerSetup;
 
 [] execVM "client\clientEvents\onMouseWheel.sqf";
+
+call fn_requestDonatorData;
+	
+waitUntil {!isNil "donatorData_loaded"};
 
 call playerSpawn;
 

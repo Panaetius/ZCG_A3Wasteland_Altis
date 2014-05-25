@@ -81,7 +81,7 @@ else
 					private ["_nb_tirage_pos", "_position_attache"];
 					_position_attache = [random 3000, random 3000, (10000 + (random 3000))];
 					_nb_tirage_pos = 1;
-					while {(!isNull (nearestObject _position_attache)) && (_nb_tirage_pos < 25)} do
+					while {(!isNull (nearestObject _position_attache)) && (_nb_tirage_pos < 50)} do
 					{
 						_position_attache = [random 3000, random 3000, (10000 + (random 3000))];
 						_nb_tirage_pos = _nb_tirage_pos + 1;
@@ -90,6 +90,10 @@ else
 					R3F_LOG_PUBVAR_point_attache enableSimulationGlobal true;
 					_objet enableSimulationGlobal true;
 					_objet attachTo [R3F_LOG_PUBVAR_point_attache, _position_attache];
+					_objet attachTo [R3F_LOG_PUBVAR_point_attache, _position_attache];
+					
+					R3F_ARTY_AND_LOG_PUBVAR_setDir = [_objet, getDir _objet];
+					publicVariable "R3F_ARTY_AND_LOG_PUBVAR_setDir";
 					
 					R3F_LOG_objet_selectionne = objNull;
 					

@@ -66,7 +66,7 @@ if( _goggles != "") then {
 };
 
 _inventory = call compile (_varValue select 13);
-if( count _inventory > 0) then {
+if( (!isNil "_inventory") && {count _inventory > 0}) then {
 	{
 		_name = _x;
 		if (isClass (configFile >> "CFGMagazines" >> _name)) then {

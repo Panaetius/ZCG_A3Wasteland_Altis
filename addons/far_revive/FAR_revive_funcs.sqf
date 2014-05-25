@@ -131,6 +131,29 @@ FAR_Player_Unconscious =
 		_bleedOut = time + FAR_BleedOut;
 					
 		[_unit, _killer] call FAR_checkTeamKill;
+
+		if( !isNil "_killer" && {isPlayer _killer} && {_killer != _unit} && ( {playerSide != side _killer} || {playerSide == resistance})) then
+		{
+			[] spawn {
+				private "_bountyFound";
+				_bountyFound = false;
+
+				{
+					if (_x select 0 == getPlayerUID _killer) then
+					{
+						_x set [1, (_x select 1) + 200];
+						_bountyFound = true;
+					};
+				} forEach pvar_bountyBoard;
+
+				if (!_bountyFound) then
+				{
+					pvar_bountyBoard set [count pvar_bountyBoard, [getPlayerUID _killer, 200, name _killer]];
+				};
+
+				publicVariable "pvar_bountyBoard";
+			};
+		};
 		
 		while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 && _unit getVariable "FAR_isStabilized" == 0 && (FAR_BleedOut <= 0 || time < _bleedOut) } do
 		{

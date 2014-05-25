@@ -139,3 +139,15 @@ ENGINE = InnoDB;
 ------------EXAMPLE DONATOR DATA--------------------------------------------
 ----------------------------------------------------------------------------
 INSERT INTO donators VALUES (76561197992571685, 1234, 3, 3, 3, 'U_B_Wetsuit', 'V_TacVestIR_blk', 'B_Carryall_oucamo', 'H_Beret_red', 'G_Diving', 'arifle_Mk20_F', 'launch_NLAW_F', 'hgun_Rook40_F', '["FirstAidKit","FirstAidKit", "30Rnd_556x45_Stanag"]', 1, 1, '')
+----------------------------------------------------------------------------
+------------END EXAMPLE DONATOR DATA--------------------------------------------
+----------------------------------------------------------------------------
+
+CREATE TABLE `players`.`bounties` (
+  `PlayerId` BIGINT(40) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Bounty` INTEGER(10) UNSIGNED NOT NULL DEFAULT 0,
+  `PlayerName` VARCHAR(45) NOT NULL DEFAULT '',
+  PRIMARY KEY (`PlayerId`)
+)
+ENGINE = InnoDB;
+

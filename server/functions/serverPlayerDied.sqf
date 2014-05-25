@@ -10,6 +10,8 @@ private ["_corpse", "_backpack"];
 _corpse = _this select 0;
 _corpse setVariable ["processedDeath", diag_tickTime];
 
+diag_log format ["Processing death of Player %1", _corpse];
+
 // Remove any persistent info about the player on death
 _uid = getPlayerUID _corpse;
 

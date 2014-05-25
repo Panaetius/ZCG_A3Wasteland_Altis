@@ -157,11 +157,20 @@ if (isPlayer _unit) then {
         _unit       = _this select 0;
         _autoOpen = _this select 1;
         _actionId = nil;
+		hint "Scroll to open Parachute";
         if (_autoOpen) then {
-            waitUntil {(getPos _unit select 2) < 95 || animationState _unit == "para_pilot" && alive _unit};
+            waitUntil {(getPos _unit select 2) < 100 || animationState _unit == "para_pilot" && alive _unit};
             _unit action ["OpenParachute", _unit]; //open parachute if 150m above ground
         };
-        [] spawn fn_vehicleManager; //call vehicle manager to enable simulation on all close vehicles while falling
+		
+		_R3F_attachPoint = objNull;
+		
+		if (isNull _R3F_attachPoint && !isNil "R3F_LOG_PUBVAR_point_attache") then
+		{
+			_R3F_attachPoint = R3F_LOG_PUBVAR_point_attache;
+		};
+		
+        _R3F_attachPoint spawn fn_vehicleManager; //call vehicle manager to enable simulation on all close vehicles while falling
         waitUntil {animationState _unit == "para_pilot"};
         
         // Parachute opening effect for more immersion

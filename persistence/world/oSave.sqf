@@ -111,6 +111,9 @@ while {true} do {
 		
 		call sqlite_commitBaseObject;
 		
+		_handle = [] execVM "persistence\world\oSaveBounties.sqf"; 
+		waitUntil {sleep 0.1;scriptDone _handle};
+		
 		"DoSave" call sqlite_setTrigger;
 	};
 };

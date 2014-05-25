@@ -2273,7 +2273,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=24;
+		items=27;
 		class Item0
 		{
 			position[]={5892.3325,225.05762,20124.521};
@@ -2487,6 +2487,39 @@ class Mission
 			side="EMPTY";
 			vehicle="Campfire_burning_F";
 			skill=0.60000002;
+		};
+		class Item24
+		{
+			position[]={3672.0903,10.461152,13109.375};
+			azimut=87;
+			id=1;
+			side="EMPTY";
+			vehicle="MapBoard_altis_F";
+			skill=0.60000002;
+			text="BountyBoard_1";
+			init="[this,1] execVM 'server\functions\setupBountyBoard.sqf'";
+		};
+		class Item25
+		{
+			position[]={14057.608,26.63031,18718.52};
+			azimut=61.337502;
+			id=2;
+			side="EMPTY";
+			vehicle="MapBoard_altis_F";
+			skill=0.60000002;
+			text="BountyBoard_2";
+			init="[this,2] execVM 'server\functions\setupBountyBoard.sqf'";
+		};
+		class Item26
+		{
+			position[]={16556.926,11,12783.972};
+			azimut=-60;
+			id=3;
+			side="EMPTY";
+			vehicle="MapBoard_altis_F";
+			skill=0.60000002;
+			text="BountyBoard_3";
+			init="[this,3] execVM 'server\functions\setupBountyBoard.sqf'";
 		};
 	};
 	class Markers

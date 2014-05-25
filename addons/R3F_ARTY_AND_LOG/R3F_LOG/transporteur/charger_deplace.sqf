@@ -94,6 +94,10 @@ else
 				R3F_LOG_PUBVAR_point_attache enableSimulationGlobal true;
 				_objet enableSimulationGlobal true;
 				_objet attachTo [R3F_LOG_PUBVAR_point_attache, _position_attache];
+				_objet attachTo [R3F_LOG_PUBVAR_point_attache, _position_attache];
+				
+				R3F_ARTY_AND_LOG_PUBVAR_setDir = [_objet, getDir _objet];
+				publicVariable "R3F_ARTY_AND_LOG_PUBVAR_setDir";
 				_objet enableCollisionWith _transporteur;
 				
 				player globalChat format [STR_R3F_LOG_action_charger_deplace_fait, getText (configFile >> "CfgVehicles" >> (typeOf _transporteur) >> "displayName")];

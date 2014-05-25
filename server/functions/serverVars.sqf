@@ -268,3 +268,16 @@ HostageTerroristMarkers=[];
 		HostageTerroristMarkers set [count HostageTerroristMarkers, [_x, false]];
 	};
 } forEach allMapMarkers;
+
+"playerCollectBounty" addPublicVariableEventHandler 
+{
+	_corpse = _this select 1 select 0;
+	_bountyHunter = _this select 1 select 1;
+	_amount = _this select 1 select 3;
+	
+	[ _corpse, "fn_removeObjectActions"] spawn BIS_fnc_MP;
+
+	_bountyHunter setVariable ["cmoney", (_bountyHunter getVariable ["cmoney", 0]) + _amount, true];
+
+	diag_log format ["%1 collected a bounty of %2 money from %3", _bountyHunter, _amount, _corpse];
+};

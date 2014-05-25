@@ -180,11 +180,20 @@ if (handgunWeapon player == "") then {
 	};
 } forEach pvar_spawn_beacons;
 //Hide ThereCanOnlyBeOne mission markers
-for "_i" from 1 to 13 do
+for "_i" from 1 to 3 do
 {
 	_markerName = format ["ThereCanBeOnlyOne_%1", _i];
 	_markerName setMarkerAlpha 0;
 };
+
+fn_removeObjectActions = 
+{
+	removeAllActions  _this;
+} call mf_compile;
+
+fn_addBountyAction = {
+	(_this select 0) addAction ["Collect Bounty", "client\systems\BountyBoard\collectBounty.sqf", (_this select 1), 1, true, true, "", "_this distance _target < 3"];
+} call mf_compile;
 
 while {True} do {
 	player setfatigue (getfatigue player - 0.02);
