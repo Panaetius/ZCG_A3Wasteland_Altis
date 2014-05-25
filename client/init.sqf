@@ -149,8 +149,8 @@ if ( (A3W_NoGlobalVoice > 0) || (A3W_NoSideVoice > 0) || (A3W_NoCommandVoice > 0
 
 [] spawn playerSpawn;
 
-[] execVM "client\functions\drawPlayerIcons.sqf";
 [] execVM "addons\fpsFix\vehicleManager.sqf";
+[] execVM "client\functions\drawPlayerIcons.sqf";
 [] execVM "addons\Lootspawner\LSclientScan.sqf";
 
 // Synchronize score compensation
