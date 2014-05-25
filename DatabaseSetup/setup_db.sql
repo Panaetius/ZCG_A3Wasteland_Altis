@@ -144,7 +144,7 @@ INSERT INTO donators VALUES (76561197992571685, 1234, 3, 3, 3, 'U_B_Wetsuit', 'V
 ----------------------------------------------------------------------------
 
 CREATE TABLE `players`.`bounties` (
-  `PlayerId` BIGINT(40) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `PlayerId` VARCHAR(45) NOT NULL DEFAULT '',
   `Bounty` INTEGER(10) UNSIGNED NOT NULL DEFAULT 0,
   `PlayerName` VARCHAR(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`PlayerId`)

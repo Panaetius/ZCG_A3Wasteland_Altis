@@ -16,15 +16,14 @@ call compile preprocessFileLineNumbers "server\antihack\setup.sqf";
 [] execVM "server\admins.sqf";
 [] execVM "server\functions\serverVars.sqf";
 _serverCompileHandle = [] execVM "server\functions\serverCompile.sqf";
+waitUntil {scriptDone _serverCompileHandle};
+[] execVM "server\functions\initializePermanentBases.sqf";
 [] execVM "server\functions\broadcaster.sqf";
 [] execVM "server\functions\relations.sqf";
 [] execVM "server\functions\ThereCanBeOnlyOne.sqf";
 [] execVM (externalConfigFolder + "\init.sqf");
 
 applyVehicleTexture = "client\systems\vehicleStore\applyVehicleTexture.sqf" call mf_compile;
-
-waitUntil {scriptDone _serverCompileHandle};
-[] execVM "server\functions\initializePermanentBases.sqf";
 
 // Broadcast server rules
 if (loadFile (externalConfigFolder + "\serverRules.sqf") != "") then

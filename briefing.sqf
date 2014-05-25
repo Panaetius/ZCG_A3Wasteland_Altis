@@ -33,6 +33,7 @@ player createDiaryRecord ["changelog",
 <br/> [Bugfix] - Despawning of dead players should work again
 <br/> [Added] - Suicide option when player is stabilized
 <br/> [Added] - Donator Perks
+<br/> [Added] - Bounty Hunting
 "
 ]];
 

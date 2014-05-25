@@ -76,14 +76,6 @@ _blownTire = false;
 
 _proxyExtra = _proxyExtra - _deserted;
 
-_sleepTime = 120;
-
-// {
-	// if (_x < _sleepTime) then {
-		// _sleepTime = ( if (_x > 4) then { _x / 4 } else { 1 } );
-	// };
-// } forEach [_delay, _deserted];
-
 _wheels = [];
 _hitPoints = configFile >> "CfgVehicles" >> (typeOf _veh) >> "HitPoints";
 
@@ -99,7 +91,7 @@ for "_i" from 0 to (count _hitPoints - 1) do
 // Start monitoring the vehicle
 while {_run} do 
 {	
-	sleep _sleepTime;
+	sleep 120;
 	
 	// Check if vehicle is not being towed or moved
 	if (isNull (_veh getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
