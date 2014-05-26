@@ -1,7 +1,10 @@
 diag_log "oLoadBountyBoards started";
 _bountyBoardCount = call sqlite_countBountyBoard;
 diag_log text format ["Loading %1 bounties", _bountyBoardCount];
-if (isNil "_bountyBoardCount" || _bountyBoardCount == 0) exitWith {};
+if (isNil "_bountyBoardCount" || _bountyBoardCount == 0) exitWith {
+	pvar_bountyBoard = []; //initialize new bounty board of there is none
+	publicVariable "pvar_bountyBoard";
+};
 
 
 _stepSize = 50;
