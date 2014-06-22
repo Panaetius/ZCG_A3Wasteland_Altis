@@ -98,8 +98,11 @@ FAR_Player_Unconscious =
 	// Eject unit if inside vehicle
 	while {vehicle _unit != _unit} do 
 	{
-		unAssignVehicle _unit;
-		_unit action ["eject", vehicle _unit];
+		if(not(isPlayer _unit)) then 
+		{
+			unAssignVehicle _unit;
+		};
+		_unit action ["Eject", vehicle _unit];
 		
 		sleep 2;
 	};
@@ -255,6 +258,8 @@ FAR_HandleRevive =
 
 		_target setVariable ["FAR_isUnconscious", 0, true];
 		_target setVariable ["FAR_isDragged", 0, true];
+		
+		_target allowDamage true;
 		
 		sleep 6;
 		
